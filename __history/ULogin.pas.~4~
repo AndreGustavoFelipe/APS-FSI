@@ -16,13 +16,12 @@ type
     lblSenha: TLabel;
     pnlBtnEntrar: TPanel;
     Panel1: TPanel;
-    edtUsuario: TEdit;
+    Edit2: TEdit;
     lblUsuario: TLabel;
     Panel5: TPanel;
-    edtSenha: TEdit;
+    Edit1: TEdit;
     SpeedButton1: TSpeedButton;
     imgCadeado: TImage;
-    Image1: TImage;
     procedure FormShow(Sender: TObject);
     procedure imgCadeadoClick(Sender: TObject);
   private
@@ -59,25 +58,26 @@ var
 
 begin
 
-  picture := TPicture.Create;
+  if not Assigned(picture) then
+    picture := TPicture.Create;
+
   try
-    if imgCadeado.Tag = 0 then
-    begin
-      aux := 'imgs\telaLogin\cadeadoAberto.png';
-      edtSenha.PasswordChar :=  ('#0').;
-      imgCadeado.Tag := 1;
-    end
+    if (imgCadeado.Tag = 0) then
+      aux := 'imgs\telaLogin\cadeadoAberto.png'
+
     else
-    begin
       aux := 'imgs\telaLogin\cadeadoFechado.png';
-      edtSenha.PasswordChar := '*';
-      imgCadeado.Tag := 0;
-    end;
+
+
+    //  showmessage(ExtractFilePath(ParamStr(0)) + aux);
     picture.LoadFromFile(ExtractFilePath(ParamStr(0)) + aux);
-    imgCadeado.Picture.Assign(picture);
+
+  imgCadeado.Picture.Assign(picture);
 
   finally
-    picture.Free;
+    Free;
+
+
   end;
 
 end;

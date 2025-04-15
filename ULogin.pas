@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, UPrincipal;
 
 type
   TFormLogin = class(TForm)
@@ -16,14 +16,16 @@ type
     lblSenha: TLabel;
     pnlBtnEntrar: TPanel;
     Panel1: TPanel;
-    Edit2: TEdit;
+    edtUsuario: TEdit;
     lblUsuario: TLabel;
     Panel5: TPanel;
-    Edit1: TEdit;
+    edtSenha: TEdit;
     SpeedButton1: TSpeedButton;
     imgCadeado: TImage;
+    Image1: TImage;
     procedure FormShow(Sender: TObject);
     procedure imgCadeadoClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,26 +60,39 @@ var
 
 begin
 
-  if not Assigned(picture) then
-    picture := TPicture.Create;
-
+  picture := TPicture.Create;
   try
-    if (imgCadeado.Tag = 0) then
-      aux := 'imgs\telaLogin\cadeadoAberto.png'
-
+    if imgCadeado.Tag = 0 then
+    begin
+      aux := 'imgs\telaLogin\cadeadoAberto.png';
+      edtSenha.PasswordChar :=  #0;
+      imgCadeado.Tag := 1;
+    end
     else
+    begin
       aux := 'imgs\telaLogin\cadeadoFechado.png';
-
-
-    //  showmessage(ExtractFilePath(ParamStr(0)) + aux);
+      edtSenha.PasswordChar := '*';
+      imgCadeado.Tag := 0;
+    end;
     picture.LoadFromFile(ExtractFilePath(ParamStr(0)) + aux);
-
-  imgCadeado.Picture.Assign(picture);
+    imgCadeado.Picture.Assign(picture);
 
   finally
-    Free;
+    picture.Free;
+  end;
 
+end;
 
+procedure TFormLogin.SpeedButton1Click(Sender: TObject);
+begin
+
+  with TFormPrincipal.Create(self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
   end;
 
 end;
