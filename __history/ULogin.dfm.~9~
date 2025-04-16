@@ -487,6 +487,7 @@ object FormLogin: TFormLogin
           ParentFont = False
           TabOrder = 0
           TextHint = 'Informe seu usu'#225'rio'
+          ExplicitWidth = 1122
         end
       end
       object Panel5: TPanel
