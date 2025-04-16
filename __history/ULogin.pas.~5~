@@ -23,9 +23,9 @@ type
     SpeedButton1: TSpeedButton;
     imgCadeado: TImage;
     Image1: TImage;
+    procedure FormShow(Sender: TObject);
     procedure imgCadeadoClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
-    procedure FormResize(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,14 +39,14 @@ implementation
 
 {$R *.dfm}
 
-procedure TFormLogin.FormResize(Sender: TObject);
+procedure TFormLogin.FormShow(Sender: TObject);
 begin
 
-  pnlLogin.Margins.Left  := Trunc(FormLogin.Width/6);
-  pnlLogin.Margins.Right := Trunc(FormLogin.Width/6);
+  pnlLogin.Margins.Left  := (Trunc(FormLogin.Width/2));
+  pnlLogin.Margins.Right := (Trunc(FormLogin.Width/2));
 
-  pnlLogin.Margins.top := (Trunc(FormLogin.height/7));
-  pnlLogin.Margins.bottom := Trunc((FormLogin.height/6) * 2.7);
+  pnlLogin.Margins.top := (Trunc(FormLogin.height/6) * 2);
+  pnlLogin.Margins.bottom := (Trunc(FormLogin.height/6) * 5);
 
 //  pnlBtnEntrar.Margins.Left  := (Trunc(pnlLogin.Margins.Left/2));
 //  pnlBtnEntrar.Margins.Right := (Trunc(pnlLogin.Margins.Right/2));
