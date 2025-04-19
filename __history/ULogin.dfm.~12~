@@ -464,6 +464,7 @@ object FormLogin: TFormLogin
             640000000049454E44AE426082}
           Proportional = True
           Stretch = True
+          OnClick = imgCadeadoClick
           ExplicitLeft = 1088
           ExplicitTop = 6
         end

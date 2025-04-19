@@ -37,7 +37,6 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,11 +64,6 @@ end;
 procedure TFormUsuarios.btnSalvarClick(Sender: TObject);
 begin
   ShowMessage('Cadastrado com Sucesso!');
-end;
-
-procedure TFormUsuarios.FormShow(Sender: TObject);
-begin
-  pgControl.TabIndex := 0;
 end;
 
 procedure TFormUsuarios.imgCadeadoClick(Sender: TObject);
