@@ -27,8 +27,7 @@ object FormPrincipal: TFormPrincipal
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 5
-    object Panel7: TPanel
+    object Panel2: TPanel
       AlignWithMargins = True
       Left = 10
       Top = 10
@@ -43,7 +42,8 @@ object FormPrincipal: TFormPrincipal
       Color = 7346457
       ParentBackground = False
       TabOrder = 0
-      object Image2: TImage
+      ExplicitWidth = 165
+      object Image1: TImage
         AlignWithMargins = True
         Left = 3
         Top = 3
@@ -805,7 +805,7 @@ object FormPrincipal: TFormPrincipal
         Stretch = True
         ExplicitTop = 0
       end
-      object Label1: TLabel
+      object lblUsuario: TLabel
         AlignWithMargins = True
         Left = 45
         Top = 10
@@ -826,81 +826,9 @@ object FormPrincipal: TFormPrincipal
         Font.Style = []
         ParentColor = False
         ParentFont = False
-        ExplicitWidth = 132
-        ExplicitHeight = 25
-      end
-    end
-    object Panel8: TPanel
-      AlignWithMargins = True
-      Left = 10
-      Top = 79
-      Width = 194
-      Height = 49
-      Margins.Left = 10
-      Margins.Top = 10
-      Margins.Right = 10
-      Margins.Bottom = 10
-      Align = alTop
-      BevelOuter = bvNone
-      Color = 7346457
-      ParentBackground = False
-      TabOrder = 1
-      ExplicitTop = 10
-      object btnUsuarios: TSpeedButton
-        Left = 0
-        Top = 0
-        Width = 194
-        Height = 49
-        Align = alClient
-        Caption = 'Usu'#225'rios'
-        Flat = True
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
-        Font.Height = -19
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        OnClick = btnUsuariosClick
-        ExplicitLeft = 104
-        ExplicitTop = 16
-        ExplicitWidth = 23
-        ExplicitHeight = 22
-      end
-    end
-    object Panel2: TPanel
-      AlignWithMargins = True
-      Left = 10
-      Top = 148
-      Width = 194
-      Height = 49
-      Margins.Left = 10
-      Margins.Top = 10
-      Margins.Right = 10
-      Margins.Bottom = 10
-      Align = alTop
-      BevelOuter = bvNone
-      Color = 7346457
-      ParentBackground = False
-      TabOrder = 2
-      ExplicitTop = 10
-      object btnServicos: TSpeedButton
-        Left = 0
-        Top = 0
-        Width = 194
-        Height = 49
-        Align = alClient
-        Caption = 'Servi'#231'os'
-        Flat = True
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
-        Font.Height = -19
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        ExplicitLeft = 104
-        ExplicitTop = 16
-        ExplicitWidth = 23
-        ExplicitHeight = 22
+        ExplicitLeft = 55
+        ExplicitTop = 8
+        ExplicitWidth = 134
       end
     end
   end
@@ -919,6 +847,8 @@ object FormPrincipal: TFormPrincipal
     Color = 14599344
     ParentBackground = False
     TabOrder = 1
+    ExplicitLeft = 193
+    ExplicitWidth = 832
     object Panel4: TPanel
       Left = 0
       Top = 0
@@ -933,6 +863,7 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 832
     end
     object Panel5: TPanel
       AlignWithMargins = True
@@ -949,7 +880,7 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = -5
+      ExplicitWidth = 832
     end
     object Panel6: TPanel
       Left = 0
@@ -965,6 +896,7 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 2
+      ExplicitWidth = 832
     end
   end
 end
