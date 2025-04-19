@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.Buttons, Vcl.StdCtrls;
+  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, ULogin;
 
 type
   TFormPrincipal = class(TForm)
@@ -21,7 +21,11 @@ type
     btnUsuarios: TSpeedButton;
     Panel2: TPanel;
     btnServicos: TSpeedButton;
+    Panel9: TPanel;
+    imgSair: TImage;
+    btnSair: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +42,28 @@ implementation
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
 
-  with
+  with TFormUsuarios.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+
+end;
+
+procedure TFormPrincipal.btnSairClick(Sender: TObject);
+begin
+
+  with ULogin.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
 
 end;
 

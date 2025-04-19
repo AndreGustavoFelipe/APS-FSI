@@ -39,8 +39,6 @@ implementation
 
 {$R *.dfm}
 
-uses ULogin;
-
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
 
