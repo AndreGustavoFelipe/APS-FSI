@@ -14,7 +14,7 @@ type
     Panel8: TPanel;
     btnNovoUsuario: TSpeedButton;
     Panel3: TPanel;
-    btnEditar: TSpeedButton;
+    SpeedButton1: TSpeedButton;
     Panel4: TPanel;
     btnExcluir: TSpeedButton;
     pgControl: TPageControl;
@@ -32,11 +32,9 @@ type
     btnSalvar: TSpeedButton;
     pnlCancelar: TPanel;
     btnCancelar: TSpeedButton;
-    Panel9: TPanel;
-    btnVoltar: TSpeedButton;
     procedure imgCadeadoClick(Sender: TObject);
     procedure btnNovoUsuarioClick(Sender: TObject);
-    procedure btnEditarClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -101,7 +99,7 @@ begin
   end;
 end;
 
-procedure TFormUsuarios.btnEditarClick(Sender: TObject);
+procedure TFormUsuarios.SpeedButton1Click(Sender: TObject);
 begin
   pgControl.TabIndex := 1;
 end;

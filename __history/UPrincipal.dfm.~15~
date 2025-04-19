@@ -358,36 +358,9 @@ object FormPrincipal: TFormPrincipal
           Width = 204
           Height = 21
           Align = alClient
-          Color = 14796724
           DropDownCount = 4
           TabOrder = 0
           Text = 'Status'
-        end
-      end
-      object Panel12: TPanel
-        Left = 424
-        Top = 0
-        Width = 185
-        Height = 41
-        Align = alLeft
-        Caption = 'Panel12'
-        TabOrder = 2
-        ExplicitLeft = 312
-        object DateTimePicker1: TDateTimePicker
-          AlignWithMargins = True
-          Left = 4
-          Top = 4
-          Width = 177
-          Height = 33
-          Align = alClient
-          Date = 45766.000000000000000000
-          Time = 0.809104016203491500
-          Color = 14796724
-          TabOrder = 0
-          ExplicitLeft = 2
-          ExplicitTop = -1
-          ExplicitWidth = 183
-          ExplicitHeight = 39
         end
       end
     end

@@ -4,8 +4,7 @@ uses
   Vcl.Forms,
   ULogin in 'ULogin.pas' {FormLogin},
   UPrincipal in 'UPrincipal.pas' {FormPrincipal},
-  UUsuarios in 'UUsuarios.pas' {FormUsuarios},
-  UServicos in 'UServicos.pas' {FormServicos};
+  UUsuarios in 'UUsuarios.pas' {FormUsuarios};
 
 {$R *.res}
 
@@ -14,6 +13,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(TFormUsuarios, FormUsuarios);
-  Application.CreateForm(TFormServicos, FormServicos);
   Application.Run;
 end.

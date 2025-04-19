@@ -116,6 +116,10 @@
             <Form>FormUsuarios</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UServicos.pas">
+            <Form>FormServicos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -144,7 +148,7 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="..\..\..\..\Área de Trabalho\Lav\prj.exe" Configuration="Release" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\..\Downloads\Lav\prj.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>prj.exe</RemoteName>
                         <Overwrite>true</Overwrite>

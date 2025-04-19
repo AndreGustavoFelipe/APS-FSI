@@ -8,7 +8,7 @@ uses
   Vcl.DBGrids, Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls;
 
 type
-  TFormServicos = class(TForm)
+  TForm1 = class(TForm)
     Panel1: TPanel;
     Panel8: TPanel;
     btnNovoUsuario: TSpeedButton;
@@ -39,7 +39,7 @@ type
   end;
 
 var
-  FormServicos: TFormServicos;
+  Form1: TForm1;
 
 implementation
 

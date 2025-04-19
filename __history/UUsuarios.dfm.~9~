@@ -42,6 +42,7 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 0
+      ExplicitHeight = 79
       object btnNovoUsuario: TSpeedButton
         Left = 0
         Top = 0
@@ -75,7 +76,9 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 1
-      object btnEditar: TSpeedButton
+      ExplicitLeft = 10
+      ExplicitHeight = 79
+      object SpeedButton1: TSpeedButton
         Left = 0
         Top = 0
         Width = 135
@@ -89,7 +92,7 @@ object FormUsuarios: TFormUsuarios
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        OnClick = btnEditarClick
+        OnClick = SpeedButton1Click
         ExplicitLeft = -7
         ExplicitTop = -4
       end
@@ -109,6 +112,8 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 2
+      ExplicitLeft = 10
+      ExplicitHeight = 79
       object btnExcluir: TSpeedButton
         Left = 0
         Top = 0
@@ -127,41 +132,6 @@ object FormUsuarios: TFormUsuarios
         ExplicitTop = -4
       end
     end
-    object Panel9: TPanel
-      AlignWithMargins = True
-      Left = 697
-      Top = 10
-      Width = 135
-      Height = 47
-      Margins.Left = 10
-      Margins.Top = 10
-      Margins.Right = 10
-      Margins.Bottom = 10
-      Align = alRight
-      BevelOuter = bvNone
-      Color = 7346457
-      ParentBackground = False
-      TabOrder = 3
-      ExplicitLeft = 165
-      object btnVoltar: TSpeedButton
-        Left = 0
-        Top = 0
-        Width = 135
-        Height = 47
-        Align = alClient
-        Caption = 'Voltar'
-        Flat = True
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
-        Font.Height = -19
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        OnClick = btnEditarClick
-        ExplicitLeft = -7
-        ExplicitTop = -4
-      end
-    end
   end
   object Panel2: TPanel
     Left = 0
@@ -171,6 +141,8 @@ object FormUsuarios: TFormUsuarios
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitTop = 4
+    ExplicitHeight = 432
     object pgControl: TPageControl
       AlignWithMargins = True
       Left = 15
@@ -181,11 +153,14 @@ object FormUsuarios: TFormUsuarios
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabCad
+      ActivePage = tabListagem
       Align = alClient
       TabOrder = 0
+      ExplicitLeft = 10
       object tabListagem: TTabSheet
         Caption = 'Listagem'
+        ExplicitWidth = 281
+        ExplicitHeight = 165
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 10
@@ -208,6 +183,7 @@ object FormUsuarios: TFormUsuarios
       object tabCad: TTabSheet
         Caption = 'Usuario'
         ImageIndex = 1
+        ExplicitLeft = 0
         object Panel5: TPanel
           AlignWithMargins = True
           Left = 10
@@ -223,6 +199,7 @@ object FormUsuarios: TFormUsuarios
           Color = 14599344
           ParentBackground = False
           TabOrder = 0
+          ExplicitTop = 15
           object imgCadeado: TImage
             AlignWithMargins = True
             Left = 368
@@ -1329,6 +1306,9 @@ object FormUsuarios: TFormUsuarios
             'Funcionario'
             'Gestor')
           TabOrder = 2
+          ExplicitLeft = 3
+          ExplicitTop = 104
+          ExplicitWidth = 185
         end
         object Panel7: TPanel
           AlignWithMargins = True
@@ -1343,6 +1323,9 @@ object FormUsuarios: TFormUsuarios
           Align = alBottom
           BevelOuter = bvNone
           TabOrder = 3
+          ExplicitLeft = 312
+          ExplicitTop = 184
+          ExplicitWidth = 185
           object pnlSalvar: TPanel
             AlignWithMargins = True
             Left = 213
@@ -1396,6 +1379,7 @@ object FormUsuarios: TFormUsuarios
             Color = 7346457
             ParentBackground = False
             TabOrder = 1
+            ExplicitHeight = 31
             object btnCancelar: TSpeedButton
               Left = 0
               Top = 0

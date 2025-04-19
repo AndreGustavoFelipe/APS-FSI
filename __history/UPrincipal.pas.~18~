@@ -25,6 +25,7 @@ type
     imgSair: TImage;
     btnSair: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,10 +39,26 @@ implementation
 
 {$R *.dfm}
 
+uses ULogin;
+
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
 
   with TFormUsuarios.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+
+end;
+
+procedure TFormPrincipal.btnSairClick(Sender: TObject);
+begin
+
+  with TFormLogin.Create(Self) do
   begin
     try
       ShowModal;
