@@ -1,0 +1,48 @@
+unit UServicos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    Panel1: TPanel;
+    Panel8: TPanel;
+    btnNovoUsuario: TSpeedButton;
+    Panel3: TPanel;
+    btnEditar: TSpeedButton;
+    Panel4: TPanel;
+    btnExcluir: TSpeedButton;
+    Panel9: TPanel;
+    btnVoltar: TSpeedButton;
+    Panel2: TPanel;
+    pgControl: TPageControl;
+    tabListagem: TTabSheet;
+    DBGrid1: TDBGrid;
+    tabCad: TTabSheet;
+    Panel6: TPanel;
+    edtCadUsuario: TEdit;
+    Panel7: TPanel;
+    pnlSalvar: TPanel;
+    btnSalvar: TSpeedButton;
+    pnlCancelar: TPanel;
+    btnCancelar: TSpeedButton;
+    Panel10: TPanel;
+    Edit1: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+end.
