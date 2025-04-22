@@ -6,7 +6,7 @@ uses
   UPrincipal in 'UPrincipal.pas' {FormPrincipal},
   UUsuarios in 'UUsuarios.pas' {FormUsuarios},
   UServicos in 'UServicos.pas' {FormServicos},
-  UDashboard in 'UDashboard.pas' {FormRelatorio};
+  URelatorio in 'URelatorio.pas' {FormRelatorio};
 
 {$R *.res}
 

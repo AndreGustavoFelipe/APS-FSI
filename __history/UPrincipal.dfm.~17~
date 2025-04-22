@@ -124,7 +124,8 @@ object FormPrincipal: TFormPrincipal
         Font.Style = []
         ParentColor = False
         ParentFont = False
-        ExplicitTop = 2
+        ExplicitWidth = 132
+        ExplicitHeight = 25
       end
     end
     object Panel8: TPanel
@@ -164,7 +165,7 @@ object FormPrincipal: TFormPrincipal
     object Panel2: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 217
+      Top = 148
       Width = 194
       Height = 49
       Margins.Left = 10
@@ -176,14 +177,13 @@ object FormPrincipal: TFormPrincipal
       Color = 7346457
       ParentBackground = False
       TabOrder = 2
-      ExplicitTop = 148
-      object btnDashboard: TSpeedButton
+      object btnServicos: TSpeedButton
         Left = 0
         Top = 0
         Width = 194
         Height = 49
         Align = alClient
-        Caption = 'Dashboard'
+        Caption = 'Servi'#231'os'
         Flat = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
@@ -191,8 +191,10 @@ object FormPrincipal: TFormPrincipal
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 7
-        ExplicitTop = -7
+        ExplicitLeft = 104
+        ExplicitTop = 16
+        ExplicitWidth = 23
+        ExplicitHeight = 22
       end
     end
     object Panel9: TPanel
@@ -262,39 +264,6 @@ object FormPrincipal: TFormPrincipal
         ParentFont = False
         OnClick = btnUsuariosClick
         ExplicitLeft = 5
-        ExplicitTop = -7
-      end
-    end
-    object Panel12: TPanel
-      AlignWithMargins = True
-      Left = 10
-      Top = 148
-      Width = 194
-      Height = 49
-      Margins.Left = 10
-      Margins.Top = 10
-      Margins.Right = 10
-      Margins.Bottom = 10
-      Align = alTop
-      BevelOuter = bvNone
-      Color = 7346457
-      ParentBackground = False
-      TabOrder = 4
-      object SpeedButton2: TSpeedButton
-        Left = 0
-        Top = 0
-        Width = 194
-        Height = 49
-        Align = alClient
-        Caption = 'Servi'#231'os'
-        Flat = True
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
-        Font.Height = -19
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        ExplicitLeft = 7
         ExplicitTop = -7
       end
     end
@@ -433,7 +402,7 @@ object FormPrincipal: TFormPrincipal
         ExplicitLeft = 688
         ExplicitTop = 0
         ExplicitHeight = 41
-        object btnBuscar: TSpeedButton
+        object SpeedButton1: TSpeedButton
           Left = 1
           Top = 1
           Width = 113

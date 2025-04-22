@@ -21,7 +21,7 @@ type
     Panel8: TPanel;
     btnUsuarios: TSpeedButton;
     Panel2: TPanel;
-    btnServicos: TSpeedButton;
+    btnDashboard: TSpeedButton;
     Panel9: TPanel;
     imgSair: TImage;
     btnSair: TSpeedButton;
@@ -31,9 +31,11 @@ type
     ComboBox1: TComboBox;
     DateTimePicker1: TDateTimePicker;
     Panel13: TPanel;
-    SpeedButton1: TSpeedButton;
+    btnBuscar: TSpeedButton;
     Panel: TPanel;
     DBGrid1: TDBGrid;
+    Panel12: TPanel;
+    SpeedButton2: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
   private

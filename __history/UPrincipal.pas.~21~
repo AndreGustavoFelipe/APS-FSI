@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, ULogin;
+  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids;
 
 type
   TFormPrincipal = class(TForm)
@@ -24,6 +25,15 @@ type
     Panel9: TPanel;
     imgSair: TImage;
     btnSair: TSpeedButton;
+    Panel10: TPanel;
+    EditColaborador: TEdit;
+    Panel11: TPanel;
+    ComboBox1: TComboBox;
+    DateTimePicker1: TDateTimePicker;
+    Panel13: TPanel;
+    SpeedButton1: TSpeedButton;
+    Panel: TPanel;
+    DBGrid1: TDBGrid;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
   private
@@ -38,6 +48,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses ULogin;
 
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
@@ -56,7 +68,7 @@ end;
 procedure TFormPrincipal.btnSairClick(Sender: TObject);
 begin
 
-  with ULogin.Create(Self) do
+  with TFormLogin.Create(Self) do
   begin
     try
       ShowModal;

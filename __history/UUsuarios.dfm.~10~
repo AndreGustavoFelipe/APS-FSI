@@ -142,6 +142,7 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 3
+      ExplicitLeft = 165
       object btnVoltar: TSpeedButton
         Left = 0
         Top = 0
@@ -180,7 +181,7 @@ object FormUsuarios: TFormUsuarios
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabListagem
+      ActivePage = tabCad
       Align = alClient
       TabOrder = 0
       object tabListagem: TTabSheet

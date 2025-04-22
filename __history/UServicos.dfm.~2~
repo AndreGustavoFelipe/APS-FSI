@@ -26,6 +26,8 @@ object FormServicos: TFormServicos
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = -34
+    ExplicitWidth = 842
     object Panel8: TPanel
       AlignWithMargins = True
       Left = 10
@@ -139,6 +141,7 @@ object FormServicos: TFormServicos
       Color = 7346457
       ParentBackground = False
       TabOrder = 3
+      ExplicitLeft = 697
       object btnVoltar: TSpeedButton
         Left = 0
         Top = 0
@@ -166,6 +169,9 @@ object FormServicos: TFormServicos
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitLeft = -34
+    ExplicitWidth = 842
+    ExplicitHeight = 464
     object pgControl: TPageControl
       AlignWithMargins = True
       Left = 15
@@ -181,6 +187,8 @@ object FormServicos: TFormServicos
       TabOrder = 0
       object tabListagem: TTabSheet
         Caption = 'Listagem'
+        ExplicitWidth = 804
+        ExplicitHeight = 406
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 10
@@ -203,6 +211,8 @@ object FormServicos: TFormServicos
       object tabCad: TTabSheet
         Caption = 'Servi'#231'o'
         ImageIndex = 1
+        ExplicitWidth = 804
+        ExplicitHeight = 406
         object Panel6: TPanel
           AlignWithMargins = True
           Left = 10
@@ -218,6 +228,8 @@ object FormServicos: TFormServicos
           Color = 14599344
           ParentBackground = False
           TabOrder = 0
+          ExplicitTop = 15
+          ExplicitWidth = 394
           object edtCadUsuario: TEdit
             AlignWithMargins = True
             Left = 5
@@ -242,6 +254,7 @@ object FormServicos: TFormServicos
             ParentFont = False
             TabOrder = 0
             TextHint = 'Informe o Valor'
+            ExplicitWidth = 389
           end
         end
         object Panel7: TPanel
@@ -257,6 +270,8 @@ object FormServicos: TFormServicos
           Align = alBottom
           BevelOuter = bvNone
           TabOrder = 1
+          ExplicitTop = 355
+          ExplicitWidth = 804
           object pnlSalvar: TPanel
             AlignWithMargins = True
             Left = 213
@@ -342,6 +357,7 @@ object FormServicos: TFormServicos
           Color = 14599344
           ParentBackground = False
           TabOrder = 2
+          ExplicitWidth = 398
           object Edit1: TEdit
             AlignWithMargins = True
             Left = 5
@@ -366,6 +382,7 @@ object FormServicos: TFormServicos
             ParentFont = False
             TabOrder = 0
             TextHint = 'Informe a Descri'#231#227'o'
+            ExplicitWidth = 393
           end
         end
       end
