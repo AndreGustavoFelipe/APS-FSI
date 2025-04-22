@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls;
+  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids;
 
 type
   TFormPrincipal = class(TForm)
@@ -28,9 +29,11 @@ type
     EditColaborador: TEdit;
     Panel11: TPanel;
     ComboBox1: TComboBox;
-    btnBuscar: TSpeedButton;
     DateTimePicker1: TDateTimePicker;
-    Panel12: TPanel;
+    Panel13: TPanel;
+    SpeedButton1: TSpeedButton;
+    Panel: TPanel;
+    DBGrid1: TDBGrid;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
   private
