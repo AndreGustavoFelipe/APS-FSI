@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.Buttons, Vcl.StdCtrls, UUsuarios;
+  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls;
 
 type
   TFormPrincipal = class(TForm)
@@ -24,6 +24,13 @@ type
     Panel9: TPanel;
     imgSair: TImage;
     btnSair: TSpeedButton;
+    Panel10: TPanel;
+    EditColaborador: TEdit;
+    Panel11: TPanel;
+    ComboBox1: TComboBox;
+    btnBuscar: TSpeedButton;
+    DateTimePicker1: TDateTimePicker;
+    Panel12: TPanel;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
   private
@@ -38,6 +45,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses ULogin;
 
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin

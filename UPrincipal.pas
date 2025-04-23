@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls;
+  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls, UServicos, UReagendamento;
 
 type
   TFormPrincipal = class(TForm)
@@ -24,15 +24,22 @@ type
     Panel9: TPanel;
     imgSair: TImage;
     btnSair: TSpeedButton;
-    Panel10: TPanel;
-    EditColaborador: TEdit;
-    Panel11: TPanel;
     ComboBox1: TComboBox;
-    btnBuscar: TSpeedButton;
+    EditColaborador: TEdit;
     DateTimePicker1: TDateTimePicker;
+    Image1: TImage;
+    Panel10: TPanel;
+    btnCancelarAgendamento: TSpeedButton;
+    Panel11: TPanel;
+    btnReagendar: TSpeedButton;
     Panel12: TPanel;
+    btnNovoAgendamento: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
+    procedure btnServicosClick(Sender: TObject);
+    procedure btnReagendarClick(Sender: TObject);
+    procedure btnNovoAgendamentoClick(Sender: TObject);
+    procedure btnCancelarAgendamentoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,6 +55,18 @@ implementation
 
 uses ULogin;
 
+procedure TFormPrincipal.btnServicosClick(Sender: TObject);
+begin
+  with TFormServicos.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+end;
+
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
 
@@ -62,10 +81,9 @@ begin
 
 end;
 
-procedure TFormPrincipal.btnSairClick(Sender: TObject);
+procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);
 begin
-
-  with TFormLogin.Create(Self) do
+with TFormReagendamento.Create(Self) do
   begin
     try
       ShowModal;
@@ -73,6 +91,45 @@ begin
       Free;
     end;
   end;
+end;
+
+procedure TFormPrincipal.btnNovoAgendamentoClick(Sender: TObject);
+begin
+with TFormReagendamento.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+end;
+
+procedure TFormPrincipal.btnReagendarClick(Sender: TObject);
+begin
+  with TFormReagendamento.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+end;
+
+procedure TFormPrincipal.btnSairClick(Sender: TObject);
+begin
+
+  Close;
+
+//  with TFormLogin.Create(Self) do
+//  begin
+//    try
+//      ShowModal;
+//    finally
+//      Free;
+//    end;
+//  end;
 
 end;
 

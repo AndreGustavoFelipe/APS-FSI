@@ -142,6 +142,7 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 3
+      ExplicitLeft = 165
       object btnVoltar: TSpeedButton
         Left = 0
         Top = 0

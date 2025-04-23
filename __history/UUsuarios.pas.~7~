@@ -103,7 +103,7 @@ end;
 
 procedure TFormUsuarios.btnEditarClick(Sender: TObject);
 begin
-  Close;
+  pgControl.TabIndex := 1;
 end;
 
 end.

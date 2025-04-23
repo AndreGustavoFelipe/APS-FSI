@@ -24,16 +24,14 @@ type
     DBGrid1: TDBGrid;
     tabCad: TTabSheet;
     Panel6: TPanel;
-    edtCadValorServico: TEdit;
+    edtCadUsuario: TEdit;
     Panel7: TPanel;
     pnlSalvar: TPanel;
     btnSalvar: TSpeedButton;
     pnlCancelar: TPanel;
     btnCancelar: TSpeedButton;
     Panel10: TPanel;
-    edtCadServico: TEdit;
-    procedure btnCancelarClick(Sender: TObject);
-    procedure btnVoltarClick(Sender: TObject);
+    Edit1: TEdit;
   private
     { Private declarations }
   public
@@ -46,15 +44,5 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TFormServicos.btnCancelarClick(Sender: TObject);
-begin
-  pgControl.TabIndex := 0;
-end;
-
-procedure TFormServicos.btnVoltarClick(Sender: TObject);
-begin
-  Close;
-end;
 
 end.

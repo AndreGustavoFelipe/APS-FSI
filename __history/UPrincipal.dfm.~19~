@@ -1343,8 +1343,11 @@ object FormPrincipal: TFormPrincipal
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          OnClick = btnCancelarAgendamentoClick
-          ExplicitLeft = -7
+          OnClick = btnServicosClick
+          ExplicitLeft = 7
+          ExplicitTop = -7
+          ExplicitWidth = 194
+          ExplicitHeight = 49
         end
       end
       object Panel11: TPanel
@@ -1379,7 +1382,7 @@ object FormPrincipal: TFormPrincipal
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          OnClick = btnReagendarClick
+          OnClick = btnServicosClick
           ExplicitLeft = 7
           ExplicitWidth = 119
           ExplicitHeight = 44
@@ -1416,7 +1419,7 @@ object FormPrincipal: TFormPrincipal
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          OnClick = btnNovoAgendamentoClick
+          OnClick = btnServicosClick
           ExplicitLeft = 7
         end
       end

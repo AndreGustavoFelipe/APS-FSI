@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, ULogin;
+  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls, UServicos, UReagendamento;
 
 type
   TFormPrincipal = class(TForm)
@@ -24,8 +24,19 @@ type
     Panel9: TPanel;
     imgSair: TImage;
     btnSair: TSpeedButton;
+    ComboBox1: TComboBox;
+    EditColaborador: TEdit;
+    DateTimePicker1: TDateTimePicker;
+    Image1: TImage;
+    Panel10: TPanel;
+    btnCancelarAgendamento: TSpeedButton;
+    Panel11: TPanel;
+    btnReagendar: TSpeedButton;
+    Panel12: TPanel;
+    btnNovoAgendamento: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
+    procedure btnServicosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,6 +49,20 @@ var
 implementation
 
 {$R *.dfm}
+
+uses ULogin;
+
+procedure TFormPrincipal.btnServicosClick(Sender: TObject);
+begin
+  with TFormReagendamento.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+end;
 
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
@@ -56,14 +81,16 @@ end;
 procedure TFormPrincipal.btnSairClick(Sender: TObject);
 begin
 
-  with ULogin(Self) do
-  begin
-    try
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
+  Close;
+
+//  with TFormLogin.Create(Self) do
+//  begin
+//    try
+//      ShowModal;
+//    finally
+//      Free;
+//    end;
+//  end;
 
 end;
 
