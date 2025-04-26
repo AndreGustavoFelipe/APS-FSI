@@ -124,8 +124,7 @@ object FormPrincipal: TFormPrincipal
         Font.Style = []
         ParentColor = False
         ParentFont = False
-        ExplicitWidth = 132
-        ExplicitHeight = 25
+        ExplicitTop = 2
       end
     end
     object Panel8: TPanel
@@ -177,6 +176,7 @@ object FormPrincipal: TFormPrincipal
       Color = 7346457
       ParentBackground = False
       TabOrder = 2
+      ExplicitTop = 148
       object btnDashboard: TSpeedButton
         Left = 0
         Top = 0
@@ -191,7 +191,6 @@ object FormPrincipal: TFormPrincipal
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        OnClick = btnDashboardClick
         ExplicitLeft = 7
         ExplicitTop = -7
       end
@@ -361,7 +360,8 @@ object FormPrincipal: TFormPrincipal
           ParentFont = False
           TabOrder = 0
           TextHint = 'Nome do colaborador'
-          ExplicitHeight = 27
+          ExplicitLeft = 8
+          ExplicitTop = -2
         end
       end
       object Panel11: TPanel
@@ -375,6 +375,7 @@ object FormPrincipal: TFormPrincipal
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 1
+        ExplicitLeft = 344
         object ComboBox1: TComboBox
           AlignWithMargins = True
           Left = 3
@@ -400,6 +401,9 @@ object FormPrincipal: TFormPrincipal
         Ctl3D = False
         ParentCtl3D = False
         TabOrder = 2
+        ExplicitLeft = 424
+        ExplicitTop = 0
+        ExplicitHeight = 41
         object DateTimePicker1: TDateTimePicker
           AlignWithMargins = True
           Left = 3
@@ -412,6 +416,8 @@ object FormPrincipal: TFormPrincipal
           Time = 0.809104016203491500
           Color = 14796724
           TabOrder = 0
+          ExplicitLeft = 0
+          ExplicitHeight = 35
         end
       end
       object Panel13: TPanel
@@ -424,6 +430,9 @@ object FormPrincipal: TFormPrincipal
         Color = 7346457
         ParentBackground = False
         TabOrder = 3
+        ExplicitLeft = 688
+        ExplicitTop = 0
+        ExplicitHeight = 41
         object btnBuscar: TSpeedButton
           Left = 1
           Top = 1
@@ -460,6 +469,7 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
+      ExplicitLeft = -5
       object DBGrid1: TDBGrid
         AlignWithMargins = True
         Left = 26

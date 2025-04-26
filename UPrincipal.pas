@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
   Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls, Data.DB, Vcl.Grids,
-  Vcl.DBGrids;
+  Vcl.DBGrids, UDashboard;
 
 type
   TFormPrincipal = class(TForm)
@@ -38,6 +38,7 @@ type
     SpeedButton2: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
+    procedure btnDashboardClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +58,20 @@ procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
 
   with TFormUsuarios.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+
+end;
+
+procedure TFormPrincipal.btnDashboardClick(Sender: TObject);
+begin
+
+  with TFormRelatorio.Create(Self) do
   begin
     try
       ShowModal;

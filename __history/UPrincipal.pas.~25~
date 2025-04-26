@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, ULogin;
+  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, UDashboard;
 
 type
   TFormPrincipal = class(TForm)
@@ -20,12 +21,24 @@ type
     Panel8: TPanel;
     btnUsuarios: TSpeedButton;
     Panel2: TPanel;
-    btnServicos: TSpeedButton;
+    btnDashboard: TSpeedButton;
     Panel9: TPanel;
     imgSair: TImage;
     btnSair: TSpeedButton;
+    Panel10: TPanel;
+    EditColaborador: TEdit;
+    Panel11: TPanel;
+    ComboBox1: TComboBox;
+    DateTimePicker1: TDateTimePicker;
+    Panel13: TPanel;
+    btnBuscar: TSpeedButton;
+    Panel: TPanel;
+    DBGrid1: TDBGrid;
+    Panel12: TPanel;
+    SpeedButton2: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
+    procedure btnDashboardClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,6 +51,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses ULogin;
 
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
@@ -53,10 +68,24 @@ begin
 
 end;
 
-procedure TFormPrincipal.btnSairClick(Sender: TObject);
+procedure TFormPrincipal.btnDashboardClick(Sender: TObject);
 begin
 
   with TFormLogin.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+
+end;
+
+procedure TFormPrincipal.btnSairClick(Sender: TObject);
+begin
+
+  with TFormRelatorio.Create(Self) do
   begin
     try
       ShowModal;

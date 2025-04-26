@@ -191,7 +191,6 @@ object FormPrincipal: TFormPrincipal
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        OnClick = btnDashboardClick
         ExplicitLeft = 7
         ExplicitTop = -7
       end
