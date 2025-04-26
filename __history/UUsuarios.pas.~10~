@@ -12,8 +12,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, FireDAC.Comp.DataSet, FireDAC.Comp.Client, cxGridLevel,
-  cxClasses, cxGridCustomView, cxGrid, UDataModule, cxGridChartView,
-  cxGridDBChartView, Vcl.DBCtrls;
+  cxClasses, cxGridCustomView, cxGrid, UDataModule;
 
 type
   TFormUsuarios = class(TForm)
@@ -42,32 +41,27 @@ type
     btnCancelar: TSpeedButton;
     Panel9: TPanel;
     btnVoltar: TSpeedButton;
+    cxGridUsuarios: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
     queryUsuarios: TFDQuery;
     dsUsuarios: TDataSource;
     queryUsuariosID: TIntegerField;
     queryUsuariosNOME: TStringField;
     queryUsuariosSENHA: TStringField;
     queryUsuariosTIPO: TSmallintField;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid1: TcxGrid;
-    cxGrid1DBChartView1: TcxGridDBChartView;
-    cxGrid1DBChartView1Series1: TcxGridDBChartSeries;
-    cxGrid1DBTableView1ID: TcxGridDBColumn;
-    cxGrid1DBTableView1NOME: TcxGridDBColumn;
-    cxGrid1DBTableView1SENHA: TcxGridDBColumn;
-    cxGrid1DBTableView1TIPO: TcxGridDBColumn;
+    cxGridUsuariosID: TcxGridDBColumn;
+    cxGridUsuariosNOME: TcxGridDBColumn;
+    cxGridUsuariosSENHA: TcxGridDBColumn;
+    cxGridUsuariosTIPO: TcxGridDBColumn;
     procedure imgCadeadoClick(Sender: TObject);
     procedure btnNovoUsuarioClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure pgControlChange(Sender: TObject);
-    procedure btnVoltarClick(Sender: TObject);
-    procedure btnExcluirClick(Sender: TObject);
   private
-    operacao : integer; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
+    { Private declarations }
   public
     { Public declarations }
   end;
@@ -87,58 +81,16 @@ end;
 
 procedure TFormUsuarios.btnNovoUsuarioClick(Sender: TObject);
 begin
-  operacao := 0;
   pgControl.TabIndex := 1;
 end;
 
 procedure TFormUsuarios.btnSalvarClick(Sender: TObject);
 begin
-
-  case operacao of
-    0:
-    begin
-      with TFDQuery.Create(Self) do
-      begin
-        try
-          Connection := dm.con;
-
-          SQL.Clear;
-          SQL.Add('insert into USUARIOS(NOME, SENHA, TIPO)');
-          SQL.Add('values(:nome, :senha, :tipo)');
-
-          ParamByName('nome').Value := edtCadUsuario.Text;
-          ParamByName('senha').Value := edtCadSenha.Text;
-          ParamByName('tipo').Value := rdGroupTipos.ItemIndex;
-
-          ExecSQL;
-        finally
-          Free;
-        end;
-      end;
-    end;
-
-    1:
-    begin
-
-    end;
-
-  end;
-
   ShowMessage('Cadastrado com Sucesso!');
-
-  queryUsuarios.Close;
-  queryUsuarios.Open;
-  pgControl.TabIndex := 0;
-end;
-
-procedure TFormUsuarios.btnVoltarClick(Sender: TObject);
-begin
-  Close;
 end;
 
 procedure TFormUsuarios.FormShow(Sender: TObject);
 begin
-  operacao := 0;
   pgControl.TabIndex := 0;
   queryUsuarios.Open;
 end;
@@ -170,29 +122,9 @@ begin
   end;
 end;
 
-procedure TFormUsuarios.pgControlChange(Sender: TObject);
-begin
-  operacao := 0;
-end;
-
 procedure TFormUsuarios.btnEditarClick(Sender: TObject);
 begin
-  operacao := 1;
   pgControl.TabIndex := 1;
-end;
-
-procedure TFormUsuarios.btnExcluirClick(Sender: TObject);
-begin
-
-  ShowMessage('Tem certeza que deseja excluir o usuario sistema teste?');
-//  with TFormUsuarios.Create(self) do
-//  begin
-//    try
-//
-//    finally
-//
-//    end;
-//  end;
 end;
 
 end.

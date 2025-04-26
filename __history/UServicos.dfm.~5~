@@ -88,7 +88,7 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 7
+        ExplicitLeft = -7
         ExplicitTop = -4
       end
     end

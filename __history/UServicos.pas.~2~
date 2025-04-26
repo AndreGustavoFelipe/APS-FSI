@@ -5,11 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls, cxGraphics, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter,
-  cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridLevel,
-  cxGridChartView, cxGridDBChartView, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid;
+  Vcl.DBGrids, Vcl.ComCtrls, Vcl.Buttons, Vcl.ExtCtrls;
 
 type
   TFormServicos = class(TForm)
@@ -25,6 +21,7 @@ type
     Panel2: TPanel;
     pgControl: TPageControl;
     tabListagem: TTabSheet;
+    DBGrid1: TDBGrid;
     tabCad: TTabSheet;
     Panel6: TPanel;
     edtCadUsuario: TEdit;
@@ -35,11 +32,6 @@ type
     btnCancelar: TSpeedButton;
     Panel10: TPanel;
     Edit1: TEdit;
-    cxGrid1: TcxGrid;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1DBChartView1: TcxGridDBChartView;
-    cxGrid1DBChartView1Series1: TcxGridDBChartSeries;
-    cxGrid1Level1: TcxGridLevel;
   private
     { Private declarations }
   public

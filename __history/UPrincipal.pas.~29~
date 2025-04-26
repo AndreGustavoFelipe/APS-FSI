@@ -12,8 +12,7 @@ uses
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGrid, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, UDataModule,
-  cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView;
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, UDataModule;
 
 type
   TFormPrincipal = class(TForm)
@@ -82,19 +81,6 @@ type
     cxGridAgendamentosSTATUS1: TcxGridDBColumn;
     Panel14: TPanel;
     SpeedButton1: TSpeedButton;
-    cxGrid1Level2: TcxGridLevel;
-    cxGrid1DBCardView1: TcxGridDBCardView;
-    cxGrid1DBCardView1ID: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1ID_CLIENTE: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1ID_FUNCINARIO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1DATA_AGENDAMENTO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1DATA_AGENDADA: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1HORA_AGENDAMENTO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1HORA_ENTREGA: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1PLACA: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1TIPO_VEICULO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1TIPO_LAVACAO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1STATUS: TcxGridDBCardViewRow;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);

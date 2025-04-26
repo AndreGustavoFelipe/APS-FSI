@@ -88,7 +88,7 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 7
+        ExplicitLeft = -7
         ExplicitTop = -4
       end
     end
@@ -177,37 +177,28 @@ object FormServicos: TFormServicos
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabListagem
+      ActivePage = tabCad
       Align = alClient
       TabOrder = 0
       object tabListagem: TTabSheet
         Caption = 'Listagem'
-        object cxGrid1: TcxGrid
-          Left = 0
-          Top = 0
-          Width = 770
-          Height = 399
+        object DBGrid1: TDBGrid
+          AlignWithMargins = True
+          Left = 10
+          Top = 10
+          Width = 750
+          Height = 379
+          Margins.Left = 10
+          Margins.Top = 10
+          Margins.Right = 10
+          Margins.Bottom = 10
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 272
-          ExplicitTop = 104
-          ExplicitWidth = 250
-          ExplicitHeight = 200
-          object cxGrid1DBTableView1: TcxGridDBTableView
-            Navigator.Buttons.CustomButtons = <>
-            DataController.Summary.DefaultGroupSummaryItems = <>
-            DataController.Summary.FooterSummaryItems = <>
-            DataController.Summary.SummaryGroups = <>
-          end
-          object cxGrid1DBChartView1: TcxGridDBChartView
-            DiagramPie.Active = True
-            object cxGrid1DBChartView1Series1: TcxGridDBChartSeries
-              DataBinding.FieldName = 'TIPO'
-            end
-          end
-          object cxGrid1Level1: TcxGridLevel
-            GridView = cxGrid1DBTableView1
-          end
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          TitleFont.Style = []
         end
       end
       object tabCad: TTabSheet

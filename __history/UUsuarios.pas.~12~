@@ -13,7 +13,7 @@ uses
   FireDAC.Stan.Async, FireDAC.DApt, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, FireDAC.Comp.DataSet, FireDAC.Comp.Client, cxGridLevel,
   cxClasses, cxGridCustomView, cxGrid, UDataModule, cxGridChartView,
-  cxGridDBChartView, Vcl.DBCtrls;
+  cxGridDBChartView;
 
 type
   TFormUsuarios = class(TForm)
@@ -63,9 +63,6 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure pgControlChange(Sender: TObject);
-    procedure btnVoltarClick(Sender: TObject);
-    procedure btnExcluirClick(Sender: TObject);
   private
     operacao : integer; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
   public
@@ -94,34 +91,23 @@ end;
 procedure TFormUsuarios.btnSalvarClick(Sender: TObject);
 begin
 
-  case operacao of
-    0:
-    begin
-      with TFDQuery.Create(Self) do
-      begin
-        try
-          Connection := dm.con;
+  with TFDQuery.Create(Self) do
+  begin
+    try
+      Connection := dm.con;
 
-          SQL.Clear;
-          SQL.Add('insert into USUARIOS(NOME, SENHA, TIPO)');
-          SQL.Add('values(:nome, :senha, :tipo)');
+      SQL.Clear;
+      SQL.Add('insert into USUARIOS(NOME, SENHA, TIPO)');
+      SQL.Add('values(:nome, :senha, :tipo)');
 
-          ParamByName('nome').Value := edtCadUsuario.Text;
-          ParamByName('senha').Value := edtCadSenha.Text;
-          ParamByName('tipo').Value := rdGroupTipos.ItemIndex;
+      ParamByName('nome').Value := edtCadUsuario.Text;
+      ParamByName('senha').Value := edtCadSenha.Text;
+      ParamByName('tipo').Value := rdGroupTipos.ItemIndex;
 
-          ExecSQL;
-        finally
-          Free;
-        end;
-      end;
+      ExecSQL;
+    finally
+      Free;
     end;
-
-    1:
-    begin
-
-    end;
-
   end;
 
   ShowMessage('Cadastrado com Sucesso!');
@@ -131,14 +117,8 @@ begin
   pgControl.TabIndex := 0;
 end;
 
-procedure TFormUsuarios.btnVoltarClick(Sender: TObject);
-begin
-  Close;
-end;
-
 procedure TFormUsuarios.FormShow(Sender: TObject);
 begin
-  operacao := 0;
   pgControl.TabIndex := 0;
   queryUsuarios.Open;
 end;
@@ -170,29 +150,9 @@ begin
   end;
 end;
 
-procedure TFormUsuarios.pgControlChange(Sender: TObject);
-begin
-  operacao := 0;
-end;
-
 procedure TFormUsuarios.btnEditarClick(Sender: TObject);
 begin
-  operacao := 1;
   pgControl.TabIndex := 1;
-end;
-
-procedure TFormUsuarios.btnExcluirClick(Sender: TObject);
-begin
-
-  ShowMessage('Tem certeza que deseja excluir o usuario sistema teste?');
-//  with TFormUsuarios.Create(self) do
-//  begin
-//    try
-//
-//    finally
-//
-//    end;
-//  end;
 end;
 
 end.

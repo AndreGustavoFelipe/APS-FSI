@@ -4,8 +4,8 @@ object FormPrincipal: TFormPrincipal
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'FormPrincipal'
-  ClientHeight = 520
-  ClientWidth = 1033
+  ClientHeight = 731
+  ClientWidth = 1106
   Color = 14599344
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,13 +21,13 @@ object FormPrincipal: TFormPrincipal
     Left = 0
     Top = 0
     Width = 214
-    Height = 520
+    Height = 731
     Align = alLeft
     BevelOuter = bvNone
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -3
+    ExplicitHeight = 520
     object Panel7: TPanel
       AlignWithMargins = True
       Left = 10
@@ -125,7 +125,8 @@ object FormPrincipal: TFormPrincipal
         Font.Style = []
         ParentColor = False
         ParentFont = False
-        ExplicitTop = 5
+        ExplicitWidth = 132
+        ExplicitHeight = 25
       end
     end
     object Panel8: TPanel
@@ -158,14 +159,14 @@ object FormPrincipal: TFormPrincipal
         Font.Style = []
         ParentFont = False
         OnClick = btnUsuariosClick
-        ExplicitLeft = 5
+        ExplicitLeft = 7
         ExplicitTop = -7
       end
     end
     object Panel2: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 148
+      Top = 217
       Width = 194
       Height = 49
       Margins.Left = 10
@@ -177,13 +178,13 @@ object FormPrincipal: TFormPrincipal
       Color = 7346457
       ParentBackground = False
       TabOrder = 2
-      object btnServicos: TSpeedButton
+      object btnDashboard: TSpeedButton
         Left = 0
         Top = 0
         Width = 194
         Height = 49
         Align = alClient
-        Caption = 'Servi'#231'os'
+        Caption = 'Dashboard'
         Flat = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
@@ -191,16 +192,15 @@ object FormPrincipal: TFormPrincipal
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 104
-        ExplicitTop = 16
-        ExplicitWidth = 23
-        ExplicitHeight = 22
+        OnClick = btnDashboardClick
+        ExplicitLeft = 7
+        ExplicitTop = -7
       end
     end
     object Panel9: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 461
+      Top = 672
       Width = 194
       Height = 49
       Margins.Left = 10
@@ -212,7 +212,7 @@ object FormPrincipal: TFormPrincipal
       Color = 7346457
       ParentBackground = False
       TabOrder = 3
-      ExplicitTop = 10
+      ExplicitTop = 461
       object imgSair: TImage
         AlignWithMargins = True
         Left = 3
@@ -268,13 +268,46 @@ object FormPrincipal: TFormPrincipal
         ExplicitTop = -7
       end
     end
+    object Panel12: TPanel
+      AlignWithMargins = True
+      Left = 10
+      Top = 148
+      Width = 194
+      Height = 49
+      Margins.Left = 10
+      Margins.Top = 10
+      Margins.Right = 10
+      Margins.Bottom = 10
+      Align = alTop
+      BevelOuter = bvNone
+      Color = 7346457
+      ParentBackground = False
+      TabOrder = 4
+      object SpeedButton2: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 194
+        Height = 49
+        Align = alClient
+        Caption = 'Servi'#231'os'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ExplicitLeft = 7
+        ExplicitTop = -7
+      end
+    end
   end
   object Panel3: TPanel
     AlignWithMargins = True
     Left = 222
     Top = 8
-    Width = 803
-    Height = 504
+    Width = 876
+    Height = 715
     Margins.Left = 8
     Margins.Top = 8
     Margins.Right = 8
@@ -284,10 +317,12 @@ object FormPrincipal: TFormPrincipal
     Color = 14599344
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 803
+    ExplicitHeight = 504
     object Panel4: TPanel
       Left = 0
       Top = 0
-      Width = 803
+      Width = 876
       Height = 41
       Margins.Left = 10
       Margins.Top = 10
@@ -298,14 +333,7 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      object btnBuscar: TSpeedButton
-        Left = 728
-        Top = 0
-        Width = 75
-        Height = 41
-        Align = alRight
-        Caption = 'Buscar'
-      end
+      ExplicitWidth = 803
       object Panel10: TPanel
         AlignWithMargins = True
         Left = 3
@@ -313,23 +341,23 @@ object FormPrincipal: TFormPrincipal
         Width = 206
         Height = 35
         Align = alLeft
+        BevelOuter = bvNone
         TabOrder = 0
         object EditColaborador: TEdit
           AlignWithMargins = True
-          Left = 6
-          Top = 6
-          Width = 199
-          Height = 28
+          Left = 5
+          Top = 5
+          Width = 201
+          Height = 30
           Margins.Left = 5
           Margins.Top = 5
           Margins.Right = 0
           Margins.Bottom = 0
           Align = alClient
           BevelInner = bvNone
-          BevelOuter = bvNone
-          BorderStyle = bsNone
+          BevelOuter = bvRaised
           CharCase = ecUpperCase
-          Color = 14796724
+          Color = clWhite
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -338,55 +366,86 @@ object FormPrincipal: TFormPrincipal
           ParentFont = False
           TabOrder = 0
           TextHint = 'Nome do colaborador'
-          ExplicitTop = 10
+          ExplicitHeight = 27
         end
       end
       object Panel11: TPanel
         AlignWithMargins = True
-        Left = 215
+        Left = 406
         Top = 3
-        Width = 206
+        Width = 150
         Height = 35
         Align = alLeft
+        BevelOuter = bvNone
+        Ctl3D = True
+        ParentCtl3D = False
         TabOrder = 1
-        ExplicitLeft = 4
-        ExplicitTop = 4
-        ExplicitHeight = 27
         object ComboBox1: TComboBox
-          Left = 1
-          Top = 1
-          Width = 204
+          AlignWithMargins = True
+          Left = 3
+          Top = 3
+          Width = 144
           Height = 21
           Align = alClient
-          Color = 14796724
+          Color = clWhite
           DropDownCount = 4
           TabOrder = 0
           Text = 'Status'
         end
       end
-      object Panel12: TPanel
-        Left = 424
-        Top = 0
+      object Panel: TPanel
+        AlignWithMargins = True
+        Left = 215
+        Top = 3
         Width = 185
-        Height = 41
+        Height = 35
         Align = alLeft
-        Caption = 'Panel12'
+        Alignment = taLeftJustify
+        BevelOuter = bvNone
+        Ctl3D = False
+        ParentCtl3D = False
         TabOrder = 2
-        ExplicitLeft = 312
         object DateTimePicker1: TDateTimePicker
           AlignWithMargins = True
-          Left = 4
-          Top = 4
-          Width = 177
-          Height = 33
+          Left = 3
+          Top = 3
+          Width = 179
+          Height = 29
           Align = alClient
+          CalColors.BackColor = clBtnFace
           Date = 45766.000000000000000000
           Time = 0.809104016203491500
           Color = 14796724
           TabOrder = 0
-          ExplicitLeft = 2
-          ExplicitTop = -1
-          ExplicitWidth = 183
+        end
+      end
+      object Panel13: TPanel
+        AlignWithMargins = True
+        Left = 758
+        Top = 3
+        Width = 115
+        Height = 35
+        Align = alRight
+        Color = 7346457
+        ParentBackground = False
+        TabOrder = 3
+        ExplicitLeft = 685
+        object btnBuscar: TSpeedButton
+          Left = 1
+          Top = 1
+          Width = 113
+          Height = 33
+          Align = alClient
+          Caption = 'Buscar'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          ExplicitLeft = 64
+          ExplicitWidth = 120
           ExplicitHeight = 39
         end
       end
@@ -395,8 +454,8 @@ object FormPrincipal: TFormPrincipal
       AlignWithMargins = True
       Left = 0
       Top = 51
-      Width = 803
-      Height = 379
+      Width = 876
+      Height = 590
       Margins.Left = 0
       Margins.Top = 10
       Margins.Right = 0
@@ -406,12 +465,161 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 32
+      ExplicitWidth = 803
+      ExplicitHeight = 379
+      object cxGrid1: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 876
+        Height = 590
+        Align = alClient
+        TabOrder = 0
+        ExplicitLeft = -2
+        ExplicitTop = -3
+        object cxGridAgendamentos: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = dsAgendamentos
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          object cxGridAgendamentosID: TcxGridDBColumn
+            DataBinding.FieldName = 'ID'
+            Width = 80
+          end
+          object cxGridAgendamentosID_CLIENTE: TcxGridDBColumn
+            Caption = 'Codigo Cliente'
+            DataBinding.FieldName = 'ID_CLIENTE'
+            Width = 122
+          end
+          object cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn
+            DataBinding.FieldName = 'ID_FUNCINARIO'
+            Width = 90
+          end
+          object cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn
+            DataBinding.FieldName = 'DATA_AGENDAMENTO'
+            Width = 130
+          end
+          object cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn
+            DataBinding.FieldName = 'DATA_AGENDADA'
+          end
+          object cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn
+            DataBinding.FieldName = 'HORA_AGENDAMENTO'
+            Width = 106
+          end
+          object cxGridAgendamentosHORA_ENTREGA: TcxGridDBColumn
+            DataBinding.FieldName = 'HORA_ENTREGA'
+            Width = 109
+          end
+          object cxGridAgendamentosPLACA: TcxGridDBColumn
+            DataBinding.FieldName = 'PLACA'
+          end
+          object cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn
+            DataBinding.FieldName = 'TIPO_VEICULO'
+          end
+          object cxGridAgendamentosTIPO_LAVACAO: TcxGridDBColumn
+            DataBinding.FieldName = 'TIPO_LAVACAO'
+          end
+          object cxGridAgendamentosSTATUS: TcxGridDBColumn
+            DataBinding.FieldName = 'STATUS'
+          end
+          object cxGridAgendamentosID1: TcxGridDBColumn
+            DataBinding.FieldName = 'ID'
+          end
+          object cxGridAgendamentosID_CLIENTE1: TcxGridDBColumn
+            DataBinding.FieldName = 'ID_CLIENTE'
+          end
+          object cxGridAgendamentosID_FUNCINARIO1: TcxGridDBColumn
+            DataBinding.FieldName = 'ID_FUNCINARIO'
+          end
+          object cxGridAgendamentosDATA_AGENDAMENTO1: TcxGridDBColumn
+            DataBinding.FieldName = 'DATA_AGENDAMENTO'
+          end
+          object cxGridAgendamentosDATA_AGENDADA1: TcxGridDBColumn
+            DataBinding.FieldName = 'DATA_AGENDADA'
+          end
+          object cxGridAgendamentosHORA_AGENDAMENTO1: TcxGridDBColumn
+            DataBinding.FieldName = 'HORA_AGENDAMENTO'
+          end
+          object cxGridAgendamentosHORA_ENTREGA1: TcxGridDBColumn
+            DataBinding.FieldName = 'HORA_ENTREGA'
+          end
+          object cxGridAgendamentosPLACA1: TcxGridDBColumn
+            DataBinding.FieldName = 'PLACA'
+          end
+          object cxGridAgendamentosTIPO_VEICULO1: TcxGridDBColumn
+            DataBinding.FieldName = 'TIPO_VEICULO'
+          end
+          object cxGridAgendamentosTIPO_LAVACAO1: TcxGridDBColumn
+            DataBinding.FieldName = 'TIPO_LAVACAO'
+          end
+          object cxGridAgendamentosSTATUS1: TcxGridDBColumn
+            DataBinding.FieldName = 'STATUS'
+          end
+        end
+        object cxGrid1DBCardView1: TcxGridDBCardView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = dsAgendamentos
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsView.CardIndent = 7
+          object cxGrid1DBCardView1ID: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'ID'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1ID_CLIENTE: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'ID_CLIENTE'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1ID_FUNCINARIO: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'ID_FUNCINARIO'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1DATA_AGENDAMENTO: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'DATA_AGENDAMENTO'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1DATA_AGENDADA: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'DATA_AGENDADA'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1HORA_AGENDAMENTO: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'HORA_AGENDAMENTO'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1HORA_ENTREGA: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'HORA_ENTREGA'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1PLACA: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'PLACA'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1TIPO_VEICULO: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'TIPO_VEICULO'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1TIPO_LAVACAO: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'TIPO_LAVACAO'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1STATUS: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'STATUS'
+            Position.BeginsLayer = True
+          end
+        end
+        object cxGrid1Level1: TcxGridLevel
+          GridView = cxGridAgendamentos
+        end
+        object cxGrid1Level2: TcxGridLevel
+          GridView = cxGrid1DBCardView1
+        end
+      end
     end
     object Panel6: TPanel
       Left = 0
-      Top = 440
-      Width = 803
+      Top = 651
+      Width = 876
       Height = 64
       Margins.Left = 10
       Margins.Top = 10
@@ -422,6 +630,117 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 2
+      ExplicitTop = 440
+      ExplicitWidth = 803
+      object Panel14: TPanel
+        AlignWithMargins = True
+        Left = 10
+        Top = 10
+        Width = 222
+        Height = 44
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
+        Align = alLeft
+        Color = 7346457
+        ParentBackground = False
+        TabOrder = 0
+        ExplicitLeft = 3
+        ExplicitTop = 3
+        ExplicitHeight = 58
+        object SpeedButton1: TSpeedButton
+          Left = 1
+          Top = 1
+          Width = 220
+          Height = 42
+          Align = alClient
+          Caption = 'Novo Agendamento'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btnUsuariosClick
+          ExplicitLeft = -5
+          ExplicitTop = 0
+          ExplicitHeight = 56
+        end
+      end
     end
+  end
+  object queryAgendamentos: TFDQuery
+    Connection = dm.con
+    SQL.Strings = (
+      'select * from agendamentos')
+    Left = 982
+    Top = 115
+    object queryAgendamentosID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object queryAgendamentosID_CLIENTE: TIntegerField
+      FieldName = 'ID_CLIENTE'
+      Origin = 'ID_CLIENTE'
+      Required = True
+    end
+    object queryAgendamentosID_FUNCINARIO: TIntegerField
+      FieldName = 'ID_FUNCINARIO'
+      Origin = 'ID_FUNCINARIO'
+      Required = True
+    end
+    object queryAgendamentosDATA_AGENDAMENTO: TDateField
+      FieldName = 'DATA_AGENDAMENTO'
+      Origin = 'DATA_AGENDAMENTO'
+      Required = True
+    end
+    object queryAgendamentosDATA_AGENDADA: TDateField
+      FieldName = 'DATA_AGENDADA'
+      Origin = 'DATA_AGENDADA'
+      Required = True
+    end
+    object queryAgendamentosHORA_AGENDAMENTO: TTimeField
+      FieldName = 'HORA_AGENDAMENTO'
+      Origin = 'HORA_AGENDAMENTO'
+      Required = True
+    end
+    object queryAgendamentosHORA_ENTREGA: TTimeField
+      FieldName = 'HORA_ENTREGA'
+      Origin = 'HORA_ENTREGA'
+      Required = True
+    end
+    object queryAgendamentosPLACA: TStringField
+      FieldName = 'PLACA'
+      Origin = 'PLACA'
+      Required = True
+      Size = 200
+    end
+    object queryAgendamentosTIPO_VEICULO: TStringField
+      FieldName = 'TIPO_VEICULO'
+      Origin = 'TIPO_VEICULO'
+      Required = True
+      Size = 200
+    end
+    object queryAgendamentosTIPO_LAVACAO: TStringField
+      FieldName = 'TIPO_LAVACAO'
+      Origin = 'TIPO_LAVACAO'
+      Required = True
+      Size = 200
+    end
+    object queryAgendamentosSTATUS: TStringField
+      FieldName = 'STATUS'
+      Origin = 'STATUS'
+      Required = True
+      Size = 200
+    end
+  end
+  object dsAgendamentos: TDataSource
+    DataSet = queryAgendamentos
+    Left = 982
+    Top = 163
   end
 end

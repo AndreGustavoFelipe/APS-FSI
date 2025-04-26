@@ -159,7 +159,7 @@ object FormPrincipal: TFormPrincipal
         Font.Style = []
         ParentFont = False
         OnClick = btnUsuariosClick
-        ExplicitLeft = 5
+        ExplicitLeft = 7
         ExplicitTop = -7
       end
     end
@@ -444,7 +444,6 @@ object FormPrincipal: TFormPrincipal
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          OnClick = btnUsuariosClick
           ExplicitLeft = 64
           ExplicitWidth = 120
           ExplicitHeight = 39
@@ -476,7 +475,7 @@ object FormPrincipal: TFormPrincipal
         Align = alClient
         TabOrder = 0
         ExplicitLeft = -2
-        ExplicitTop = 3
+        ExplicitTop = -3
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsAgendamentos
@@ -557,8 +556,63 @@ object FormPrincipal: TFormPrincipal
             DataBinding.FieldName = 'STATUS'
           end
         end
+        object cxGrid1DBCardView1: TcxGridDBCardView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = dsAgendamentos
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsView.CardIndent = 7
+          object cxGrid1DBCardView1ID: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'ID'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1ID_CLIENTE: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'ID_CLIENTE'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1ID_FUNCINARIO: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'ID_FUNCINARIO'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1DATA_AGENDAMENTO: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'DATA_AGENDAMENTO'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1DATA_AGENDADA: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'DATA_AGENDADA'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1HORA_AGENDAMENTO: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'HORA_AGENDAMENTO'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1HORA_ENTREGA: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'HORA_ENTREGA'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1PLACA: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'PLACA'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1TIPO_VEICULO: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'TIPO_VEICULO'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1TIPO_LAVACAO: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'TIPO_LAVACAO'
+            Position.BeginsLayer = True
+          end
+          object cxGrid1DBCardView1STATUS: TcxGridDBCardViewRow
+            DataBinding.FieldName = 'STATUS'
+            Position.BeginsLayer = True
+          end
+        end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGridAgendamentos
+        end
+        object cxGrid1Level2: TcxGridLevel
+          GridView = cxGrid1DBCardView1
         end
       end
     end
@@ -580,19 +634,26 @@ object FormPrincipal: TFormPrincipal
       ExplicitWidth = 803
       object Panel14: TPanel
         AlignWithMargins = True
-        Left = 3
-        Top = 3
+        Left = 10
+        Top = 10
         Width = 222
-        Height = 58
+        Height = 44
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
         Align = alLeft
         Color = 7346457
         ParentBackground = False
         TabOrder = 0
+        ExplicitLeft = 3
+        ExplicitTop = 3
+        ExplicitHeight = 58
         object SpeedButton1: TSpeedButton
           Left = 1
           Top = 1
           Width = 220
-          Height = 56
+          Height = 42
           Align = alClient
           Caption = 'Novo Agendamento'
           Flat = True
@@ -605,7 +666,7 @@ object FormPrincipal: TFormPrincipal
           OnClick = btnUsuariosClick
           ExplicitLeft = -5
           ExplicitTop = 0
-          ExplicitWidth = 113
+          ExplicitHeight = 56
         end
       end
     end

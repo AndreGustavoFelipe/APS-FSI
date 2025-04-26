@@ -15,6 +15,9 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFormLogin, FormLogin);
+  Application.CreateForm(TFormUsuarios, FormUsuarios);
+  Application.CreateForm(TFormServicos, FormServicos);
+  Application.CreateForm(TFormRelatorio, FormRelatorio);
   Application.CreateForm(Tdm, dm);
   Application.Run;
 end.

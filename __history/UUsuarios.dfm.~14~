@@ -14,6 +14,7 @@ object FormUsuarios: TFormUsuarios
   Font.Style = []
   OldCreateOrder = False
   WindowState = wsMaximized
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -41,7 +42,6 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 0
-      ExplicitHeight = 79
       object btnNovoUsuario: TSpeedButton
         Left = 0
         Top = 0
@@ -75,9 +75,7 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 10
-      ExplicitHeight = 79
-      object SpeedButton1: TSpeedButton
+      object btnEditar: TSpeedButton
         Left = 0
         Top = 0
         Width = 135
@@ -91,7 +89,7 @@ object FormUsuarios: TFormUsuarios
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        OnClick = SpeedButton1Click
+        OnClick = btnEditarClick
         ExplicitLeft = -7
         ExplicitTop = -4
       end
@@ -111,8 +109,6 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 2
-      ExplicitLeft = 10
-      ExplicitHeight = 79
       object btnExcluir: TSpeedButton
         Left = 0
         Top = 0
@@ -131,6 +127,40 @@ object FormUsuarios: TFormUsuarios
         ExplicitTop = -4
       end
     end
+    object Panel9: TPanel
+      AlignWithMargins = True
+      Left = 697
+      Top = 10
+      Width = 135
+      Height = 47
+      Margins.Left = 10
+      Margins.Top = 10
+      Margins.Right = 10
+      Margins.Bottom = 10
+      Align = alRight
+      BevelOuter = bvNone
+      Color = 7346457
+      ParentBackground = False
+      TabOrder = 3
+      object btnVoltar: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 135
+        Height = 47
+        Align = alClient
+        Caption = 'Voltar'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        OnClick = btnEditarClick
+        ExplicitLeft = -7
+        ExplicitTop = -4
+      end
+    end
   end
   object Panel2: TPanel
     Left = 0
@@ -140,8 +170,6 @@ object FormUsuarios: TFormUsuarios
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 4
-    ExplicitHeight = 432
     object pgControl: TPageControl
       AlignWithMargins = True
       Left = 15
@@ -155,11 +183,8 @@ object FormUsuarios: TFormUsuarios
       ActivePage = tabListagem
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 10
       object tabListagem: TTabSheet
         Caption = 'Listagem'
-        ExplicitWidth = 281
-        ExplicitHeight = 165
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 10
@@ -178,11 +203,44 @@ object FormUsuarios: TFormUsuarios
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
         end
+        object cxGrid1: TcxGrid
+          Left = 0
+          Top = 0
+          Width = 804
+          Height = 406
+          Align = alClient
+          TabOrder = 1
+          ExplicitLeft = 416
+          ExplicitTop = 176
+          ExplicitWidth = 250
+          ExplicitHeight = 200
+          object cxGridUsuarios: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = dsUsuarios
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            object cxGridUsuariosID: TcxGridDBColumn
+              DataBinding.FieldName = 'ID'
+            end
+            object cxGridUsuariosNOME: TcxGridDBColumn
+              DataBinding.FieldName = 'NOME'
+            end
+            object cxGridUsuariosSENHA: TcxGridDBColumn
+              DataBinding.FieldName = 'SENHA'
+            end
+            object cxGridUsuariosTIPO: TcxGridDBColumn
+              DataBinding.FieldName = 'TIPO'
+            end
+          end
+          object cxGrid1Level1: TcxGridLevel
+            GridView = cxGridUsuarios
+          end
+        end
       end
       object tabCad: TTabSheet
         Caption = 'Usuario'
         ImageIndex = 1
-        ExplicitLeft = 0
         object Panel5: TPanel
           AlignWithMargins = True
           Left = 10
@@ -198,7 +256,6 @@ object FormUsuarios: TFormUsuarios
           Color = 14599344
           ParentBackground = False
           TabOrder = 0
-          ExplicitTop = 15
           object imgCadeado: TImage
             AlignWithMargins = True
             Left = 368
@@ -1277,7 +1334,6 @@ object FormUsuarios: TFormUsuarios
             BorderStyle = bsNone
             CharCase = ecUpperCase
             Color = 14665138
-            Enabled = False
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -16
@@ -1285,7 +1341,6 @@ object FormUsuarios: TFormUsuarios
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            Text = 'TESTE'
             TextHint = 'Informe o Usu'#225'rio'
           end
         end
@@ -1307,9 +1362,6 @@ object FormUsuarios: TFormUsuarios
             'Funcionario'
             'Gestor')
           TabOrder = 2
-          ExplicitLeft = 3
-          ExplicitTop = 104
-          ExplicitWidth = 185
         end
         object Panel7: TPanel
           AlignWithMargins = True
@@ -1324,9 +1376,6 @@ object FormUsuarios: TFormUsuarios
           Align = alBottom
           BevelOuter = bvNone
           TabOrder = 3
-          ExplicitLeft = 312
-          ExplicitTop = 184
-          ExplicitWidth = 185
           object pnlSalvar: TPanel
             AlignWithMargins = True
             Left = 213
@@ -1380,7 +1429,6 @@ object FormUsuarios: TFormUsuarios
             Color = 7346457
             ParentBackground = False
             TabOrder = 1
-            ExplicitHeight = 31
             object btnCancelar: TSpeedButton
               Left = 0
               Top = 0
@@ -1402,5 +1450,40 @@ object FormUsuarios: TFormUsuarios
         end
       end
     end
+  end
+  object queryUsuarios: TFDQuery
+    Connection = dm.con
+    SQL.Strings = (
+      'select * from usuarios')
+    Left = 755
+    Top = 79
+    object queryUsuariosID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object queryUsuariosNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 200
+    end
+    object queryUsuariosSENHA: TStringField
+      FieldName = 'SENHA'
+      Origin = 'SENHA'
+      Required = True
+      Size = 200
+    end
+    object queryUsuariosTIPO: TSmallintField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      Required = True
+    end
+  end
+  object dsUsuarios: TDataSource
+    DataSet = queryUsuarios
+    Left = 755
+    Top = 127
   end
 end
