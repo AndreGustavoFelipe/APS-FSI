@@ -12,7 +12,8 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, FireDAC.Comp.DataSet, FireDAC.Comp.Client, cxGridLevel,
-  cxClasses, cxGridCustomView, cxGrid, UDataModule;
+  cxClasses, cxGridCustomView, cxGrid, UDataModule, cxGridChartView,
+  cxGridDBChartView;
 
 type
   TFormUsuarios = class(TForm)
@@ -41,19 +42,18 @@ type
     btnCancelar: TSpeedButton;
     Panel9: TPanel;
     btnVoltar: TSpeedButton;
-    cxGridUsuarios: TcxGridDBTableView;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid1: TcxGrid;
     queryUsuarios: TFDQuery;
     dsUsuarios: TDataSource;
     queryUsuariosID: TIntegerField;
     queryUsuariosNOME: TStringField;
     queryUsuariosSENHA: TStringField;
     queryUsuariosTIPO: TSmallintField;
-    cxGridUsuariosID: TcxGridDBColumn;
-    cxGridUsuariosNOME: TcxGridDBColumn;
-    cxGridUsuariosSENHA: TcxGridDBColumn;
-    cxGridUsuariosTIPO: TcxGridDBColumn;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1Level2: TcxGridLevel;
+    cxGrid1DBChartView1: TcxGridDBChartView;
+    cxGrid1DBChartView1Series1: TcxGridDBChartSeries;
     procedure imgCadeadoClick(Sender: TObject);
     procedure btnNovoUsuarioClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
@@ -61,7 +61,7 @@ type
     procedure btnSalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
-    { Private declarations }
+    operacao : integer; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
   public
     { Public declarations }
   end;
@@ -81,11 +81,26 @@ end;
 
 procedure TFormUsuarios.btnNovoUsuarioClick(Sender: TObject);
 begin
+  operacao := 0;
   pgControl.TabIndex := 1;
 end;
 
 procedure TFormUsuarios.btnSalvarClick(Sender: TObject);
 begin
+
+  with TFDQuery.Create(Self) do
+  begin
+    try
+//      Connection := dm;
+
+      SQL.Clear;
+      SQL.Add('')
+
+    finally
+
+    end;
+  end;
+
   ShowMessage('Cadastrado com Sucesso!');
 end;
 

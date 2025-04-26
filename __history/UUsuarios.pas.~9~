@@ -92,7 +92,6 @@ end;
 procedure TFormUsuarios.FormShow(Sender: TObject);
 begin
   pgControl.TabIndex := 0;
-  queryUsuarios.Open;
 end;
 
 procedure TFormUsuarios.imgCadeadoClick(Sender: TObject);

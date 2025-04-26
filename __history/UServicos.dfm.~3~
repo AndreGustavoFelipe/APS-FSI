@@ -55,7 +55,6 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 7
         ExplicitTop = -4
       end
     end
@@ -288,7 +287,10 @@ object FormServicos: TFormServicos
               Font.Name = 'Tahoma'
               Font.Style = []
               ParentFont = False
-              ExplicitLeft = -7
+              ExplicitLeft = 104
+              ExplicitTop = 16
+              ExplicitWidth = 23
+              ExplicitHeight = 22
             end
           end
           object pnlCancelar: TPanel

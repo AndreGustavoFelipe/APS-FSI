@@ -15,7 +15,6 @@ object FormLogin: TFormLogin
   OldCreateOrder = False
   Position = poDesktopCenter
   WindowState = wsMaximized
-  OnCreate = FormCreate
   OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13

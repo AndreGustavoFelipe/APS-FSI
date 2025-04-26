@@ -12,7 +12,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, FireDAC.Comp.DataSet, FireDAC.Comp.Client, cxGridLevel,
-  cxClasses, cxGridCustomView, cxGrid, UDataModule;
+  cxClasses, cxGridCustomView, cxGrid;
 
 type
   TFormUsuarios = class(TForm)
@@ -73,6 +73,8 @@ implementation
 
 {$R *.dfm}
 
+uses UDataModule;
+
 procedure TFormUsuarios.btnCancelarClick(Sender: TObject);
 begin
    // limpa campos da tab usuario
@@ -92,7 +94,6 @@ end;
 procedure TFormUsuarios.FormShow(Sender: TObject);
 begin
   pgControl.TabIndex := 0;
-  queryUsuarios.Open;
 end;
 
 procedure TFormUsuarios.imgCadeadoClick(Sender: TObject);

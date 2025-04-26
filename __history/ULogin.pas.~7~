@@ -26,7 +26,6 @@ type
     procedure imgCadeadoClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,11 +40,6 @@ implementation
 {$R *.dfm}
 
 uses UDataModule;
-
-procedure TFormLogin.FormCreate(Sender: TObject);
-begin
-  dm.con.Connected := true;
-end;
 
 procedure TFormLogin.FormResize(Sender: TObject);
 begin

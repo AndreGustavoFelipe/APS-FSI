@@ -1452,6 +1452,7 @@ object FormUsuarios: TFormUsuarios
     end
   end
   object queryUsuarios: TFDQuery
+    Active = True
     Connection = dm.con
     SQL.Strings = (
       'select * from usuarios')

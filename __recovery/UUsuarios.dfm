@@ -14,6 +14,7 @@ object FormUsuarios: TFormUsuarios
   Font.Style = []
   OldCreateOrder = False
   WindowState = wsMaximized
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -41,7 +42,6 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 0
-      ExplicitHeight = 79
       object btnNovoUsuario: TSpeedButton
         Left = 0
         Top = 0
@@ -56,10 +56,8 @@ object FormUsuarios: TFormUsuarios
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = 104
-        ExplicitTop = 16
-        ExplicitWidth = 23
-        ExplicitHeight = 22
+        OnClick = btnNovoUsuarioClick
+        ExplicitTop = -4
       end
     end
     object Panel3: TPanel
@@ -77,9 +75,7 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 10
-      ExplicitHeight = 79
-      object SpeedButton1: TSpeedButton
+      object btnEditar: TSpeedButton
         Left = 0
         Top = 0
         Width = 135
@@ -93,9 +89,9 @@ object FormUsuarios: TFormUsuarios
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
+        OnClick = btnEditarClick
         ExplicitLeft = -7
         ExplicitTop = -4
-        ExplicitHeight = 79
       end
     end
     object Panel4: TPanel
@@ -113,8 +109,6 @@ object FormUsuarios: TFormUsuarios
       Color = 7346457
       ParentBackground = False
       TabOrder = 2
-      ExplicitLeft = 10
-      ExplicitHeight = 79
       object btnExcluir: TSpeedButton
         Left = 0
         Top = 0
@@ -131,7 +125,40 @@ object FormUsuarios: TFormUsuarios
         ParentFont = False
         ExplicitLeft = -7
         ExplicitTop = -4
-        ExplicitHeight = 79
+      end
+    end
+    object Panel9: TPanel
+      AlignWithMargins = True
+      Left = 697
+      Top = 10
+      Width = 135
+      Height = 47
+      Margins.Left = 10
+      Margins.Top = 10
+      Margins.Right = 10
+      Margins.Bottom = 10
+      Align = alRight
+      BevelOuter = bvNone
+      Color = 7346457
+      ParentBackground = False
+      TabOrder = 3
+      object btnVoltar: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 135
+        Height = 47
+        Align = alClient
+        Caption = 'Voltar'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        OnClick = btnEditarClick
+        ExplicitLeft = -7
+        ExplicitTop = -4
       end
     end
   end
@@ -143,8 +170,6 @@ object FormUsuarios: TFormUsuarios
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 4
-    ExplicitHeight = 432
     object pgControl: TPageControl
       AlignWithMargins = True
       Left = 15
@@ -155,13 +180,11 @@ object FormUsuarios: TFormUsuarios
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabCad
+      ActivePage = tabListagem
       Align = alClient
       TabOrder = 0
       object tabListagem: TTabSheet
         Caption = 'Listagem'
-        ExplicitWidth = 281
-        ExplicitHeight = 165
         object DBGrid1: TDBGrid
           AlignWithMargins = True
           Left = 10
@@ -180,12 +203,41 @@ object FormUsuarios: TFormUsuarios
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
         end
+        object cxGrid1: TcxGrid
+          Left = 0
+          Top = 0
+          Width = 804
+          Height = 406
+          Align = alClient
+          TabOrder = 1
+          ExplicitLeft = 272
+          ExplicitTop = 104
+          ExplicitWidth = 250
+          ExplicitHeight = 200
+          object cxGrid1DBTableView1: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+          end
+          object cxGrid1DBChartView1: TcxGridDBChartView
+            DataController.DataSource = dsUsuarios
+            DiagramColumn.Active = True
+            object cxGrid1DBChartView1Series1: TcxGridDBChartSeries
+              DataBinding.FieldName = 'TIPO'
+            end
+          end
+          object cxGrid1Level1: TcxGridLevel
+            GridView = cxGrid1DBTableView1
+          end
+          object cxGrid1Level2: TcxGridLevel
+            GridView = cxGrid1DBChartView1
+          end
+        end
       end
       object tabCad: TTabSheet
         Caption = 'Usuario'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitHeight = 374
         object Panel5: TPanel
           AlignWithMargins = True
           Left = 10
@@ -201,7 +253,6 @@ object FormUsuarios: TFormUsuarios
           Color = 14599344
           ParentBackground = False
           TabOrder = 0
-          ExplicitTop = 15
           object imgCadeado: TImage
             AlignWithMargins = True
             Left = 368
@@ -1244,10 +1295,9 @@ object FormUsuarios: TFormUsuarios
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
+            PasswordChar = '*'
             TabOrder = 0
             TextHint = 'Informe a Senha'
-            ExplicitWidth = 754
-            ExplicitHeight = 35
           end
         end
         object Panel6: TPanel
@@ -1280,7 +1330,7 @@ object FormUsuarios: TFormUsuarios
             BevelOuter = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            Color = 14599345
+            Color = 14665138
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -16
@@ -1309,47 +1359,129 @@ object FormUsuarios: TFormUsuarios
             'Funcionario'
             'Gestor')
           TabOrder = 2
-          ExplicitLeft = 3
-          ExplicitTop = 104
-          ExplicitWidth = 185
         end
         object Panel7: TPanel
           AlignWithMargins = True
-          Left = 10
-          Top = 360
-          Width = 394
-          Height = 36
-          Margins.Left = 10
+          Left = 0
+          Top = 355
+          Width = 804
+          Height = 41
+          Margins.Left = 0
           Margins.Top = 0
-          Margins.Right = 400
+          Margins.Right = 0
           Margins.Bottom = 10
           Align = alBottom
           BevelOuter = bvNone
-          Caption = 'Salvar'
-          Color = 7346457
-          ParentBackground = False
           TabOrder = 3
-          object SpeedButton2: TSpeedButton
-            Left = 0
+          object pnlSalvar: TPanel
+            AlignWithMargins = True
+            Left = 213
             Top = 0
-            Width = 394
-            Height = 36
-            Align = alClient
+            Width = 191
+            Height = 41
+            Margins.Left = 10
+            Margins.Top = 0
+            Margins.Right = 10
+            Margins.Bottom = 0
+            Align = alLeft
+            BevelOuter = bvNone
             Caption = 'Salvar'
-            Flat = True
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWhite
-            Font.Height = -19
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            ExplicitLeft = 104
-            ExplicitTop = 16
-            ExplicitWidth = 23
-            ExplicitHeight = 22
+            Color = 7346457
+            ParentBackground = False
+            TabOrder = 0
+            object btnSalvar: TSpeedButton
+              Left = 0
+              Top = 0
+              Width = 191
+              Height = 41
+              Align = alClient
+              Caption = 'Salvar'
+              Flat = True
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -19
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              OnClick = btnSalvarClick
+              ExplicitLeft = 104
+              ExplicitTop = 16
+              ExplicitWidth = 23
+              ExplicitHeight = 22
+            end
+          end
+          object pnlCancelar: TPanel
+            AlignWithMargins = True
+            Left = 10
+            Top = 0
+            Width = 183
+            Height = 41
+            Margins.Left = 10
+            Margins.Top = 0
+            Margins.Right = 10
+            Margins.Bottom = 0
+            Align = alLeft
+            BevelOuter = bvNone
+            Caption = 'Salvar'
+            Color = 7346457
+            ParentBackground = False
+            TabOrder = 1
+            object btnCancelar: TSpeedButton
+              Left = 0
+              Top = 0
+              Width = 183
+              Height = 41
+              Align = alClient
+              Caption = 'Cancelar'
+              Flat = True
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWhite
+              Font.Height = -19
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              ParentFont = False
+              OnClick = btnCancelarClick
+              ExplicitLeft = 7
+            end
           end
         end
       end
     end
+  end
+  object queryUsuarios: TFDQuery
+    Active = True
+    Connection = dm.con
+    SQL.Strings = (
+      'select * from usuarios')
+    Left = 755
+    Top = 79
+    object queryUsuariosID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object queryUsuariosNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 200
+    end
+    object queryUsuariosSENHA: TStringField
+      FieldName = 'SENHA'
+      Origin = 'SENHA'
+      Required = True
+      Size = 200
+    end
+    object queryUsuariosTIPO: TSmallintField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      Required = True
+    end
+  end
+  object dsUsuarios: TDataSource
+    DataSet = queryUsuarios
+    Left = 755
+    Top = 127
   end
 end

@@ -5,7 +5,12 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.Buttons, Vcl.StdCtrls, UUsuarios;
+  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, UDashboard, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGrid;
 
 type
   TFormPrincipal = class(TForm)
@@ -20,12 +25,26 @@ type
     Panel8: TPanel;
     btnUsuarios: TSpeedButton;
     Panel2: TPanel;
-    btnServicos: TSpeedButton;
+    btnDashboard: TSpeedButton;
     Panel9: TPanel;
     imgSair: TImage;
     btnSair: TSpeedButton;
+    Panel10: TPanel;
+    EditColaborador: TEdit;
+    Panel11: TPanel;
+    ComboBox1: TComboBox;
+    DateTimePicker1: TDateTimePicker;
+    Panel13: TPanel;
+    btnBuscar: TSpeedButton;
+    Panel: TPanel;
+    Panel12: TPanel;
+    SpeedButton2: TSpeedButton;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
+    procedure btnDashboardClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,6 +64,20 @@ procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
 
   with TFormUsuarios.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+
+end;
+
+procedure TFormPrincipal.btnDashboardClick(Sender: TObject);
+begin
+
+  with TFormRelatorio.Create(Self) do
   begin
     try
       ShowModal;

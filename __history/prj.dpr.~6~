@@ -6,8 +6,7 @@ uses
   UPrincipal in 'UPrincipal.pas' {FormPrincipal},
   UUsuarios in 'UUsuarios.pas' {FormUsuarios},
   UServicos in 'UServicos.pas' {FormServicos},
-  UDashboard in 'UDashboard.pas' {FormRelatorio},
-  UDataModule in 'UDataModule.pas' {dm: TDataModule};
+  UDashboard in 'UDashboard.pas' {FormRelatorio};
 
 {$R *.res}
 
@@ -18,6 +17,5 @@ begin
   Application.CreateForm(TFormUsuarios, FormUsuarios);
   Application.CreateForm(TFormServicos, FormServicos);
   Application.CreateForm(TFormRelatorio, FormRelatorio);
-  Application.CreateForm(Tdm, dm);
   Application.Run;
 end.

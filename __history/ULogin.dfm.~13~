@@ -15,7 +15,6 @@ object FormLogin: TFormLogin
   OldCreateOrder = False
   Position = poDesktopCenter
   WindowState = wsMaximized
-  OnCreate = FormCreate
   OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
@@ -35,6 +34,8 @@ object FormLogin: TFormLogin
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1127
+    ExplicitHeight = 589
     object Panel3: TPanel
       AlignWithMargins = True
       Left = 0
@@ -50,6 +51,8 @@ object FormLogin: TFormLogin
       Color = 7346457
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 1127
+      ExplicitHeight = 449
       object lblSenha: TLabel
         AlignWithMargins = True
         Left = 0
@@ -108,6 +111,7 @@ object FormLogin: TFormLogin
         Color = 14599344
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 1127
         object Image1: TImage
           AlignWithMargins = True
           Left = 1104
@@ -487,6 +491,7 @@ object FormLogin: TFormLogin
           ParentFont = False
           TabOrder = 0
           TextHint = 'Informe seu usu'#225'rio'
+          ExplicitWidth = 1077
         end
       end
       object Panel5: TPanel
@@ -503,6 +508,7 @@ object FormLogin: TFormLogin
         Color = 14599344
         ParentBackground = False
         TabOrder = 1
+        ExplicitWidth = 1127
         object imgCadeado: TImage
           AlignWithMargins = True
           Left = 1104
@@ -1551,6 +1557,7 @@ object FormLogin: TFormLogin
           PasswordChar = '*'
           TabOrder = 0
           TextHint = 'Informe sua senha'
+          ExplicitWidth = 1077
         end
       end
     end
@@ -1569,6 +1576,7 @@ object FormLogin: TFormLogin
       Color = 7346457
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 1127
       object lblLogin: TLabel
         AlignWithMargins = True
         Left = 15
@@ -1607,6 +1615,8 @@ object FormLogin: TFormLogin
       Color = 4938751
       ParentBackground = False
       TabOrder = 2
+      ExplicitTop = 540
+      ExplicitWidth = 1127
       object SpeedButton1: TSpeedButton
         Left = 0
         Top = 0
