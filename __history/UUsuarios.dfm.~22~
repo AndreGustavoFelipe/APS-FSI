@@ -182,7 +182,7 @@ object FormUsuarios: TFormUsuarios
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabListagem
+      ActivePage = tabCad
       Align = alClient
       TabOrder = 0
       OnChange = pgControlChange

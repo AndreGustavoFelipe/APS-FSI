@@ -591,10 +591,14 @@ object FormPrincipal: TFormPrincipal
           TabOrder = 0
           Text = 'Selecione'
           Items.Strings = (
-            'Pendente'
-            'Em andamento'
-            'Conclu'#237'do'
-            'Atrasado'
+            'Pendente'#11
+            ''
+            'Em andamento'#11
+            ''
+            'Conclu'#237'do'#11
+            ''
+            'Atrasado'#11
+            ''
             'Cancelado')
         end
       end

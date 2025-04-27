@@ -49,10 +49,16 @@ type
     Panel9: TPanel;
     imgSair: TImage;
     btnSair: TSpeedButton;
-    cbStatus: TComboBox;
-    dtDataAgendamento: TDateTimePicker;
+    Panel10: TPanel;
+    EditColaborador: TEdit;
+    Panel11: TPanel;
+    ComboBox1: TComboBox;
+    DateTimePicker1: TDateTimePicker;
+    Panel13: TPanel;
+    btnBuscar: TSpeedButton;
+    Panel: TPanel;
     Panel12: TPanel;
-    btnServicos: TSpeedButton;
+    SpeedButton2: TSpeedButton;
     cxGrid1: TcxGrid;
     cxGridAgendamentos: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
@@ -112,19 +118,6 @@ type
     btnCancelarAgendamento: TSpeedButton;
     Panel16: TPanel;
     btnAlterarStatus: TSpeedButton;
-    Panel10: TPanel;
-    btnBuscar: TSpeedButton;
-    Label2: TLabel;
-    panelDataAgendamento: TPanel;
-    PanelDataAgendada: TPanel;
-    Label3: TLabel;
-    dtDataAgendada: TDateTimePicker;
-    PanelColaborador: TPanel;
-    Label4: TLabel;
-    PanelStatus: TPanel;
-    Label5: TLabel;
-    Panel11: TPanel;
-    EditColaborador: TEdit;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
@@ -132,7 +125,6 @@ type
     procedure btnReagendarClick(Sender: TObject);
     procedure btnCancelarAgendamentoClick(Sender: TObject);
     procedure btnAlterarStatusClick(Sender: TObject);
-    procedure btnServicosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -195,7 +187,7 @@ end;
 procedure TFormPrincipal.btnDashboardClick(Sender: TObject);
 begin
 
-  with TFormDashboard.Create(Self) do
+  with TFormRelatorio.Create(Self) do
   begin
     try
       ShowModal;
@@ -240,20 +232,6 @@ procedure TFormPrincipal.btnSairClick(Sender: TObject);
 begin
 
   with TFormLogin.Create(Self) do
-  begin
-    try
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
-end;
-
-procedure TFormPrincipal.btnServicosClick(Sender: TObject);
-begin
-
-  with TFormServicos.Create(Self) do
   begin
     try
       ShowModal;

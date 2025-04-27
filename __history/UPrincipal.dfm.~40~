@@ -336,9 +336,9 @@ object FormPrincipal: TFormPrincipal
       TabOrder = 0
       object Panel10: TPanel
         AlignWithMargins = True
-        Left = 781
+        Left = 756
         Top = 5
-        Width = 90
+        Width = 115
         Height = 41
         Margins.Left = 0
         Margins.Top = 0
@@ -348,10 +348,13 @@ object FormPrincipal: TFormPrincipal
         Color = 7346457
         ParentBackground = False
         TabOrder = 0
+        ExplicitLeft = 220
+        ExplicitTop = 8
+        ExplicitHeight = 48
         object btnBuscar: TSpeedButton
           Left = 1
           Top = 1
-          Width = 88
+          Width = 113
           Height = 39
           Margins.Left = 0
           Margins.Top = 0
@@ -367,13 +370,14 @@ object FormPrincipal: TFormPrincipal
           Font.Style = []
           ParentFont = False
           OnClick = btnReagendarClick
-          ExplicitLeft = 24
-          ExplicitWidth = 90
+          ExplicitLeft = -1
+          ExplicitWidth = 115
+          ExplicitHeight = 46
         end
       end
       object panelDataAgendamento: TPanel
         AlignWithMargins = True
-        Left = 513
+        Left = 318
         Top = 5
         Width = 115
         Height = 41
@@ -423,7 +427,7 @@ object FormPrincipal: TFormPrincipal
       end
       object PanelDataAgendada: TPanel
         AlignWithMargins = True
-        Left = 393
+        Left = 198
         Top = 5
         Width = 112
         Height = 41
@@ -476,7 +480,7 @@ object FormPrincipal: TFormPrincipal
         AlignWithMargins = True
         Left = 5
         Top = 5
-        Width = 380
+        Width = 185
         Height = 41
         Margins.Left = 0
         Margins.Top = 0
@@ -487,10 +491,12 @@ object FormPrincipal: TFormPrincipal
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 3
+        ExplicitLeft = -22
+        ExplicitTop = 10
         object Label4: TLabel
           Left = 0
           Top = 0
-          Width = 380
+          Width = 185
           Height = 12
           Margins.Left = 0
           Margins.Top = 0
@@ -502,56 +508,38 @@ object FormPrincipal: TFormPrincipal
           ExplicitTop = -4
           ExplicitWidth = 183
         end
-        object Panel11: TPanel
+        object EditColaborador: TEdit
           AlignWithMargins = True
           Left = 0
           Top = 14
-          Width = 380
+          Width = 185
           Height = 27
           Margins.Left = 0
           Margins.Top = 2
           Margins.Right = 0
           Margins.Bottom = 0
           Align = alClient
-          BevelOuter = bvNone
-          Color = 14599344
-          ParentBackground = False
+          BevelInner = bvNone
+          BevelOuter = bvRaised
+          BorderStyle = bsNone
+          CharCase = ecUpperCase
+          Color = 14730931
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 0
-          ExplicitLeft = 10
-          ExplicitTop = 27
-          ExplicitWidth = 0
-          ExplicitHeight = 14
-          object EditColaborador: TEdit
-            AlignWithMargins = True
-            Left = 5
-            Top = 5
-            Width = 375
-            Height = 22
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 0
-            Margins.Bottom = 0
-            Align = alClient
-            BevelInner = bvNone
-            BevelOuter = bvNone
-            BorderStyle = bsNone
-            CharCase = ecUpperCase
-            Color = 14730931
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -16
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 25
-          end
+          ExplicitLeft = 1
+          ExplicitTop = 32
+          ExplicitWidth = 183
+          ExplicitHeight = 8
         end
       end
       object PanelStatus: TPanel
         AlignWithMargins = True
-        Left = 636
+        Left = 441
         Top = 5
         Width = 137
         Height = 41
@@ -589,12 +577,15 @@ object FormPrincipal: TFormPrincipal
           Color = clWhite
           DropDownCount = 4
           TabOrder = 0
-          Text = 'Selecione'
           Items.Strings = (
-            'Pendente'
-            'Em andamento'
-            'Conclu'#237'do'
-            'Atrasado'
+            'Pendente'#11
+            ''
+            'Em andamento'#11
+            ''
+            'Conclu'#237'do'#11
+            ''
+            'Atrasado'#11
+            ''
             'Cancelado')
         end
       end
@@ -808,8 +799,8 @@ object FormPrincipal: TFormPrincipal
           Font.Style = []
           ParentFont = False
           OnClick = btnNovoAgendamentoClick
-          ExplicitLeft = 2
-          ExplicitTop = -5
+          ExplicitWidth = 115
+          ExplicitHeight = 56
         end
       end
       object Panel14: TPanel

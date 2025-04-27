@@ -119,7 +119,6 @@ procedure TFormServicos.FormShow(Sender: TObject);
 begin
   operacao := 0;
   pgControl.TabIndex := 0;
-  queryServicos.Open;
 end;
 
 end.

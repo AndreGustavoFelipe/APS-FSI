@@ -1,0 +1,27 @@
+unit UAgendamentos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TFormAgendamento = class(TForm)
+    Panel2: TPanel;
+    Edit1: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    operacao: integer;
+  end;
+
+var
+  FormAgendamento: TFormAgendamento;
+
+implementation
+
+{$R *.dfm}
+
+end.

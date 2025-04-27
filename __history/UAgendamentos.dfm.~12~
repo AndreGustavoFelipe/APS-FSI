@@ -129,7 +129,8 @@ object FormAgendamento: TFormAgendamento
         TabOrder = 1
         Text = 'Status'
         Items.Strings = (
-          'Apenas externa'
+          'Apenas externa'#11
+          #11
           'Completa + polimento')
       end
     end

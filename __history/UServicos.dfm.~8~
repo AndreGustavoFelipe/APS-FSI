@@ -55,7 +55,6 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        OnClick = btnNovoUsuarioClick
         ExplicitLeft = 7
         ExplicitTop = -4
       end
@@ -89,7 +88,6 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        OnClick = btnEditarClick
         ExplicitLeft = 7
         ExplicitTop = -4
       end
@@ -123,7 +121,6 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        OnClick = btnExcluirClick
         ExplicitLeft = -7
         ExplicitTop = -4
       end
@@ -157,7 +154,6 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        OnClick = btnVoltarClick
         ExplicitLeft = -7
         ExplicitTop = -4
       end
@@ -181,7 +177,7 @@ object FormServicos: TFormServicos
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabListagem
+      ActivePage = tabCad
       Align = alClient
       TabOrder = 0
       object tabListagem: TTabSheet
@@ -193,8 +189,6 @@ object FormServicos: TFormServicos
           Height = 399
           Align = alClient
           TabOrder = 0
-          ExplicitTop = 3
-          ExplicitHeight = 148
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.Summary.DefaultGroupSummaryItems = <>
@@ -335,7 +329,6 @@ object FormServicos: TFormServicos
               Font.Name = 'Tahoma'
               Font.Style = []
               ParentFont = False
-              OnClick = btnCancelarClick
               ExplicitLeft = 7
             end
           end
@@ -382,41 +375,6 @@ object FormServicos: TFormServicos
           end
         end
       end
-    end
-  end
-  object dsServicos: TDataSource
-    DataSet = queryServicos
-    Left = 723
-    Top = 111
-  end
-  object queryServicos: TFDQuery
-    Connection = dm.con
-    SQL.Strings = (
-      'select * from servicos')
-    Left = 723
-    Top = 63
-    object queryServicosID: TIntegerField
-      FieldName = 'ID'
-      Origin = 'ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object queryServicosNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Required = True
-      Size = 200
-    end
-    object queryServicosSENHA: TStringField
-      FieldName = 'SENHA'
-      Origin = 'SENHA'
-      Required = True
-      Size = 200
-    end
-    object queryServicosTIPO: TSmallintField
-      FieldName = 'TIPO'
-      Origin = 'TIPO'
-      Required = True
     end
   end
 end

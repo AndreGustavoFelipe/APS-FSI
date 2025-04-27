@@ -65,6 +65,7 @@ type
     queryServicosNOME: TStringField;
     queryServicosSENHA: TStringField;
     queryServicosTIPO: TSmallintField;
+    DBGrid1: TDBGrid;
     procedure btnCancelarClick(Sender: TObject);
     procedure btnNovoUsuarioClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);

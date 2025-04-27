@@ -42,7 +42,6 @@ type
     queryAgendamentosTIPO_LAVACAO: TStringField;
     queryAgendamentosSTATUS: TStringField;
     dsAgendamentos: TDataSource;
-    procedure btnCancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,10 +55,5 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TFormAgendamento.btnCancelarClick(Sender: TObject);
-begin
-  Close;
-end;
 
 end.

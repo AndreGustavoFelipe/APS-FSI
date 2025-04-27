@@ -193,8 +193,6 @@ object FormServicos: TFormServicos
           Height = 399
           Align = alClient
           TabOrder = 0
-          ExplicitTop = 3
-          ExplicitHeight = 148
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.Summary.DefaultGroupSummaryItems = <>

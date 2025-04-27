@@ -49,6 +49,7 @@ type
     Panel9: TPanel;
     imgSair: TImage;
     btnSair: TSpeedButton;
+    EditColaborador: TEdit;
     cbStatus: TComboBox;
     dtDataAgendamento: TDateTimePicker;
     Panel12: TPanel;
@@ -123,8 +124,6 @@ type
     Label4: TLabel;
     PanelStatus: TPanel;
     Label5: TLabel;
-    Panel11: TPanel;
-    EditColaborador: TEdit;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);

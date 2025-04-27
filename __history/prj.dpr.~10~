@@ -6,7 +6,7 @@ uses
   UPrincipal in 'UPrincipal.pas' {FormPrincipal},
   UUsuarios in 'UUsuarios.pas' {FormUsuarios},
   UServicos in 'UServicos.pas' {FormServicos},
-  UDashboard in 'UDashboard.pas' {FormDashboard},
+  UDashboard in 'UDashboard.pas' {FormRelatorio},
   UDataModule in 'UDataModule.pas' {dm: TDataModule},
   UAgendamentos in 'UAgendamentos.pas' {FormAgendamento};
 

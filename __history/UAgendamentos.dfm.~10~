@@ -69,7 +69,7 @@ object FormAgendamento: TFormAgendamento
         AlignWithMargins = True
         Left = 215
         Top = 0
-        Width = 197
+        Width = 202
         Height = 21
         Margins.Left = 0
         Margins.Top = 0
@@ -129,7 +129,8 @@ object FormAgendamento: TFormAgendamento
         TabOrder = 1
         Text = 'Status'
         Items.Strings = (
-          'Apenas externa'
+          'Apenas externa'#11
+          #11
           'Completa + polimento')
       end
     end
@@ -308,7 +309,6 @@ object FormAgendamento: TFormAgendamento
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          OnClick = btnCancelarClick
           ExplicitLeft = 7
           ExplicitHeight = 41
         end

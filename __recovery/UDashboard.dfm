@@ -1,4 +1,4 @@
-object FormRelatorio: TFormRelatorio
+object FormDashboard: TFormDashboard
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
@@ -69,7 +69,6 @@ object FormRelatorio: TFormRelatorio
   end
   object dsAgendamentos: TDataSource
     DataSet = queryAgendamentos
-    OnDataChange = dsAgendamentosDataChange
     Left = 912
     Top = 160
   end

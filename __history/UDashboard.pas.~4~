@@ -30,7 +30,7 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid;
 
 type
-  TFormDashboard = class(TForm)
+  TFormRelatorio = class(TForm)
     Panel2: TPanel;
     TituloGrafico: TLabel;
     cxGrid1DBTableView1: TcxGridDBTableView;
@@ -45,7 +45,7 @@ type
   end;
 
 var
-  FormDashboard: TFormDashboard;
+  FormRelatorio: TFormRelatorio;
 
 implementation
 

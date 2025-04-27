@@ -30,7 +30,7 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid;
 
 type
-  TFormRelatorio = class(TForm)
+  TFormDashboard = class(TForm)
     Panel2: TPanel;
     TituloGrafico: TLabel;
     cxGrid1DBTableView1: TcxGridDBTableView;
@@ -38,7 +38,6 @@ type
     cxGrid1: TcxGrid;
     queryAgendamentos: TFDQuery;
     dsAgendamentos: TDataSource;
-    procedure dsAgendamentosDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
   public
@@ -46,16 +45,10 @@ type
   end;
 
 var
-  FormRelatorio: TFormRelatorio;
+  FormDashboard: TFormDashboard;
 
 implementation
 
 {$R *.dfm}
-
-procedure TFormRelatorio.dsAgendamentosDataChange(Sender: TObject;
-  Field: TField);
-begin
-
-end;
 
 end.

@@ -25,10 +25,7 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue,
-  cxDataControllerConditionalFormattingRulesManagerDialog, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  cxDataControllerConditionalFormattingRulesManagerDialog;
 
 type
   TFormServicos = class(TForm)
@@ -52,30 +49,17 @@ type
     btnSalvar: TSpeedButton;
     pnlCancelar: TPanel;
     btnCancelar: TSpeedButton;
+    Panel10: TPanel;
+    Edit1: TEdit;
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1DBChartView1: TcxGridDBChartView;
     cxGrid1DBChartView1Series1: TcxGridDBChartSeries;
     cxGrid1Level1: TcxGridLevel;
-    Panel10: TPanel;
-    Edit1: TEdit;
-    dsServicos: TDataSource;
-    queryServicos: TFDQuery;
-    queryServicosID: TIntegerField;
-    queryServicosNOME: TStringField;
-    queryServicosSENHA: TStringField;
-    queryServicosTIPO: TSmallintField;
-    procedure btnCancelarClick(Sender: TObject);
-    procedure btnNovoUsuarioClick(Sender: TObject);
-    procedure btnEditarClick(Sender: TObject);
-    procedure btnExcluirClick(Sender: TObject);
-    procedure btnVoltarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    operacao : integer; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
   end;
 
 var
@@ -84,42 +68,5 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TFormServicos.btnCancelarClick(Sender: TObject);
-begin
-  // limpa campos da tab usuario
-   pgControl.TabIndex := 0;
-end;
-
-procedure TFormServicos.btnEditarClick(Sender: TObject);
-begin
-  operacao := 1;
-  pgControl.TabIndex := 1;
-end;
-
-procedure TFormServicos.btnExcluirClick(Sender: TObject);
-begin
-  operacao := 2;
-  pgControl.TabIndex := 1;
-  ShowMessage('Tem certeza que deseja excluir o usuario sistema teste?');
-end;
-
-procedure TFormServicos.btnNovoUsuarioClick(Sender: TObject);
-begin
-  operacao := 0;
-  pgControl.TabIndex := 1;
-end;
-
-procedure TFormServicos.btnVoltarClick(Sender: TObject);
-begin
-  Close;
-end;
-
-procedure TFormServicos.FormShow(Sender: TObject);
-begin
-  operacao := 0;
-  pgControl.TabIndex := 0;
-  queryServicos.Open;
-end;
 
 end.
