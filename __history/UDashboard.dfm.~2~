@@ -65,15 +65,9 @@ object FormRelatorio: TFormRelatorio
     end
   end
   object queryAgendamentos: TFDQuery
-    Connection = dm.con
     SQL.Strings = (
       'select * from agendamentos')
     Left = 912
     Top = 104
-  end
-  object dsAgendamentos: TDataSource
-    DataSet = queryAgendamentos
-    Left = 912
-    Top = 160
   end
 end

@@ -121,10 +121,6 @@ type
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
-    procedure btnNovoAgendamentoClick(Sender: TObject);
-    procedure btnReagendarClick(Sender: TObject);
-    procedure btnCancelarAgendamentoClick(Sender: TObject);
-    procedure btnAlterarStatusClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -154,72 +150,12 @@ begin
 
 end;
 
-procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
-begin
-
-  with TFormAgendamento.Create(Self) do
-  begin
-    try
-      operacao := 4;
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
-end;
-
-procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);
-begin
-
-  with TFormAgendamento.Create(Self) do
-  begin
-    try
-      operacao := 3;
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
-end;
-
 procedure TFormPrincipal.btnDashboardClick(Sender: TObject);
 begin
 
   with TFormRelatorio.Create(Self) do
   begin
     try
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
-end;
-
-procedure TFormPrincipal.btnNovoAgendamentoClick(Sender: TObject);
-begin
-
-  with TFormAgendamento.Create(Self) do
-  begin
-    try
-      operacao := 0;
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
-end;
-
-procedure TFormPrincipal.btnReagendarClick(Sender: TObject);
-begin
-
-  with TFormAgendamento.Create(Self) do
-  begin
-    try
-      operacao := 1;
       ShowModal;
     finally
       Free;

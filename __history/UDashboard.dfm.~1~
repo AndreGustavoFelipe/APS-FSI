@@ -24,11 +24,12 @@ object FormRelatorio: TFormRelatorio
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitLeft = -24
     object TituloGrafico: TLabel
       Left = 0
       Top = 0
       Width = 970
-      Height = 33
+      Height = 41
       Align = alTop
       Alignment = taCenter
       Caption = 'Distribui'#231#227'o das Lava'#231#245'es'
@@ -40,40 +41,6 @@ object FormRelatorio: TFormRelatorio
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
-      ExplicitWidth = 349
     end
-    object cxGrid1: TcxGrid
-      Left = 0
-      Top = 33
-      Width = 970
-      Height = 474
-      Align = alClient
-      TabOrder = 0
-      ExplicitLeft = 432
-      ExplicitTop = 168
-      ExplicitWidth = 250
-      ExplicitHeight = 200
-      object cxGrid1DBTableView1: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <>
-        DataController.Summary.SummaryGroups = <>
-      end
-      object cxGrid1Level1: TcxGridLevel
-        GridView = cxGrid1DBTableView1
-      end
-    end
-  end
-  object queryAgendamentos: TFDQuery
-    Connection = dm.con
-    SQL.Strings = (
-      'select * from agendamentos')
-    Left = 912
-    Top = 104
-  end
-  object dsAgendamentos: TDataSource
-    DataSet = queryAgendamentos
-    Left = 912
-    Top = 160
   end
 end

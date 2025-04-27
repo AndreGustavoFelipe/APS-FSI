@@ -1,0 +1,46 @@
+object FormAgendamento: TFormAgendamento
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'FormAgendamentos'
+  ClientHeight = 512
+  ClientWidth = 857
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 857
+    Height = 512
+    Align = alClient
+    BevelOuter = bvNone
+    Color = clWhite
+    Padding.Left = 10
+    Padding.Top = 10
+    Padding.Right = 10
+    Padding.Bottom = 10
+    ParentBackground = False
+    TabOrder = 0
+    object EditPlaca: TEdit
+      AlignWithMargins = True
+      Left = 13
+      Top = 13
+      Width = 831
+      Height = 30
+      Align = alTop
+      BorderStyle = bsNone
+      Color = 14730931
+      TabOrder = 0
+      TextHint = 'Placa'
+      OnChange = EditPlacaChange
+    end
+  end
+end

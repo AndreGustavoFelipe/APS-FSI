@@ -38,6 +38,7 @@ type
     cxGrid1: TcxGrid;
     queryAgendamentos: TFDQuery;
     dsAgendamentos: TDataSource;
+    procedure dsAgendamentosDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
   public
@@ -50,5 +51,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFormRelatorio.dsAgendamentosDataChange(Sender: TObject;
+  Field: TField);
+begin
+
+end;
 
 end.

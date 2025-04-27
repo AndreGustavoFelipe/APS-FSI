@@ -17,7 +17,7 @@ object FormPrincipal: TFormPrincipal
   WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
+  object Menu: TPanel
     Left = 0
     Top = 0
     Width = 214
@@ -27,7 +27,6 @@ object FormPrincipal: TFormPrincipal
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 520
     object Panel7: TPanel
       AlignWithMargins = True
       Left = 10
@@ -212,7 +211,6 @@ object FormPrincipal: TFormPrincipal
       Color = 7346457
       ParentBackground = False
       TabOrder = 3
-      ExplicitTop = 461
       object imgSair: TImage
         AlignWithMargins = True
         Left = 3
@@ -317,13 +315,11 @@ object FormPrincipal: TFormPrincipal
     Color = 14599344
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 803
-    ExplicitHeight = 504
     object Panel4: TPanel
       Left = 0
       Top = 0
       Width = 876
-      Height = 41
+      Height = 51
       Margins.Left = 10
       Margins.Top = 10
       Margins.Right = 10
@@ -331,110 +327,94 @@ object FormPrincipal: TFormPrincipal
       Align = alTop
       BevelOuter = bvNone
       Color = clWhite
+      Padding.Left = 5
+      Padding.Top = 5
+      Padding.Right = 5
+      Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 803
+      OnClick = Panel4Click
+      object EditColaborador: TEdit
+        AlignWithMargins = True
+        Left = 5
+        Top = 19
+        Width = 231
+        Height = 27
+        Margins.Left = 0
+        Margins.Top = 14
+        Margins.Right = 5
+        Margins.Bottom = 0
+        Align = alLeft
+        BevelInner = bvNone
+        BevelOuter = bvRaised
+        BorderStyle = bsNone
+        CharCase = ecUpperCase
+        Color = 14730931
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        TextHint = 'Nome do colaborador'
+        ExplicitLeft = 10
+        ExplicitTop = 5
+        ExplicitHeight = 31
+      end
+      object cbStatus: TComboBox
+        AlignWithMargins = True
+        Left = 478
+        Top = 18
+        Width = 147
+        Height = 21
+        Margins.Left = 0
+        Margins.Top = 13
+        Margins.Right = 5
+        Margins.Bottom = 0
+        Align = alLeft
+        Color = clWhite
+        DropDownCount = 4
+        TabOrder = 1
+        OnChange = cbStatusChange
+        Items.Strings = (
+          'Pendente'#11
+          ''
+          'Em andamento'#11
+          ''
+          'Conclu'#237'do'#11
+          ''
+          'Atrasado'#11
+          ''
+          'Cancelado')
+        ExplicitTop = 10
+      end
       object Panel10: TPanel
         AlignWithMargins = True
-        Left = 3
-        Top = 3
-        Width = 206
-        Height = 35
-        Align = alLeft
-        BevelOuter = bvNone
-        TabOrder = 0
-        object EditColaborador: TEdit
-          AlignWithMargins = True
-          Left = 5
-          Top = 5
-          Width = 201
-          Height = 30
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 0
-          Margins.Bottom = 0
-          Align = alClient
-          BevelInner = bvNone
-          BevelOuter = bvRaised
-          CharCase = ecUpperCase
-          Color = clWhite
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          TextHint = 'Nome do colaborador'
-          ExplicitHeight = 27
-        end
-      end
-      object Panel11: TPanel
-        AlignWithMargins = True
-        Left = 406
-        Top = 3
-        Width = 150
-        Height = 35
-        Align = alLeft
-        BevelOuter = bvNone
-        Ctl3D = True
-        ParentCtl3D = False
-        TabOrder = 1
-        object ComboBox1: TComboBox
-          AlignWithMargins = True
-          Left = 3
-          Top = 3
-          Width = 144
-          Height = 21
-          Align = alClient
-          Color = clWhite
-          DropDownCount = 4
-          TabOrder = 0
-          Text = 'Status'
-        end
-      end
-      object Panel: TPanel
-        AlignWithMargins = True
-        Left = 215
-        Top = 3
-        Width = 185
-        Height = 35
-        Align = alLeft
-        Alignment = taLeftJustify
-        BevelOuter = bvNone
-        Ctl3D = False
-        ParentCtl3D = False
-        TabOrder = 2
-        object DateTimePicker1: TDateTimePicker
-          AlignWithMargins = True
-          Left = 3
-          Top = 3
-          Width = 179
-          Height = 29
-          Align = alClient
-          CalColors.BackColor = clBtnFace
-          Date = 45766.000000000000000000
-          Time = 0.809104016203491500
-          Color = 14796724
-          TabOrder = 0
-        end
-      end
-      object Panel13: TPanel
-        AlignWithMargins = True
-        Left = 758
-        Top = 3
+        Left = 756
+        Top = 5
         Width = 115
-        Height = 35
+        Height = 41
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 0
         Align = alRight
         Color = 7346457
         ParentBackground = False
-        TabOrder = 3
-        ExplicitLeft = 685
+        TabOrder = 2
+        ExplicitLeft = 220
+        ExplicitTop = 8
+        ExplicitHeight = 48
         object btnBuscar: TSpeedButton
           Left = 1
           Top = 1
           Width = 113
-          Height = 33
+          Height = 39
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
           Align = alClient
           Caption = 'Buscar'
           Flat = True
@@ -444,19 +424,120 @@ object FormPrincipal: TFormPrincipal
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          OnClick = btnUsuariosClick
-          ExplicitLeft = 64
-          ExplicitWidth = 120
-          ExplicitHeight = 39
+          OnClick = btnReagendarClick
+          ExplicitLeft = -1
+          ExplicitWidth = 115
+          ExplicitHeight = 46
+        end
+      end
+      object panelDataAgendamento: TPanel
+        AlignWithMargins = True
+        Left = 358
+        Top = 5
+        Width = 115
+        Height = 41
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 5
+        Margins.Bottom = 0
+        Align = alLeft
+        Alignment = taLeftJustify
+        BevelOuter = bvNone
+        Ctl3D = True
+        ParentCtl3D = False
+        TabOrder = 3
+        OnClick = panelDataAgendamentoClick
+        ExplicitHeight = 37
+        object Label2: TLabel
+          Left = 0
+          Top = 0
+          Width = 115
+          Height = 13
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
+          Align = alTop
+          Caption = 'Data agendada'
+          ExplicitWidth = 74
+        end
+        object dtDataAgendamento: TDateTimePicker
+          Left = 0
+          Top = 13
+          Width = 115
+          Height = 28
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 5
+          Margins.Bottom = 0
+          Align = alClient
+          CalColors.BackColor = clBtnFace
+          Date = 45766.000000000000000000
+          Time = 0.809104016203491500
+          Color = 14862517
+          TabOrder = 0
+          ExplicitWidth = 89
+          ExplicitHeight = 24
+        end
+      end
+      object PanelDataAgendada: TPanel
+        AlignWithMargins = True
+        Left = 241
+        Top = 5
+        Width = 112
+        Height = 41
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 5
+        Margins.Bottom = 0
+        Align = alLeft
+        Alignment = taLeftJustify
+        BevelOuter = bvNone
+        Ctl3D = True
+        ParentCtl3D = False
+        TabOrder = 4
+        OnClick = panelDataAgendamentoClick
+        ExplicitHeight = 37
+        object Label3: TLabel
+          Left = 0
+          Top = 0
+          Width = 112
+          Height = 13
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
+          Align = alTop
+          Caption = 'Data do agendamento'
+          ExplicitWidth = 107
+        end
+        object dtDataAgendada: TDateTimePicker
+          Left = 0
+          Top = 13
+          Width = 112
+          Height = 28
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 5
+          Margins.Bottom = 0
+          Align = alClient
+          CalColors.BackColor = clBtnFace
+          Date = 45766.000000000000000000
+          Time = 0.809104016203491500
+          Color = 14862775
+          TabOrder = 0
+          ExplicitTop = 12
+          ExplicitWidth = 123
+          ExplicitHeight = 29
         end
       end
     end
     object Panel5: TPanel
       AlignWithMargins = True
       Left = 0
-      Top = 51
+      Top = 61
       Width = 876
-      Height = 590
+      Height = 580
       Margins.Left = 0
       Margins.Top = 10
       Margins.Right = 0
@@ -466,13 +547,13 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 803
-      ExplicitHeight = 379
+      ExplicitTop = 51
+      ExplicitHeight = 590
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
         Width = 876
-        Height = 590
+        Height = 580
         Align = alClient
         TabOrder = 0
         ExplicitLeft = -2
@@ -623,40 +704,35 @@ object FormPrincipal: TFormPrincipal
       Width = 876
       Height = 64
       Margins.Left = 10
-      Margins.Top = 10
+      Margins.Top = 12
       Margins.Right = 10
       Margins.Bottom = 10
       Align = alBottom
       BevelOuter = bvNone
       Color = clWhite
+      Padding.Left = 5
+      Padding.Top = 5
+      Padding.Right = 5
+      Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 2
-      ExplicitTop = 440
-      ExplicitWidth = 803
-      object Panel14: TPanel
+      object Panel1: TPanel
         AlignWithMargins = True
-        Left = 10
-        Top = 10
-        Width = 222
-        Height = 44
-        Margins.Left = 10
-        Margins.Top = 10
-        Margins.Right = 10
-        Margins.Bottom = 10
+        Left = 8
+        Top = 8
+        Width = 206
+        Height = 48
         Align = alLeft
         Color = 7346457
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 3
-        ExplicitTop = 3
-        ExplicitHeight = 58
-        object SpeedButton1: TSpeedButton
+        object btnNovoAgendamento: TSpeedButton
           Left = 1
           Top = 1
-          Width = 220
-          Height = 42
+          Width = 204
+          Height = 46
           Align = alClient
-          Caption = 'Novo Agendamento'
+          Caption = 'Novo agendamento'
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
@@ -664,10 +740,97 @@ object FormPrincipal: TFormPrincipal
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          OnClick = btnUsuariosClick
-          ExplicitLeft = -5
-          ExplicitTop = 0
+          OnClick = btnNovoAgendamentoClick
+          ExplicitWidth = 115
           ExplicitHeight = 56
+        end
+      end
+      object Panel14: TPanel
+        AlignWithMargins = True
+        Left = 220
+        Top = 8
+        Width = 115
+        Height = 48
+        Align = alLeft
+        Color = 7346457
+        ParentBackground = False
+        TabOrder = 1
+        object btnReagendar: TSpeedButton
+          Left = 1
+          Top = 1
+          Width = 113
+          Height = 46
+          Align = alClient
+          Caption = 'Reagendar'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btnReagendarClick
+          ExplicitLeft = -1
+          ExplicitWidth = 115
+        end
+      end
+      object Panel15: TPanel
+        AlignWithMargins = True
+        Left = 341
+        Top = 8
+        Width = 220
+        Height = 48
+        Align = alLeft
+        Color = 7346457
+        ParentBackground = False
+        TabOrder = 2
+        object btnCancelarAgendamento: TSpeedButton
+          Left = 1
+          Top = 1
+          Width = 218
+          Height = 46
+          Align = alClient
+          Caption = 'Cancelar agendamento'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btnCancelarAgendamentoClick
+          ExplicitLeft = 64
+          ExplicitWidth = 120
+          ExplicitHeight = 39
+        end
+      end
+      object Panel16: TPanel
+        AlignWithMargins = True
+        Left = 567
+        Top = 8
+        Width = 143
+        Height = 48
+        Align = alLeft
+        Color = 7346457
+        ParentBackground = False
+        TabOrder = 3
+        object btnAlterarStatus: TSpeedButton
+          Left = 1
+          Top = 1
+          Width = 141
+          Height = 46
+          Align = alClient
+          Caption = 'Alterar status'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btnAlterarStatusClick
+          ExplicitLeft = 25
+          ExplicitTop = -5
         end
       end
     end

@@ -17,7 +17,7 @@ object FormPrincipal: TFormPrincipal
   WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
-  object Menu: TPanel
+  object Panel1: TPanel
     Left = 0
     Top = 0
     Width = 214
@@ -438,7 +438,9 @@ object FormPrincipal: TFormPrincipal
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          ExplicitTop = 2
+          ExplicitLeft = 64
+          ExplicitWidth = 120
+          ExplicitHeight = 39
         end
       end
     end
@@ -610,35 +612,35 @@ object FormPrincipal: TFormPrincipal
       Width = 876
       Height = 64
       Margins.Left = 10
-      Margins.Top = 12
+      Margins.Top = 10
       Margins.Right = 10
       Margins.Bottom = 10
       Align = alBottom
       BevelOuter = bvNone
       Color = clWhite
-      Padding.Left = 5
-      Padding.Top = 5
-      Padding.Right = 5
-      Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 2
-      object Panel1: TPanel
+      object Panel14: TPanel
         AlignWithMargins = True
-        Left = 8
-        Top = 8
-        Width = 206
-        Height = 48
+        Left = 10
+        Top = 10
+        Width = 222
+        Height = 44
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
         Align = alLeft
         Color = 7346457
         ParentBackground = False
         TabOrder = 0
-        object btnNovoAgendamento: TSpeedButton
+        object SpeedButton1: TSpeedButton
           Left = 1
           Top = 1
-          Width = 204
-          Height = 46
+          Width = 220
+          Height = 42
           Align = alClient
-          Caption = 'Novo agendamento'
+          Caption = 'Novo Agendamento'
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
@@ -646,97 +648,10 @@ object FormPrincipal: TFormPrincipal
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          OnClick = btnNovoAgendamentoClick
-          ExplicitWidth = 115
+          OnClick = btnUsuariosClick
+          ExplicitLeft = -5
+          ExplicitTop = 0
           ExplicitHeight = 56
-        end
-      end
-      object Panel14: TPanel
-        AlignWithMargins = True
-        Left = 220
-        Top = 8
-        Width = 115
-        Height = 48
-        Align = alLeft
-        Color = 7346457
-        ParentBackground = False
-        TabOrder = 1
-        object btnReagendar: TSpeedButton
-          Left = 1
-          Top = 1
-          Width = 113
-          Height = 46
-          Align = alClient
-          Caption = 'Reagendar'
-          Flat = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -19
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          OnClick = btnReagendarClick
-          ExplicitLeft = -1
-          ExplicitWidth = 115
-        end
-      end
-      object Panel15: TPanel
-        AlignWithMargins = True
-        Left = 341
-        Top = 8
-        Width = 220
-        Height = 48
-        Align = alLeft
-        Color = 7346457
-        ParentBackground = False
-        TabOrder = 2
-        object btnCancelarAgendamento: TSpeedButton
-          Left = 1
-          Top = 1
-          Width = 218
-          Height = 46
-          Align = alClient
-          Caption = 'Cancelar agendamento'
-          Flat = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -19
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          OnClick = btnCancelarAgendamentoClick
-          ExplicitLeft = 64
-          ExplicitWidth = 120
-          ExplicitHeight = 39
-        end
-      end
-      object Panel16: TPanel
-        AlignWithMargins = True
-        Left = 567
-        Top = 8
-        Width = 143
-        Height = 48
-        Align = alLeft
-        Color = 7346457
-        ParentBackground = False
-        TabOrder = 3
-        object btnAlterarStatus: TSpeedButton
-          Left = 1
-          Top = 1
-          Width = 141
-          Height = 46
-          Align = alClient
-          Caption = 'Alterar status'
-          Flat = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -19
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          OnClick = btnAlterarStatusClick
-          ExplicitLeft = 25
-          ExplicitTop = -5
         end
       end
     end

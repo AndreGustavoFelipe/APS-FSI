@@ -49,14 +49,9 @@ type
     Panel9: TPanel;
     imgSair: TImage;
     btnSair: TSpeedButton;
-    Panel10: TPanel;
     EditColaborador: TEdit;
-    Panel11: TPanel;
-    ComboBox1: TComboBox;
-    DateTimePicker1: TDateTimePicker;
-    Panel13: TPanel;
-    btnBuscar: TSpeedButton;
-    Panel: TPanel;
+    cbStatus: TComboBox;
+    dtDataAgendamento: TDateTimePicker;
     Panel12: TPanel;
     SpeedButton2: TSpeedButton;
     cxGrid1: TcxGrid;
@@ -118,6 +113,13 @@ type
     btnCancelarAgendamento: TSpeedButton;
     Panel16: TPanel;
     btnAlterarStatus: TSpeedButton;
+    Panel10: TPanel;
+    btnBuscar: TSpeedButton;
+    Label2: TLabel;
+    panelDataAgendamento: TPanel;
+    PanelDataAgendada: TPanel;
+    Label3: TLabel;
+    dtDataAgendada: TDateTimePicker;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
@@ -125,6 +127,9 @@ type
     procedure btnReagendarClick(Sender: TObject);
     procedure btnCancelarAgendamentoClick(Sender: TObject);
     procedure btnAlterarStatusClick(Sender: TObject);
+    procedure panelDataAgendamentoClick(Sender: TObject);
+    procedure Panel4Click(Sender: TObject);
+    procedure cbStatusChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -151,6 +156,21 @@ begin
       Free;
     end;
   end;
+
+end;
+
+procedure TFormPrincipal.cbStatusChange(Sender: TObject);
+begin
+
+end;
+
+procedure TFormPrincipal.Panel4Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFormPrincipal.panelDataAgendamentoClick(Sender: TObject);
+begin
 
 end;
 

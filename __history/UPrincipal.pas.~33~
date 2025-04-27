@@ -29,12 +29,11 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue,
-  cxDataControllerConditionalFormattingRulesManagerDialog, UAgendamentos,
-  UServicos;
+  cxDataControllerConditionalFormattingRulesManagerDialog;
 
 type
   TFormPrincipal = class(TForm)
-    Menu: TPanel;
+    Panel1: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
     Panel5: TPanel;
@@ -97,6 +96,8 @@ type
     cxGridAgendamentosTIPO_VEICULO1: TcxGridDBColumn;
     cxGridAgendamentosTIPO_LAVACAO1: TcxGridDBColumn;
     cxGridAgendamentosSTATUS1: TcxGridDBColumn;
+    Panel14: TPanel;
+    SpeedButton1: TSpeedButton;
     cxGrid1Level2: TcxGridLevel;
     cxGrid1DBCardView1: TcxGridDBCardView;
     cxGrid1DBCardView1ID: TcxGridDBCardViewRow;
@@ -110,21 +111,9 @@ type
     cxGrid1DBCardView1TIPO_VEICULO: TcxGridDBCardViewRow;
     cxGrid1DBCardView1TIPO_LAVACAO: TcxGridDBCardViewRow;
     cxGrid1DBCardView1STATUS: TcxGridDBCardViewRow;
-    Panel1: TPanel;
-    btnNovoAgendamento: TSpeedButton;
-    Panel14: TPanel;
-    btnReagendar: TSpeedButton;
-    Panel15: TPanel;
-    btnCancelarAgendamento: TSpeedButton;
-    Panel16: TPanel;
-    btnAlterarStatus: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
-    procedure btnNovoAgendamentoClick(Sender: TObject);
-    procedure btnReagendarClick(Sender: TObject);
-    procedure btnCancelarAgendamentoClick(Sender: TObject);
-    procedure btnAlterarStatusClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -154,72 +143,12 @@ begin
 
 end;
 
-procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
-begin
-
-  with TFormAgendamento.Create(Self) do
-  begin
-    try
-      operacao := 4;
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
-end;
-
-procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);
-begin
-
-  with TFormAgendamento.Create(Self) do
-  begin
-    try
-      operacao := 3;
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
-end;
-
 procedure TFormPrincipal.btnDashboardClick(Sender: TObject);
 begin
 
   with TFormRelatorio.Create(Self) do
   begin
     try
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
-end;
-
-procedure TFormPrincipal.btnNovoAgendamentoClick(Sender: TObject);
-begin
-
-  with TFormAgendamento.Create(Self) do
-  begin
-    try
-      operacao := 0;
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
-end;
-
-procedure TFormPrincipal.btnReagendarClick(Sender: TObject);
-begin
-
-  with TFormAgendamento.Create(Self) do
-  begin
-    try
-      operacao := 1;
       ShowModal;
     finally
       Free;

@@ -37,7 +37,6 @@ type
     cxGrid1Level1: TcxGridLevel;
     cxGrid1: TcxGrid;
     queryAgendamentos: TFDQuery;
-    dsAgendamentos: TDataSource;
   private
     { Private declarations }
   public

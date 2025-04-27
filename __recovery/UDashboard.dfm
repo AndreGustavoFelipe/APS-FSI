@@ -49,10 +49,6 @@ object FormRelatorio: TFormRelatorio
       Height = 474
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 432
-      ExplicitTop = 168
-      ExplicitWidth = 250
-      ExplicitHeight = 200
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.Summary.DefaultGroupSummaryItems = <>
@@ -73,6 +69,7 @@ object FormRelatorio: TFormRelatorio
   end
   object dsAgendamentos: TDataSource
     DataSet = queryAgendamentos
+    OnDataChange = dsAgendamentosDataChange
     Left = 912
     Top = 160
   end

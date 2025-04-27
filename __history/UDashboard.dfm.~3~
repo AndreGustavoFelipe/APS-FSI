@@ -71,9 +71,4 @@ object FormRelatorio: TFormRelatorio
     Left = 912
     Top = 104
   end
-  object dsAgendamentos: TDataSource
-    DataSet = queryAgendamentos
-    Left = 912
-    Top = 160
-  end
 end
