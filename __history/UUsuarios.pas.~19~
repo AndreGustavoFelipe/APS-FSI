@@ -128,7 +128,7 @@ begin
 
           ExecSQL;
         finally
-          ShowMessage('Cadastrado com Sucesso!');
+          ShowMessage('Editado com Sucesso!');
           Free;
         end;
       end;

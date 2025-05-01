@@ -104,7 +104,6 @@ procedure TFormUsuarios.btnNovoUsuarioClick(Sender: TObject);
 begin
   operacao := 0;
   pgControl.TabIndex := 1;
-  edtCadUsuario.SetFocus;
 end;
 
 procedure TFormUsuarios.btnSalvarClick(Sender: TObject);
@@ -128,7 +127,7 @@ begin
 
           ExecSQL;
         finally
-          ShowMessage('Cadastrado com Sucesso!');
+          ShowMessage('Editado com Sucesso!');
           Free;
         end;
       end;
@@ -216,7 +215,6 @@ procedure TFormUsuarios.btnEditarClick(Sender: TObject);
 begin
   operacao := 1;
   pgControl.TabIndex := 1;
-  edtCadUsuario.SetFocus;
   idUsuario := dsUsuarios.DataSet.FieldByName('ID').AsInteger;
   edtCadUsuario.Text := dsUsuarios.DataSet.FieldByName('NOME').AsString;
   edtCadSenha.Text := dsUsuarios.DataSet.FieldByName('SENHA').AsString;
@@ -228,7 +226,7 @@ begin
 
   idUsuario := dsUsuarios.DataSet.FieldByName('ID').AsInteger;
 
-  if (MessageDlg('Deseja excluir o usuario ' + dsUsuarios.DataSet.FieldByName('NOME').AsString + ' do sistema?', mtConfirmation, [mbNo, mbYes], 0) = mrYes) then
+  if (MessageDlg('Deseja excluir o usuario ' + dsUsuarios.DataSet.FieldByName('NOME').AsString + ' do sistema?', mtConfirmation, [mbNo, mbYes], 0) = mbYes) then
   begin
 
     with TFDQuery.Create(self) do
@@ -243,8 +241,6 @@ begin
          ExecSQL;
       finally
         ShowMessage('Exclusão realizada com sucesso!');
-        queryUsuarios.Close;
-        queryUsuarios.Open;
         Free;
       end;
     end;

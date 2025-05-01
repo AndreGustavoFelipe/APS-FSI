@@ -5,7 +5,7 @@ object FormUsuarios: TFormUsuarios
   BorderStyle = bsSingle
   Caption = 'FormUsuarios'
   ClientHeight = 531
-  ClientWidth = 842
+  ClientWidth = 844
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object FormUsuarios: TFormUsuarios
   object Panel1: TPanel
     Left = 0
     Top = 464
-    Width = 842
+    Width = 844
     Height = 67
     Align = alBottom
     BevelOuter = bvNone
@@ -131,7 +131,7 @@ object FormUsuarios: TFormUsuarios
     end
     object Panel9: TPanel
       AlignWithMargins = True
-      Left = 697
+      Left = 699
       Top = 10
       Width = 135
       Height = 47
@@ -167,7 +167,7 @@ object FormUsuarios: TFormUsuarios
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 842
+    Width = 844
     Height = 464
     Align = alClient
     BevelOuter = bvNone
@@ -176,7 +176,7 @@ object FormUsuarios: TFormUsuarios
       AlignWithMargins = True
       Left = 15
       Top = 15
-      Width = 812
+      Width = 814
       Height = 434
       Margins.Left = 15
       Margins.Top = 15
@@ -192,7 +192,7 @@ object FormUsuarios: TFormUsuarios
           AlignWithMargins = True
           Left = 10
           Top = 10
-          Width = 784
+          Width = 786
           Height = 386
           Margins.Left = 10
           Margins.Top = 10
@@ -209,30 +209,27 @@ object FormUsuarios: TFormUsuarios
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
-          Width = 804
+          Width = 806
           Height = 406
           Align = alClient
           TabOrder = 1
-          ExplicitLeft = 272
-          ExplicitTop = 104
-          ExplicitWidth = 250
-          ExplicitHeight = 200
-          object cxGrid1DBTableView1: TcxGridDBTableView
+          ExplicitLeft = -40
+          object cxGridUsuarios: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsUsuarios
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
-            object cxGrid1DBTableView1ID: TcxGridDBColumn
+            object cxGridUsuariosID: TcxGridDBColumn
               DataBinding.FieldName = 'ID'
             end
-            object cxGrid1DBTableView1NOME: TcxGridDBColumn
+            object cxGridUsuariosNOME: TcxGridDBColumn
               DataBinding.FieldName = 'NOME'
             end
-            object cxGrid1DBTableView1SENHA: TcxGridDBColumn
+            object cxGridUsuariosSENHA: TcxGridDBColumn
               DataBinding.FieldName = 'SENHA'
             end
-            object cxGrid1DBTableView1TIPO: TcxGridDBColumn
+            object cxGridUsuariosTIPO: TcxGridDBColumn
               DataBinding.FieldName = 'TIPO'
             end
           end
@@ -244,7 +241,7 @@ object FormUsuarios: TFormUsuarios
             end
           end
           object cxGrid1Level1: TcxGridLevel
-            GridView = cxGrid1DBTableView1
+            GridView = cxGridUsuarios
           end
         end
       end
@@ -256,7 +253,7 @@ object FormUsuarios: TFormUsuarios
           AlignWithMargins = True
           Left = 10
           Top = 60
-          Width = 394
+          Width = 396
           Height = 30
           Margins.Left = 10
           Margins.Top = 15
@@ -269,7 +266,7 @@ object FormUsuarios: TFormUsuarios
           TabOrder = 0
           object imgCadeado: TImage
             AlignWithMargins = True
-            Left = 368
+            Left = 370
             Top = 3
             Width = 23
             Height = 24
@@ -1286,12 +1283,13 @@ object FormUsuarios: TFormUsuarios
             Proportional = True
             Stretch = True
             OnClick = imgCadeadoClick
+            ExplicitLeft = 368
           end
           object edtCadSenha: TEdit
             AlignWithMargins = True
             Left = 5
             Top = 5
-            Width = 360
+            Width = 362
             Height = 25
             Margins.Left = 5
             Margins.Top = 5
@@ -1318,7 +1316,7 @@ object FormUsuarios: TFormUsuarios
           AlignWithMargins = True
           Left = 10
           Top = 15
-          Width = 394
+          Width = 396
           Height = 30
           Margins.Left = 10
           Margins.Top = 15
@@ -1333,7 +1331,7 @@ object FormUsuarios: TFormUsuarios
             AlignWithMargins = True
             Left = 5
             Top = 5
-            Width = 389
+            Width = 391
             Height = 25
             Margins.Left = 5
             Margins.Top = 5
@@ -1359,7 +1357,7 @@ object FormUsuarios: TFormUsuarios
           AlignWithMargins = True
           Left = 10
           Top = 105
-          Width = 394
+          Width = 396
           Height = 105
           Margins.Left = 10
           Margins.Top = 15
@@ -1378,7 +1376,7 @@ object FormUsuarios: TFormUsuarios
           AlignWithMargins = True
           Left = 0
           Top = 355
-          Width = 804
+          Width = 806
           Height = 41
           Margins.Left = 0
           Margins.Top = 0
@@ -1463,12 +1461,11 @@ object FormUsuarios: TFormUsuarios
     end
   end
   object queryUsuarios: TFDQuery
-    Active = True
     Connection = dm.con
     SQL.Strings = (
       'select * from usuarios')
     Left = 755
-    Top = 79
+    Top = 103
     object queryUsuariosID: TIntegerField
       FieldName = 'ID'
       Origin = 'ID'
@@ -1496,6 +1493,6 @@ object FormUsuarios: TFormUsuarios
   object dsUsuarios: TDataSource
     DataSet = queryUsuarios
     Left = 755
-    Top = 127
+    Top = 143
   end
 end

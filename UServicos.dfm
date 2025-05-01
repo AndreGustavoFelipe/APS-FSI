@@ -3,7 +3,7 @@ object FormServicos: TFormServicos
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Form1'
+  Caption = 'Servi'#231'os'
   ClientHeight = 524
   ClientWidth = 808
   Color = clBtnFace
@@ -181,9 +181,10 @@ object FormServicos: TFormServicos
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabListagem
+      ActivePage = tabCad
       Align = alClient
       TabOrder = 0
+      ExplicitLeft = 20
       object tabListagem: TTabSheet
         Caption = 'Listagem'
         object cxGrid1: TcxGrid
@@ -193,8 +194,6 @@ object FormServicos: TFormServicos
           Height = 399
           Align = alClient
           TabOrder = 0
-          ExplicitTop = 3
-          ExplicitHeight = 148
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.Summary.DefaultGroupSummaryItems = <>
@@ -215,7 +214,6 @@ object FormServicos: TFormServicos
       object tabCad: TTabSheet
         Caption = 'Servi'#231'o'
         ImageIndex = 1
-        ExplicitLeft = 0
         object Panel6: TPanel
           AlignWithMargins = True
           Left = 10
@@ -255,8 +253,6 @@ object FormServicos: TFormServicos
             ParentFont = False
             TabOrder = 0
             TextHint = 'Informe o Valor'
-            ExplicitLeft = 0
-            ExplicitTop = -10
           end
         end
         object Panel7: TPanel

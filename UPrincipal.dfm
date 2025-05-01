@@ -387,8 +387,6 @@ object FormPrincipal: TFormPrincipal
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 1
-        ExplicitLeft = 358
-        ExplicitHeight = 37
         object Label2: TLabel
           Left = 0
           Top = 0
@@ -417,8 +415,6 @@ object FormPrincipal: TFormPrincipal
           Time = 0.809104016203491500
           Color = 14862517
           TabOrder = 0
-          ExplicitWidth = 89
-          ExplicitHeight = 24
         end
       end
       object PanelDataAgendada: TPanel
@@ -437,8 +433,6 @@ object FormPrincipal: TFormPrincipal
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 2
-        ExplicitLeft = 241
-        ExplicitHeight = 37
         object Label3: TLabel
           Left = 0
           Top = 0
@@ -467,9 +461,6 @@ object FormPrincipal: TFormPrincipal
           Time = 0.809104016203491500
           Color = 14862775
           TabOrder = 0
-          ExplicitTop = 12
-          ExplicitWidth = 123
-          ExplicitHeight = 29
         end
       end
       object PanelColaborador: TPanel
@@ -491,23 +482,21 @@ object FormPrincipal: TFormPrincipal
           Left = 0
           Top = 0
           Width = 380
-          Height = 12
+          Height = 13
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 0
           Margins.Bottom = 5
           Align = alTop
           Caption = 'Nome do colaborador'
-          ExplicitLeft = 7
-          ExplicitTop = -4
-          ExplicitWidth = 183
+          ExplicitWidth = 102
         end
         object Panel11: TPanel
           AlignWithMargins = True
           Left = 0
-          Top = 14
+          Top = 15
           Width = 380
-          Height = 27
+          Height = 26
           Margins.Left = 0
           Margins.Top = 2
           Margins.Right = 0
@@ -517,16 +506,12 @@ object FormPrincipal: TFormPrincipal
           Color = 14599344
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 10
-          ExplicitTop = 27
-          ExplicitWidth = 0
-          ExplicitHeight = 14
           object EditColaborador: TEdit
             AlignWithMargins = True
             Left = 5
             Top = 5
             Width = 375
-            Height = 22
+            Height = 21
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 0
@@ -544,8 +529,6 @@ object FormPrincipal: TFormPrincipal
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 25
           end
         end
       end
@@ -562,7 +545,6 @@ object FormPrincipal: TFormPrincipal
         Align = alLeft
         BevelOuter = bvNone
         TabOrder = 4
-        ExplicitLeft = 432
         object Label5: TLabel
           Left = 0
           Top = 0
@@ -614,8 +596,6 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 51
-      ExplicitHeight = 590
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -623,8 +603,6 @@ object FormPrincipal: TFormPrincipal
         Height = 580
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = -2
-        ExplicitTop = 3
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsAgendamentos

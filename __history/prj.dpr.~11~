@@ -8,8 +8,7 @@ uses
   UServicos in 'UServicos.pas' {FormServicos},
   UDashboard in 'UDashboard.pas' {FormDashboard},
   UDataModule in 'UDataModule.pas' {dm: TDataModule},
-  UAgendamentos in 'UAgendamentos.pas' {FormAgendamento},
-  UMensagem in 'UMensagem.pas' {FormMensagem};
+  UAgendamentos in 'UAgendamentos.pas' {FormAgendamento};
 
 {$R *.res}
 
@@ -19,6 +18,5 @@ begin
   Application.CreateForm(TFormLogin, FormLogin);
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TFormAgendamento, FormAgendamento);
-  Application.CreateForm(TFormMensagem, FormMensagem);
   Application.Run;
 end.

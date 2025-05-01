@@ -55,6 +55,7 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
+        OnClick = btnNovoUsuarioClick
         ExplicitLeft = 7
         ExplicitTop = -4
       end
@@ -88,7 +89,8 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        ExplicitLeft = -7
+        OnClick = btnEditarClick
+        ExplicitLeft = 7
         ExplicitTop = -4
       end
     end
@@ -121,6 +123,7 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
+        OnClick = btnExcluirClick
         ExplicitLeft = -7
         ExplicitTop = -4
       end
@@ -154,6 +157,7 @@ object FormServicos: TFormServicos
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
+        OnClick = btnVoltarClick
         ExplicitLeft = -7
         ExplicitTop = -4
       end
@@ -189,10 +193,8 @@ object FormServicos: TFormServicos
           Height = 399
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 272
-          ExplicitTop = 104
-          ExplicitWidth = 250
-          ExplicitHeight = 200
+          ExplicitTop = 3
+          ExplicitHeight = 148
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.Summary.DefaultGroupSummaryItems = <>
@@ -213,6 +215,7 @@ object FormServicos: TFormServicos
       object tabCad: TTabSheet
         Caption = 'Servi'#231'o'
         ImageIndex = 1
+        ExplicitLeft = 0
         object Panel6: TPanel
           AlignWithMargins = True
           Left = 10
@@ -252,6 +255,8 @@ object FormServicos: TFormServicos
             ParentFont = False
             TabOrder = 0
             TextHint = 'Informe o Valor'
+            ExplicitLeft = 0
+            ExplicitTop = -10
           end
         end
         object Panel7: TPanel
@@ -330,6 +335,7 @@ object FormServicos: TFormServicos
               Font.Name = 'Tahoma'
               Font.Style = []
               ParentFont = False
+              OnClick = btnCancelarClick
               ExplicitLeft = 7
             end
           end
@@ -376,6 +382,41 @@ object FormServicos: TFormServicos
           end
         end
       end
+    end
+  end
+  object dsServicos: TDataSource
+    DataSet = queryServicos
+    Left = 723
+    Top = 111
+  end
+  object queryServicos: TFDQuery
+    Connection = dm.con
+    SQL.Strings = (
+      'select * from servicos')
+    Left = 723
+    Top = 63
+    object queryServicosID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object queryServicosNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 200
+    end
+    object queryServicosSENHA: TStringField
+      FieldName = 'SENHA'
+      Origin = 'SENHA'
+      Required = True
+      Size = 200
+    end
+    object queryServicosTIPO: TSmallintField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      Required = True
     end
   end
 end

@@ -1,0 +1,24 @@
+unit UMensagem;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TFormMensagem = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormMensagem: TFormMensagem;
+
+implementation
+
+{$R *.dfm}
+
+end.
