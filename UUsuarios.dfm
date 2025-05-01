@@ -27,6 +27,8 @@ object FormUsuarios: TFormUsuarios
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = -40
+    ExplicitTop = 467
     object Panel8: TPanel
       AlignWithMargins = True
       Left = 10
@@ -222,6 +224,7 @@ object FormUsuarios: TFormUsuarios
             DataController.Summary.SummaryGroups = <>
             object cxGridUsuariosID: TcxGridDBColumn
               DataBinding.FieldName = 'ID'
+              Visible = False
             end
             object cxGridUsuariosNOME: TcxGridDBColumn
               DataBinding.FieldName = 'NOME'

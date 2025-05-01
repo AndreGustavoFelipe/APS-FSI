@@ -108,44 +108,19 @@ procedure TFormServicos.btnEditarClick(Sender: TObject);
 begin
   operacao := 1;
   pgControl.TabIndex := 1;
-  edtDescricaoServico.SetFocus;
-  idServico := dsServicos.DataSet.FieldByName('ID').AsInteger;
-  edtDescricaoServico.Text := dsServicos.DataSet.FieldByName('DESCRICAO').AsString;
-  edtValorServico.Text := dsServicos.DataSet.FieldByName('VALOR').AsString;
 end;
 
 procedure TFormServicos.btnExcluirClick(Sender: TObject);
 begin
-  idServico := dsServicos.DataSet.FieldByName('ID').AsInteger;
-
-  if (MessageDlg('Deseja excluir o serviço ' + dsServicos.DataSet.FieldByName('DESCRICAO').AsString + ' do sistema?', mtConfirmation, [mbNo, mbYes], 0) = mrYes) then
-  begin
-
-    with TFDQuery.Create(self) do
-    begin
-      try
-        Connection := dm.con;
-
-         SQL.Add('DELETE FROM USUARIOS');
-         SQL.Add('WHERE ID = :ID');
-         ParamByName('ID').Value := idServico;
-
-         ExecSQL;
-      finally
-        ShowMessage('Exclusão realizada com sucesso!');
-        queryServicos.Close;
-        queryServicos.Open;
-        Free;
-      end;
-    end;
-end;
+  operacao := 2;
+  pgControl.TabIndex := 1;
+  ShowMessage('Tem certeza que deseja excluir o usuario sistema teste?');
 end;
 
 procedure TFormServicos.btnNovoUsuarioClick(Sender: TObject);
 begin
   operacao := 0;
   pgControl.TabIndex := 1;
-  edtDescricaoServico.SetFocus;
 end;
 
 procedure TFormServicos.btnSalvarClick(Sender: TObject);
@@ -201,8 +176,8 @@ begin
   end;
 
   limpaCampos;
-  queryServicos.Close;
-  queryServicos.Open;
+  queryUsuarios.Close;
+  queryUsuarios.Open;
   pgControl.TabIndex := 0;
 
 end;

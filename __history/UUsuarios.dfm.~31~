@@ -3,7 +3,7 @@ object FormUsuarios: TFormUsuarios
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'FormUsuarios'
+  Caption = 'Usuarios'
   ClientHeight = 531
   ClientWidth = 844
   Color = clBtnFace
@@ -182,7 +182,7 @@ object FormUsuarios: TFormUsuarios
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabCad
+      ActivePage = tabListagem
       Align = alClient
       TabOrder = 0
       OnChange = pgControlChange
@@ -213,22 +213,23 @@ object FormUsuarios: TFormUsuarios
           Height = 406
           Align = alClient
           TabOrder = 1
-          object cxGrid1DBTableView1: TcxGridDBTableView
+          ExplicitLeft = -40
+          object cxGridUsuarios: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsUsuarios
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
-            object cxGrid1DBTableView1ID: TcxGridDBColumn
+            object cxGridUsuariosID: TcxGridDBColumn
               DataBinding.FieldName = 'ID'
             end
-            object cxGrid1DBTableView1NOME: TcxGridDBColumn
+            object cxGridUsuariosNOME: TcxGridDBColumn
               DataBinding.FieldName = 'NOME'
             end
-            object cxGrid1DBTableView1SENHA: TcxGridDBColumn
+            object cxGridUsuariosSENHA: TcxGridDBColumn
               DataBinding.FieldName = 'SENHA'
             end
-            object cxGrid1DBTableView1TIPO: TcxGridDBColumn
+            object cxGridUsuariosTIPO: TcxGridDBColumn
               DataBinding.FieldName = 'TIPO'
             end
           end
@@ -240,13 +241,14 @@ object FormUsuarios: TFormUsuarios
             end
           end
           object cxGrid1Level1: TcxGridLevel
-            GridView = cxGrid1DBTableView1
+            GridView = cxGridUsuarios
           end
         end
       end
       object tabCad: TTabSheet
         Caption = 'Usuario'
         ImageIndex = 1
+        ExplicitLeft = 0
         object Panel5: TPanel
           AlignWithMargins = True
           Left = 10
@@ -1463,7 +1465,7 @@ object FormUsuarios: TFormUsuarios
     SQL.Strings = (
       'select * from usuarios')
     Left = 755
-    Top = 79
+    Top = 103
     object queryUsuariosID: TIntegerField
       FieldName = 'ID'
       Origin = 'ID'
@@ -1491,6 +1493,6 @@ object FormUsuarios: TFormUsuarios
   object dsUsuarios: TDataSource
     DataSet = queryUsuarios
     Left = 755
-    Top = 127
+    Top = 143
   end
 end

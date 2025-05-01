@@ -82,8 +82,7 @@ type
     procedure btnVoltarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
   private
-    operacao, idUsuario : integer;
-    procedure limpaCampos; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
+    operacao, idUsuario : integer; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
   public
     { Public declarations }
   end;
@@ -94,13 +93,6 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TFormUsuarios.limpaCampos();
-begin
-  edtCadUsuario.Text := '';
-  edtCadSenha.Text := '';
-  rdGroupTipos.ItemIndex := 0;
-end;
 
 procedure TFormUsuarios.btnCancelarClick(Sender: TObject);
 begin
@@ -169,11 +161,11 @@ begin
 
   end;
 
-  limpaCampos;
+
+
   queryUsuarios.Close;
   queryUsuarios.Open;
   pgControl.TabIndex := 0;
-
 end;
 
 procedure TFormUsuarios.btnVoltarClick(Sender: TObject);

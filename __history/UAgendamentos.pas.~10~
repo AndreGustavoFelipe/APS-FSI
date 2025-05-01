@@ -13,18 +13,22 @@ uses
 type
   TFormAgendamento = class(TForm)
     Panel2: TPanel;
+    Panel1: TPanel;
     Panel4: TPanel;
+    cbTipoLavacao: TComboBox;
     Panel3: TPanel;
     Panel7: TPanel;
     Edit3: TEdit;
     Panel8: TPanel;
     Edit4: TEdit;
     DateTimePicker1: TDateTimePicker;
+    cbStatus: TComboBox;
     Panel5: TPanel;
     pnlSalvar: TPanel;
     btnSalvar: TSpeedButton;
     pnlCancelar: TPanel;
     btnCancelar: TSpeedButton;
+    cbTipoVeiculo: TDBComboBox;
     queryAgendamentos: TFDQuery;
     queryAgendamentosID: TIntegerField;
     queryAgendamentosID_CLIENTE: TIntegerField;
@@ -38,16 +42,7 @@ type
     queryAgendamentosTIPO_LAVACAO: TStringField;
     queryAgendamentosSTATUS: TStringField;
     dsAgendamentos: TDataSource;
-    queryServicos: TFDQuery;
-    queryServicosID: TIntegerField;
-    queryServicosDESCRICAO: TStringField;
-    queryServicosVALOR: TSingleField;
-    dsServicos: TDataSource;
-    Panel1: TPanel;
-    DBLookupComboBox1: TDBLookupComboBox;
-    ComboBox1: TComboBox;
     procedure btnCancelarClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,11 +60,6 @@ implementation
 procedure TFormAgendamento.btnCancelarClick(Sender: TObject);
 begin
   Close;
-end;
-
-procedure TFormAgendamento.FormShow(Sender: TObject);
-begin
-  queryServicos.Open;
 end;
 
 end.

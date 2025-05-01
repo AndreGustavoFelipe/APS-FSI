@@ -223,17 +223,8 @@ end;
 
 procedure TFormPrincipal.btnReagendarClick(Sender: TObject);
 begin
-
-  with TFormAgendamento.Create(Self) do
-  begin
-    try
-      operacao := 1;
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
+  queryAgendamentos.Close;
+  queryAgendamentos.Open;
 end;
 
 procedure TFormPrincipal.btnSairClick(Sender: TObject);

@@ -14,6 +14,7 @@ object FormServicos: TFormServicos
   Font.Style = []
   OldCreateOrder = False
   WindowState = wsMaximized
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -181,7 +182,7 @@ object FormServicos: TFormServicos
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabCad
+      ActivePage = tabListagem
       Align = alClient
       TabOrder = 0
       ExplicitLeft = 20
@@ -194,11 +195,22 @@ object FormServicos: TFormServicos
           Height = 399
           Align = alClient
           TabOrder = 0
-          object cxGrid1DBTableView1: TcxGridDBTableView
+          object cxGridServicos: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = dsServicos
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
+            object cxGridServicosID: TcxGridDBColumn
+              DataBinding.FieldName = 'ID'
+              Visible = False
+            end
+            object cxGridServicosDESCRICAO: TcxGridDBColumn
+              DataBinding.FieldName = 'DESCRICAO'
+            end
+            object cxGridServicosVALOR: TcxGridDBColumn
+              DataBinding.FieldName = 'VALOR'
+            end
           end
           object cxGrid1DBChartView1: TcxGridDBChartView
             DiagramPie.Active = True
@@ -207,7 +219,7 @@ object FormServicos: TFormServicos
             end
           end
           object cxGrid1Level1: TcxGridLevel
-            GridView = cxGrid1DBTableView1
+            GridView = cxGridServicos
           end
         end
       end
@@ -229,7 +241,7 @@ object FormServicos: TFormServicos
           Color = 14599344
           ParentBackground = False
           TabOrder = 0
-          object edtCadUsuario: TEdit
+          object edtValorServico: TEdit
             AlignWithMargins = True
             Left = 5
             Top = 5
@@ -298,6 +310,7 @@ object FormServicos: TFormServicos
               Font.Name = 'Tahoma'
               Font.Style = []
               ParentFont = False
+              OnClick = btnSalvarClick
               ExplicitLeft = -7
             end
           end
@@ -351,7 +364,7 @@ object FormServicos: TFormServicos
           Color = 14599344
           ParentBackground = False
           TabOrder = 2
-          object Edit1: TEdit
+          object edtDescricaoServico: TEdit
             AlignWithMargins = True
             Left = 5
             Top = 5
@@ -397,21 +410,15 @@ object FormServicos: TFormServicos
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object queryServicosNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
+    object queryServicosDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
       Required = True
       Size = 200
     end
-    object queryServicosSENHA: TStringField
-      FieldName = 'SENHA'
-      Origin = 'SENHA'
-      Required = True
-      Size = 200
-    end
-    object queryServicosTIPO: TSmallintField
-      FieldName = 'TIPO'
-      Origin = 'TIPO'
+    object queryServicosVALOR: TSingleField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
       Required = True
     end
   end
