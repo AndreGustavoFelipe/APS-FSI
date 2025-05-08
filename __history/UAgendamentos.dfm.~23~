@@ -357,7 +357,7 @@ object FormAgendamento: TFormAgendamento
           Height = 14
           Align = alLeft
           Caption = 'Data para agendamento'
-          ExplicitTop = -3
+          ExplicitHeight = 13
         end
       end
     end

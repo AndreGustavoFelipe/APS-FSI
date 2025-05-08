@@ -4,7 +4,7 @@ object FormAgendamento: TFormAgendamento
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Agendamentos'
-  ClientHeight = 570
+  ClientHeight = 419
   ClientWidth = 436
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object FormAgendamento: TFormAgendamento
     Left = 0
     Top = 0
     Width = 436
-    Height = 570
+    Height = 419
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
@@ -31,10 +31,12 @@ object FormAgendamento: TFormAgendamento
     Padding.Bottom = 10
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 434
+    ExplicitHeight = 221
     object Panel3: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 61
+      Top = 51
       Width = 416
       Height = 47
       Margins.Left = 0
@@ -44,6 +46,8 @@ object FormAgendamento: TFormAgendamento
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitTop = 10
+      ExplicitWidth = 414
       object Panel7: TPanel
         AlignWithMargins = True
         Left = 215
@@ -59,6 +63,7 @@ object FormAgendamento: TFormAgendamento
         Color = 14599344
         ParentBackground = False
         TabOrder = 0
+        ExplicitTop = 15
         object edtModelo: TEdit
           AlignWithMargins = True
           Left = 5
@@ -100,6 +105,7 @@ object FormAgendamento: TFormAgendamento
         Color = 14599344
         ParentBackground = False
         TabOrder = 1
+        ExplicitTop = 15
         object edtPlaca: TEdit
           AlignWithMargins = True
           Left = 5
@@ -124,13 +130,15 @@ object FormAgendamento: TFormAgendamento
           ParentFont = False
           TabOrder = 0
           TextHint = 'Informe a Placa'
+          ExplicitLeft = 0
+          ExplicitTop = 0
         end
       end
     end
     object Panel5: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 516
+      Top = 365
       Width = 416
       Height = 34
       Margins.Left = 0
@@ -140,6 +148,8 @@ object FormAgendamento: TFormAgendamento
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitTop = 167
+      ExplicitWidth = 414
       object pnlSalvar: TPanel
         AlignWithMargins = True
         Left = 210
@@ -171,7 +181,9 @@ object FormAgendamento: TFormAgendamento
           Font.Style = []
           ParentFont = False
           OnClick = btnSalvarClick
-          ExplicitLeft = -2
+          ExplicitLeft = -7
+          ExplicitWidth = 191
+          ExplicitHeight = 41
         end
       end
       object pnlCancelar: TPanel
@@ -210,10 +222,38 @@ object FormAgendamento: TFormAgendamento
         end
       end
     end
+    object Panel1: TPanel
+      AlignWithMargins = True
+      Left = 10
+      Top = 137
+      Width = 416
+      Height = 24
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 10
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 2
+      ExplicitTop = 72
+      ExplicitWidth = 414
+      object cbFuncionario: TComboBox
+        Left = 0
+        Top = 0
+        Width = 416
+        Height = 21
+        Align = alClient
+        Style = csDropDownList
+        TabOrder = 0
+        TextHint = 'Selecione um funcionario'
+        ExplicitLeft = 5
+        ExplicitTop = 3
+      end
+    end
     object Panel6: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 281
+      Top = 171
       Width = 416
       Height = 209
       Margins.Left = 0
@@ -222,7 +262,8 @@ object FormAgendamento: TFormAgendamento
       Margins.Bottom = 10
       Align = alTop
       BevelOuter = bvNone
-      TabOrder = 2
+      TabOrder = 3
+      ExplicitTop = 72
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -245,7 +286,6 @@ object FormAgendamento: TFormAgendamento
           OptionsSelection.CellMultiSelect = True
           OptionsSelection.CheckBoxVisibility = [cbvDataRow, cbvColumnHeader]
           OptionsSelection.InvertSelect = False
-          OptionsView.GroupByBox = False
           object cxGridServicosID: TcxGridDBColumn
             DataBinding.FieldName = 'ID'
             Visible = False
@@ -258,26 +298,6 @@ object FormAgendamento: TFormAgendamento
             DataBinding.FieldName = 'VALOR'
           end
         end
-        object cxGrid1DBCardView1: TcxGridDBCardView
-          Navigator.Buttons.CustomButtons = <>
-          DataController.DataSource = dsServicos
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <>
-          DataController.Summary.SummaryGroups = <>
-          OptionsView.CardIndent = 7
-          object cxGrid1DBCardView1ID: TcxGridDBCardViewRow
-            DataBinding.FieldName = 'ID'
-            Position.BeginsLayer = True
-          end
-          object cxGrid1DBCardView1DESCRICAO: TcxGridDBCardViewRow
-            DataBinding.FieldName = 'DESCRICAO'
-            Position.BeginsLayer = True
-          end
-          object cxGrid1DBCardView1VALOR: TcxGridDBCardViewRow
-            DataBinding.FieldName = 'VALOR'
-            Position.BeginsLayer = True
-          end
-        end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGridServicos
         end
@@ -288,20 +308,22 @@ object FormAgendamento: TFormAgendamento
       Left = 10
       Top = 10
       Width = 416
-      Height = 41
+      Height = 31
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
       Margins.Bottom = 5
       Align = alTop
       BevelOuter = bvNone
-      TabOrder = 3
+      TabOrder = 4
+      ExplicitLeft = 18
+      ExplicitTop = 114
       object dtDiaAgendamento: TDateTimePicker
         AlignWithMargins = True
         Left = 0
-        Top = 14
-        Width = 207
-        Height = 27
+        Top = 0
+        Width = 414
+        Height = 31
         Margins.Left = 0
         Margins.Top = 0
         Margins.Right = 8
@@ -313,58 +335,11 @@ object FormAgendamento: TFormAgendamento
         Color = 14863031
         TabOrder = 0
       end
-      object timePicker: TTimePicker
-        Left = 220
-        Top = 14
-        Width = 196
-        Height = 27
-        Align = alRight
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        TabOrder = 1
-        Time = 45782.839669722220000000
-        TimeFormat = 'hh:mm'
-      end
-      object Panel10: TPanel
-        Left = 0
-        Top = 0
-        Width = 416
-        Height = 14
-        Align = alTop
-        BevelOuter = bvNone
-        TabOrder = 2
-        object Label1: TLabel
-          AlignWithMargins = True
-          Left = 221
-          Top = 0
-          Width = 117
-          Height = 14
-          Margins.Left = 0
-          Margins.Top = 0
-          Margins.Right = 78
-          Margins.Bottom = 0
-          Align = alRight
-          Caption = 'Hora para agendamento'
-          ExplicitHeight = 13
-        end
-        object Label2: TLabel
-          Left = 0
-          Top = 0
-          Width = 117
-          Height = 14
-          Align = alLeft
-          Caption = 'Data para agendamento'
-          ExplicitTop = -3
-        end
-      end
     end
     object Panel9: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 113
+      Top = 103
       Width = 416
       Height = 24
       Margins.Left = 0
@@ -373,7 +348,9 @@ object FormAgendamento: TFormAgendamento
       Margins.Bottom = 10
       Align = alTop
       BevelOuter = bvNone
-      TabOrder = 4
+      TabOrder = 5
+      ExplicitTop = 72
+      ExplicitWidth = 414
       object cbTipoVeiculo: TComboBox
         Left = 0
         Top = 0
@@ -388,60 +365,8 @@ object FormAgendamento: TFormAgendamento
           'Carro'
           'Caminhonete'
           'Caminh'#227'o')
-      end
-    end
-    object Panel11: TPanel
-      AlignWithMargins = True
-      Left = 10
-      Top = 147
-      Width = 416
-      Height = 124
-      Margins.Left = 0
-      Margins.Top = 0
-      Margins.Right = 0
-      Margins.Bottom = 10
-      Align = alTop
-      BevelOuter = bvNone
-      TabOrder = 5
-      object cxGrid2: TcxGrid
-        Left = 0
-        Top = 0
-        Width = 416
-        Height = 124
-        Align = alClient
-        TabOrder = 0
-        object cxGridFuncionarios: TcxGridDBTableView
-          Navigator.Buttons.CustomButtons = <>
-          DataController.DataSource = dsFuncionarios
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <>
-          DataController.Summary.SummaryGroups = <>
-          OptionsData.CancelOnExit = False
-          OptionsData.Deleting = False
-          OptionsData.DeletingConfirmation = False
-          OptionsData.Editing = False
-          OptionsData.Inserting = False
-          OptionsSelection.CheckBoxVisibility = [cbvDataRow]
-          OptionsView.GroupByBox = False
-          object cxGridFuncionariosID: TcxGridDBColumn
-            DataBinding.FieldName = 'ID'
-            Visible = False
-          end
-          object cxGridFuncionariosNOME: TcxGridDBColumn
-            DataBinding.FieldName = 'NOME'
-          end
-          object cxGridFuncionariosSENHA: TcxGridDBColumn
-            DataBinding.FieldName = 'SENHA'
-            Visible = False
-          end
-          object cxGridFuncionariosTIPO: TcxGridDBColumn
-            DataBinding.FieldName = 'TIPO'
-            Visible = False
-          end
-        end
-        object cxGridLevel1: TcxGridLevel
-          GridView = cxGridFuncionarios
-        end
+        ExplicitLeft = 5
+        ExplicitTop = 3
       end
     end
   end
@@ -476,7 +401,7 @@ object FormAgendamento: TFormAgendamento
       Required = True
     end
   end
-  object dsFuncionarios: TDataSource
+  object dsAgendamentos: TDataSource
     DataSet = queryFuncionarios
     Left = 382
     Top = 171

@@ -13,7 +13,7 @@ uses
   cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxGridCustomView, cxGrid, Vcl.WinXPickers, cxGridCardView, cxGridDBCardView,
-  cxGridCustomLayoutView, DateUtils;
+  cxGridCustomLayoutView;
 
 type
   TFormAgendamento = class(TForm)
@@ -73,8 +73,8 @@ type
     function VerificaCampos: boolean;
     { Private declarations }
   public
+    { Public declarations }
     operacao : integer; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
-    function HoraEntrega(hora: TTime): TTime;
   end;
 
 var
@@ -103,14 +103,14 @@ begin
     showmessage('Informe um modelo!');
     result := false;
   end
-  else if cbTipoVeiculo.ItemIndex = -1 then
+  else if not (cbTipoVeiculo.ItemIndex in [0,1,2,3]) then
   begin
     showmessage('Selecione algum tipo de veiculo!');
     result := false;
   end
-  else if cxGridFuncionarios.Controller.SelectedRowCount <= 0  then
+  else if not (cbTipoVeiculo.ItemIndex in [0]) then
   begin
-    showmessage('Selecione um funcionario!');
+    showmessage('Selecione algum tipo de veiculo!');
     result := false;
   end
   else if cxGridServicos.Controller.SelectedRowCount <= 0 then
@@ -123,15 +123,8 @@ begin
     result := true;
 end;
 
-function TFormAgendamento.HoraEntrega(hora: TTime): TTime;
-begin
-  Result := EncodeTime((HourOf(hora) + 1), MinuteOf(hora), 0, 0);
-end;
-
 
 procedure TFormAgendamento.btnSalvarClick(Sender: TObject);
-var
-  idAgendamento, i : integer;
 begin
 
   if VerificaCampos then
@@ -144,7 +137,6 @@ begin
 
         sql.Add('insert into AGENDAMENTOS(ID_CLIENTE, ID_FUNCINARIO, DATA_AGENDAMENTO, DATA_AGENDADA, HORA_AGENDAMENTO, HORA_ENTREGA, PLACA, TIPO_VEICULO, STATUS, MODELO)');
         sql.Add('values (:ID_CLIENTE, :ID_FUNCINARIO, :DATA_AGENDAMENTO, :DATA_AGENDADA, :HORA_AGENDAMENTO, :HORA_ENTREGA, :PLACA, :TIPO_VEICULO, :STATUS, :MODELO)');
-        sql.Add('returning id');
 
         ParamByName('ID_CLIENTE').Value := FormLogin.idUsuario;
         ParamByName('ID_FUNCINARIO').Value := cxGridFuncionarios.DataController.DataSet.FieldByName('ID').Value;
@@ -159,32 +151,14 @@ begin
         ParamByName('HORA_AGENDAMENTO').AsTime := timePicker.Time;
 
         ParamByName('HORA_ENTREGA').DataType := ftTime;
-        ParamByName('HORA_ENTREGA').Astime := HoraEntrega(timePicker.Time);
+        ParamByName('HORA_ENTREGA').Astime := timePicker.Time;
 
         ParamByName('PLACA').Value := edtPlaca.Text;
         ParamByName('TIPO_VEICULO').Value := cbTipoVeiculo.ItemIndex;
         ParamByName('MODELO').Value := edtModelo.Text;
         ParamByName('STATUS').Value := '0';
 
-        Open;
-
-        idAgendamento := FieldByName('ID').Value;
-
-        with cxGridServicos do
-        begin
-          for I := 0 to pred(Controller.SelectedRowCount) do
-          begin
-            SQL.Clear;
-            SQL.Add('insert into ITENS_AGENDAMENTO(id, id_agendamento)');
-            sql.Add('values(:id, :id_agendamento)');
-
-            parambyname('id').Value := DataController.Values[DataController.GetSelectedRowIndex(i), cxGridServicosID.Index];
-            parambyname('id_agendamento').Value := idAgendamento;
-
-            execsql;
-          end;
-        end;
-
+        ExecSql;
       finally
 
         showmessage('Agendamento realizado com sucesso!');
@@ -193,8 +167,6 @@ begin
 
       end;
     end;
-
-    close;
   end;
 
 end;

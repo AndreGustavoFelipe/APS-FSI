@@ -31,6 +31,8 @@ object FormAgendamento: TFormAgendamento
     Padding.Bottom = 10
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 434
+    ExplicitHeight = 221
     object Panel3: TPanel
       AlignWithMargins = True
       Left = 10
@@ -44,6 +46,8 @@ object FormAgendamento: TFormAgendamento
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitTop = 10
+      ExplicitWidth = 414
       object Panel7: TPanel
         AlignWithMargins = True
         Left = 215
@@ -59,6 +63,7 @@ object FormAgendamento: TFormAgendamento
         Color = 14599344
         ParentBackground = False
         TabOrder = 0
+        ExplicitTop = 15
         object edtModelo: TEdit
           AlignWithMargins = True
           Left = 5
@@ -100,6 +105,7 @@ object FormAgendamento: TFormAgendamento
         Color = 14599344
         ParentBackground = False
         TabOrder = 1
+        ExplicitTop = 15
         object edtPlaca: TEdit
           AlignWithMargins = True
           Left = 5
@@ -124,6 +130,8 @@ object FormAgendamento: TFormAgendamento
           ParentFont = False
           TabOrder = 0
           TextHint = 'Informe a Placa'
+          ExplicitLeft = 0
+          ExplicitTop = 0
         end
       end
     end
@@ -140,6 +148,8 @@ object FormAgendamento: TFormAgendamento
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitTop = 167
+      ExplicitWidth = 414
       object pnlSalvar: TPanel
         AlignWithMargins = True
         Left = 210
@@ -171,7 +181,9 @@ object FormAgendamento: TFormAgendamento
           Font.Style = []
           ParentFont = False
           OnClick = btnSalvarClick
-          ExplicitLeft = -2
+          ExplicitLeft = -7
+          ExplicitWidth = 191
+          ExplicitHeight = 41
         end
       end
       object pnlCancelar: TPanel
@@ -223,6 +235,7 @@ object FormAgendamento: TFormAgendamento
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 2
+      ExplicitTop = 72
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -312,6 +325,9 @@ object FormAgendamento: TFormAgendamento
         Time = 0.809104016203491500
         Color = 14863031
         TabOrder = 0
+        ExplicitLeft = -24
+        ExplicitTop = -10
+        ExplicitHeight = 31
       end
       object timePicker: TTimePicker
         Left = 220
@@ -327,6 +343,8 @@ object FormAgendamento: TFormAgendamento
         TabOrder = 1
         Time = 45782.839669722220000000
         TimeFormat = 'hh:mm'
+        ExplicitLeft = 218
+        ExplicitTop = 16
       end
       object Panel10: TPanel
         Left = 0
@@ -348,7 +366,8 @@ object FormAgendamento: TFormAgendamento
           Margins.Bottom = 0
           Align = alRight
           Caption = 'Hora para agendamento'
-          ExplicitHeight = 13
+          ExplicitLeft = 215
+          ExplicitTop = -3
         end
         object Label2: TLabel
           Left = 0
@@ -357,7 +376,7 @@ object FormAgendamento: TFormAgendamento
           Height = 14
           Align = alLeft
           Caption = 'Data para agendamento'
-          ExplicitTop = -3
+          ExplicitHeight = 13
         end
       end
     end
@@ -374,6 +393,8 @@ object FormAgendamento: TFormAgendamento
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 4
+      ExplicitTop = 72
+      ExplicitWidth = 414
       object cbTipoVeiculo: TComboBox
         Left = 0
         Top = 0
@@ -388,6 +409,8 @@ object FormAgendamento: TFormAgendamento
           'Carro'
           'Caminhonete'
           'Caminh'#227'o')
+        ExplicitLeft = 5
+        ExplicitTop = 3
       end
     end
     object Panel11: TPanel
@@ -403,6 +426,7 @@ object FormAgendamento: TFormAgendamento
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 5
+      ExplicitTop = 181
       object cxGrid2: TcxGrid
         Left = 0
         Top = 0
@@ -410,6 +434,7 @@ object FormAgendamento: TFormAgendamento
         Height = 124
         Align = alClient
         TabOrder = 0
+        ExplicitHeight = 209
         object cxGridFuncionarios: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsFuncionarios

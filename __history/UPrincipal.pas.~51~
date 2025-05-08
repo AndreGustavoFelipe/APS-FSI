@@ -175,7 +175,6 @@ begin
 
   btnBuscarClick(self);
 
-
 end;
 
 procedure TFormPrincipal.btnBuscarClick(Sender: TObject);

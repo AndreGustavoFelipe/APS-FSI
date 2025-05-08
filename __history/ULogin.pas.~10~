@@ -8,7 +8,7 @@ uses
   Vcl.Imaging.pngimage, UPrincipal, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXPickers;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFormLogin = class(TForm)
@@ -26,15 +26,15 @@ type
     SpeedButton1: TSpeedButton;
     imgCadeado: TImage;
     Image1: TImage;
+    FDQuery1: TFDQuery;
     procedure imgCadeadoClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     function VerificaLogin(usuario, senha: string): boolean;
     { Private declarations }
   public
-    idUsuario, nomeUsuario, tipoUsuario : string
+    { Public declarations }
   end;
 
 var
@@ -45,12 +45,6 @@ implementation
 {$R *.dfm}
 
 uses UDataModule;
-
-procedure TFormLogin.FormKeyPress(Sender: TObject; var Key: Char);
-begin
-  if key = VK_RETURN.ToString then
-    SpeedButton1Click(self);
-end;
 
 procedure TFormLogin.FormResize(Sender: TObject);
 begin
@@ -100,60 +94,21 @@ function TFormLogin.VerificaLogin(usuario : string; senha : string) : boolean;
 begin
   with TFDQuery.Create(self) do
   begin
-    try
-      connection := dm.con;
 
-      sql.Clear;
-      sql.Add('SELECT * FROM USUARIOS');
-      sql.Add('WHERE NOME = :NOME AND SENHA = :SENHA');
-
-      ParamByName('NOME').Value := usuario;
-      ParamByName('SENHA').Value := senha;
-
-      Open;
-
-      if ((FieldByName('NOME').AsString = usuario) and ((FieldByName('SENHA').AsString = senha))) then
-      begin
-
-        idUsuario := FieldByName('ID').AsString;
-        nomeUsuario := FieldByName('NOME').AsString;
-        tipoUsuario := FieldByName('TIPO').AsString;
-
-        result := true;
-
-      end
-      else
-        result := false;
-
-    finally
-
-    end;
   end;
 end;
 
 procedure TFormLogin.SpeedButton1Click(Sender: TObject);
 begin
 
-  if (edtUsuario.Text <> '') and (edtSenha.Text <> '') then
+  with TFormPrincipal.Create(self) do
   begin
-    if VerificaLogin(edtUsuario.Text, edtSenha.Text) then
-    begin
-      with TFormPrincipal.Create(self) do
-      begin
-        try
-          ShowModal;
-        finally
-          Free;
-        end;
-      end;
-    end
-
-    else
-    showmessage('Usuario ou senha incorreto!');
-  end
-  else
-    showmessage('Preencha todos os campos!');
-
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
 
 end;
 

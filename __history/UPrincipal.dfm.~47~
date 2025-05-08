@@ -4,8 +4,8 @@ object FormPrincipal: TFormPrincipal
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'FormPrincipal'
-  ClientHeight = 637
-  ClientWidth = 1268
+  ClientHeight = 731
+  ClientWidth = 1106
   Color = 14599344
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,20 +15,18 @@ object FormPrincipal: TFormPrincipal
   OldCreateOrder = False
   Position = poDesktopCenter
   WindowState = wsMaximized
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Menu: TPanel
     Left = 0
     Top = 0
     Width = 214
-    Height = 637
+    Height = 731
     Align = alLeft
     BevelOuter = bvNone
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 731
     object Panel7: TPanel
       AlignWithMargins = True
       Left = 10
@@ -201,7 +199,7 @@ object FormPrincipal: TFormPrincipal
     object Panel9: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 578
+      Top = 672
       Width = 194
       Height = 49
       Margins.Left = 10
@@ -213,7 +211,6 @@ object FormPrincipal: TFormPrincipal
       Color = 7346457
       ParentBackground = False
       TabOrder = 3
-      ExplicitTop = 672
       object imgSair: TImage
         AlignWithMargins = True
         Left = 3
@@ -308,8 +305,8 @@ object FormPrincipal: TFormPrincipal
     AlignWithMargins = True
     Left = 222
     Top = 8
-    Width = 1038
-    Height = 621
+    Width = 876
+    Height = 715
     Margins.Left = 8
     Margins.Top = 8
     Margins.Right = 8
@@ -319,12 +316,10 @@ object FormPrincipal: TFormPrincipal
     Color = 14599344
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 876
-    ExplicitHeight = 715
     object Panel4: TPanel
       Left = 0
       Top = 0
-      Width = 1038
+      Width = 876
       Height = 51
       Margins.Left = 10
       Margins.Top = 10
@@ -339,10 +334,9 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 876
       object Panel10: TPanel
         AlignWithMargins = True
-        Left = 943
+        Left = 781
         Top = 5
         Width = 90
         Height = 41
@@ -354,7 +348,6 @@ object FormPrincipal: TFormPrincipal
         Color = 7346457
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 781
         object btnBuscar: TSpeedButton
           Left = 1
           Top = 1
@@ -373,7 +366,7 @@ object FormPrincipal: TFormPrincipal
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          OnClick = btnBuscarClick
+          OnClick = btnReagendarClick
           ExplicitLeft = 24
           ExplicitWidth = 90
         end
@@ -592,8 +585,8 @@ object FormPrincipal: TFormPrincipal
       AlignWithMargins = True
       Left = 0
       Top = 61
-      Width = 1038
-      Height = 486
+      Width = 876
+      Height = 580
       Margins.Left = 0
       Margins.Top = 10
       Margins.Right = 0
@@ -603,17 +596,15 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 876
-      ExplicitHeight = 580
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 1038
-        Height = 486
+        Width = 876
+        Height = 580
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 876
-        ExplicitHeight = 580
+        ExplicitLeft = -2
+        ExplicitTop = -5
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsAgendamentos
@@ -623,29 +614,38 @@ object FormPrincipal: TFormPrincipal
           object cxGridAgendamentosID: TcxGridDBColumn
             DataBinding.FieldName = 'ID'
           end
-          object cxGridAgendamentosSTATUS: TcxGridDBColumn
-            DataBinding.FieldName = 'STATUS'
-          end
           object cxGridAgendamentosID_CLIENTE: TcxGridDBColumn
             DataBinding.FieldName = 'ID_CLIENTE'
+            Width = 92
           end
           object cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn
             DataBinding.FieldName = 'ID_FUNCINARIO'
+            Width = 125
           end
           object cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn
             DataBinding.FieldName = 'DATA_AGENDAMENTO'
+            Width = 145
           end
           object cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn
             DataBinding.FieldName = 'DATA_AGENDADA'
+            Width = 138
           end
           object cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn
             DataBinding.FieldName = 'HORA_AGENDAMENTO'
+            Width = 118
           end
           object cxGridAgendamentosHORA_ENTREGA: TcxGridDBColumn
             DataBinding.FieldName = 'HORA_ENTREGA'
+            Width = 108
           end
           object cxGridAgendamentosPLACA: TcxGridDBColumn
             DataBinding.FieldName = 'PLACA'
+          end
+          object cxGridAgendamentosTIPO_LAVACAO: TcxGridDBColumn
+            DataBinding.FieldName = 'TIPO_LAVACAO'
+          end
+          object cxGridAgendamentosSTATUS: TcxGridDBColumn
+            DataBinding.FieldName = 'STATUS'
           end
           object cxGridAgendamentosMODELO: TcxGridDBColumn
             DataBinding.FieldName = 'MODELO'
@@ -709,12 +709,15 @@ object FormPrincipal: TFormPrincipal
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGridAgendamentos
         end
+        object cxGrid1Level2: TcxGridLevel
+          GridView = cxGrid1DBCardView1
+        end
       end
     end
     object Panel6: TPanel
       Left = 0
-      Top = 557
-      Width = 1038
+      Top = 651
+      Width = 876
       Height = 64
       Margins.Left = 10
       Margins.Top = 12
@@ -729,8 +732,6 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 2
-      ExplicitTop = 651
-      ExplicitWidth = 876
       object Panel1: TPanel
         AlignWithMargins = True
         Left = 8
@@ -785,8 +786,8 @@ object FormPrincipal: TFormPrincipal
           Font.Style = []
           ParentFont = False
           OnClick = btnReagendarClick
-          ExplicitLeft = 2
-          ExplicitTop = -5
+          ExplicitLeft = -1
+          ExplicitWidth = 115
         end
       end
       object Panel15: TPanel
@@ -814,8 +815,9 @@ object FormPrincipal: TFormPrincipal
           Font.Style = []
           ParentFont = False
           OnClick = btnCancelarAgendamentoClick
-          ExplicitLeft = 0
-          ExplicitTop = -5
+          ExplicitLeft = 64
+          ExplicitWidth = 120
+          ExplicitHeight = 39
         end
       end
       object Panel16: TPanel
@@ -845,37 +847,6 @@ object FormPrincipal: TFormPrincipal
           OnClick = btnAlterarStatusClick
           ExplicitLeft = 25
           ExplicitTop = -5
-        end
-      end
-      object Panel13: TPanel
-        AlignWithMargins = True
-        Left = 842
-        Top = 8
-        Width = 188
-        Height = 48
-        Align = alRight
-        Color = 7346457
-        ParentBackground = False
-        TabOrder = 4
-        ExplicitLeft = 1192
-        object btnItensAgendamento: TSpeedButton
-          Left = 1
-          Top = 1
-          Width = 186
-          Height = 46
-          Align = alClient
-          Caption = 'Itens Agendamento'
-          Flat = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -19
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          OnClick = btnItensAgendamentoClick
-          ExplicitLeft = 25
-          ExplicitTop = -5
-          ExplicitWidth = 141
         end
       end
     end
@@ -925,6 +896,12 @@ object FormPrincipal: TFormPrincipal
     object queryAgendamentosPLACA: TStringField
       FieldName = 'PLACA'
       Origin = 'PLACA'
+      Required = True
+      Size = 200
+    end
+    object queryAgendamentosTIPO_LAVACAO: TStringField
+      FieldName = 'TIPO_LAVACAO'
+      Origin = 'TIPO_LAVACAO'
       Required = True
       Size = 200
     end

@@ -29,7 +29,6 @@ type
     procedure imgCadeadoClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     function VerificaLogin(usuario, senha: string): boolean;
     { Private declarations }
@@ -45,12 +44,6 @@ implementation
 {$R *.dfm}
 
 uses UDataModule;
-
-procedure TFormLogin.FormKeyPress(Sender: TObject; var Key: Char);
-begin
-  if key = VK_RETURN.ToString then
-    SpeedButton1Click(self);
-end;
 
 procedure TFormLogin.FormResize(Sender: TObject);
 begin

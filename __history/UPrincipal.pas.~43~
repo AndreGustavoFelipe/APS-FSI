@@ -30,7 +30,7 @@ uses
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue,
   cxDataControllerConditionalFormattingRulesManagerDialog, UAgendamentos,
-  UServicos, UReagendamento;
+  UServicos;
 
 type
   TFormPrincipal = class(TForm)
@@ -57,7 +57,41 @@ type
     cxGridAgendamentos: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     queryAgendamentos: TFDQuery;
+    queryAgendamentosID: TIntegerField;
+    queryAgendamentosID_CLIENTE: TIntegerField;
+    queryAgendamentosID_FUNCINARIO: TIntegerField;
+    queryAgendamentosDATA_AGENDAMENTO: TDateField;
+    queryAgendamentosDATA_AGENDADA: TDateField;
+    queryAgendamentosHORA_AGENDAMENTO: TTimeField;
+    queryAgendamentosHORA_ENTREGA: TTimeField;
+    queryAgendamentosPLACA: TStringField;
+    queryAgendamentosTIPO_VEICULO: TStringField;
+    queryAgendamentosTIPO_LAVACAO: TStringField;
+    queryAgendamentosSTATUS: TStringField;
     dsAgendamentos: TDataSource;
+    cxGridAgendamentosID: TcxGridDBColumn;
+    cxGridAgendamentosID_CLIENTE: TcxGridDBColumn;
+    cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn;
+    cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn;
+    cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn;
+    cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn;
+    cxGridAgendamentosHORA_ENTREGA: TcxGridDBColumn;
+    cxGridAgendamentosPLACA: TcxGridDBColumn;
+    cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn;
+    cxGridAgendamentosTIPO_LAVACAO: TcxGridDBColumn;
+    cxGridAgendamentosSTATUS: TcxGridDBColumn;
+    cxGridAgendamentosID1: TcxGridDBColumn;
+    cxGridAgendamentosID_CLIENTE1: TcxGridDBColumn;
+    cxGridAgendamentosID_FUNCINARIO1: TcxGridDBColumn;
+    cxGridAgendamentosDATA_AGENDAMENTO1: TcxGridDBColumn;
+    cxGridAgendamentosDATA_AGENDADA1: TcxGridDBColumn;
+    cxGridAgendamentosHORA_AGENDAMENTO1: TcxGridDBColumn;
+    cxGridAgendamentosHORA_ENTREGA1: TcxGridDBColumn;
+    cxGridAgendamentosPLACA1: TcxGridDBColumn;
+    cxGridAgendamentosTIPO_VEICULO1: TcxGridDBColumn;
+    cxGridAgendamentosTIPO_LAVACAO1: TcxGridDBColumn;
+    cxGridAgendamentosSTATUS1: TcxGridDBColumn;
+    cxGrid1Level2: TcxGridLevel;
     cxGrid1DBCardView1: TcxGridDBCardView;
     cxGrid1DBCardView1ID: TcxGridDBCardViewRow;
     cxGrid1DBCardView1ID_CLIENTE: TcxGridDBCardViewRow;
@@ -91,30 +125,6 @@ type
     Label5: TLabel;
     Panel11: TPanel;
     EditColaborador: TEdit;
-    queryAgendamentosID: TIntegerField;
-    queryAgendamentosID_CLIENTE: TIntegerField;
-    queryAgendamentosID_FUNCINARIO: TIntegerField;
-    queryAgendamentosDATA_AGENDAMENTO: TDateField;
-    queryAgendamentosDATA_AGENDADA: TDateField;
-    queryAgendamentosHORA_AGENDAMENTO: TTimeField;
-    queryAgendamentosHORA_ENTREGA: TTimeField;
-    queryAgendamentosPLACA: TStringField;
-    queryAgendamentosSTATUS: TStringField;
-    queryAgendamentosMODELO: TStringField;
-    queryAgendamentosTIPO_VEICULO: TSmallintField;
-    Panel13: TPanel;
-    btnItensAgendamento: TSpeedButton;
-    cxGridAgendamentosID: TcxGridDBColumn;
-    cxGridAgendamentosID_CLIENTE: TcxGridDBColumn;
-    cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn;
-    cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn;
-    cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn;
-    cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn;
-    cxGridAgendamentosHORA_ENTREGA: TcxGridDBColumn;
-    cxGridAgendamentosPLACA: TcxGridDBColumn;
-    cxGridAgendamentosSTATUS: TcxGridDBColumn;
-    cxGridAgendamentosMODELO: TcxGridDBColumn;
-    cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
@@ -123,9 +133,6 @@ type
     procedure btnCancelarAgendamentoClick(Sender: TObject);
     procedure btnAlterarStatusClick(Sender: TObject);
     procedure btnServicosClick(Sender: TObject);
-    procedure FormShow(Sender: TObject);
-    procedure btnBuscarClick(Sender: TObject);
-    procedure btnItensAgendamentoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -139,7 +146,7 @@ implementation
 
 {$R *.dfm}
 
-uses ULogin, UItensAgendamento, UAlteraStatus;
+uses ULogin;
 
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
@@ -155,60 +162,32 @@ begin
 
 end;
 
-procedure TFormPrincipal.FormShow(Sender: TObject);
-begin
-  queryAgendamentos.Open;
-end;
-
 procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
 begin
 
-  with TFormAlteraStatus.Create(Self) do
+  with TFormAgendamento.Create(Self) do
   begin
     try
-      codAgendamento := dsAgendamentos.DataSet.FieldByName('id').Value;
+      operacao := 4;
       ShowModal;
     finally
       Free;
     end;
   end;
 
-  btnBuscarClick(self);
-
-
-end;
-
-procedure TFormPrincipal.btnBuscarClick(Sender: TObject);
-begin
-  queryAgendamentos.Close;
-  queryAgendamentos.Open;
 end;
 
 procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);
 begin
-  if (MessageDlg('Tem certeza que deseja cancelar este agendamento?', mtWarning, [mbNo, mbYes], 0) = mrYes) then
+
+  with TFormAgendamento.Create(Self) do
   begin
-    with TFDQuery.Create(self) do
-    begin
-      try
-
-        connection := dm.con;
-
-        sql.Add('update agendamentos');
-        sql.Add('set status = :status');
-        sql.Add('where id = :id');
-
-        ParamByName('id').Value := dsAgendamentos.DataSet.FieldByName('id').Value;
-        ParamByName('status').Value := 3;
-
-        execsql;
-
-      finally
-        Free;
-      end;
+    try
+      operacao := 3;
+      ShowModal;
+    finally
+      Free;
     end;
-
-    btnBuscarClick(self);
   end;
 
 end;
@@ -227,30 +206,6 @@ begin
 
 end;
 
-procedure TFormPrincipal.btnItensAgendamentoClick(Sender: TObject);
-begin
-  with TFormItensAgendamento.Create(self) do
-  begin
-    try
-      
-      queryItens.Close;
-      queryItens.sql.Clear;
-
-      queryItens.sql.Add('select ia.id, s.DESCRICAO from ITENS_AGENDAMENTO ia');
-      queryItens.sql.Add('left join SERVICOS s on ia.ID = s.ID');
-      queryItens.sql.Add('where ia.ID_AGENDAMENTO = :id');
-
-      queryItens.ParamByName('id').Value := cxGridAgendamentos.DataController.DataSet.FieldByName('id').Value;
-
-      queryItens.open;
-
-      ShowModal;
-    finally
-      free;
-    end;
-  end;
-end;
-
 procedure TFormPrincipal.btnNovoAgendamentoClick(Sender: TObject);
 begin
 
@@ -260,7 +215,6 @@ begin
       operacao := 0;
       ShowModal;
     finally
-      btnBuscarClick(self);
       Free;
     end;
   end;
@@ -269,19 +223,8 @@ end;
 
 procedure TFormPrincipal.btnReagendarClick(Sender: TObject);
 begin
-
-  with TFormReagendamento.Create(self) do
-  begin
-    try
-      codigoReagendamento := dsAgendamentos.DataSet.FieldByName('ID').AsInteger;
-      ShowModal;
-    finally
-      Free;
-    end;
-  end;
-
-  btnBuscarClick(self);
-
+  queryAgendamentos.Close;
+  queryAgendamentos.Open;
 end;
 
 procedure TFormPrincipal.btnSairClick(Sender: TObject);

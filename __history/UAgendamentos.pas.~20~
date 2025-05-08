@@ -71,10 +71,11 @@ type
     procedure btnSalvarClick(Sender: TObject);
   private
     function VerificaCampos: boolean;
+    function HoraEntrega(hora: TTime): TTime;
     { Private declarations }
   public
+    { Public declarations }
     operacao : integer; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
-    function HoraEntrega(hora: TTime): TTime;
   end;
 
 var

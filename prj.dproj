@@ -138,6 +138,18 @@
             <Form>FormMensagem</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UItensAgendamento.pas">
+            <Form>FormItensAgendamento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UReagendamento.pas">
+            <Form>FormReagendamento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UAlteraStatus.pas">
+            <Form>FormAlteraStatus</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -166,13 +178,13 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="..\..\..\..\..\..\CPU\Downloads\Lav\prj.exe" Configuration="Release" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\..\Área de Trabalho\Lav\prj.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>prj.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\prj.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\..\..\..\CPU\Downloads\Lav\prj.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>prj.exe</RemoteName>
                         <Overwrite>true</Overwrite>

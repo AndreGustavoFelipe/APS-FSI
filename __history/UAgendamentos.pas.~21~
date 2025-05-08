@@ -73,8 +73,9 @@ type
     function VerificaCampos: boolean;
     { Private declarations }
   public
-    operacao : integer; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
+    { Public declarations }
     function HoraEntrega(hora: TTime): TTime;
+    operacao : integer; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
   end;
 
 var

@@ -91,6 +91,18 @@ type
     Label5: TLabel;
     Panel11: TPanel;
     EditColaborador: TEdit;
+    cxGridAgendamentosID: TcxGridDBColumn;
+    cxGridAgendamentosID_CLIENTE: TcxGridDBColumn;
+    cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn;
+    cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn;
+    cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn;
+    cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn;
+    cxGridAgendamentosHORA_ENTREGA: TcxGridDBColumn;
+    cxGridAgendamentosPLACA: TcxGridDBColumn;
+    cxGridAgendamentosTIPO_LAVACAO: TcxGridDBColumn;
+    cxGridAgendamentosSTATUS: TcxGridDBColumn;
+    cxGridAgendamentosMODELO: TcxGridDBColumn;
+    cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn;
     queryAgendamentosID: TIntegerField;
     queryAgendamentosID_CLIENTE: TIntegerField;
     queryAgendamentosID_FUNCINARIO: TIntegerField;
@@ -102,19 +114,19 @@ type
     queryAgendamentosSTATUS: TStringField;
     queryAgendamentosMODELO: TStringField;
     queryAgendamentosTIPO_VEICULO: TSmallintField;
+    cxGridAgendamentosID1: TcxGridDBColumn;
+    cxGridAgendamentosID_CLIENTE1: TcxGridDBColumn;
+    cxGridAgendamentosID_FUNCINARIO1: TcxGridDBColumn;
+    cxGridAgendamentosDATA_AGENDAMENTO1: TcxGridDBColumn;
+    cxGridAgendamentosDATA_AGENDADA1: TcxGridDBColumn;
+    cxGridAgendamentosHORA_AGENDAMENTO1: TcxGridDBColumn;
+    cxGridAgendamentosHORA_ENTREGA1: TcxGridDBColumn;
+    cxGridAgendamentosPLACA1: TcxGridDBColumn;
+    cxGridAgendamentosSTATUS1: TcxGridDBColumn;
+    cxGridAgendamentosMODELO1: TcxGridDBColumn;
+    cxGridAgendamentosTIPO_VEICULO1: TcxGridDBColumn;
     Panel13: TPanel;
     btnItensAgendamento: TSpeedButton;
-    cxGridAgendamentosID: TcxGridDBColumn;
-    cxGridAgendamentosID_CLIENTE: TcxGridDBColumn;
-    cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn;
-    cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn;
-    cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn;
-    cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn;
-    cxGridAgendamentosHORA_ENTREGA: TcxGridDBColumn;
-    cxGridAgendamentosPLACA: TcxGridDBColumn;
-    cxGridAgendamentosSTATUS: TcxGridDBColumn;
-    cxGridAgendamentosMODELO: TcxGridDBColumn;
-    cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
@@ -139,7 +151,7 @@ implementation
 
 {$R *.dfm}
 
-uses ULogin, UItensAgendamento, UAlteraStatus;
+uses ULogin, UItensAgendamento;
 
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
@@ -163,18 +175,15 @@ end;
 procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
 begin
 
-  with TFormAlteraStatus.Create(Self) do
+  with TFormAgendamento.Create(Self) do
   begin
     try
-      codAgendamento := dsAgendamentos.DataSet.FieldByName('id').Value;
+      operacao := 4;
       ShowModal;
     finally
       Free;
     end;
   end;
-
-  btnBuscarClick(self);
-
 
 end;
 
@@ -199,7 +208,6 @@ begin
         sql.Add('where id = :id');
 
         ParamByName('id').Value := dsAgendamentos.DataSet.FieldByName('id').Value;
-        ParamByName('status').Value := 3;
 
         execsql;
 

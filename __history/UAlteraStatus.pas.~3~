@@ -1,0 +1,86 @@
+unit UAlteraStatus;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TFormAlteraStatus = class(TForm)
+    Panel2: TPanel;
+    Panel1: TPanel;
+    lblAlteraStatus: TLabel;
+    Panel4: TPanel;
+    pnlEmAndamento: TPanel;
+    btnEmAndamento: TSpeedButton;
+    pnlFinalizado: TPanel;
+    btnFinalizado: TSpeedButton;
+    procedure btnEmAndamentoClick(Sender: TObject);
+    procedure btnFinalizadoClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+  private
+    procedure AlteraStatus(codigoAgendamento : integer; status : integer);
+    { Private declarations }
+  public
+    codAgendamento : integer;
+    { Public declarations }
+  end;
+
+var
+  FormAlteraStatus: TFormAlteraStatus;
+
+implementation
+
+uses
+  FireDAC.Comp.Client, UDataModule;
+
+{$R *.dfm}
+
+procedure TFormAlteraStatus.AlteraStatus(codigoAgendamento : integer; status : integer);
+begin
+  with TFDQuery.Create(self) do
+  begin
+    try
+      connection := dm.con;
+
+      sql.Add('update agendamentos');
+      sql.Add('set status = :status');
+      sql.Add('where id = :id');
+
+      ParamByName('id').Value := codigoAgendamento;
+      ParamByName('status').Value := status;
+
+      execsql;
+
+    finally
+      free;
+    end;
+  end;
+end;
+
+procedure TFormAlteraStatus.btnEmAndamentoClick(Sender: TObject);
+begin
+   AlteraStatus(codAgendamento, 1);
+   close;
+end;
+
+procedure TFormAlteraStatus.btnFinalizadoClick(Sender: TObject);
+begin
+  AlteraStatus(codAgendamento, 2);
+  close;
+end;
+
+procedure TFormAlteraStatus.FormResize(Sender: TObject);
+begin
+  lblAlteraStatus.Margins.Left  := Trunc(FormAlteraStatus.Width/6);
+  lblAlteraStatus.Margins.Right := Trunc(FormAlteraStatus.Width/6);
+
+  btnEmAndamento.Margins.Left  := Trunc(FormAlteraStatus.Width/6);
+  btnEmAndamento.Margins.Right := Trunc(FormAlteraStatus.Width/6);
+
+  btnFinalizado.Margins.top := (Trunc(FormAlteraStatus.height/7));
+  btnFinalizado.Margins.bottom := Trunc((FormAlteraStatus.height/6) * 2.7);
+end;
+
+end.

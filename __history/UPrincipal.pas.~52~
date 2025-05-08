@@ -174,7 +174,7 @@ begin
   end;
 
   btnBuscarClick(self);
-
+  showmessage('Status alterado com sucesso!');
 
 end;
 

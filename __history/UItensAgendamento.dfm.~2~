@@ -1,0 +1,78 @@
+object FormItensAgendamento: TFormItensAgendamento
+  Left = 0
+  Top = 0
+  Caption = 'Itens Agendamento'
+  ClientHeight = 382
+  ClientWidth = 581
+  Color = 7346457
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object cxGrid1: TcxGrid
+    AlignWithMargins = True
+    Left = 15
+    Top = 15
+    Width = 551
+    Height = 352
+    Margins.Left = 15
+    Margins.Top = 15
+    Margins.Right = 15
+    Margins.Bottom = 15
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 184
+    ExplicitTop = 96
+    ExplicitWidth = 250
+    ExplicitHeight = 200
+    object cxGridItensAgendamento: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = dsItens
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsView.GroupByBox = False
+      object cxGridItensAgendamentoID: TcxGridDBColumn
+        DataBinding.FieldName = 'ID'
+        Visible = False
+      end
+      object cxGridItensAgendamentoDESCRICAO: TcxGridDBColumn
+        DataBinding.FieldName = 'DESCRICAO'
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGridItensAgendamento
+    end
+  end
+  object queryItens: TFDQuery
+    Connection = dm.con
+    SQL.Strings = (
+      'select ia.id, s.DESCRICAO from ITENS_AGENDAMENTO ia'
+      'left join SERVICOS s on ia.ID = s.ID'
+      '')
+    Left = 496
+    Top = 88
+    object queryItensID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      Required = True
+    end
+    object queryItensDESCRICAO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 200
+    end
+  end
+  object dsItens: TDataSource
+    DataSet = queryItens
+    Left = 496
+    Top = 136
+  end
+end

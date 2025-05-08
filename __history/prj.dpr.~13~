@@ -10,9 +10,7 @@ uses
   UDataModule in 'UDataModule.pas' {dm: TDataModule},
   UAgendamentos in 'UAgendamentos.pas' {FormAgendamento},
   UMensagem in 'UMensagem.pas' {FormMensagem},
-  UItensAgendamento in 'UItensAgendamento.pas' {FormItensAgendamento},
-  UReagendamento in 'UReagendamento.pas' {FormReagendamento},
-  UAlteraStatus in 'UAlteraStatus.pas' {FormAlteraStatus};
+  UItensAgendamento in 'UItensAgendamento.pas' {FormItensAgendamento};
 
 {$R *.res}
 
@@ -24,7 +22,5 @@ begin
   Application.CreateForm(TFormAgendamento, FormAgendamento);
   Application.CreateForm(TFormMensagem, FormMensagem);
   Application.CreateForm(TFormItensAgendamento, FormItensAgendamento);
-  Application.CreateForm(TFormReagendamento, FormReagendamento);
-  Application.CreateForm(TFormAlteraStatus, FormAlteraStatus);
   Application.Run;
 end.

@@ -13,7 +13,7 @@ uses
   cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridLevel,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
   cxGridCustomView, cxGrid, Vcl.WinXPickers, cxGridCardView, cxGridDBCardView,
-  cxGridCustomLayoutView, DateUtils;
+  cxGridCustomLayoutView;
 
 type
   TFormAgendamento = class(TForm)
@@ -73,8 +73,8 @@ type
     function VerificaCampos: boolean;
     { Private declarations }
   public
+    { Public declarations }
     operacao : integer; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
-    function HoraEntrega(hora: TTime): TTime;
   end;
 
 var
@@ -123,11 +123,6 @@ begin
     result := true;
 end;
 
-function TFormAgendamento.HoraEntrega(hora: TTime): TTime;
-begin
-  Result := EncodeTime((HourOf(hora) + 1), MinuteOf(hora), 0, 0);
-end;
-
 
 procedure TFormAgendamento.btnSalvarClick(Sender: TObject);
 var
@@ -159,7 +154,7 @@ begin
         ParamByName('HORA_AGENDAMENTO').AsTime := timePicker.Time;
 
         ParamByName('HORA_ENTREGA').DataType := ftTime;
-        ParamByName('HORA_ENTREGA').Astime := HoraEntrega(timePicker.Time);
+        ParamByName('HORA_ENTREGA').Astime := timePicker.Time;
 
         ParamByName('PLACA').Value := edtPlaca.Text;
         ParamByName('TIPO_VEICULO').Value := cbTipoVeiculo.ItemIndex;
@@ -172,7 +167,7 @@ begin
 
         with cxGridServicos do
         begin
-          for I := 0 to pred(Controller.SelectedRowCount) do
+          for I := 0 to pred(DataController.RowCount) do
           begin
             SQL.Clear;
             SQL.Add('insert into ITENS_AGENDAMENTO(id, id_agendamento)');
@@ -195,6 +190,8 @@ begin
     end;
 
     close;
+
+    FormPrincipal.btnBuscarClick(self);
   end;
 
 end;
