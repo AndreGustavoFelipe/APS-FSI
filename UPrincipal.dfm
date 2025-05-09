@@ -3,7 +3,7 @@ object FormPrincipal: TFormPrincipal
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'FormPrincipal'
+  Caption = 'In'#237'cio'
   ClientHeight = 637
   ClientWidth = 1268
   Color = 14599344
@@ -28,7 +28,6 @@ object FormPrincipal: TFormPrincipal
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 731
     object Panel7: TPanel
       AlignWithMargins = True
       Left = 10
@@ -213,7 +212,6 @@ object FormPrincipal: TFormPrincipal
       Color = 7346457
       ParentBackground = False
       TabOrder = 3
-      ExplicitTop = 672
       object imgSair: TImage
         AlignWithMargins = True
         Left = 3
@@ -319,8 +317,6 @@ object FormPrincipal: TFormPrincipal
     Color = 14599344
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 876
-    ExplicitHeight = 715
     object Panel4: TPanel
       Left = 0
       Top = 0
@@ -339,7 +335,6 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 876
       object Panel10: TPanel
         AlignWithMargins = True
         Left = 943
@@ -354,7 +349,6 @@ object FormPrincipal: TFormPrincipal
         Color = 7346457
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 781
         object btnBuscar: TSpeedButton
           Left = 1
           Top = 1
@@ -580,11 +574,11 @@ object FormPrincipal: TFormPrincipal
           TabOrder = 0
           Text = 'Selecione'
           Items.Strings = (
-            'Pendente'
+            'Agendado'
             'Em andamento'
             'Conclu'#237'do'
-            'Atrasado'
-            'Cancelado')
+            'Cancelado'
+            'Atrasado')
         end
       end
     end
@@ -603,8 +597,6 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 876
-      ExplicitHeight = 580
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -612,8 +604,6 @@ object FormPrincipal: TFormPrincipal
         Height = 486
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 876
-        ExplicitHeight = 580
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsAgendamentos
@@ -729,8 +719,6 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 2
-      ExplicitTop = 651
-      ExplicitWidth = 876
       object Panel1: TPanel
         AlignWithMargins = True
         Left = 8
@@ -843,28 +831,27 @@ object FormPrincipal: TFormPrincipal
           Font.Style = []
           ParentFont = False
           OnClick = btnAlterarStatusClick
-          ExplicitLeft = 25
+          ExplicitLeft = -1
           ExplicitTop = -5
         end
       end
       object Panel13: TPanel
         AlignWithMargins = True
-        Left = 842
+        Left = 784
         Top = 8
-        Width = 188
+        Width = 246
         Height = 48
         Align = alRight
         Color = 7346457
         ParentBackground = False
         TabOrder = 4
-        ExplicitLeft = 1192
         object btnItensAgendamento: TSpeedButton
           Left = 1
           Top = 1
-          Width = 186
+          Width = 244
           Height = 46
           Align = alClient
-          Caption = 'Itens Agendamento'
+          Caption = 'Servi'#231'os do agendamento'
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
@@ -873,9 +860,8 @@ object FormPrincipal: TFormPrincipal
           Font.Style = []
           ParentFont = False
           OnClick = btnItensAgendamentoClick
-          ExplicitLeft = 25
           ExplicitTop = -5
-          ExplicitWidth = 141
+          ExplicitWidth = 186
         end
       end
     end

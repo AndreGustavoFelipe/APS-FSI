@@ -185,7 +185,6 @@ object FormServicos: TFormServicos
       ActivePage = tabListagem
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 20
       object tabListagem: TTabSheet
         Caption = 'Listagem'
         object cxGrid1: TcxGrid

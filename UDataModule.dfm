@@ -4,9 +4,7 @@ object dm: Tdm
   Width = 349
   object con: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\imper\OneDrive\'#193'rea de Trabalho\Lav\dados\BDAP' +
-        'SFDSI.FDB'
+      'Database=C:\Users\CPU\Downloads\Lav\Dados\BDAPSFDSI.FDB'
       'User_Name= SYSDBA'
       'Password=masterkey'
       'DriverID=FB')

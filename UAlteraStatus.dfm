@@ -27,9 +27,6 @@ object FormAlteraStatus: TFormAlteraStatus
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = -58
-    ExplicitWidth = 388
-    ExplicitHeight = 357
     object Panel1: TPanel
       Left = 0
       Top = 0
@@ -44,7 +41,6 @@ object FormAlteraStatus: TFormAlteraStatus
       Color = 7346457
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 388
       object lblAlteraStatus: TLabel
         Left = 18
         Top = 16
@@ -71,9 +67,6 @@ object FormAlteraStatus: TFormAlteraStatus
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitTop = 51
-      ExplicitWidth = 462
-      ExplicitHeight = 246
       object pnlEmAndamento: TPanel
         AlignWithMargins = True
         Left = 53
@@ -108,7 +101,7 @@ object FormAlteraStatus: TFormAlteraStatus
           ExplicitWidth = 160
         end
       end
-      object pnlFinalizado: TPanel
+      object pnlConcluido: TPanel
         AlignWithMargins = True
         Left = 53
         Top = 85
@@ -122,13 +115,13 @@ object FormAlteraStatus: TFormAlteraStatus
         Color = 7346457
         ParentBackground = False
         TabOrder = 1
-        object btnFinalizado: TSpeedButton
+        object btnConcluido: TSpeedButton
           Left = 0
           Top = 0
           Width = 211
           Height = 34
           Align = alClient
-          Caption = 'Finalizado'
+          Caption = 'Conclu'#237'do'
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
@@ -136,9 +129,8 @@ object FormAlteraStatus: TFormAlteraStatus
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          OnClick = btnFinalizadoClick
+          OnClick = btnConcluidoClick
           ExplicitTop = -8
-          ExplicitWidth = 160
         end
       end
     end

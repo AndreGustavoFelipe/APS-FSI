@@ -23,10 +23,6 @@ object FormMensagem: TFormMensagem
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 434
-    ExplicitHeight = 238
     object Panel1: TPanel
       Left = 0
       Top = 0
@@ -44,7 +40,7 @@ object FormMensagem: TFormMensagem
       object lblTituloMensagem: TLabel
         Left = 10
         Top = 22
-        Width = 135
+        Width = 87
         Height = 13
         Caption = 'lblTituloMensagem'
       end
@@ -61,10 +57,6 @@ object FormMensagem: TFormMensagem
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 10
-      ExplicitTop = 106
-      ExplicitWidth = 414
-      ExplicitHeight = 31
       object lblCorpoMensagem: TLabel
         Left = 18
         Top = 30
@@ -86,9 +78,6 @@ object FormMensagem: TFormMensagem
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitLeft = 10
-      ExplicitTop = 184
-      ExplicitWidth = 414
       object pnlDireito: TPanel
         AlignWithMargins = True
         Left = 379
@@ -105,7 +94,6 @@ object FormMensagem: TFormMensagem
         Color = 7346457
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 213
         object btnDireito: TSpeedButton
           Left = 0
           Top = 0

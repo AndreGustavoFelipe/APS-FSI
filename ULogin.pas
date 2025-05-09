@@ -138,6 +138,10 @@ begin
   begin
     if VerificaLogin(edtUsuario.Text, edtSenha.Text) then
     begin
+
+      edtUsuario.Text := '';
+      edtSenha.Text := '';
+
       with TFormPrincipal.Create(self) do
       begin
         try

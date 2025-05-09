@@ -27,7 +27,7 @@ uses
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.Buttons;
 
 type
   TFormDashboard = class(TForm)
@@ -38,6 +38,10 @@ type
     cxGrid1: TcxGrid;
     queryAgendamentos: TFDQuery;
     dsAgendamentos: TDataSource;
+    Panel1: TPanel;
+    Panel9: TPanel;
+    btnVoltar: TSpeedButton;
+    procedure btnVoltarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,5 +54,10 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TFormDashboard.btnVoltarClick(Sender: TObject);
+begin
+  Close;
+end;
 
 end.

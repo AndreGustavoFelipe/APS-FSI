@@ -35,7 +35,6 @@ object FormLogin: TFormLogin
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1146
     object Panel3: TPanel
       AlignWithMargins = True
       Left = 0
@@ -51,7 +50,6 @@ object FormLogin: TFormLogin
       Color = 7346457
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 801
       object lblSenha: TLabel
         AlignWithMargins = True
         Left = 0
@@ -110,7 +108,6 @@ object FormLogin: TFormLogin
         Color = 14599344
         ParentBackground = False
         TabOrder = 0
-        ExplicitWidth = 1146
         object Image1: TImage
           AlignWithMargins = True
           Left = 989
@@ -490,7 +487,6 @@ object FormLogin: TFormLogin
           ParentFont = False
           TabOrder = 0
           TextHint = 'Informe seu usu'#225'rio'
-          ExplicitWidth = 1096
         end
       end
       object Panel5: TPanel
@@ -507,7 +503,6 @@ object FormLogin: TFormLogin
         Color = 14599344
         ParentBackground = False
         TabOrder = 1
-        ExplicitWidth = 1146
         object imgCadeado: TImage
           AlignWithMargins = True
           Left = 989
@@ -1556,7 +1551,6 @@ object FormLogin: TFormLogin
           PasswordChar = '*'
           TabOrder = 0
           TextHint = 'Informe sua senha'
-          ExplicitWidth = 1096
         end
       end
     end
@@ -1575,7 +1569,6 @@ object FormLogin: TFormLogin
       Color = 7346457
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 1146
       object lblLogin: TLabel
         AlignWithMargins = True
         Left = 15
@@ -1614,7 +1607,6 @@ object FormLogin: TFormLogin
       Color = 4938751
       ParentBackground = False
       TabOrder = 2
-      ExplicitWidth = 1146
       object SpeedButton1: TSpeedButton
         Left = 0
         Top = 0

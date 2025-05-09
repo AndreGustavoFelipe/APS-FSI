@@ -23,6 +23,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnDireitoClick(Sender: TObject);
+    procedure btnEsquerdoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,9 +70,15 @@ begin
       Free;
     end;
 
-    Close;
   end;
 
+  Close;
+
+end;
+
+procedure TFormReagendamento.btnEsquerdoClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TFormReagendamento.FormResize(Sender: TObject);
