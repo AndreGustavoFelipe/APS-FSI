@@ -3,7 +3,7 @@ object FormPrincipal: TFormPrincipal
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'FormPrincipal'
+  Caption = 'In'#237'cio'
   ClientHeight = 637
   ClientWidth = 1268
   Color = 14599344
@@ -28,7 +28,8 @@ object FormPrincipal: TFormPrincipal
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 731
+    ExplicitLeft = 16
+    ExplicitTop = 8
     object Panel7: TPanel
       AlignWithMargins = True
       Left = 10
@@ -213,7 +214,6 @@ object FormPrincipal: TFormPrincipal
       Color = 7346457
       ParentBackground = False
       TabOrder = 3
-      ExplicitTop = 672
       object imgSair: TImage
         AlignWithMargins = True
         Left = 3
@@ -319,8 +319,6 @@ object FormPrincipal: TFormPrincipal
     Color = 14599344
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 876
-    ExplicitHeight = 715
     object Panel4: TPanel
       Left = 0
       Top = 0
@@ -339,7 +337,6 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 876
       object Panel10: TPanel
         AlignWithMargins = True
         Left = 943
@@ -354,7 +351,6 @@ object FormPrincipal: TFormPrincipal
         Color = 7346457
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 781
         object btnBuscar: TSpeedButton
           Left = 1
           Top = 1
@@ -580,11 +576,11 @@ object FormPrincipal: TFormPrincipal
           TabOrder = 0
           Text = 'Selecione'
           Items.Strings = (
-            'Pendente'
+            'Agendado'
             'Em andamento'
             'Conclu'#237'do'
-            'Atrasado'
-            'Cancelado')
+            'Cancelado'
+            'Atrasado')
         end
       end
     end
@@ -603,8 +599,6 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 876
-      ExplicitHeight = 580
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -612,87 +606,46 @@ object FormPrincipal: TFormPrincipal
         Height = 486
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 876
-        ExplicitHeight = 580
+        ExplicitLeft = -2
+        ExplicitTop = 3
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsAgendamentos
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          Styles.Header = cxStyle1
           object cxGridAgendamentosID: TcxGridDBColumn
             DataBinding.FieldName = 'ID'
           end
+          object cxGridAgendamentosSTATUS: TcxGridDBColumn
+            DataBinding.FieldName = 'STATUS'
+          end
           object cxGridAgendamentosID_CLIENTE: TcxGridDBColumn
             DataBinding.FieldName = 'ID_CLIENTE'
-            Width = 92
           end
           object cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn
             DataBinding.FieldName = 'ID_FUNCINARIO'
-            Width = 125
           end
           object cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn
             DataBinding.FieldName = 'DATA_AGENDAMENTO'
-            Width = 145
           end
           object cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn
             DataBinding.FieldName = 'DATA_AGENDADA'
-            Width = 138
           end
           object cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn
             DataBinding.FieldName = 'HORA_AGENDAMENTO'
-            Width = 118
           end
           object cxGridAgendamentosHORA_ENTREGA: TcxGridDBColumn
             DataBinding.FieldName = 'HORA_ENTREGA'
-            Width = 108
           end
           object cxGridAgendamentosPLACA: TcxGridDBColumn
             DataBinding.FieldName = 'PLACA'
-          end
-          object cxGridAgendamentosTIPO_LAVACAO: TcxGridDBColumn
-            DataBinding.FieldName = 'TIPO_LAVACAO'
-          end
-          object cxGridAgendamentosSTATUS: TcxGridDBColumn
-            DataBinding.FieldName = 'STATUS'
           end
           object cxGridAgendamentosMODELO: TcxGridDBColumn
             DataBinding.FieldName = 'MODELO'
           end
           object cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn
-            DataBinding.FieldName = 'TIPO_VEICULO'
-          end
-          object cxGridAgendamentosID1: TcxGridDBColumn
-            DataBinding.FieldName = 'ID'
-          end
-          object cxGridAgendamentosID_CLIENTE1: TcxGridDBColumn
-            DataBinding.FieldName = 'ID_CLIENTE'
-          end
-          object cxGridAgendamentosID_FUNCINARIO1: TcxGridDBColumn
-            DataBinding.FieldName = 'ID_FUNCINARIO'
-          end
-          object cxGridAgendamentosDATA_AGENDAMENTO1: TcxGridDBColumn
-            DataBinding.FieldName = 'DATA_AGENDAMENTO'
-          end
-          object cxGridAgendamentosDATA_AGENDADA1: TcxGridDBColumn
-            DataBinding.FieldName = 'DATA_AGENDADA'
-          end
-          object cxGridAgendamentosHORA_AGENDAMENTO1: TcxGridDBColumn
-            DataBinding.FieldName = 'HORA_AGENDAMENTO'
-          end
-          object cxGridAgendamentosHORA_ENTREGA1: TcxGridDBColumn
-            DataBinding.FieldName = 'HORA_ENTREGA'
-          end
-          object cxGridAgendamentosPLACA1: TcxGridDBColumn
-            DataBinding.FieldName = 'PLACA'
-          end
-          object cxGridAgendamentosSTATUS1: TcxGridDBColumn
-            DataBinding.FieldName = 'STATUS'
-          end
-          object cxGridAgendamentosMODELO1: TcxGridDBColumn
-            DataBinding.FieldName = 'MODELO'
-          end
-          object cxGridAgendamentosTIPO_VEICULO1: TcxGridDBColumn
             DataBinding.FieldName = 'TIPO_VEICULO'
           end
         end
@@ -771,8 +724,6 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 2
-      ExplicitTop = 651
-      ExplicitWidth = 876
       object Panel1: TPanel
         AlignWithMargins = True
         Left = 8
@@ -885,28 +836,27 @@ object FormPrincipal: TFormPrincipal
           Font.Style = []
           ParentFont = False
           OnClick = btnAlterarStatusClick
-          ExplicitLeft = 25
+          ExplicitLeft = -1
           ExplicitTop = -5
         end
       end
       object Panel13: TPanel
         AlignWithMargins = True
-        Left = 842
+        Left = 784
         Top = 8
-        Width = 188
+        Width = 246
         Height = 48
         Align = alRight
         Color = 7346457
         ParentBackground = False
         TabOrder = 4
-        ExplicitLeft = 1192
         object btnItensAgendamento: TSpeedButton
           Left = 1
           Top = 1
-          Width = 186
+          Width = 244
           Height = 46
           Align = alClient
-          Caption = 'Itens Agendamento'
+          Caption = 'Servi'#231'os do agendamento'
           Flat = True
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
@@ -915,9 +865,8 @@ object FormPrincipal: TFormPrincipal
           Font.Style = []
           ParentFont = False
           OnClick = btnItensAgendamentoClick
-          ExplicitLeft = 25
           ExplicitTop = -5
-          ExplicitWidth = 141
+          ExplicitWidth = 186
         end
       end
     end
@@ -992,5 +941,17 @@ object FormPrincipal: TFormPrincipal
     DataSet = queryAgendamentos
     Left = 982
     Top = 163
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    PixelsPerInch = 96
+    object cxStyle1: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = 14730931
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clHighlight
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
   end
 end

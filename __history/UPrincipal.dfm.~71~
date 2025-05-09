@@ -3,7 +3,7 @@ object FormPrincipal: TFormPrincipal
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'FormPrincipal'
+  Caption = 'In'#237'cio'
   ClientHeight = 637
   ClientWidth = 1268
   Color = 14599344
@@ -28,6 +28,8 @@ object FormPrincipal: TFormPrincipal
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 16
+    ExplicitTop = 8
     object Panel7: TPanel
       AlignWithMargins = True
       Left = 10
@@ -574,11 +576,11 @@ object FormPrincipal: TFormPrincipal
           TabOrder = 0
           Text = 'Selecione'
           Items.Strings = (
-            'Pendente'
+            'Agendado'
             'Em andamento'
             'Conclu'#237'do'
-            'Atrasado'
-            'Cancelado')
+            'Cancelado'
+            'Atrasado')
         end
       end
     end
@@ -604,12 +606,16 @@ object FormPrincipal: TFormPrincipal
         Height = 486
         Align = alClient
         TabOrder = 0
+        ExplicitLeft = -2
+        ExplicitTop = 3
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsAgendamentos
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          Styles.Content = cxStyle
+          Styles.Header = cxStyle
           object cxGridAgendamentosID: TcxGridDBColumn
             DataBinding.FieldName = 'ID'
           end
@@ -651,6 +657,7 @@ object FormPrincipal: TFormPrincipal
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
           OptionsView.CardIndent = 7
+          Styles.Background = cxStyle
           object cxGrid1DBCardView1ID: TcxGridDBCardViewRow
             DataBinding.FieldName = 'ID'
             Position.BeginsLayer = True
@@ -831,7 +838,7 @@ object FormPrincipal: TFormPrincipal
           Font.Style = []
           ParentFont = False
           OnClick = btnAlterarStatusClick
-          ExplicitLeft = 25
+          ExplicitLeft = -1
           ExplicitTop = -5
         end
       end
@@ -936,5 +943,17 @@ object FormPrincipal: TFormPrincipal
     DataSet = queryAgendamentos
     Left = 982
     Top = 163
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    PixelsPerInch = 96
+    object cxStyle: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = 14796724
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clDefault
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
   end
 end

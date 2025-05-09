@@ -3,7 +3,7 @@ object FormDashboard: TFormDashboard
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Dashboard'
+  Caption = 'Form1'
   ClientHeight = 507
   ClientWidth = 970
   Color = clBtnFace

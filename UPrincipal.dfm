@@ -28,6 +28,8 @@ object FormPrincipal: TFormPrincipal
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 16
+    ExplicitTop = 8
     object Panel7: TPanel
       AlignWithMargins = True
       Left = 10
@@ -604,12 +606,16 @@ object FormPrincipal: TFormPrincipal
         Height = 486
         Align = alClient
         TabOrder = 0
+        ExplicitLeft = -2
+        ExplicitTop = 3
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsAgendamentos
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          Styles.Content = StyleContent
+          Styles.Header = StyleHeader
           object cxGridAgendamentosID: TcxGridDBColumn
             DataBinding.FieldName = 'ID'
           end
@@ -651,6 +657,7 @@ object FormPrincipal: TFormPrincipal
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
           OptionsView.CardIndent = 7
+          Styles.Background = StyleHeader
           object cxGrid1DBCardView1ID: TcxGridDBCardViewRow
             DataBinding.FieldName = 'ID'
             Position.BeginsLayer = True
@@ -936,5 +943,29 @@ object FormPrincipal: TFormPrincipal
     DataSet = queryAgendamentos
     Left = 982
     Top = 163
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    PixelsPerInch = 96
+    object StyleHeader: TcxStyle
+      AssignedValues = [svBitmap, svColor, svFont]
+      Color = clWindow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clDefault
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+  end
+  object cxStyleRepository2: TcxStyleRepository
+    PixelsPerInch = 96
+    object StyleContent: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = clWindow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clDefault
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
   end
 end

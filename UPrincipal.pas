@@ -115,6 +115,10 @@ type
     cxGridAgendamentosSTATUS: TcxGridDBColumn;
     cxGridAgendamentosMODELO: TcxGridDBColumn;
     cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn;
+    cxStyleRepository1: TcxStyleRepository;
+    StyleHeader: TcxStyle;
+    cxStyleRepository2: TcxStyleRepository;
+    StyleContent: TcxStyle;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
