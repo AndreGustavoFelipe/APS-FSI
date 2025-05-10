@@ -27,8 +27,6 @@ object FormUsuarios: TFormUsuarios
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -40
-    ExplicitTop = 467
     object Panel8: TPanel
       AlignWithMargins = True
       Left = 10
@@ -184,7 +182,7 @@ object FormUsuarios: TFormUsuarios
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabListagem
+      ActivePage = tabCad
       Align = alClient
       TabOrder = 0
       OnChange = pgControlChange
@@ -215,7 +213,6 @@ object FormUsuarios: TFormUsuarios
           Height = 406
           Align = alClient
           TabOrder = 1
-          ExplicitLeft = -40
           object cxGridUsuarios: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             DataController.DataSource = dsUsuarios
@@ -251,7 +248,6 @@ object FormUsuarios: TFormUsuarios
       object tabCad: TTabSheet
         Caption = 'Usuario'
         ImageIndex = 1
-        ExplicitLeft = 0
         object Panel5: TPanel
           AlignWithMargins = True
           Left = 10

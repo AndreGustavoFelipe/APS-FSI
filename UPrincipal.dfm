@@ -28,8 +28,6 @@ object FormPrincipal: TFormPrincipal
     Color = 7346457
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 16
-    ExplicitTop = 8
     object Panel7: TPanel
       AlignWithMargins = True
       Left = 10
@@ -370,8 +368,7 @@ object FormPrincipal: TFormPrincipal
           Font.Style = []
           ParentFont = False
           OnClick = btnBuscarClick
-          ExplicitLeft = 24
-          ExplicitWidth = 90
+          ExplicitTop = 7
         end
       end
       object panelDataAgendamento: TPanel
@@ -400,10 +397,10 @@ object FormPrincipal: TFormPrincipal
           Margins.Right = 0
           Margins.Bottom = 0
           Align = alTop
-          Caption = 'Data agendada'
-          ExplicitWidth = 74
+          Caption = 'Data Final'
+          ExplicitWidth = 48
         end
-        object dtDataAgendamento: TDateTimePicker
+        object dtDataAgendadaFim: TDateTimePicker
           Left = 0
           Top = 13
           Width = 115
@@ -416,7 +413,7 @@ object FormPrincipal: TFormPrincipal
           CalColors.BackColor = clBtnFace
           Date = 45766.000000000000000000
           Time = 0.809104016203491500
-          Color = 14862517
+          Color = 14862775
           TabOrder = 0
         end
       end
@@ -446,10 +443,10 @@ object FormPrincipal: TFormPrincipal
           Margins.Right = 0
           Margins.Bottom = 0
           Align = alTop
-          Caption = 'Data do agendamento'
-          ExplicitWidth = 107
+          Caption = 'Data Inicial'
+          ExplicitWidth = 53
         end
-        object dtDataAgendada: TDateTimePicker
+        object dtDataAgendadaInicio: TDateTimePicker
           Left = 0
           Top = 13
           Width = 112
@@ -462,7 +459,7 @@ object FormPrincipal: TFormPrincipal
           CalColors.BackColor = clBtnFace
           Date = 45766.000000000000000000
           Time = 0.809104016203491500
-          Color = 14862775
+          Color = 14863031
           TabOrder = 0
         end
       end
@@ -524,7 +521,7 @@ object FormPrincipal: TFormPrincipal
             BevelOuter = bvNone
             BorderStyle = bsNone
             CharCase = ecUpperCase
-            Color = 14730931
+            Color = 14796724
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -16
@@ -571,16 +568,19 @@ object FormPrincipal: TFormPrincipal
           Margins.Right = 5
           Margins.Bottom = 0
           Align = alClient
+          Style = csDropDownList
           Color = clWhite
           DropDownCount = 4
           TabOrder = 0
-          Text = 'Selecione'
+          TextHint = 'TODOS'
+          OnChange = cbStatusChange
           Items.Strings = (
             'Agendado'
             'Em andamento'
-            'Conclu'#237'do'
+            'Finalizado'
             'Cancelado'
-            'Atrasado')
+            'Atrasado'
+            'TODOS')
         end
       end
     end

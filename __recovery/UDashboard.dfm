@@ -1,0 +1,75 @@
+object FormDashboard: TFormDashboard
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Form1'
+  ClientHeight = 507
+  ClientWidth = 970
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 970
+    Height = 507
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 0
+    object TituloGrafico: TLabel
+      Left = 0
+      Top = 0
+      Width = 970
+      Height = 33
+      Align = alTop
+      Alignment = taCenter
+      Caption = 'Distribui'#231#227'o das Lava'#231#245'es'
+      Color = clBackground
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -27
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      ExplicitWidth = 349
+    end
+    object cxGrid1: TcxGrid
+      Left = 0
+      Top = 33
+      Width = 970
+      Height = 474
+      Align = alClient
+      TabOrder = 0
+      object cxGrid1DBTableView1: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+      end
+      object cxGrid1Level1: TcxGridLevel
+        GridView = cxGrid1DBTableView1
+      end
+    end
+  end
+  object queryAgendamentos: TFDQuery
+    Connection = dm.con
+    SQL.Strings = (
+      'select * from agendamentos')
+    Left = 912
+    Top = 104
+  end
+  object dsAgendamentos: TDataSource
+    DataSet = queryAgendamentos
+    Left = 912
+    Top = 160
+  end
+end

@@ -614,7 +614,8 @@ object FormPrincipal: TFormPrincipal
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
-          Styles.Header = cxStyle1
+          Styles.Content = StyleContent
+          Styles.Header = StyleHeader
           object cxGridAgendamentosID: TcxGridDBColumn
             DataBinding.FieldName = 'ID'
           end
@@ -656,6 +657,7 @@ object FormPrincipal: TFormPrincipal
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
           OptionsView.CardIndent = 7
+          Styles.Background = StyleHeader
           object cxGrid1DBCardView1ID: TcxGridDBCardViewRow
             DataBinding.FieldName = 'ID'
             Position.BeginsLayer = True
@@ -944,9 +946,26 @@ object FormPrincipal: TFormPrincipal
   end
   object cxStyleRepository1: TcxStyleRepository
     PixelsPerInch = 96
-    object cxStyle1: TcxStyle
-      AssignedValues = [svColor]
-      Color = 14730931
+    object StyleHeader: TcxStyle
+      AssignedValues = [svBitmap, svColor, svFont]
+      Color = clWindow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clDefault
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+  end
+  object cxStyleRepository2: TcxStyleRepository
+    PixelsPerInch = 96
+    object StyleContent: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = clWindow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clDefault
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
     end
   end
 end

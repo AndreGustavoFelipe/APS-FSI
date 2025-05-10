@@ -50,7 +50,7 @@ type
     imgSair: TImage;
     btnSair: TSpeedButton;
     cbStatus: TComboBox;
-    dtDataAgendamento: TDateTimePicker;
+    dtDataAgendadaFim: TDateTimePicker;
     Panel12: TPanel;
     btnServicos: TSpeedButton;
     cxGrid1: TcxGrid;
@@ -84,7 +84,7 @@ type
     panelDataAgendamento: TPanel;
     PanelDataAgendada: TPanel;
     Label3: TLabel;
-    dtDataAgendada: TDateTimePicker;
+    dtDataAgendadaInicio: TDateTimePicker;
     PanelColaborador: TPanel;
     Label4: TLabel;
     PanelStatus: TPanel;
@@ -130,7 +130,9 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
     procedure btnItensAgendamentoClick(Sender: TObject);
+    procedure cbStatusChange(Sender: TObject);
   private
+//    function ExtrairCodigo(Texto: string): string;
     { Private declarations }
   public
     { Public declarations }
@@ -159,9 +161,15 @@ begin
 
 end;
 
+procedure TFormPrincipal.cbStatusChange(Sender: TObject);
+begin
+  if cbStatus.ItemIndex = 5 then
+    cbStatus.ItemIndex := -1;
+end;
+
 procedure TFormPrincipal.FormShow(Sender: TObject);
 begin
-  queryAgendamentos.Open;
+  btnBuscarClick(self);
 end;
 
 procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
@@ -192,11 +200,73 @@ begin
     ShowMessage('O status não pode ser alterado pois o agendamento está atrasado. Se necessário, realize um reagendamento."');
 end;
 
+//function TFormPrincipal.ExtrairCodigo(Texto: string): string;
+//begin
+//  Result := Trim(Copy(Texto, 1, Pos('-', Texto) - 1));
+//end;
 
 procedure TFormPrincipal.btnBuscarClick(Sender: TObject);
+var
+  codigoFunc : integer;
 begin
-  queryAgendamentos.Close;
-  queryAgendamentos.Open;
+  
+  codigoFunc := 0;
+
+  if EditColaborador.Text <> '' then
+  begin
+    with TFDQuery.Create(self) do
+      begin
+      try
+      
+        begin
+          Connection := dm.con;
+        
+          sql.clear;
+          sql.Add('select * from usuarios where nome like :nome');
+          ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
+          open;
+
+          if RecordCount > 0 then
+            codigoFunc := FieldByName('id').AsInteger;
+
+          close;
+          open;
+      
+        end;
+      finally
+        free;
+      end;
+    end;
+  end;
+
+  with queryAgendamentos do
+  begin
+    Close;
+    
+    sql.Clear;
+    
+    sql.Add('select * from agendamentos');
+    sql.Add('where DATA_AGENDADA between :inicio and :final');
+    ParamByName('inicio').AsDate := dtDataAgendadaInicio.Date;
+    ParamByName('final').AsDate := dtDataAgendadaFim.Date;
+
+    if codigoFunc <> 0 then
+    begin
+      sql.Add('and ID_FUNCINARIO = :id_funcionario');
+      ParamByName('id_funcionario').Value := codigoFunc;
+    end;
+
+    if cbStatus.ItemIndex <> -1 then
+    begin
+      sql.Add('and status = :status');
+      ParamByName('status').Value := cbStatus.ItemIndex;
+    end;
+
+//    ShowMessage(sql.Text);
+
+    Open;
+  end;
+  
 end;
 
 procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);

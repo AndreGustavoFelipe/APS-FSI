@@ -30,6 +30,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormShow(Sender: TObject);
   private
     function VerificaLogin(usuario, senha: string): boolean;
     { Private declarations }
@@ -64,6 +65,13 @@ begin
 //  pnlBtnEntrar.Margins.Left  := (Trunc(pnlLogin.Margins.Left/2));
 //  pnlBtnEntrar.Margins.Right := (Trunc(pnlLogin.Margins.Right/2));
 
+end;
+
+procedure TFormLogin.FormShow(Sender: TObject);
+begin
+  DM.Con.Connected := False;
+  DM.Con.Params.Values['Database'] := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0))) + 'dados\BDAPSFDSI.FDB';
+  DM.Con.Connected := True;
 end;
 
 procedure TFormLogin.imgCadeadoClick(Sender: TObject);
