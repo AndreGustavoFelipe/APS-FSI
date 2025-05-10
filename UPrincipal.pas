@@ -131,6 +131,15 @@ type
     procedure btnBuscarClick(Sender: TObject);
     procedure btnItensAgendamentoClick(Sender: TObject);
     procedure cbStatusChange(Sender: TObject);
+    procedure cxGridAgendamentosCustomDrawColumnHeader(Sender: TcxGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
+      var ADone: Boolean);
+    procedure cxGridAgendamentosSTATUSGetDisplayText(
+      Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+      var AText: string);
+    procedure cxGridAgendamentosTIPO_VEICULOGetDisplayText(
+      Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+      var AText: string);
   private
 //    function ExtrairCodigo(Texto: string): string;
     { Private declarations }
@@ -166,6 +175,48 @@ procedure TFormPrincipal.cbStatusChange(Sender: TObject);
 begin
   if cbStatus.ItemIndex = 5 then
     cbStatus.ItemIndex := -1;
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosCustomDrawColumnHeader(
+  Sender: TcxGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridColumnHeaderViewInfo; var ADone: Boolean);
+begin
+  ACanvas.Brush.Color := TColor($00E1C7B4);
+  ACanvas.FillRect(AViewInfo.Bounds);
+  ACanvas.Font.Color := clBlack;
+  ACanvas.Font.Style := [fsBold];
+  ACanvas.TextOut(AViewInfo.Bounds.Left + 4, AViewInfo.Bounds.Top + 2, AViewInfo.Text);
+  ADone := True;
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosSTATUSGetDisplayText(
+  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AText: string);
+begin
+  if AText = '0' then
+    AText := 'Agendado'
+  else if AText = '1' then
+    AText := 'Em andamento'
+  else if AText = '2' then
+    AText := 'Concluído'
+  else if AText = '3' then
+    AText := 'Cancelado'
+  else if AText = '4' then
+    AText := 'Atrasado';
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosTIPO_VEICULOGetDisplayText(
+  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AText: string);
+begin
+  if AText = '0' then
+    AText := 'Moto'
+  else if AText = '1' then
+    AText := 'Carro'
+  else if AText = '2' then
+    AText := 'Caminhonete'
+  else if AText = '3' then
+    AText := 'Caminhão';
 end;
 
 procedure TFormPrincipal.FormShow(Sender: TObject);

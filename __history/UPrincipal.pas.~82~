@@ -131,11 +131,18 @@ type
     procedure btnBuscarClick(Sender: TObject);
     procedure btnItensAgendamentoClick(Sender: TObject);
     procedure cbStatusChange(Sender: TObject);
+    procedure cxGridAgendamentosCustomDrawColumnHeader(Sender: TcxGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
+      var ADone: Boolean);
+    procedure cxGridAgendamentosSTATUSGetDisplayText(
+      Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+      var AText: string);
   private
 //    function ExtrairCodigo(Texto: string): string;
     { Private declarations }
   public
     { Public declarations }
+    TipoUsuario: string;
   end;
 
 var
@@ -167,10 +174,47 @@ begin
     cbStatus.ItemIndex := -1;
 end;
 
+procedure TFormPrincipal.cxGridAgendamentosCustomDrawColumnHeader(
+  Sender: TcxGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridColumnHeaderViewInfo; var ADone: Boolean);
+begin
+  ACanvas.Brush.Color := TColor($00E1C7B4);
+  ACanvas.FillRect(AViewInfo.Bounds);
+  ACanvas.Font.Color := clBlack;
+  ACanvas.Font.Style := [fsBold];
+  ACanvas.TextOut(AViewInfo.Bounds.Left + 4, AViewInfo.Bounds.Top + 2, AViewInfo.Text);
+  ADone := True;
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosSTATUSGetDisplayText(
+  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AText: string);
+begin
+  if AText = '0' then
+    AText := 'Agendado'
+  else if AText = '1' then
+    AText := 'Em andamento'
+  else if AText = '2' then
+    AText := 'Concluído'
+  else if AText = '3' then
+    AText := 'Cancelado'
+  else if AText = '4' then
+    AText := 'Atrasado';
+end;
+
 procedure TFormPrincipal.FormShow(Sender: TObject);
 begin
   btnBuscarClick(self);
+
+  //Se o usuário for do tipo '1' esconde os botões
+  if TipoUsuario = '1' then
+  begin
+    btnUsuarios.Visible := False;
+    btnServicos.Visible := False;
+    btnDashboard.Visible := False;
+  end;
 end;
+
 
 procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
 var

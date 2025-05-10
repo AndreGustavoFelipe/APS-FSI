@@ -131,6 +131,9 @@ type
     procedure btnBuscarClick(Sender: TObject);
     procedure btnItensAgendamentoClick(Sender: TObject);
     procedure cbStatusChange(Sender: TObject);
+    procedure cxGridAgendamentosCustomDrawColumnHeader(Sender: TcxGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
+      var ADone: Boolean);
   private
 //    function ExtrairCodigo(Texto: string): string;
     { Private declarations }
@@ -168,10 +171,31 @@ begin
     cbStatus.ItemIndex := -1;
 end;
 
+procedure TFormPrincipal.cxGridAgendamentosCustomDrawColumnHeader(
+  Sender: TcxGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridColumnHeaderViewInfo; var ADone: Boolean);
+begin
+  ACanvas.Brush.Color := TColor($00E1C7B4);
+  ACanvas.FillRect(AViewInfo.Bounds);
+  ACanvas.Font.Color := clBlack;
+  ACanvas.Font.Style := [fsBold];
+  ACanvas.TextOut(AViewInfo.Bounds.Left + 4, AViewInfo.Bounds.Top + 2, AViewInfo.Text);
+  ADone := True;
+end;
+
 procedure TFormPrincipal.FormShow(Sender: TObject);
 begin
   btnBuscarClick(self);
+
+  //Se o usuário for do tipo '1' esconde os botões
+  if TipoUsuario = '1' then
+  begin
+    btnUsuarios.Visible := False;
+    btnServicos.Visible := False;
+    btnDashboard.Visible := False;
+  end;
 end;
+
 
 procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
 var
