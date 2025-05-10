@@ -136,6 +136,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    TipoUsuario: string;
   end;
 
 var
@@ -170,7 +171,16 @@ end;
 procedure TFormPrincipal.FormShow(Sender: TObject);
 begin
   btnBuscarClick(self);
+
+  //Se o usuário for do tipo '1' esconde os botões
+  if TipoUsuario = '1' then
+  begin
+    btnUsuarios.Visible := False;
+    btnServicos.Visible := False;
+    btnDashboard.Visible := False;
+  end;
 end;
+
 
 procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
 var

@@ -50,7 +50,7 @@ type
     imgSair: TImage;
     btnSair: TSpeedButton;
     cbStatus: TComboBox;
-    dtDataAgendamento: TDateTimePicker;
+    dtDataAgendadaFim: TDateTimePicker;
     Panel12: TPanel;
     btnServicos: TSpeedButton;
     cxGrid1: TcxGrid;
@@ -84,7 +84,7 @@ type
     panelDataAgendamento: TPanel;
     PanelDataAgendada: TPanel;
     Label3: TLabel;
-    dtDataAgendada: TDateTimePicker;
+    dtDataAgendadaInicio: TDateTimePicker;
     PanelColaborador: TPanel;
     Label4: TLabel;
     PanelStatus: TPanel;
@@ -115,6 +115,10 @@ type
     cxGridAgendamentosSTATUS: TcxGridDBColumn;
     cxGridAgendamentosMODELO: TcxGridDBColumn;
     cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn;
+    cxStyleRepository1: TcxStyleRepository;
+    StyleHeader: TcxStyle;
+    cxStyleRepository2: TcxStyleRepository;
+    StyleContent: TcxStyle;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
@@ -126,10 +130,13 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnBuscarClick(Sender: TObject);
     procedure btnItensAgendamentoClick(Sender: TObject);
+    procedure cbStatusChange(Sender: TObject);
   private
+//    function ExtrairCodigo(Texto: string): string;
     { Private declarations }
   public
     { Public declarations }
+    TipoUsuario: string;
   end;
 
 var
@@ -155,9 +162,15 @@ begin
 
 end;
 
+procedure TFormPrincipal.cbStatusChange(Sender: TObject);
+begin
+  if cbStatus.ItemIndex = 5 then
+    cbStatus.ItemIndex := -1;
+end;
+
 procedure TFormPrincipal.FormShow(Sender: TObject);
 begin
-  queryAgendamentos.Open;
+  btnBuscarClick(self);
 end;
 
 procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
@@ -188,41 +201,115 @@ begin
     ShowMessage('O status não pode ser alterado pois o agendamento está atrasado. Se necessário, realize um reagendamento."');
 end;
 
+//function TFormPrincipal.ExtrairCodigo(Texto: string): string;
+//begin
+//  Result := Trim(Copy(Texto, 1, Pos('-', Texto) - 1));
+//end;
 
 procedure TFormPrincipal.btnBuscarClick(Sender: TObject);
+var
+  codigoFunc : integer;
 begin
-  queryAgendamentos.Close;
-  queryAgendamentos.Open;
+  
+  codigoFunc := 0;
+
+  if EditColaborador.Text <> '' then
+  begin
+    with TFDQuery.Create(self) do
+      begin
+      try
+      
+        begin
+          Connection := dm.con;
+        
+          sql.clear;
+          sql.Add('select * from usuarios where nome like :nome');
+          ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
+          open;
+
+          if RecordCount > 0 then
+            codigoFunc := FieldByName('id').AsInteger;
+
+          close;
+          open;
+      
+        end;
+      finally
+        free;
+      end;
+    end;
+  end;
+
+  with queryAgendamentos do
+  begin
+    Close;
+    
+    sql.Clear;
+    
+    sql.Add('select * from agendamentos');
+    sql.Add('where DATA_AGENDADA between :inicio and :final');
+    ParamByName('inicio').AsDate := dtDataAgendadaInicio.Date;
+    ParamByName('final').AsDate := dtDataAgendadaFim.Date;
+
+    if codigoFunc <> 0 then
+    begin
+      sql.Add('and ID_FUNCINARIO = :id_funcionario');
+      ParamByName('id_funcionario').Value := codigoFunc;
+    end;
+
+    if cbStatus.ItemIndex <> -1 then
+    begin
+      sql.Add('and status = :status');
+      ParamByName('status').Value := cbStatus.ItemIndex;
+    end;
+
+//    ShowMessage(sql.Text);
+
+    Open;
+  end;
+  
 end;
 
 procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);
+var
+  status: Integer;
 begin
-  if (MessageDlg('Tem certeza que deseja cancelar este agendamento?', mtWarning, [mbNo, mbYes], 0) = mrYes) then
+  status := dsAgendamentos.DataSet.FieldByName('STATUS').AsInteger;
+
+  if status in [0, 1] then
   begin
-    with TFDQuery.Create(self) do
+    if (MessageDlg('Tem certeza que deseja cancelar este agendamento?', mtWarning, [mbNo, mbYes], 0) = mrYes) then
     begin
-      try
+      with TFDQuery.Create(Self) do
+      begin
+        try
+          connection := dm.con;
 
-        connection := dm.con;
+          SQL.Add('update agendamentos');
+          SQL.Add('set status = :status');
+          SQL.Add('where id = :id');
 
-        sql.Add('update agendamentos');
-        sql.Add('set status = :status');
-        sql.Add('where id = :id');
+          ParamByName('id').Value := dsAgendamentos.DataSet.FieldByName('id').Value;
+          ParamByName('status').Value := 3;
 
-        ParamByName('id').Value := dsAgendamentos.DataSet.FieldByName('id').Value;
-        ParamByName('status').Value := 3;
+          ExecSQL;
 
-        execsql;
-
-      finally
-        Free;
+        finally
+          Free;
+        end;
       end;
+
+      btnBuscarClick(Self);
     end;
-
-    btnBuscarClick(self);
-  end;
-
+  end
+  else if status = 2 then
+    ShowMessage('Este agendamento já foi concluído e não pode ser cancelado.')
+  else if status = 3 then
+    ShowMessage('Este agendamento já está cancelado.')
+  else if status = 4 then
+    ShowMessage('Este agendamento está atrasado e não pode ser cancelado.');
 end;
+
 
 procedure TFormPrincipal.btnDashboardClick(Sender: TObject);
 begin
@@ -279,21 +366,31 @@ begin
 end;
 
 procedure TFormPrincipal.btnReagendarClick(Sender: TObject);
+var
+  status: Integer;
 begin
+  status := dsAgendamentos.DataSet.FieldByName('STATUS').AsInteger;
 
-  with TFormReagendamento.Create(self) do
+  if status in [0, 1, 4] then
   begin
-    try
-      codigoReagendamento := dsAgendamentos.DataSet.FieldByName('ID').AsInteger;
-      ShowModal;
-    finally
-      Free;
+    with TFormReagendamento.Create(Self) do
+    begin
+      try
+        codigoReagendamento := dsAgendamentos.DataSet.FieldByName('ID').AsInteger;
+        ShowModal;
+      finally
+        Free;
+      end;
     end;
-  end;
 
-  btnBuscarClick(self);
-
+    btnBuscarClick(Self);
+  end
+  else if status = 2 then
+    ShowMessage('Este agendamento já foi concluído e não pode ser reagendado.')
+  else if status = 3 then
+    ShowMessage('Este agendamento está cancelado e não pode ser reagendado.');
 end;
+
 
 procedure TFormPrincipal.btnSairClick(Sender: TObject);
 begin

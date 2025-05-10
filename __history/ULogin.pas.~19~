@@ -104,65 +104,69 @@ begin
 
 end;
 
-function TFormLogin.VerificaLogin(usuario: string; senha: string): boolean;
+function TFormLogin.VerificaLogin(usuario : string; senha : string) : boolean;
 begin
-  Result := False;
-
   with TFDQuery.Create(self) do
   begin
     try
-      Connection := dm.con;
+      connection := dm.con;
 
-      SQL.Text := 'SELECT * FROM USUARIOS WHERE NOME = :NOME AND SENHA = :SENHA';
+      sql.Clear;
+      sql.Add('SELECT * FROM USUARIOS');
+      sql.Add('WHERE NOME = :NOME AND SENHA = :SENHA');
+
       ParamByName('NOME').Value := usuario;
       ParamByName('SENHA').Value := senha;
 
       Open;
 
-      if not IsEmpty then
+      if ((FieldByName('NOME').AsString = usuario) and ((FieldByName('SENHA').AsString = senha))) then
       begin
-        // Bloqueia se tipo = 0
-        if FieldByName('TIPO').AsString = '0' then
-          Exit;
 
-        // Login válido
         idUsuario := FieldByName('ID').AsString;
         nomeUsuario := FieldByName('NOME').AsString;
         tipoUsuario := FieldByName('TIPO').AsString;
-        Result := True;
-      end;
+
+        result := true;
+
+      end
+      else
+        result := false;
+
     finally
-      Free;
+
     end;
   end;
 end;
 
-
-
 procedure TFormLogin.SpeedButton1Click(Sender: TObject);
 begin
+
   if (edtUsuario.Text <> '') and (edtSenha.Text <> '') then
   begin
     if VerificaLogin(edtUsuario.Text, edtSenha.Text) then
     begin
+
       edtUsuario.Text := '';
       edtSenha.Text := '';
 
       with TFormPrincipal.Create(self) do
       begin
         try
-          TipoUsuario := Self.tipoUsuario;
           ShowModal;
         finally
           Free;
         end;
       end;
     end
+
     else
-      ShowMessage('Usuário ou senha incorreto!');
+    showmessage('Usuario ou senha incorreto!');
   end
   else
-    ShowMessage('Preencha todos os campos!');
+    showmessage('Preencha todos os campos!');
+
+
 end;
 
 end.

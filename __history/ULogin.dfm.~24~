@@ -5,7 +5,7 @@ object FormLogin: TFormLogin
   BorderStyle = bsSingle
   Caption = 'Login'
   ClientHeight = 599
-  ClientWidth = 1146
+  ClientWidth = 1031
   Color = 7346457
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,14 +15,16 @@ object FormLogin: TFormLogin
   OldCreateOrder = False
   Position = poDesktopCenter
   WindowState = wsMaximized
+  OnKeyPress = FormKeyPress
   OnResize = FormResize
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlLogin: TPanel
     AlignWithMargins = True
     Left = 0
     Top = 0
-    Width = 1146
+    Width = 1031
     Height = 599
     Margins.Left = 0
     Margins.Top = 0
@@ -38,7 +40,7 @@ object FormLogin: TFormLogin
       AlignWithMargins = True
       Left = 0
       Top = 91
-      Width = 1146
+      Width = 1031
       Height = 459
       Margins.Left = 0
       Margins.Top = 0
@@ -53,7 +55,7 @@ object FormLogin: TFormLogin
         AlignWithMargins = True
         Left = 0
         Top = 95
-        Width = 1136
+        Width = 1021
         Height = 25
         Margins.Left = 0
         Margins.Top = 10
@@ -75,7 +77,7 @@ object FormLogin: TFormLogin
         AlignWithMargins = True
         Left = 0
         Top = 10
-        Width = 1136
+        Width = 1021
         Height = 25
         Margins.Left = 0
         Margins.Top = 10
@@ -96,7 +98,7 @@ object FormLogin: TFormLogin
       object Panel1: TPanel
         Left = 0
         Top = 45
-        Width = 1146
+        Width = 1031
         Height = 40
         Margins.Left = 0
         Margins.Top = 0
@@ -109,7 +111,7 @@ object FormLogin: TFormLogin
         TabOrder = 0
         object Image1: TImage
           AlignWithMargins = True
-          Left = 1104
+          Left = 989
           Top = 3
           Width = 39
           Height = 34
@@ -466,7 +468,7 @@ object FormLogin: TFormLogin
           AlignWithMargins = True
           Left = 5
           Top = 5
-          Width = 1096
+          Width = 981
           Height = 35
           Margins.Left = 5
           Margins.Top = 5
@@ -491,7 +493,7 @@ object FormLogin: TFormLogin
       object Panel5: TPanel
         Left = 0
         Top = 130
-        Width = 1146
+        Width = 1031
         Height = 40
         Margins.Left = 0
         Margins.Top = 0
@@ -504,7 +506,7 @@ object FormLogin: TFormLogin
         TabOrder = 1
         object imgCadeado: TImage
           AlignWithMargins = True
-          Left = 1104
+          Left = 989
           Top = 3
           Width = 39
           Height = 34
@@ -1529,7 +1531,7 @@ object FormLogin: TFormLogin
           AlignWithMargins = True
           Left = 5
           Top = 5
-          Width = 1096
+          Width = 981
           Height = 35
           Margins.Left = 5
           Margins.Top = 5
@@ -1557,7 +1559,7 @@ object FormLogin: TFormLogin
       AlignWithMargins = True
       Left = 0
       Top = 0
-      Width = 1146
+      Width = 1031
       Height = 91
       Margins.Left = 0
       Margins.Top = 0
@@ -1572,7 +1574,7 @@ object FormLogin: TFormLogin
         AlignWithMargins = True
         Left = 15
         Top = 15
-        Width = 1116
+        Width = 1001
         Height = 25
         Margins.Left = 15
         Margins.Top = 15
@@ -1595,7 +1597,7 @@ object FormLogin: TFormLogin
     object pnlBtnEntrar: TPanel
       Left = 0
       Top = 550
-      Width = 1146
+      Width = 1031
       Height = 49
       Margins.Left = 0
       Margins.Top = 0
@@ -1609,7 +1611,7 @@ object FormLogin: TFormLogin
       object SpeedButton1: TSpeedButton
         Left = 0
         Top = 0
-        Width = 1146
+        Width = 1031
         Height = 49
         Align = alClient
         Caption = 'ENTRAR'
