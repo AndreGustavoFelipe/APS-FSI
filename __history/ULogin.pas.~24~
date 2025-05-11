@@ -35,8 +35,7 @@ type
     function VerificaLogin(usuario, senha: string): boolean;
     { Private declarations }
   public
-    idUsuario, nomeUsuario, tipoUsuario : string;
-    funcionario : boolean;
+    idUsuario, nomeUsuario, tipoUsuario : string
   end;
 
 var
@@ -119,11 +118,6 @@ begin
       ParamByName('SENHA').Value := senha;
 
       Open;
-
-      if FieldByName('tipo').Value = 1 then
-        funcionario := true
-      else
-        funcionario := false;
 
       if not IsEmpty then
       begin

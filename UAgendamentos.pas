@@ -81,6 +81,23 @@ type
     cxGridFuncionariosNOME: TcxGridDBColumn;
     cxGridFuncionariosSENHA: TcxGridDBColumn;
     cxGridFuncionariosTIPO: TcxGridDBColumn;
+    Panel1: TPanel;
+    cxGrid3: TcxGrid;
+    cxGridClientes: TcxGridDBTableView;
+    cxGridLevel2: TcxGridLevel;
+    queryClientes: TFDQuery;
+    IntegerField1: TIntegerField;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    SmallintField1: TSmallintField;
+    dsClientes: TDataSource;
+    cxGridClientesID: TcxGridDBColumn;
+    cxGridClientesNOME: TcxGridDBColumn;
+    cxGridClientesSENHA: TcxGridDBColumn;
+    cxGridClientesTIPO: TcxGridDBColumn;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
     procedure btnCancelarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
@@ -123,6 +140,11 @@ begin
     showmessage('Selecione algum tipo de veiculo!');
     result := false;
   end
+  else if cxGridClientes.Controller.SelectedRowCount <= 0  then
+  begin
+    showmessage('Selecione um cliente!');
+    result := false;
+  end
   else if cxGridFuncionarios.Controller.SelectedRowCount <= 0  then
   begin
     showmessage('Selecione um funcionario!');
@@ -161,7 +183,7 @@ begin
         sql.Add('values (:ID_CLIENTE, :ID_FUNCINARIO, :DATA_AGENDAMENTO, :DATA_AGENDADA, :HORA_AGENDAMENTO, :HORA_ENTREGA, :PLACA, :TIPO_VEICULO, :STATUS, :MODELO)');
         sql.Add('returning id');
 
-        ParamByName('ID_CLIENTE').Value := FormLogin.idUsuario;
+        ParamByName('ID_CLIENTE').Value := cxGridClientes.DataController.DataSet.FieldByName('ID').Value;
         ParamByName('ID_FUNCINARIO').Value := cxGridFuncionarios.DataController.DataSet.FieldByName('ID').Value;
 
         ParamByName('DATA_AGENDAMENTO').DataType :=  ftdate;
@@ -216,9 +238,21 @@ end;
 
 procedure TFormAgendamento.FormShow(Sender: TObject);
 begin
-
-  queryFuncionarios.Open;
+  if FormLogin.funcionario then
+  begin
+    with queryFuncionarios do
+    begin
+      sql.Clear;
+      sql.Add('select * from usuarios where id = :id');
+      ParamByName('id').Value := FormLogin.idUsuario;
+      open;
+    end;
+  end
+  
+  else
+    queryFuncionarios.Open;
   queryServicos.Open;
+  queryClientes.Open;
 end;
 
 end.
