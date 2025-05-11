@@ -580,7 +580,7 @@ object FormPrincipal: TFormPrincipal
           Items.Strings = (
             'Agendado'
             'Em andamento'
-            'Finalizado'
+            'Conclu'#237'do'
             'Cancelado'
             'Atrasado'
             'TODOS')
@@ -610,9 +610,8 @@ object FormPrincipal: TFormPrincipal
         Height = 486
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 24
+        ExplicitLeft = -2
         ExplicitTop = 3
-        ExplicitWidth = 1038
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsAgendamentos
@@ -636,22 +635,23 @@ object FormPrincipal: TFormPrincipal
           object cxGridAgendamentosSTATUS: TcxGridDBColumn
             AlternateCaption = 'width'
             DataBinding.FieldName = 'STATUS'
-            BestFitMaxWidth = 100
-            MinWidth = 100
+            OnGetDisplayText = cxGridAgendamentosSTATUSGetDisplayText
+            BestFitMaxWidth = 150
+            MinWidth = 150
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 100
+            Width = 150
           end
           object cxGridAgendamentosID_CLIENTE: TcxGridDBColumn
             Caption = 'ID CLIENTE'
             DataBinding.FieldName = 'ID_CLIENTE'
-            BestFitMaxWidth = 100
+            BestFitMaxWidth = 115
             FooterAlignmentHorz = taLeftJustify
             GroupSummaryAlignment = taLeftJustify
-            MinWidth = 100
+            MinWidth = 115
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 100
+            Width = 115
           end
           object cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn
             Caption = 'ID FUNCINARIO'
@@ -702,15 +702,15 @@ object FormPrincipal: TFormPrincipal
           end
           object cxGridAgendamentosPLACA: TcxGridDBColumn
             DataBinding.FieldName = 'PLACA'
-            BestFitMaxWidth = 100
-            MinWidth = 100
+            BestFitMaxWidth = 120
+            MinWidth = 150
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 100
+            Width = 150
           end
           object cxGridAgendamentosMODELO: TcxGridDBColumn
             DataBinding.FieldName = 'MODELO'
-            BestFitMaxWidth = 120
+            BestFitMaxWidth = 200
             MinWidth = 120
             Options.Editing = False
             Options.HorzSizing = False
@@ -719,6 +719,7 @@ object FormPrincipal: TFormPrincipal
           object cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn
             Caption = 'TIPO VEICULO'
             DataBinding.FieldName = 'TIPO_VEICULO'
+            OnGetDisplayText = cxGridAgendamentosTIPO_VEICULOGetDisplayText
             BestFitMaxWidth = 150
             FooterAlignmentHorz = taLeftJustify
             GroupSummaryAlignment = taLeftJustify
@@ -957,8 +958,8 @@ object FormPrincipal: TFormPrincipal
     Connection = dm.con
     SQL.Strings = (
       'select * from agendamentos')
-    Left = 982
-    Top = 115
+    Left = 1302
+    Top = 155
     object queryAgendamentosID: TIntegerField
       FieldName = 'ID'
       Origin = 'ID'
@@ -1021,8 +1022,8 @@ object FormPrincipal: TFormPrincipal
   end
   object dsAgendamentos: TDataSource
     DataSet = queryAgendamentos
-    Left = 982
-    Top = 163
+    Left = 1302
+    Top = 211
   end
   object cxStyleRepository1: TcxStyleRepository
     PixelsPerInch = 96

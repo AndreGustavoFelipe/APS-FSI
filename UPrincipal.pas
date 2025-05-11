@@ -86,10 +86,10 @@ type
     Label3: TLabel;
     dtDataAgendadaInicio: TDateTimePicker;
     PanelColaborador: TPanel;
-    Label4: TLabel;
+    lblColaborador: TLabel;
     PanelStatus: TPanel;
     Label5: TLabel;
-    Panel11: TPanel;
+    pnlColaborador: TPanel;
     EditColaborador: TEdit;
     queryAgendamentosID: TIntegerField;
     queryAgendamentosID_CLIENTE: TIntegerField;
@@ -221,14 +221,35 @@ end;
 
 procedure TFormPrincipal.FormShow(Sender: TObject);
 begin
+  if FormLogin.funcionario then
+  begin
+    with queryAgendamentos do
+    begin
+      sql.Clear;
+      sql.Add('select * from agendamentos where ID_FUNCINARIO = :id');
+      ParamByName('id').Value := FormLogin.idUsuario.ToInteger;
+      showmessage(sql.Text);
+    end;
+  end;
+
   btnBuscarClick(self);
 
   //Se o usuário for do tipo '1' esconde os botões
   if TipoUsuario = '1' then
   begin
+    PanelColaborador.Visible := false;
+    PanelColaborador.Width := 0;
     btnUsuarios.Visible := False;
     btnServicos.Visible := False;
     btnDashboard.Visible := False;
+  end
+  else
+  begin
+    PanelColaborador.Visible := true;
+    PanelColaborador.Width := 380;
+    btnUsuarios.Visible := true;
+    btnServicos.Visible := true;
+    btnDashboard.Visible := true;
   end;
 end;
 
@@ -270,18 +291,20 @@ procedure TFormPrincipal.btnBuscarClick(Sender: TObject);
 var
   codigoFunc : integer;
 begin
-  
+
   codigoFunc := 0;
 
-  if EditColaborador.Text <> '' then
+  if not FormLogin.funcionario then
+  begin
+    if EditColaborador.Text <> '' then
   begin
     with TFDQuery.Create(self) do
       begin
       try
-      
+
         begin
           Connection := dm.con;
-        
+
           sql.clear;
           sql.Add('select * from usuarios where nome like :nome');
           ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
@@ -292,13 +315,17 @@ begin
 
           close;
           open;
-      
+
         end;
       finally
         free;
       end;
     end;
   end;
+  end
+
+  else
+    codigoFunc := FormLogin.idUsuario.ToInteger;
 
   with queryAgendamentos do
   begin

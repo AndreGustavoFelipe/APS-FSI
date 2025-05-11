@@ -86,10 +86,10 @@ type
     Label3: TLabel;
     dtDataAgendadaInicio: TDateTimePicker;
     PanelColaborador: TPanel;
-    Label4: TLabel;
+    lblColaborador: TLabel;
     PanelStatus: TPanel;
     Label5: TLabel;
-    Panel11: TPanel;
+    pnlColaborador: TPanel;
     EditColaborador: TEdit;
     queryAgendamentosID: TIntegerField;
     queryAgendamentosID_CLIENTE: TIntegerField;
@@ -134,6 +134,12 @@ type
     procedure cxGridAgendamentosCustomDrawColumnHeader(Sender: TcxGridTableView;
       ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
       var ADone: Boolean);
+    procedure cxGridAgendamentosSTATUSGetDisplayText(
+      Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+      var AText: string);
+    procedure cxGridAgendamentosTIPO_VEICULOGetDisplayText(
+      Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+      var AText: string);
   private
 //    function ExtrairCodigo(Texto: string): string;
     { Private declarations }
@@ -175,24 +181,63 @@ procedure TFormPrincipal.cxGridAgendamentosCustomDrawColumnHeader(
   Sender: TcxGridTableView; ACanvas: TcxCanvas;
   AViewInfo: TcxGridColumnHeaderViewInfo; var ADone: Boolean);
 begin
-   // Defina a cor de fundo
-  ACanvas.Brush.Color := clSkyBlue;
-  // Pinte o fundo do cabeçalho
+  ACanvas.Brush.Color := TColor($00E1C7B4);
   ACanvas.FillRect(AViewInfo.Bounds);
-  // Defina a cor da fonte
-  ACanvas.Font.Color := clWhite;
-  // Desenhe o texto
-  ACanvas.TextOut(AViewInfo.Bounds.Left + 2, AViewInfo.Bounds.Top + 2, AViewInfo.Text);
-  ADone := True;  // Impede o desenho padrão
+  ACanvas.Font.Color := clBlack;
+  ACanvas.Font.Style := [fsBold];
+  ACanvas.TextOut(AViewInfo.Bounds.Left + 4, AViewInfo.Bounds.Top + 2, AViewInfo.Text);
+  ADone := True;
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosSTATUSGetDisplayText(
+  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AText: string);
+begin
+  if AText = '0' then
+    AText := 'Agendado'
+  else if AText = '1' then
+    AText := 'Em andamento'
+  else if AText = '2' then
+    AText := 'Concluído'
+  else if AText = '3' then
+    AText := 'Cancelado'
+  else if AText = '4' then
+    AText := 'Atrasado';
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosTIPO_VEICULOGetDisplayText(
+  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AText: string);
+begin
+  if AText = '0' then
+    AText := 'Moto'
+  else if AText = '1' then
+    AText := 'Carro'
+  else if AText = '2' then
+    AText := 'Caminhonete'
+  else if AText = '3' then
+    AText := 'Caminhão';
 end;
 
 procedure TFormPrincipal.FormShow(Sender: TObject);
 begin
+  if FormLogin.funcionario then
+  begin
+    with queryAgendamentos do
+    begin
+      sql.Clear;
+      sql.Add('select * from agendamentos where ID_FUNCINARIO = :id');
+      ParamByName('id').Value := FormLogin.idUsuario.ToInteger;
+    end;
+  end;
+
   btnBuscarClick(self);
 
   //Se o usuário for do tipo '1' esconde os botões
   if TipoUsuario = '1' then
   begin
+    pnlColaborador.Visible := false;
+    lblColaborador.Visible := false;
     btnUsuarios.Visible := False;
     btnServicos.Visible := False;
     btnDashboard.Visible := False;
@@ -237,18 +282,20 @@ procedure TFormPrincipal.btnBuscarClick(Sender: TObject);
 var
   codigoFunc : integer;
 begin
-  
+
   codigoFunc := 0;
 
-  if EditColaborador.Text <> '' then
+  if not FormLogin.funcionario then
+  begin
+    if EditColaborador.Text <> '' then
   begin
     with TFDQuery.Create(self) do
       begin
       try
-      
+
         begin
           Connection := dm.con;
-        
+
           sql.clear;
           sql.Add('select * from usuarios where nome like :nome');
           ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
@@ -259,12 +306,13 @@ begin
 
           close;
           open;
-      
+
         end;
       finally
         free;
       end;
     end;
+  end;
   end;
 
   with queryAgendamentos do

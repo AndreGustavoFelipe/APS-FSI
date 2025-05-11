@@ -317,7 +317,6 @@ object FormPrincipal: TFormPrincipal
     Color = 14599344
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 1038
     object Panel4: TPanel
       Left = 0
       Top = 0
@@ -336,7 +335,6 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1038
       object Panel10: TPanel
         AlignWithMargins = True
         Left = 1036
@@ -351,7 +349,6 @@ object FormPrincipal: TFormPrincipal
         Color = 7346457
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 943
         object btnBuscar: TSpeedButton
           Left = 1
           Top = 1
@@ -481,7 +478,7 @@ object FormPrincipal: TFormPrincipal
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 3
-        object Label4: TLabel
+        object lblColaborador: TLabel
           Left = 0
           Top = 0
           Width = 380
@@ -494,7 +491,7 @@ object FormPrincipal: TFormPrincipal
           Caption = 'Nome do colaborador'
           ExplicitWidth = 102
         end
-        object Panel11: TPanel
+        object pnlColaborador: TPanel
           AlignWithMargins = True
           Left = 0
           Top = 15
@@ -506,7 +503,7 @@ object FormPrincipal: TFormPrincipal
           Margins.Bottom = 0
           Align = alClient
           BevelOuter = bvNone
-          Color = 14599344
+          Color = 14599345
           ParentBackground = False
           TabOrder = 0
           object EditColaborador: TEdit
@@ -602,7 +599,6 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 1038
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -610,8 +606,6 @@ object FormPrincipal: TFormPrincipal
         Height = 486
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = -2
-        ExplicitTop = 3
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsAgendamentos
@@ -805,7 +799,6 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 2
-      ExplicitWidth = 1038
       object Panel1: TPanel
         AlignWithMargins = True
         Left = 8
@@ -932,7 +925,6 @@ object FormPrincipal: TFormPrincipal
         Color = 7346457
         ParentBackground = False
         TabOrder = 4
-        ExplicitLeft = 784
         object btnItensAgendamento: TSpeedButton
           Left = 1
           Top = 1
