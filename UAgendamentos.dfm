@@ -231,7 +231,7 @@ object FormAgendamento: TFormAgendamento
         AlignWithMargins = True
         Left = 0
         Top = 0
-        Width = 416
+        Width = 138
         Height = 16
         Margins.Left = 0
         Margins.Top = 0
@@ -245,7 +245,6 @@ object FormAgendamento: TFormAgendamento
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitWidth = 138
       end
       object cxGrid1: TcxGrid
         Left = 0
@@ -375,7 +374,7 @@ object FormAgendamento: TFormAgendamento
           Left = 218
           Top = 0
           Width = 158
-          Height = 15
+          Height = 16
           Margins.Left = 60
           Margins.Top = 0
           Margins.Right = 0
@@ -388,13 +387,12 @@ object FormAgendamento: TFormAgendamento
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
-          ExplicitHeight = 16
         end
         object Label2: TLabel
           Left = 0
           Top = 0
           Width = 158
-          Height = 20
+          Height = 16
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 0
@@ -407,7 +405,6 @@ object FormAgendamento: TFormAgendamento
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
-          ExplicitHeight = 16
         end
       end
     end
@@ -428,7 +425,7 @@ object FormAgendamento: TFormAgendamento
         Left = 0
         Top = 0
         Width = 416
-        Height = 24
+        Height = 28
         Align = alClient
         Style = csDropDownList
         Font.Charset = DEFAULT_CHARSET
@@ -464,7 +461,7 @@ object FormAgendamento: TFormAgendamento
         AlignWithMargins = True
         Left = 0
         Top = 0
-        Width = 416
+        Width = 150
         Height = 16
         Margins.Left = 0
         Margins.Top = 0
@@ -478,7 +475,6 @@ object FormAgendamento: TFormAgendamento
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitWidth = 150
       end
       object cxGrid2: TcxGrid
         Left = 0
@@ -541,7 +537,7 @@ object FormAgendamento: TFormAgendamento
         AlignWithMargins = True
         Left = 0
         Top = 0
-        Width = 416
+        Width = 121
         Height = 16
         Margins.Left = 0
         Margins.Top = 0
@@ -555,7 +551,6 @@ object FormAgendamento: TFormAgendamento
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
-        ExplicitWidth = 121
       end
       object cxGrid3: TcxGrid
         Left = 0

@@ -162,7 +162,7 @@ end;
 
 function TFormAgendamento.HoraEntrega(hora: TTime): TTime;
 begin
-  Result := EncodeTime((HourOf(hora) + 1), MinuteOf(hora), 0, 0);
+  Result := IncHour(hora, 1);
 end;
 
 

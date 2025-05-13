@@ -4,7 +4,7 @@ object FormAgendamento: TFormAgendamento
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Agendamentos'
-  ClientHeight = 570
+  ClientHeight = 711
   ClientWidth = 436
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object FormAgendamento: TFormAgendamento
     Left = 0
     Top = 0
     Width = 436
-    Height = 570
+    Height = 711
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
@@ -31,10 +31,11 @@ object FormAgendamento: TFormAgendamento
     Padding.Bottom = 10
     ParentBackground = False
     TabOrder = 0
+    ExplicitHeight = 570
     object Panel3: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 61
+      Top = 70
       Width = 416
       Height = 47
       Margins.Left = 0
@@ -44,6 +45,7 @@ object FormAgendamento: TFormAgendamento
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitTop = 62
       object Panel7: TPanel
         AlignWithMargins = True
         Left = 215
@@ -130,7 +132,7 @@ object FormAgendamento: TFormAgendamento
     object Panel5: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 516
+      Top = 657
       Width = 416
       Height = 34
       Margins.Left = 0
@@ -140,6 +142,7 @@ object FormAgendamento: TFormAgendamento
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 1
+      ExplicitTop = 516
       object pnlSalvar: TPanel
         AlignWithMargins = True
         Left = 210
@@ -213,7 +216,7 @@ object FormAgendamento: TFormAgendamento
     object Panel6: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 281
+      Top = 428
       Width = 416
       Height = 209
       Margins.Left = 0
@@ -223,13 +226,36 @@ object FormAgendamento: TFormAgendamento
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 2
-      object cxGrid1: TcxGrid
+      ExplicitTop = 282
+      object Label5: TLabel
+        AlignWithMargins = True
         Left = 0
         Top = 0
         Width = 416
-        Height = 209
+        Height = 16
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 5
+        Align = alTop
+        Caption = 'Selecione os servi'#231'os'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 138
+      end
+      object cxGrid1: TcxGrid
+        Left = 0
+        Top = 21
+        Width = 416
+        Height = 188
         Align = alClient
         TabOrder = 0
+        ExplicitTop = 1
+        ExplicitHeight = 209
         object cxGridServicos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsServicos
@@ -288,7 +314,7 @@ object FormAgendamento: TFormAgendamento
       Left = 10
       Top = 10
       Width = 416
-      Height = 41
+      Height = 50
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -299,9 +325,9 @@ object FormAgendamento: TFormAgendamento
       object dtDiaAgendamento: TDateTimePicker
         AlignWithMargins = True
         Left = 0
-        Top = 14
+        Top = 20
         Width = 207
-        Height = 27
+        Height = 30
         Margins.Left = 0
         Margins.Top = 0
         Margins.Right = 8
@@ -312,12 +338,14 @@ object FormAgendamento: TFormAgendamento
         Time = 0.809104016203491500
         Color = 14863031
         TabOrder = 0
+        ExplicitTop = 19
+        ExplicitHeight = 22
       end
       object timePicker: TTimePicker
         Left = 220
-        Top = 14
+        Top = 20
         Width = 196
-        Height = 27
+        Height = 30
         Align = alRight
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -327,46 +355,68 @@ object FormAgendamento: TFormAgendamento
         TabOrder = 1
         Time = 45782.839669722220000000
         TimeFormat = 'hh:mm'
+        ExplicitTop = 14
+        ExplicitHeight = 27
       end
       object Panel10: TPanel
         Left = 0
         Top = 0
         Width = 416
-        Height = 14
+        Height = 20
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 10
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 2
         object Label1: TLabel
           AlignWithMargins = True
-          Left = 221
+          Left = 218
           Top = 0
-          Width = 117
-          Height = 14
-          Margins.Left = 0
+          Width = 158
+          Height = 15
+          Margins.Left = 60
           Margins.Top = 0
-          Margins.Right = 78
-          Margins.Bottom = 0
-          Align = alRight
+          Margins.Right = 0
+          Margins.Bottom = 5
+          Align = alLeft
           Caption = 'Hora para agendamento'
-          ExplicitHeight = 13
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ExplicitHeight = 16
         end
         object Label2: TLabel
           Left = 0
           Top = 0
-          Width = 117
-          Height = 14
+          Width = 158
+          Height = 20
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 5
           Align = alLeft
           Caption = 'Data para agendamento'
-          ExplicitHeight = 13
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ExplicitHeight = 16
         end
       end
     end
     object Panel9: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 113
+      Top = 122
       Width = 416
-      Height = 24
+      Height = 28
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -378,9 +428,15 @@ object FormAgendamento: TFormAgendamento
         Left = 0
         Top = 0
         Width = 416
-        Height = 21
+        Height = 24
         Align = alClient
         Style = csDropDownList
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
         TabOrder = 0
         TextHint = 'Selecione o tipo de veiculo'
         Items.Strings = (
@@ -393,7 +449,7 @@ object FormAgendamento: TFormAgendamento
     object Panel11: TPanel
       AlignWithMargins = True
       Left = 10
-      Top = 147
+      Top = 294
       Width = 416
       Height = 124
       Margins.Left = 0
@@ -403,13 +459,36 @@ object FormAgendamento: TFormAgendamento
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 5
-      object cxGrid2: TcxGrid
+      ExplicitTop = 148
+      object Label4: TLabel
+        AlignWithMargins = True
         Left = 0
         Top = 0
         Width = 416
-        Height = 124
+        Height = 16
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 5
+        Align = alTop
+        Caption = 'Informe um funcionario'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 150
+      end
+      object cxGrid2: TcxGrid
+        Left = 0
+        Top = 21
+        Width = 416
+        Height = 103
         Align = alClient
         TabOrder = 0
+        ExplicitTop = 0
+        ExplicitHeight = 124
         object cxGridFuncionarios: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsFuncionarios
@@ -441,6 +520,80 @@ object FormAgendamento: TFormAgendamento
         end
         object cxGridLevel1: TcxGridLevel
           GridView = cxGridFuncionarios
+        end
+      end
+    end
+    object Panel1: TPanel
+      AlignWithMargins = True
+      Left = 10
+      Top = 160
+      Width = 416
+      Height = 124
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 10
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 6
+      ExplicitTop = 148
+      object Label3: TLabel
+        AlignWithMargins = True
+        Left = 0
+        Top = 0
+        Width = 416
+        Height = 16
+        Margins.Left = 0
+        Margins.Top = 0
+        Margins.Right = 0
+        Margins.Bottom = 5
+        Align = alTop
+        Caption = 'Informe um cliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 121
+      end
+      object cxGrid3: TcxGrid
+        Left = 0
+        Top = 21
+        Width = 416
+        Height = 103
+        Align = alClient
+        TabOrder = 0
+        ExplicitTop = 19
+        ExplicitHeight = 108
+        object cxGridClientes: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = dsClientes
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.CancelOnExit = False
+          OptionsData.Deleting = False
+          OptionsData.DeletingConfirmation = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsSelection.CheckBoxVisibility = [cbvDataRow]
+          OptionsView.GroupByBox = False
+          object cxGridClientesID: TcxGridDBColumn
+            DataBinding.FieldName = 'ID'
+          end
+          object cxGridClientesNOME: TcxGridDBColumn
+            DataBinding.FieldName = 'NOME'
+          end
+          object cxGridClientesSENHA: TcxGridDBColumn
+            DataBinding.FieldName = 'SENHA'
+          end
+          object cxGridClientesTIPO: TcxGridDBColumn
+            DataBinding.FieldName = 'TIPO'
+          end
+        end
+        object cxGridLevel2: TcxGridLevel
+          GridView = cxGridClientes
         end
       end
     end
@@ -509,5 +662,41 @@ object FormAgendamento: TFormAgendamento
     DataSet = queryServicos
     Left = 382
     Top = 79
+  end
+  object queryClientes: TFDQuery
+    Connection = dm.con
+    SQL.Strings = (
+      'select * from usuarios'
+      'where tipo = 0')
+    Left = 382
+    Top = 227
+    object IntegerField1: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object StringField1: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 200
+    end
+    object StringField2: TStringField
+      FieldName = 'SENHA'
+      Origin = 'SENHA'
+      Required = True
+      Size = 200
+    end
+    object SmallintField1: TSmallintField
+      FieldName = 'TIPO'
+      Origin = 'TIPO'
+      Required = True
+    end
+  end
+  object dsClientes: TDataSource
+    DataSet = queryClientes
+    Left = 382
+    Top = 275
   end
 end
