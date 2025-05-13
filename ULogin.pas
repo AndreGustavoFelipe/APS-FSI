@@ -33,10 +33,12 @@ type
     procedure FormShow(Sender: TObject);
   private
     function VerificaLogin(usuario, senha: string): boolean;
+    procedure verificaAgendamentosAtrasados;
     { Private declarations }
   public
     idUsuario, nomeUsuario, tipoUsuario : string;
     funcionario : boolean;
+    procedure passaAtrasado(codigo: integer);
   end;
 
 var
@@ -154,6 +156,8 @@ begin
       edtUsuario.Text := '';
       edtSenha.Text := '';
 
+      verificaAgendamentosAtrasados;
+
       with TFormPrincipal.Create(self) do
       begin
         try
@@ -169,6 +173,57 @@ begin
   end
   else
     ShowMessage('Preencha todos os campos!');
+end;
+
+procedure TFormLogin.verificaAgendamentosAtrasados();
+begin
+  with TFDQuery.Create(self) do
+  begin
+    try
+      Connection := dm.con;
+
+      SQL.Clear;
+      SQL.Add('select * from AGENDAMENTOS where DATA_AGENDADA < :dataAtual');
+      ParamByName('dataAtual').DataType := ftDate;
+      ParamByName('dataAtual').AsDate := Now;
+
+      Open;
+
+      last;
+      first;
+
+      while not eof do
+      begin
+        passaAtrasado(FieldByName('id').AsInteger);
+        next;
+      end;
+    finally
+      free;
+    end;
+  end;
+end;
+
+procedure TFormLogin.passaAtrasado(codigo : integer);
+begin
+  with TFDQuery.Create(self) do
+  begin
+    try
+      connection := dm.con;
+
+      sql.Clear;
+      sql.Add('update agendamentos');
+      sql.Add('set status = :status');
+      sql.Add('where id = :id');
+
+      ParamByName('status').Value := '4';
+      ParamByName('id').Value := codigo;
+
+      ExecSQL;
+
+    finally
+      free;
+    end;
+  end;
 end;
 
 end.

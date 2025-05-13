@@ -1623,10 +1623,7 @@ object FormLogin: TFormLogin
         Font.Style = []
         ParentFont = False
         OnClick = SpeedButton1Click
-        ExplicitLeft = 176
-        ExplicitTop = 16
-        ExplicitWidth = 23
-        ExplicitHeight = 22
+        ExplicitTop = 3
       end
     end
   end
