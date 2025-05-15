@@ -24,6 +24,7 @@ object FormDashboard: TFormDashboard
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitHeight = 507
     object TituloGrafico: TLabel
       Left = 0
       Top = 0
@@ -40,7 +41,7 @@ object FormDashboard: TFormDashboard
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
-      ExplicitTop = -6
+      ExplicitWidth = 349
     end
     object cxGrid1: TcxGrid
       Left = 0
@@ -49,6 +50,7 @@ object FormDashboard: TFormDashboard
       Height = 407
       Align = alClient
       TabOrder = 0
+      ExplicitHeight = 474
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.Summary.DefaultGroupSummaryItems = <>
@@ -70,6 +72,7 @@ object FormDashboard: TFormDashboard
     Color = 7346457
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 844
     object Panel9: TPanel
       AlignWithMargins = True
       Left = 825
@@ -85,6 +88,7 @@ object FormDashboard: TFormDashboard
       Color = 7346457
       ParentBackground = False
       TabOrder = 0
+      ExplicitLeft = 699
       object btnVoltar: TSpeedButton
         Left = 0
         Top = 0

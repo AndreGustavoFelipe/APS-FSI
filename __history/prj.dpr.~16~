@@ -19,7 +19,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(Tdm, dm);
   Application.CreateForm(TFormLogin, FormLogin);
+  Application.CreateForm(Tdm, dm);
   Application.Run;
 end.

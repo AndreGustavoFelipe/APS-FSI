@@ -125,7 +125,7 @@ begin
         if FieldByName('TIPO').AsString = '0' then
           Exit;
 
-        // Login v·lido
+        // Login v√°lido
         idUsuario := FieldByName('ID').AsString;
         nomeUsuario := FieldByName('NOME').AsString;
         tipoUsuario := FieldByName('TIPO').AsString;
@@ -161,7 +161,7 @@ begin
       end;
     end
     else
-      ShowMessage('Usu·rio ou senha incorreto!');
+      ShowMessage('Usu√°rio ou senha incorreto!');
   end
   else
     ShowMessage('Preencha todos os campos!');

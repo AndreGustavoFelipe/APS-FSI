@@ -1,9 +1,0 @@
-object dm: Tdm
-  OldCreateOrder = False
-  Height = 313
-  Width = 349
-  object con: TFDConnection
-    Left = 160
-    Top = 120
-  end
-end

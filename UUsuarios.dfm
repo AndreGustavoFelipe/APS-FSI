@@ -1415,10 +1415,7 @@ object FormUsuarios: TFormUsuarios
               Font.Style = []
               ParentFont = False
               OnClick = btnSalvarClick
-              ExplicitLeft = 104
-              ExplicitTop = 16
-              ExplicitWidth = 23
-              ExplicitHeight = 22
+              ExplicitLeft = -7
             end
           end
           object pnlCancelar: TPanel
