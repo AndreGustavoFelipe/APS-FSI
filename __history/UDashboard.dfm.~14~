@@ -48,7 +48,7 @@ object FormDashboard: TFormDashboard
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet4
+      Properties.ActivePage = cxTabSheet1
       Properties.CustomButtons.Buttons = <>
       Properties.Rotate = True
       Properties.TabHeight = 40
@@ -58,7 +58,7 @@ object FormDashboard: TFormDashboard
       ExplicitWidth = 17
       ExplicitHeight = 9
       ClientRectBottom = 486
-      ClientRectLeft = 114
+      ClientRectLeft = 101
       ClientRectRight = 1419
       ClientRectTop = 4
       object cxTabSheet1: TcxTabSheet
@@ -72,7 +72,7 @@ object FormDashboard: TFormDashboard
           AlignWithMargins = True
           Left = 10
           Top = 10
-          Width = 1285
+          Width = 1298
           Height = 462
           Margins.Left = 10
           Margins.Top = 10
@@ -101,6 +101,8 @@ object FormDashboard: TFormDashboard
             ToolBox.DiagramSelector = True
             object cxChartServicosDataGroup1: TcxGridDBChartDataGroup
               DataBinding.FieldName = 'DESCRICAO'
+              SortOrder = soNone
+              Visible = False
             end
             object cxChartServicosSeries1: TcxGridDBChartSeries
               DataBinding.FieldName = 'QTD_ITEM'
@@ -112,147 +114,8 @@ object FormDashboard: TFormDashboard
         end
       end
       object cxTabSheet2: TcxTabSheet
-        Caption = 'Clientes'
+        Caption = 'cxTabSheet2'
         ImageIndex = 1
-        ExplicitLeft = 101
-        ExplicitWidth = 1318
-        object cxGrid2: TcxGrid
-          AlignWithMargins = True
-          Left = 10
-          Top = 10
-          Width = 1285
-          Height = 462
-          Margins.Left = 10
-          Margins.Top = 10
-          Margins.Right = 10
-          Margins.Bottom = 10
-          Align = alClient
-          TabOrder = 0
-          ExplicitLeft = 18
-          ExplicitTop = 18
-          ExplicitWidth = 1326
-          object cxChartClientes: TcxGridDBChartView
-            DataController.DataSource = dsClientes
-            DiagramArea.Values.VaryColorsByCategory = True
-            DiagramBar.Values.VaryColorsByCategory = True
-            DiagramColumn.Active = True
-            DiagramColumn.Legend.Alignment = cpaCenter
-            DiagramColumn.Legend.Border = lbNone
-            DiagramColumn.Legend.KeyBorder = lbSingle
-            DiagramColumn.Legend.Position = cppNone
-            DiagramColumn.Values.VaryColorsByCategory = True
-            DiagramLine.Values.VaryColorsByCategory = True
-            DiagramStackedArea.Values.VaryColorsByCategory = True
-            DiagramStackedBar.Values.VaryColorsByCategory = True
-            DiagramStackedColumn.Values.VaryColorsByCategory = True
-            ToolBox.Border = tbNone
-            ToolBox.DiagramSelector = True
-            object cxChartClientesDataGroup1: TcxGridDBChartDataGroup
-              DataBinding.FieldName = 'NOME'
-            end
-            object cxChartClientesSeries1: TcxGridDBChartSeries
-              DataBinding.FieldName = 'QTD_CLIENTES'
-            end
-          end
-          object cxGridLevel1: TcxGridLevel
-            GridView = cxChartClientes
-          end
-        end
-      end
-      object cxTabSheet3: TcxTabSheet
-        Caption = 'Funcionarios'
-        ImageIndex = 2
-        ExplicitLeft = 101
-        ExplicitWidth = 1318
-        object cxGrid3: TcxGrid
-          AlignWithMargins = True
-          Left = 10
-          Top = 10
-          Width = 1285
-          Height = 462
-          Margins.Left = 10
-          Margins.Top = 10
-          Margins.Right = 10
-          Margins.Bottom = 10
-          Align = alClient
-          TabOrder = 0
-          ExplicitLeft = 18
-          ExplicitTop = 18
-          ExplicitWidth = 1301
-          object cxChardFuncionarios: TcxGridDBChartView
-            DataController.DataSource = dsFuncionarios
-            DiagramArea.Values.VaryColorsByCategory = True
-            DiagramBar.Values.VaryColorsByCategory = True
-            DiagramColumn.Active = True
-            DiagramColumn.Legend.Alignment = cpaCenter
-            DiagramColumn.Legend.Border = lbNone
-            DiagramColumn.Legend.KeyBorder = lbSingle
-            DiagramColumn.Legend.Position = cppNone
-            DiagramColumn.Values.VaryColorsByCategory = True
-            DiagramLine.Values.VaryColorsByCategory = True
-            DiagramStackedArea.Values.VaryColorsByCategory = True
-            DiagramStackedBar.Values.VaryColorsByCategory = True
-            DiagramStackedColumn.Values.VaryColorsByCategory = True
-            ToolBox.Border = tbNone
-            ToolBox.DiagramSelector = True
-            object cxChardFuncionariosDataGroup1: TcxGridDBChartDataGroup
-              DataBinding.FieldName = 'NOME'
-            end
-            object cxChardFuncionariosSeries1: TcxGridDBChartSeries
-              DataBinding.FieldName = 'QTD_FUNCIONARIOS'
-            end
-          end
-          object cxGridLevel2: TcxGridLevel
-            GridView = cxChardFuncionarios
-          end
-        end
-      end
-      object cxTabSheet4: TcxTabSheet
-        Caption = 'Tipo de Veiculo'
-        ImageIndex = 3
-        ExplicitLeft = 101
-        ExplicitWidth = 1318
-        object cxGrid4: TcxGrid
-          AlignWithMargins = True
-          Left = 10
-          Top = 10
-          Width = 1285
-          Height = 462
-          Margins.Left = 10
-          Margins.Top = 10
-          Margins.Right = 10
-          Margins.Bottom = 10
-          Align = alClient
-          TabOrder = 0
-          ExplicitLeft = 18
-          ExplicitTop = 18
-          object cxChartTipoVeiculo: TcxGridDBChartView
-            DataController.DataSource = dsTipoVeiculo
-            DiagramArea.Values.VaryColorsByCategory = True
-            DiagramBar.Values.VaryColorsByCategory = True
-            DiagramColumn.Active = True
-            DiagramColumn.Legend.Alignment = cpaCenter
-            DiagramColumn.Legend.Border = lbNone
-            DiagramColumn.Legend.KeyBorder = lbSingle
-            DiagramColumn.Legend.Position = cppNone
-            DiagramColumn.Values.VaryColorsByCategory = True
-            DiagramLine.Values.VaryColorsByCategory = True
-            DiagramStackedArea.Values.VaryColorsByCategory = True
-            DiagramStackedBar.Values.VaryColorsByCategory = True
-            DiagramStackedColumn.Values.VaryColorsByCategory = True
-            ToolBox.Border = tbNone
-            ToolBox.DiagramSelector = True
-            object cxChartTipoVeiculoDataGroup1: TcxGridDBChartDataGroup
-              DataBinding.FieldName = 'TIPO'
-            end
-            object cxChartTipoVeiculoSeries1: TcxGridDBChartSeries
-              DataBinding.FieldName = 'QTD'
-            end
-          end
-          object cxGridLevel3: TcxGridLevel
-            GridView = cxChartTipoVeiculo
-          end
-        end
       end
     end
   end
@@ -3295,95 +3158,5 @@ object FormDashboard: TFormDashboard
       ProviderFlags = []
       ReadOnly = True
     end
-  end
-  object queryClientes: TFDQuery
-    Connection = dm.con
-    SQL.Strings = (
-      'select count(u.id) as qtd_clientes, u.NOME from agendamentos a'
-      'inner join USUARIOS u'
-      'on a.ID_CLIENTE = u.ID'
-      'group by u.nome')
-    Left = 1296
-    Top = 16
-    object queryClientesQTD_CLIENTES: TLargeintField
-      FieldName = 'QTD_CLIENTES'
-      Origin = 'QTD_CLIENTES'
-      Required = True
-    end
-    object queryClientesNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Required = True
-      Size = 200
-    end
-  end
-  object dsClientes: TDataSource
-    DataSet = queryClientes
-    Left = 1296
-    Top = 64
-  end
-  object queryFuncionarios: TFDQuery
-    Connection = dm.con
-    SQL.Strings = (
-      
-        'select count(u.id) as qtd_funcionarios, u.NOME from agendamentos' +
-        ' a'
-      'inner join USUARIOS u on a.ID_FUNCINARIO = u.ID'
-      'group by u.nome')
-    Left = 1240
-    Top = 16
-    object queryFuncionariosNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Required = True
-      Size = 200
-    end
-    object queryFuncionariosQTD_FUNCIONARIOS: TLargeintField
-      FieldName = 'QTD_FUNCIONARIOS'
-      Origin = 'QTD_FUNCIONARIOS'
-      Required = True
-    end
-  end
-  object dsFuncionarios: TDataSource
-    DataSet = queryFuncionarios
-    Left = 1240
-    Top = 64
-  end
-  object queryTipoVeiculo: TFDQuery
-    Connection = dm.con
-    SQL.Strings = (
-      'select '
-      '  count(TIPO_VEICULO) as qtd,'
-      '  case  '
-      '    when TIPO_VEICULO = 0 then '#39'Moto'#39
-      '    when TIPO_VEICULO = 1 then '#39'Carro'#39
-      '    when TIPO_VEICULO = 2 then '#39'Caminhonete'#39
-      '    when TIPO_VEICULO = 3 then '#39'Caminh'#227'o'#39
-      '  end as tipo'
-      'from agendamentos'
-      'group by TIPO_VEICULO;')
-    Left = 1184
-    Top = 16
-    object queryTipoVeiculoQTD: TLargeintField
-      AutoGenerateValue = arDefault
-      FieldName = 'QTD'
-      Origin = 'QTD'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object queryTipoVeiculoTIPO: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'TIPO'
-      Origin = 'TIPO'
-      ProviderFlags = []
-      ReadOnly = True
-      FixedChar = True
-      Size = 11
-    end
-  end
-  object dsTipoVeiculo: TDataSource
-    DataSet = queryTipoVeiculo
-    Left = 1184
-    Top = 64
   end
 end

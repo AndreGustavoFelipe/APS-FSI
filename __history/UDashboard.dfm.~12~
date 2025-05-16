@@ -4,8 +4,8 @@ object FormDashboard: TFormDashboard
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Dashboard'
-  ClientHeight = 791
-  ClientWidth = 1443
+  ClientHeight = 921
+  ClientWidth = 1436
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,14 +14,13 @@ object FormDashboard: TFormDashboard
   Font.Style = []
   OldCreateOrder = False
   WindowState = wsMaximized
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel2: TPanel
     Left = 0
     Top = 214
-    Width = 1443
-    Height = 510
+    Width = 1436
+    Height = 640
     Align = alClient
     BevelOuter = bvNone
     Color = 14599344
@@ -34,8 +33,8 @@ object FormDashboard: TFormDashboard
       AlignWithMargins = True
       Left = 10
       Top = 10
-      Width = 1423
-      Height = 490
+      Width = 1416
+      Height = 620
       Margins.Left = 10
       Margins.Top = 10
       Margins.Right = 10
@@ -48,7 +47,7 @@ object FormDashboard: TFormDashboard
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet4
+      Properties.ActivePage = cxTabSheet1
       Properties.CustomButtons.Buttons = <>
       Properties.Rotate = True
       Properties.TabHeight = 40
@@ -57,12 +56,12 @@ object FormDashboard: TFormDashboard
       ExplicitTop = 48
       ExplicitWidth = 17
       ExplicitHeight = 9
-      ClientRectBottom = 486
-      ClientRectLeft = 114
-      ClientRectRight = 1419
+      ClientRectBottom = 616
+      ClientRectLeft = 101
+      ClientRectRight = 1412
       ClientRectTop = 4
       object cxTabSheet1: TcxTabSheet
-        Caption = 'Servi'#231'os'
+        Caption = 'cxTabSheet1'
         ImageIndex = 0
         ExplicitLeft = 102
         ExplicitTop = 5
@@ -72,8 +71,8 @@ object FormDashboard: TFormDashboard
           AlignWithMargins = True
           Left = 10
           Top = 10
-          Width = 1285
-          Height = 462
+          Width = 1291
+          Height = 592
           Margins.Left = 10
           Margins.Top = 10
           Margins.Right = 10
@@ -81,176 +80,63 @@ object FormDashboard: TFormDashboard
           Align = alClient
           TabOrder = 0
           ExplicitTop = 21
-          ExplicitWidth = 1291
-          ExplicitHeight = 592
-          object cxChartServicos: TcxGridDBChartView
-            DataController.DataSource = dsServicos
-            DiagramArea.Values.VaryColorsByCategory = True
-            DiagramBar.Values.VaryColorsByCategory = True
+          object cxGrid1DBCardView1: TcxGridDBCardView
+            Navigator.Buttons.CustomButtons = <>
+            DataController.DataSource = dsAgendamentos
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsView.CardIndent = 7
+            object cxGrid1DBCardView1ID: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'ID'
+              Position.BeginsLayer = True
+            end
+            object cxGrid1DBCardView1ID_CLIENTE: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'ID_CLIENTE'
+              Position.BeginsLayer = True
+            end
+            object cxGrid1DBCardView1ID_FUNCINARIO: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'ID_FUNCINARIO'
+              Position.BeginsLayer = True
+            end
+            object cxGrid1DBCardView1DATA_AGENDAMENTO: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'DATA_AGENDAMENTO'
+              Position.BeginsLayer = True
+            end
+            object cxGrid1DBCardView1DATA_AGENDADA: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'DATA_AGENDADA'
+              Position.BeginsLayer = True
+            end
+            object cxGrid1DBCardView1HORA_AGENDAMENTO: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'HORA_AGENDAMENTO'
+              Position.BeginsLayer = True
+            end
+            object cxGrid1DBCardView1HORA_ENTREGA: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'HORA_ENTREGA'
+              Position.BeginsLayer = True
+            end
+            object cxGrid1DBCardView1PLACA: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'PLACA'
+              Position.BeginsLayer = True
+            end
+            object cxGrid1DBCardView1TIPO_VEICULO: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'TIPO_VEICULO'
+              Position.BeginsLayer = True
+            end
+            object cxGrid1DBCardView1TIPO_LAVACAO: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'TIPO_LAVACAO'
+              Position.BeginsLayer = True
+            end
+            object cxGrid1DBCardView1STATUS: TcxGridDBCardViewRow
+              DataBinding.FieldName = 'STATUS'
+              Position.BeginsLayer = True
+            end
+          end
+          object cxGrid1DBChartView1: TcxGridDBChartView
             DiagramColumn.Active = True
-            DiagramColumn.Legend.Alignment = cpaCenter
-            DiagramColumn.Legend.Border = lbNone
-            DiagramColumn.Legend.KeyBorder = lbSingle
-            DiagramColumn.Legend.Position = cppNone
-            DiagramColumn.Values.VaryColorsByCategory = True
-            DiagramLine.Values.VaryColorsByCategory = True
-            DiagramStackedArea.Values.VaryColorsByCategory = True
-            DiagramStackedBar.Values.VaryColorsByCategory = True
-            DiagramStackedColumn.Values.VaryColorsByCategory = True
-            ToolBox.Border = tbNone
-            ToolBox.DiagramSelector = True
-            object cxChartServicosDataGroup1: TcxGridDBChartDataGroup
-              DataBinding.FieldName = 'DESCRICAO'
-            end
-            object cxChartServicosSeries1: TcxGridDBChartSeries
-              DataBinding.FieldName = 'QTD_ITEM'
-            end
           end
           object cxGrid1Level1: TcxGridLevel
-            GridView = cxChartServicos
-          end
-        end
-      end
-      object cxTabSheet2: TcxTabSheet
-        Caption = 'Clientes'
-        ImageIndex = 1
-        ExplicitLeft = 101
-        ExplicitWidth = 1318
-        object cxGrid2: TcxGrid
-          AlignWithMargins = True
-          Left = 10
-          Top = 10
-          Width = 1285
-          Height = 462
-          Margins.Left = 10
-          Margins.Top = 10
-          Margins.Right = 10
-          Margins.Bottom = 10
-          Align = alClient
-          TabOrder = 0
-          ExplicitLeft = 18
-          ExplicitTop = 18
-          ExplicitWidth = 1326
-          object cxChartClientes: TcxGridDBChartView
-            DataController.DataSource = dsClientes
-            DiagramArea.Values.VaryColorsByCategory = True
-            DiagramBar.Values.VaryColorsByCategory = True
-            DiagramColumn.Active = True
-            DiagramColumn.Legend.Alignment = cpaCenter
-            DiagramColumn.Legend.Border = lbNone
-            DiagramColumn.Legend.KeyBorder = lbSingle
-            DiagramColumn.Legend.Position = cppNone
-            DiagramColumn.Values.VaryColorsByCategory = True
-            DiagramLine.Values.VaryColorsByCategory = True
-            DiagramStackedArea.Values.VaryColorsByCategory = True
-            DiagramStackedBar.Values.VaryColorsByCategory = True
-            DiagramStackedColumn.Values.VaryColorsByCategory = True
-            ToolBox.Border = tbNone
-            ToolBox.DiagramSelector = True
-            object cxChartClientesDataGroup1: TcxGridDBChartDataGroup
-              DataBinding.FieldName = 'NOME'
-            end
-            object cxChartClientesSeries1: TcxGridDBChartSeries
-              DataBinding.FieldName = 'QTD_CLIENTES'
-            end
-          end
-          object cxGridLevel1: TcxGridLevel
-            GridView = cxChartClientes
-          end
-        end
-      end
-      object cxTabSheet3: TcxTabSheet
-        Caption = 'Funcionarios'
-        ImageIndex = 2
-        ExplicitLeft = 101
-        ExplicitWidth = 1318
-        object cxGrid3: TcxGrid
-          AlignWithMargins = True
-          Left = 10
-          Top = 10
-          Width = 1285
-          Height = 462
-          Margins.Left = 10
-          Margins.Top = 10
-          Margins.Right = 10
-          Margins.Bottom = 10
-          Align = alClient
-          TabOrder = 0
-          ExplicitLeft = 18
-          ExplicitTop = 18
-          ExplicitWidth = 1301
-          object cxChardFuncionarios: TcxGridDBChartView
-            DataController.DataSource = dsFuncionarios
-            DiagramArea.Values.VaryColorsByCategory = True
-            DiagramBar.Values.VaryColorsByCategory = True
-            DiagramColumn.Active = True
-            DiagramColumn.Legend.Alignment = cpaCenter
-            DiagramColumn.Legend.Border = lbNone
-            DiagramColumn.Legend.KeyBorder = lbSingle
-            DiagramColumn.Legend.Position = cppNone
-            DiagramColumn.Values.VaryColorsByCategory = True
-            DiagramLine.Values.VaryColorsByCategory = True
-            DiagramStackedArea.Values.VaryColorsByCategory = True
-            DiagramStackedBar.Values.VaryColorsByCategory = True
-            DiagramStackedColumn.Values.VaryColorsByCategory = True
-            ToolBox.Border = tbNone
-            ToolBox.DiagramSelector = True
-            object cxChardFuncionariosDataGroup1: TcxGridDBChartDataGroup
-              DataBinding.FieldName = 'NOME'
-            end
-            object cxChardFuncionariosSeries1: TcxGridDBChartSeries
-              DataBinding.FieldName = 'QTD_FUNCIONARIOS'
-            end
-          end
-          object cxGridLevel2: TcxGridLevel
-            GridView = cxChardFuncionarios
-          end
-        end
-      end
-      object cxTabSheet4: TcxTabSheet
-        Caption = 'Tipo de Veiculo'
-        ImageIndex = 3
-        ExplicitLeft = 101
-        ExplicitWidth = 1318
-        object cxGrid4: TcxGrid
-          AlignWithMargins = True
-          Left = 10
-          Top = 10
-          Width = 1285
-          Height = 462
-          Margins.Left = 10
-          Margins.Top = 10
-          Margins.Right = 10
-          Margins.Bottom = 10
-          Align = alClient
-          TabOrder = 0
-          ExplicitLeft = 18
-          ExplicitTop = 18
-          object cxChartTipoVeiculo: TcxGridDBChartView
-            DataController.DataSource = dsTipoVeiculo
-            DiagramArea.Values.VaryColorsByCategory = True
-            DiagramBar.Values.VaryColorsByCategory = True
-            DiagramColumn.Active = True
-            DiagramColumn.Legend.Alignment = cpaCenter
-            DiagramColumn.Legend.Border = lbNone
-            DiagramColumn.Legend.KeyBorder = lbSingle
-            DiagramColumn.Legend.Position = cppNone
-            DiagramColumn.Values.VaryColorsByCategory = True
-            DiagramLine.Values.VaryColorsByCategory = True
-            DiagramStackedArea.Values.VaryColorsByCategory = True
-            DiagramStackedBar.Values.VaryColorsByCategory = True
-            DiagramStackedColumn.Values.VaryColorsByCategory = True
-            ToolBox.Border = tbNone
-            ToolBox.DiagramSelector = True
-            object cxChartTipoVeiculoDataGroup1: TcxGridDBChartDataGroup
-              DataBinding.FieldName = 'TIPO'
-            end
-            object cxChartTipoVeiculoSeries1: TcxGridDBChartSeries
-              DataBinding.FieldName = 'QTD'
-            end
-          end
-          object cxGridLevel3: TcxGridLevel
-            GridView = cxChartTipoVeiculo
+            GridView = cxGrid1DBChartView1
           end
         end
       end
@@ -258,8 +144,8 @@ object FormDashboard: TFormDashboard
   end
   object Panel1: TPanel
     Left = 0
-    Top = 724
-    Width = 1443
+    Top = 854
+    Width = 1436
     Height = 67
     Align = alBottom
     BevelOuter = bvNone
@@ -270,7 +156,7 @@ object FormDashboard: TFormDashboard
     ExplicitWidth = 970
     object Panel9: TPanel
       AlignWithMargins = True
-      Left = 1298
+      Left = 1291
       Top = 10
       Width = 135
       Height = 47
@@ -307,7 +193,7 @@ object FormDashboard: TFormDashboard
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 1443
+    Width = 1436
     Height = 214
     Align = alTop
     BevelOuter = bvNone
@@ -319,7 +205,7 @@ object FormDashboard: TFormDashboard
       AlignWithMargins = True
       Left = 0
       Top = 10
-      Width = 1443
+      Width = 1436
       Height = 54
       Margins.Left = 0
       Margins.Top = 10
@@ -364,7 +250,7 @@ object FormDashboard: TFormDashboard
           ParentFont = False
           ExplicitWidth = 71
         end
-        object dtFinal: TDateTimePicker
+        object DateTimePicker3: TDateTimePicker
           AlignWithMargins = True
           Left = 10
           Top = 28
@@ -378,7 +264,7 @@ object FormDashboard: TFormDashboard
           CalColors.BackColor = clBtnFace
           Date = 45766.000000000000000000
           Time = 0.809104016203491500
-          Color = 14863287
+          Color = 14863031
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -386,7 +272,8 @@ object FormDashboard: TFormDashboard
           Font.Style = []
           ParentFont = False
           TabOrder = 0
-          ExplicitLeft = 7
+          ExplicitTop = 29
+          ExplicitHeight = 24
         end
       end
       object Panel12: TPanel
@@ -421,7 +308,7 @@ object FormDashboard: TFormDashboard
           ParentFont = False
           ExplicitWidth = 71
         end
-        object dtInicial: TDateTimePicker
+        object DateTimePicker4: TDateTimePicker
           AlignWithMargins = True
           Left = 10
           Top = 28
@@ -435,7 +322,7 @@ object FormDashboard: TFormDashboard
           CalColors.BackColor = clBtnFace
           Date = 45766.000000000000000000
           Time = 0.809104016203491500
-          Color = 14863287
+          Color = 14863031
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -479,7 +366,7 @@ object FormDashboard: TFormDashboard
           ExplicitTop = 22
           ExplicitWidth = 199
           ExplicitHeight = 32
-          object btnBusca: TSpeedButton
+          object SpeedButton1: TSpeedButton
             Left = 0
             Top = 0
             Width = 249
@@ -497,7 +384,6 @@ object FormDashboard: TFormDashboard
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
-            OnClick = btnBuscaClick
             ExplicitLeft = 1
             ExplicitTop = 7
             ExplicitWidth = 88
@@ -509,7 +395,7 @@ object FormDashboard: TFormDashboard
     object Panel4: TPanel
       Left = 0
       Top = 64
-      Width = 1443
+      Width = 1436
       Height = 150
       Align = alBottom
       BevelOuter = bvNone
@@ -1068,7 +954,7 @@ object FormDashboard: TFormDashboard
           DataSource = dsCancelados
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -19
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
@@ -1503,7 +1389,7 @@ object FormDashboard: TFormDashboard
           DataSource = dsConcluidos
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -19
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
@@ -1513,7 +1399,7 @@ object FormDashboard: TFormDashboard
       end
       object Panel7: TPanel
         AlignWithMargins = True
-        Left = 1228
+        Left = 1221
         Top = 15
         Width = 200
         Height = 120
@@ -2049,11 +1935,9 @@ object FormDashboard: TFormDashboard
           Margins.Bottom = 50
           Align = alRight
           Alignment = taCenter
-          DataField = 'FATURAMENTO'
-          DataSource = dsFaturamento
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -19
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
@@ -2380,7 +2264,7 @@ object FormDashboard: TFormDashboard
           DataSource = dsEmAndamento
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -19
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
@@ -2419,7 +2303,7 @@ object FormDashboard: TFormDashboard
           DataSource = dsAgendado
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -19
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
@@ -3137,7 +3021,7 @@ object FormDashboard: TFormDashboard
           DataSource = dsAtrasados
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -19
+          Font.Height = -16
           Font.Name = 'Tahoma'
           Font.Style = [fsBold]
           ParentFont = False
@@ -3147,31 +3031,15 @@ object FormDashboard: TFormDashboard
       end
     end
   end
-  object queryServicos: TFDQuery
-    Active = True
+  object queryAgendamentos: TFDQuery
     Connection = dm.con
     SQL.Strings = (
-      'select count(ia.ID) as qtd_item, s.DESCRICAO'
-      'from agendamentos a'
-      'inner join ITENS_AGENDAMENTO ia on ia.ID_AGENDAMENTO = a.ID'
-      'inner join SERVICOS s on s.ID = ia.ID'
-      'group by s.DESCRICAO, s.VALOR')
+      'select * from agendamentos')
     Left = 1352
     Top = 16
-    object queryServicosQTD_ITEM: TLargeintField
-      FieldName = 'QTD_ITEM'
-      Origin = 'QTD_ITEM'
-      Required = True
-    end
-    object queryServicosDESCRICAO: TStringField
-      FieldName = 'DESCRICAO'
-      Origin = 'DESCRICAO'
-      Required = True
-      Size = 200
-    end
   end
-  object dsServicos: TDataSource
-    DataSet = queryServicos
+  object dsAgendamentos: TDataSource
+    DataSet = queryAgendamentos
     Left = 1352
     Top = 64
   end
@@ -3295,95 +3163,5 @@ object FormDashboard: TFormDashboard
       ProviderFlags = []
       ReadOnly = True
     end
-  end
-  object queryClientes: TFDQuery
-    Connection = dm.con
-    SQL.Strings = (
-      'select count(u.id) as qtd_clientes, u.NOME from agendamentos a'
-      'inner join USUARIOS u'
-      'on a.ID_CLIENTE = u.ID'
-      'group by u.nome')
-    Left = 1296
-    Top = 16
-    object queryClientesQTD_CLIENTES: TLargeintField
-      FieldName = 'QTD_CLIENTES'
-      Origin = 'QTD_CLIENTES'
-      Required = True
-    end
-    object queryClientesNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Required = True
-      Size = 200
-    end
-  end
-  object dsClientes: TDataSource
-    DataSet = queryClientes
-    Left = 1296
-    Top = 64
-  end
-  object queryFuncionarios: TFDQuery
-    Connection = dm.con
-    SQL.Strings = (
-      
-        'select count(u.id) as qtd_funcionarios, u.NOME from agendamentos' +
-        ' a'
-      'inner join USUARIOS u on a.ID_FUNCINARIO = u.ID'
-      'group by u.nome')
-    Left = 1240
-    Top = 16
-    object queryFuncionariosNOME: TStringField
-      FieldName = 'NOME'
-      Origin = 'NOME'
-      Required = True
-      Size = 200
-    end
-    object queryFuncionariosQTD_FUNCIONARIOS: TLargeintField
-      FieldName = 'QTD_FUNCIONARIOS'
-      Origin = 'QTD_FUNCIONARIOS'
-      Required = True
-    end
-  end
-  object dsFuncionarios: TDataSource
-    DataSet = queryFuncionarios
-    Left = 1240
-    Top = 64
-  end
-  object queryTipoVeiculo: TFDQuery
-    Connection = dm.con
-    SQL.Strings = (
-      'select '
-      '  count(TIPO_VEICULO) as qtd,'
-      '  case  '
-      '    when TIPO_VEICULO = 0 then '#39'Moto'#39
-      '    when TIPO_VEICULO = 1 then '#39'Carro'#39
-      '    when TIPO_VEICULO = 2 then '#39'Caminhonete'#39
-      '    when TIPO_VEICULO = 3 then '#39'Caminh'#227'o'#39
-      '  end as tipo'
-      'from agendamentos'
-      'group by TIPO_VEICULO;')
-    Left = 1184
-    Top = 16
-    object queryTipoVeiculoQTD: TLargeintField
-      AutoGenerateValue = arDefault
-      FieldName = 'QTD'
-      Origin = 'QTD'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object queryTipoVeiculoTIPO: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'TIPO'
-      Origin = 'TIPO'
-      ProviderFlags = []
-      ReadOnly = True
-      FixedChar = True
-      Size = 11
-    end
-  end
-  object dsTipoVeiculo: TDataSource
-    DataSet = queryTipoVeiculo
-    Left = 1184
-    Top = 64
   end
 end

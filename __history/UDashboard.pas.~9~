@@ -101,41 +101,11 @@ type
     cxChartServicosSeries1: TcxGridDBChartSeries;
     cxChartServicosDataGroup1: TcxGridDBChartDataGroup;
     cxTabSheet2: TcxTabSheet;
-    cxGrid2: TcxGrid;
-    cxChartClientes: TcxGridDBChartView;
-    cxGridLevel1: TcxGridLevel;
-    queryClientes: TFDQuery;
-    dsClientes: TDataSource;
-    queryClientesQTD_CLIENTES: TLargeintField;
-    queryClientesNOME: TStringField;
-    cxChartClientesSeries1: TcxGridDBChartSeries;
-    cxChartClientesDataGroup1: TcxGridDBChartDataGroup;
-    cxTabSheet3: TcxTabSheet;
-    cxGrid3: TcxGrid;
-    cxChardFuncionarios: TcxGridDBChartView;
-    cxGridLevel2: TcxGridLevel;
-    queryFuncionarios: TFDQuery;
-    dsFuncionarios: TDataSource;
-    queryFuncionariosNOME: TStringField;
-    queryFuncionariosQTD_FUNCIONARIOS: TLargeintField;
-    cxChardFuncionariosSeries1: TcxGridDBChartSeries;
-    cxChardFuncionariosDataGroup1: TcxGridDBChartDataGroup;
-    cxTabSheet4: TcxTabSheet;
-    cxGrid4: TcxGrid;
-    cxChartTipoVeiculo: TcxGridDBChartView;
-    cxGridLevel3: TcxGridLevel;
-    queryTipoVeiculo: TFDQuery;
-    dsTipoVeiculo: TDataSource;
-    queryTipoVeiculoQTD: TLargeintField;
-    queryTipoVeiculoTIPO: TStringField;
-    cxChartTipoVeiculoSeries1: TcxGridDBChartSeries;
-    cxChartTipoVeiculoDataGroup1: TcxGridDBChartDataGroup;
     procedure btnVoltarClick(Sender: TObject);
     procedure btnBuscaClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     procedure montaCards(dataInicial, dataFinal: tdate);
-    procedure montaGraficos(dataInicial, dataFinal: tdate);
     { Private declarations }
   public
     { Public declarations }
@@ -157,7 +127,7 @@ end;
 
 procedure TFormDashboard.FormShow(Sender: TObject);
 begin
-  btnBuscaClick(self);
+  btnBusca(self);
 end;
 
 procedure TFormDashboard.montaCards(dataInicial : tdate; dataFinal : tdate);
@@ -275,104 +245,10 @@ begin
 
 end;
 
-procedure TFormDashboard.montaGraficos(dataInicial : tdate; dataFinal : tdate);
-begin
-
-  with queryServicos do
-  begin
-    close;
-
-    sql.Clear;
-
-    sql.Add('select count(ia.ID) as qtd_item, s.DESCRICAO, s.VALOR from agendamentos a');
-    sql.Add('inner join ITENS_AGENDAMENTO ia on ia.ID_AGENDAMENTO = a.ID');
-    sql.Add('inner join SERVICOS s on s.ID = ia.ID');
-    sql.Add('where a.DATA_AGENDADA between :datai and :dataf');
-    sql.Add('group by s.DESCRICAO, s.VALOR');
-
-    ParamByName('datai').DataType := ftDate;
-    ParamByName('datai').Value := dataInicial;
-
-    ParamByName('dataf').DataType := ftDate;
-    ParamByName('dataf').Value := dataFinal;
-
-    open;
-  end;
-
-  with queryClientes do
-  begin
-    close;
-
-    sql.Clear;
-
-    sql.Add('select count(u.id) as qtd_clientes, u.NOME from agendamentos a');
-    sql.Add('inner join USUARIOS u on a.ID_CLIENTE = u.ID');
-    sql.Add('where a.DATA_AGENDADA between :datai and :dataf');
-    sql.Add('group by u.nome');
-
-    ParamByName('datai').DataType := ftDate;
-    ParamByName('datai').Value := dataInicial;
-
-    ParamByName('dataf').DataType := ftDate;
-    ParamByName('dataf').Value := dataFinal;
-
-    open;
-  end;
-
-  with queryFuncionarios do
-  begin
-    close;
-
-    sql.Clear;
-
-    sql.Add('select count(u.id) as qtd_funcionarios, u.NOME from agendamentos a');
-    sql.Add('inner join USUARIOS u on a.ID_FUNCINARIO = u.ID');
-    sql.Add('where a.DATA_AGENDADA between :datai and :dataf');
-    sql.Add('group by u.nome');
-
-    ParamByName('datai').DataType := ftDate;
-    ParamByName('datai').Value := dataInicial;
-
-    ParamByName('dataf').DataType := ftDate;
-    ParamByName('dataf').Value := dataFinal;
-
-    open;
-  end;
-
-  with queryTipoVeiculo do
-  begin
-    close;
-
-    sql.Clear;
-
-    sql.Add('select count(TIPO_VEICULO) as qtd,');
-    sql.Add('case');
-    sql.Add('  when TIPO_VEICULO = 0 then ''Moto''');
-    sql.Add('  when TIPO_VEICULO = 1 then ''Carro''');
-    sql.Add('  when TIPO_VEICULO = 2 then ''Caminhonete''');
-    sql.Add('  when TIPO_VEICULO = 3 then ''Caminhão''');
-    sql.Add('end as tipo');
-    sql.Add('from agendamentos');
-    sql.Add('where DATA_AGENDADA between :datai and :dataf');
-    sql.Add('group by TIPO_VEICULO;');
-
-    ParamByName('datai').DataType := ftDate;
-    ParamByName('datai').Value := dataInicial;
-
-    ParamByName('dataf').DataType := ftDate;
-    ParamByName('dataf').Value := dataFinal;
-
-    open;
-  end;
-
-end;
-
 procedure TFormDashboard.btnBuscaClick(Sender: TObject);
 begin
 
   montaCards(dtInicial.Date, dtFinal.Date);
-
-  montaGraficos(dtInicial.Date, dtFinal.Date);
 
 end;
 

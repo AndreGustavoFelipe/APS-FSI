@@ -1,9 +1,9 @@
-object FormRelatorio: TFormRelatorio
+object FormDashboard: TFormDashboard
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Form1'
+  Caption = 'Dashboard'
   ClientHeight = 507
   ClientWidth = 970
   Color = clBtnFace
@@ -20,7 +20,7 @@ object FormRelatorio: TFormRelatorio
     Left = 0
     Top = 0
     Width = 970
-    Height = 507
+    Height = 440
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
@@ -40,19 +40,15 @@ object FormRelatorio: TFormRelatorio
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
-      ExplicitWidth = 349
+      ExplicitTop = -6
     end
     object cxGrid1: TcxGrid
       Left = 0
       Top = 33
       Width = 970
-      Height = 474
+      Height = 407
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 432
-      ExplicitTop = 168
-      ExplicitWidth = 250
-      ExplicitHeight = 200
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.Summary.DefaultGroupSummaryItems = <>
@@ -64,10 +60,61 @@ object FormRelatorio: TFormRelatorio
       end
     end
   end
+  object Panel1: TPanel
+    Left = 0
+    Top = 440
+    Width = 970
+    Height = 67
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = 7346457
+    ParentBackground = False
+    TabOrder = 1
+    object Panel9: TPanel
+      AlignWithMargins = True
+      Left = 825
+      Top = 10
+      Width = 135
+      Height = 47
+      Margins.Left = 10
+      Margins.Top = 10
+      Margins.Right = 10
+      Margins.Bottom = 10
+      Align = alRight
+      BevelOuter = bvNone
+      Color = 7346457
+      ParentBackground = False
+      TabOrder = 0
+      object btnVoltar: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 135
+        Height = 47
+        Align = alClient
+        Caption = 'Voltar'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -19
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        OnClick = btnVoltarClick
+        ExplicitLeft = -7
+        ExplicitTop = -4
+      end
+    end
+  end
   object queryAgendamentos: TFDQuery
+    Connection = dm.con
     SQL.Strings = (
       'select * from agendamentos')
     Left = 912
     Top = 104
+  end
+  object dsAgendamentos: TDataSource
+    DataSet = queryAgendamentos
+    Left = 912
+    Top = 160
   end
 end

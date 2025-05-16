@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>prj.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -186,13 +186,13 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\..\..\Downloads\Lav\prj.exe" Configuration="Release" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\..\..\..\CPU\Downloads\Lav\prj.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>prj.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\..\..\..\..\CPU\Downloads\Lav\prj.exe" Configuration="Release" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\..\Downloads\Lav\prj.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>prj.exe</RemoteName>
                         <Overwrite>true</Overwrite>
