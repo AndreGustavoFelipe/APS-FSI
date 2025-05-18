@@ -29,7 +29,8 @@ uses
   cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGrid, Vcl.Buttons, Vcl.ComCtrls,
   cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView, cxPC,
-  dxGDIPlusClasses, Vcl.DBCtrls, cxGridChartView, cxGridDBChartView;
+  dxGDIPlusClasses, Vcl.DBCtrls, cxGridChartView, cxGridDBChartView,
+  dxBarBuiltInMenu;
 
 type
   TFormDashboard = class(TForm)
@@ -157,6 +158,9 @@ end;
 
 procedure TFormDashboard.FormShow(Sender: TObject);
 begin
+  dtInicial.Date := Date;
+  dtFinal.Date := IncMonth(Date, 1);
+
   btnBuscaClick(self);
 end;
 

@@ -182,7 +182,7 @@ object FormUsuarios: TFormUsuarios
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabCad
+      ActivePage = tabListagem
       Align = alClient
       TabOrder = 0
       OnChange = pgControlChange
@@ -219,18 +219,32 @@ object FormUsuarios: TFormUsuarios
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
+            OptionsData.Editing = False
+            Styles.Content = StyleContent
+            Styles.Header = StyleHeader
+            OnCustomDrawColumnHeader = cxGridUsuariosCustomDrawColumnHeader
             object cxGridUsuariosID: TcxGridDBColumn
               DataBinding.FieldName = 'ID'
               Visible = False
             end
             object cxGridUsuariosNOME: TcxGridDBColumn
               DataBinding.FieldName = 'NOME'
+              BestFitMaxWidth = 1080
+              MinWidth = 1080
+              Width = 1080
             end
             object cxGridUsuariosSENHA: TcxGridDBColumn
               DataBinding.FieldName = 'SENHA'
+              BestFitMaxWidth = 600
+              MinWidth = 600
+              Width = 600
             end
             object cxGridUsuariosTIPO: TcxGridDBColumn
               DataBinding.FieldName = 'TIPO'
+              OnGetDisplayText = cxGridUsuariosTIPOGetDisplayText
+              BestFitMaxWidth = 200
+              MinWidth = 200
+              Width = 200
             end
           end
           object cxGrid1DBChartView1: TcxGridDBChartView
@@ -1490,5 +1504,32 @@ object FormUsuarios: TFormUsuarios
     DataSet = queryUsuarios
     Left = 755
     Top = 143
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    Left = 184
+    PixelsPerInch = 96
+    object StyleHeader: TcxStyle
+      AssignedValues = [svBitmap, svColor, svFont]
+      Color = clWindow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clDefault
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+  end
+  object cxStyleRepository2: TcxStyleRepository
+    Left = 192
+    Top = 8
+    PixelsPerInch = 96
+    object StyleContent: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = clWindow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clDefault
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
   end
 end

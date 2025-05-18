@@ -1,0 +1,548 @@
+unit UPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.Buttons, Vcl.StdCtrls, UUsuarios, Vcl.ComCtrls, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, UDashboard, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridLevel, cxClasses,
+  cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGrid, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, UDataModule,
+  cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue,
+  cxDataControllerConditionalFormattingRulesManagerDialog, UAgendamentos,
+  UServicos, UReagendamento, UMensagem, System.UITypes;
+
+type
+  TFormPrincipal = class(TForm)
+    Menu: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    Image2: TImage;
+    Label1: TLabel;
+    Panel8: TPanel;
+    btnUsuarios: TSpeedButton;
+    Panel2: TPanel;
+    btnDashboard: TSpeedButton;
+    Panel9: TPanel;
+    imgSair: TImage;
+    btnSair: TSpeedButton;
+    cbStatus: TComboBox;
+    dtDataAgendadaFim: TDateTimePicker;
+    Panel12: TPanel;
+    btnServicos: TSpeedButton;
+    cxGrid1: TcxGrid;
+    cxGridAgendamentos: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    queryAgendamentos: TFDQuery;
+    dsAgendamentos: TDataSource;
+    cxGrid1DBCardView1: TcxGridDBCardView;
+    cxGrid1DBCardView1ID: TcxGridDBCardViewRow;
+    cxGrid1DBCardView1ID_CLIENTE: TcxGridDBCardViewRow;
+    cxGrid1DBCardView1ID_FUNCINARIO: TcxGridDBCardViewRow;
+    cxGrid1DBCardView1DATA_AGENDAMENTO: TcxGridDBCardViewRow;
+    cxGrid1DBCardView1DATA_AGENDADA: TcxGridDBCardViewRow;
+    cxGrid1DBCardView1HORA_AGENDAMENTO: TcxGridDBCardViewRow;
+    cxGrid1DBCardView1HORA_ENTREGA: TcxGridDBCardViewRow;
+    cxGrid1DBCardView1PLACA: TcxGridDBCardViewRow;
+    cxGrid1DBCardView1TIPO_VEICULO: TcxGridDBCardViewRow;
+    cxGrid1DBCardView1TIPO_LAVACAO: TcxGridDBCardViewRow;
+    cxGrid1DBCardView1STATUS: TcxGridDBCardViewRow;
+    Panel1: TPanel;
+    btnNovoAgendamento: TSpeedButton;
+    Panel14: TPanel;
+    btnReagendar: TSpeedButton;
+    Panel15: TPanel;
+    btnCancelarAgendamento: TSpeedButton;
+    Panel16: TPanel;
+    btnAlterarStatus: TSpeedButton;
+    Panel10: TPanel;
+    btnBuscar: TSpeedButton;
+    Label2: TLabel;
+    panelDataAgendamento: TPanel;
+    PanelDataAgendada: TPanel;
+    Label3: TLabel;
+    dtDataAgendadaInicio: TDateTimePicker;
+    PanelColaborador: TPanel;
+    lblColaborador: TLabel;
+    PanelStatus: TPanel;
+    Label5: TLabel;
+    pnlColaborador: TPanel;
+    EditColaborador: TEdit;
+    queryAgendamentosID: TIntegerField;
+    queryAgendamentosID_CLIENTE: TIntegerField;
+    queryAgendamentosID_FUNCINARIO: TIntegerField;
+    queryAgendamentosDATA_AGENDAMENTO: TDateField;
+    queryAgendamentosDATA_AGENDADA: TDateField;
+    queryAgendamentosHORA_AGENDAMENTO: TTimeField;
+    queryAgendamentosHORA_ENTREGA: TTimeField;
+    queryAgendamentosPLACA: TStringField;
+    queryAgendamentosSTATUS: TStringField;
+    queryAgendamentosMODELO: TStringField;
+    queryAgendamentosTIPO_VEICULO: TSmallintField;
+    Panel13: TPanel;
+    btnItensAgendamento: TSpeedButton;
+    cxGridAgendamentosID: TcxGridDBColumn;
+    cxGridAgendamentosID_CLIENTE: TcxGridDBColumn;
+    cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn;
+    cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn;
+    cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn;
+    cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn;
+    cxGridAgendamentosHORA_ENTREGA: TcxGridDBColumn;
+    cxGridAgendamentosPLACA: TcxGridDBColumn;
+    cxGridAgendamentosSTATUS: TcxGridDBColumn;
+    cxGridAgendamentosMODELO: TcxGridDBColumn;
+    cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn;
+    cxStyleRepository1: TcxStyleRepository;
+    StyleHeader: TcxStyle;
+    cxStyleRepository2: TcxStyleRepository;
+    StyleContent: TcxStyle;
+    procedure btnUsuariosClick(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
+    procedure btnDashboardClick(Sender: TObject);
+    procedure btnNovoAgendamentoClick(Sender: TObject);
+    procedure btnReagendarClick(Sender: TObject);
+    procedure btnCancelarAgendamentoClick(Sender: TObject);
+    procedure btnAlterarStatusClick(Sender: TObject);
+    procedure btnServicosClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnBuscarClick(Sender: TObject);
+    procedure btnItensAgendamentoClick(Sender: TObject);
+    procedure cbStatusChange(Sender: TObject);
+    procedure cxGridAgendamentosCustomDrawColumnHeader(Sender: TcxGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
+      var ADone: Boolean);
+    procedure cxGridAgendamentosSTATUSGetDisplayText(
+      Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+      var AText: string);
+    procedure cxGridAgendamentosTIPO_VEICULOGetDisplayText(
+      Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+      var AText: string);
+    procedure cxGridAgendamentosCustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
+  private
+//    function ExtrairCodigo(Texto: string): string;
+    { Private declarations }
+  public
+    { Public declarations }
+    TipoUsuario: string;
+  end;
+
+var
+  FormPrincipal: TFormPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses ULogin, UItensAgendamento, UAlteraStatus;
+
+procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
+begin
+
+  with TFormUsuarios.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+
+end;
+
+procedure TFormPrincipal.cbStatusChange(Sender: TObject);
+begin
+  if cbStatus.ItemIndex = 5 then
+    cbStatus.ItemIndex := -1;
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosCustomDrawCell(
+  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+var
+  statusValue: Integer;
+  corFundo: TColor;
+begin
+  if AViewInfo.Item = cxGridAgendamentosSTATUS then
+  begin
+    statusValue := AViewInfo.GridRecord.Values[cxGridAgendamentosSTATUS.Index];
+
+    case statusValue of
+      0: corFundo := RGB(173, 216, 230);  // azul claro forte
+      1: corFundo := RGB(255, 255, 204);  // amarelo claro forte
+      2: corFundo := RGB(204, 255, 204);  // verde claro forte
+      3: corFundo := RGB(255, 140, 0);    // laranja forte
+      4: corFundo := RGB(255, 0, 0);      // vermelho forte
+    else
+      corFundo := clWhite;
+    end;
+
+    ACanvas.Brush.Color := corFundo;
+    ACanvas.Font.Color := clBlack;  // fixa o texto sempre preto
+
+    ACanvas.FillRect(AViewInfo.Bounds);
+    ACanvas.DrawText(AViewInfo.Text, AViewInfo.Bounds, cxAlignLeft);
+    ADone := True;
+  end;
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosCustomDrawColumnHeader(
+  Sender: TcxGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridColumnHeaderViewInfo; var ADone: Boolean);
+begin
+  ACanvas.Brush.Color := TColor($00E1C7B4);
+  ACanvas.FillRect(AViewInfo.Bounds);
+  ACanvas.Font.Color := clBlack;
+  ACanvas.Font.Style := [fsBold];
+  ACanvas.TextOut(AViewInfo.Bounds.Left + 4, AViewInfo.Bounds.Top + 2, AViewInfo.Text);
+  ADone := True;
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosSTATUSGetDisplayText(
+  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AText: string);
+begin
+  if AText = '0' then
+    AText := 'Agendado'
+  else if AText = '1' then
+    AText := 'Em andamento'
+  else if AText = '2' then
+    AText := 'Concluído'
+  else if AText = '3' then
+    AText := 'Cancelado'
+  else if AText = '4' then
+    AText := 'Atrasado';
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosTIPO_VEICULOGetDisplayText(
+  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AText: string);
+begin
+  if AText = '0' then
+    AText := 'Moto'
+  else if AText = '1' then
+    AText := 'Carro'
+  else if AText = '2' then
+    AText := 'Caminhonete'
+  else if AText = '3' then
+    AText := 'Caminhão';
+end;
+
+procedure TFormPrincipal.FormShow(Sender: TObject);
+begin
+  dtDataAgendadaInicio.Date := Date;
+  dtDataAgendadaFim.Date := IncMonth(Date, 1);
+
+  if FormLogin.funcionario then
+  begin
+    with queryAgendamentos do
+    begin
+      sql.Clear;
+      sql.Add('select * from agendamentos where ID_FUNCINARIO = :id');
+      ParamByName('id').Value := FormLogin.idUsuario.ToInteger;
+      showmessage(sql.Text);
+    end;
+  end;
+
+  btnBuscarClick(self);
+
+  //Se o usuário for do tipo '1' esconde os botões
+  if TipoUsuario = '1' then
+  begin
+    PanelColaborador.Visible := false;
+    PanelColaborador.Width := 0;
+    btnUsuarios.Visible := False;
+    btnServicos.Visible := False;
+    btnDashboard.Visible := False;
+  end
+  else
+  begin
+    PanelColaborador.Visible := true;
+    PanelColaborador.Width := 380;
+    btnUsuarios.Visible := true;
+    btnServicos.Visible := true;
+    btnDashboard.Visible := true;
+  end;
+end;
+
+
+procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
+var
+  status: Integer;
+begin
+  status := dsAgendamentos.DataSet.FieldByName('STATUS').AsInteger;
+
+  if status in [0, 1] then
+  begin
+    with TFormAlteraStatus.Create(Self) do
+    begin
+      try
+        codAgendamento := dsAgendamentos.DataSet.FieldByName('id').Value;
+        ShowModal;
+      finally
+        Free;
+      end;
+    end;
+
+    btnBuscarClick(Self);
+  end
+  else if status = 2 then
+    ShowMessage('O status não pode ser alterado pois o agendamento foi concluído.')
+  else if status = 3 then
+    ShowMessage('O status não pode ser alterado pois o agendamento foi cancelado.')
+  else if status = 4 then
+    ShowMessage('O status não pode ser alterado pois o agendamento está atrasado. Se necessário, realize um reagendamento."');
+end;
+
+//function TFormPrincipal.ExtrairCodigo(Texto: string): string;
+//begin
+//  Result := Trim(Copy(Texto, 1, Pos('-', Texto) - 1));
+//end;
+
+procedure TFormPrincipal.btnBuscarClick(Sender: TObject);
+var
+  codigoFunc : integer;
+begin
+
+  codigoFunc := 0;
+
+  if not FormLogin.funcionario then
+  begin
+    if EditColaborador.Text <> '' then
+  begin
+    with TFDQuery.Create(self) do
+      begin
+      try
+
+        begin
+          Connection := dm.con;
+
+          sql.clear;
+          sql.Add('select * from usuarios where nome like :nome');
+          ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
+          open;
+
+          if RecordCount > 0 then
+            codigoFunc := FieldByName('id').AsInteger;
+
+          close;
+          open;
+
+        end;
+      finally
+        free;
+      end;
+    end;
+  end;
+  end
+
+  else
+    codigoFunc := FormLogin.idUsuario.ToInteger;
+
+  with queryAgendamentos do
+  begin
+    Close;
+    
+    sql.Clear;
+    
+    sql.Add('select * from agendamentos');
+    sql.Add('where DATA_AGENDADA between :inicio and :final');
+    ParamByName('inicio').AsDate := dtDataAgendadaInicio.Date;
+    ParamByName('final').AsDate := dtDataAgendadaFim.Date;
+
+    if codigoFunc <> 0 then
+    begin
+      sql.Add('and ID_FUNCINARIO = :id_funcionario');
+      ParamByName('id_funcionario').Value := codigoFunc;
+    end;
+
+    if cbStatus.ItemIndex <> -1 then
+    begin
+      sql.Add('and status = :status');
+      ParamByName('status').Value := cbStatus.ItemIndex;
+    end;
+
+//    ShowMessage(sql.Text);
+
+    Open;
+  end;
+  
+end;
+
+procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);
+var
+  status: Integer;
+begin
+  status := dsAgendamentos.DataSet.FieldByName('STATUS').AsInteger;
+
+  if status in [0, 1] then
+  begin
+    if (MessageDlg('Tem certeza que deseja cancelar este agendamento?', mtWarning, [mbNo, mbYes], 0) = mrYes) then
+    begin
+      with TFDQuery.Create(Self) do
+      begin
+        try
+          connection := dm.con;
+
+          SQL.Add('update agendamentos');
+          SQL.Add('set status = :status');
+          SQL.Add('where id = :id');
+
+          ParamByName('id').Value := dsAgendamentos.DataSet.FieldByName('id').Value;
+          ParamByName('status').Value := 3;
+
+          ExecSQL;
+
+        finally
+          Free;
+        end;
+      end;
+
+      btnBuscarClick(Self);
+    end;
+  end
+  else if status = 2 then
+    ShowMessage('Este agendamento já foi concluído e não pode ser cancelado.')
+  else if status = 3 then
+    ShowMessage('Este agendamento já está cancelado.')
+  else if status = 4 then
+    ShowMessage('Este agendamento está atrasado e não pode ser cancelado.');
+end;
+
+
+procedure TFormPrincipal.btnDashboardClick(Sender: TObject);
+begin
+
+  with TFormDashboard.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+
+end;
+
+procedure TFormPrincipal.btnItensAgendamentoClick(Sender: TObject);
+begin
+  with TFormItensAgendamento.Create(self) do
+  begin
+    try
+      
+      queryItens.Close;
+      queryItens.sql.Clear;
+
+      queryItens.sql.Add('select ia.id, s.DESCRICAO from ITENS_AGENDAMENTO ia');
+      queryItens.sql.Add('left join SERVICOS s on ia.ID = s.ID');
+      queryItens.sql.Add('where ia.ID_AGENDAMENTO = :id');
+
+      queryItens.ParamByName('id').Value := cxGridAgendamentos.DataController.DataSet.FieldByName('id').Value;
+
+      queryItens.open;
+
+      ShowModal;
+    finally
+      free;
+    end;
+  end;
+end;
+
+procedure TFormPrincipal.btnNovoAgendamentoClick(Sender: TObject);
+begin
+
+  with TFormAgendamento.Create(Self) do
+  begin
+    try
+      operacao := 0;
+      ShowModal;
+    finally
+      btnBuscarClick(self);
+      Free;
+    end;
+  end;
+
+end;
+
+procedure TFormPrincipal.btnReagendarClick(Sender: TObject);
+var
+  status: Integer;
+begin
+  status := dsAgendamentos.DataSet.FieldByName('STATUS').AsInteger;
+
+  if status in [0, 1, 4] then
+  begin
+    with TFormReagendamento.Create(Self) do
+    begin
+      try
+        codigoReagendamento := dsAgendamentos.DataSet.FieldByName('ID').AsInteger;
+        ShowModal;
+      finally
+        Free;
+      end;
+    end;
+
+    btnBuscarClick(Self);
+  end
+  else if status = 2 then
+    ShowMessage('Este agendamento já foi concluído e não pode ser reagendado.')
+  else if status = 3 then
+    ShowMessage('Este agendamento está cancelado e não pode ser reagendado.');
+end;
+
+
+procedure TFormPrincipal.btnSairClick(Sender: TObject);
+begin
+//
+//  with TFormLogin.Create(Self) do
+//  begin
+//    try
+//      ShowModal;
+//    finally
+//      Free;
+//    end;
+//  end;
+
+  close;
+
+end;
+
+procedure TFormPrincipal.btnServicosClick(Sender: TObject);
+begin
+
+  with TFormServicos.Create(Self) do
+  begin
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
+  end;
+
+end;
+
+end.

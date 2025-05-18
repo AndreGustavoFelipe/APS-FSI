@@ -182,7 +182,7 @@ object FormServicos: TFormServicos
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabListagem
+      ActivePage = tabCad
       Align = alClient
       TabOrder = 0
       object tabListagem: TTabSheet
@@ -200,15 +200,26 @@ object FormServicos: TFormServicos
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
+            OptionsCustomize.ColumnMoving = False
+            OptionsData.Editing = False
+            Styles.Content = StyleContent
+            Styles.Header = StyleHeader
+            OnCustomDrawColumnHeader = cxGridServicosCustomDrawColumnHeader
             object cxGridServicosID: TcxGridDBColumn
               DataBinding.FieldName = 'ID'
               Visible = False
             end
             object cxGridServicosDESCRICAO: TcxGridDBColumn
               DataBinding.FieldName = 'DESCRICAO'
+              BestFitMaxWidth = 1310
+              MinWidth = 1310
+              Width = 1310
             end
             object cxGridServicosVALOR: TcxGridDBColumn
               DataBinding.FieldName = 'VALOR'
+              BestFitMaxWidth = 570
+              MinWidth = 570
+              Width = 570
             end
           end
           object cxGrid1DBChartView1: TcxGridDBChartView
@@ -419,6 +430,33 @@ object FormServicos: TFormServicos
       FieldName = 'VALOR'
       Origin = 'VALOR'
       Required = True
+    end
+  end
+  object cxStyleRepository1: TcxStyleRepository
+    Left = 216
+    Top = 65528
+    PixelsPerInch = 96
+    object StyleHeader: TcxStyle
+      AssignedValues = [svBitmap, svColor, svFont]
+      Color = clWindow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clDefault
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+  end
+  object cxStyleRepository2: TcxStyleRepository
+    Left = 248
+    PixelsPerInch = 96
+    object StyleContent: TcxStyle
+      AssignedValues = [svColor, svFont]
+      Color = clWindow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clDefault
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
     end
   end
 end

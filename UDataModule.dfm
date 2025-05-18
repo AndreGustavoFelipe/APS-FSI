@@ -7,11 +7,8 @@ object dm: Tdm
     Params.Strings = (
       'User_Name= SYSDBA'
       'Password=masterkey'
-      
-        'Database=C:\Users\imper\OneDrive\'#193'rea de Trabalho\Lav\dados\BDAP' +
-        'SFDSI.FDB'
+      'Database=C:\Users\CPU\Downloads\Lav\Dados\BDAPSFDSI.FDB'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 160
     Top = 120

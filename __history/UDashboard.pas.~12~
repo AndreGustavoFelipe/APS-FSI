@@ -1,0 +1,379 @@
+unit UDashboard;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, Data.DB, cxDBData,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.Buttons, Vcl.ComCtrls,
+  cxGridCardView, cxGridDBCardView, cxGridCustomLayoutView, cxPC,
+  dxGDIPlusClasses, Vcl.DBCtrls, cxGridChartView, cxGridDBChartView;
+
+type
+  TFormDashboard = class(TForm)
+    Panel2: TPanel;
+    queryServicos: TFDQuery;
+    dsServicos: TDataSource;
+    Panel1: TPanel;
+    Panel9: TPanel;
+    btnVoltar: TSpeedButton;
+    Panel3: TPanel;
+    Panel8: TPanel;
+    Panel11: TPanel;
+    Label3: TLabel;
+    dtFinal: TDateTimePicker;
+    Panel12: TPanel;
+    Label4: TLabel;
+    dtInicial: TDateTimePicker;
+    Panel13: TPanel;
+    Panel14: TPanel;
+    btnBusca: TSpeedButton;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxGrid1: TcxGrid;
+    cxGrid1Level1: TcxGridLevel;
+    cxChartServicos: TcxGridDBChartView;
+    Panel10: TPanel;
+    Panel15: TPanel;
+    DBText3: TDBText;
+    Panel16: TPanel;
+    Image1: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    Image2: TImage;
+    DBText1: TDBText;
+    Image7: TImage;
+    DBText2: TDBText;
+    Image8: TImage;
+    DBText4: TDBText;
+    Image9: TImage;
+    DBText5: TDBText;
+    Image10: TImage;
+    DBText6: TDBText;
+    queryCardAgendado: TFDQuery;
+    dsAgendado: TDataSource;
+    queryCardAgendadoAGENDADOS: TLargeintField;
+    dsEmAndamento: TDataSource;
+    queryCardEmAndamento: TFDQuery;
+    queryCardEmAndamentoANDAMENTO: TLargeintField;
+    queryCardConcluidos: TFDQuery;
+    dsConcluidos: TDataSource;
+    queryCardConcluidosCONCLUIDOS: TLargeintField;
+    queryCardsCancelados: TFDQuery;
+    dsCancelados: TDataSource;
+    queryCardsCanceladosCANCELADOS: TLargeintField;
+    queryCardsAtrasados: TFDQuery;
+    dsAtrasados: TDataSource;
+    queryCardsAtrasadosATRASADOS: TLargeintField;
+    dsFaturamento: TDataSource;
+    queryCardsFaturamento: TFDQuery;
+    queryCardsFaturamentoFATURAMENTO: TFloatField;
+    queryServicosQTD_ITEM: TLargeintField;
+    queryServicosDESCRICAO: TStringField;
+    cxChartServicosSeries1: TcxGridDBChartSeries;
+    cxChartServicosDataGroup1: TcxGridDBChartDataGroup;
+    cxTabSheet2: TcxTabSheet;
+    cxGrid2: TcxGrid;
+    cxChartClientes: TcxGridDBChartView;
+    cxGridLevel1: TcxGridLevel;
+    queryClientes: TFDQuery;
+    dsClientes: TDataSource;
+    queryClientesQTD_CLIENTES: TLargeintField;
+    queryClientesNOME: TStringField;
+    cxChartClientesSeries1: TcxGridDBChartSeries;
+    cxChartClientesDataGroup1: TcxGridDBChartDataGroup;
+    cxTabSheet3: TcxTabSheet;
+    cxGrid3: TcxGrid;
+    cxChardFuncionarios: TcxGridDBChartView;
+    cxGridLevel2: TcxGridLevel;
+    queryFuncionarios: TFDQuery;
+    dsFuncionarios: TDataSource;
+    queryFuncionariosNOME: TStringField;
+    queryFuncionariosQTD_FUNCIONARIOS: TLargeintField;
+    cxChardFuncionariosSeries1: TcxGridDBChartSeries;
+    cxChardFuncionariosDataGroup1: TcxGridDBChartDataGroup;
+    cxTabSheet4: TcxTabSheet;
+    cxGrid4: TcxGrid;
+    cxChartTipoVeiculo: TcxGridDBChartView;
+    cxGridLevel3: TcxGridLevel;
+    queryTipoVeiculo: TFDQuery;
+    dsTipoVeiculo: TDataSource;
+    queryTipoVeiculoQTD: TLargeintField;
+    queryTipoVeiculoTIPO: TStringField;
+    cxChartTipoVeiculoSeries1: TcxGridDBChartSeries;
+    cxChartTipoVeiculoDataGroup1: TcxGridDBChartDataGroup;
+    procedure btnVoltarClick(Sender: TObject);
+    procedure btnBuscaClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    procedure montaCards(dataInicial, dataFinal: tdate);
+    procedure montaGraficos(dataInicial, dataFinal: tdate);
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormDashboard: TFormDashboard;
+
+implementation
+
+{$R *.dfm}
+
+uses UDataModule;
+
+procedure TFormDashboard.btnVoltarClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFormDashboard.FormShow(Sender: TObject);
+begin
+  btnBuscaClick(self);
+end;
+
+procedure TFormDashboard.montaCards(dataInicial : tdate; dataFinal : tdate);
+begin
+
+  with queryCardAgendado do
+  begin
+    close;
+
+    sql.Clear;
+
+    sql.Add('select count(id) as agendados from agendamentos');
+    sql.Add('where status = 0 and DATA_AGENDADA between :datai and :dataf');
+
+    ParamByName('datai').DataType := ftDate;
+    ParamByName('datai').Value := dataInicial;
+
+    ParamByName('dataf').DataType := ftDate;
+    ParamByName('dataf').Value := dataFinal;
+
+    open;
+  end;
+
+  with queryCardEmAndamento do
+  begin
+    close;
+
+    sql.Clear;
+
+    sql.Add('select count(id) as andamento from agendamentos');
+    sql.Add('where status = 1 and DATA_AGENDADA between :datai and :dataf');
+
+    ParamByName('datai').DataType := ftDate;
+    ParamByName('datai').Value := dataInicial;
+
+    ParamByName('dataf').DataType := ftDate;
+    ParamByName('dataf').Value := dataFinal;
+
+    open;
+  end;
+
+  with queryCardConcluidos do
+  begin
+    close;
+
+    sql.Clear;
+
+    sql.Add('select count(id) as concluidos from agendamentos');
+    sql.Add('where status = 2 and DATA_AGENDADA between :datai and :dataf');
+
+    ParamByName('datai').DataType := ftDate;
+    ParamByName('datai').Value := dataInicial;
+
+    ParamByName('dataf').DataType := ftDate;
+    ParamByName('dataf').Value := dataFinal;
+
+    open;
+  end;
+
+  with queryCardsCancelados do
+  begin
+    close;
+
+    sql.Clear;
+
+    sql.Add('select count(id) as cancelados from agendamentos');
+    sql.Add('where status = 3 and DATA_AGENDADA between :datai and :dataf');
+
+    ParamByName('datai').DataType := ftDate;
+    ParamByName('datai').Value := dataInicial;
+
+    ParamByName('dataf').DataType := ftDate;
+    ParamByName('dataf').Value := dataFinal;
+
+    open;
+  end;
+
+  with queryCardsAtrasados do
+  begin
+    close;
+
+    sql.Clear;
+
+    sql.Add('select count(id) as atrasados from agendamentos');
+    sql.Add('where status = 4 and DATA_AGENDADA between :datai and :dataf');
+
+    ParamByName('datai').DataType := ftDate;
+    ParamByName('datai').Value := dataInicial;
+
+    ParamByName('dataf').DataType := ftDate;
+    ParamByName('dataf').Value := dataFinal;
+
+    open;
+  end;
+
+  with queryCardsFaturamento do
+  begin
+    close;
+
+    sql.Clear;
+
+    sql.Add('select sum(s.VALOR) as faturamento from itens_agendamento ia');
+    sql.Add('inner join SERVICOS s on ia.ID = s.ID');
+    sql.Add('left join AGENDAMENTOS a on ia.ID_AGENDAMENTO = a.id');
+    sql.Add('where DATA_AGENDADA between :datai and :dataf');
+
+    ParamByName('datai').DataType := ftDate;
+    ParamByName('datai').Value := dataInicial;
+
+    ParamByName('dataf').DataType := ftDate;
+    ParamByName('dataf').Value := dataFinal;
+
+    open;
+  end;
+
+end;
+
+procedure TFormDashboard.montaGraficos(dataInicial : tdate; dataFinal : tdate);
+begin
+
+  with queryServicos do
+  begin
+    close;
+
+    sql.Clear;
+
+    sql.Add('select count(ia.ID) as qtd_item, s.DESCRICAO, s.VALOR from agendamentos a');
+    sql.Add('inner join ITENS_AGENDAMENTO ia on ia.ID_AGENDAMENTO = a.ID');
+    sql.Add('inner join SERVICOS s on s.ID = ia.ID');
+    sql.Add('where a.DATA_AGENDADA between :datai and :dataf');
+    sql.Add('group by s.DESCRICAO, s.VALOR');
+
+    ParamByName('datai').DataType := ftDate;
+    ParamByName('datai').Value := dataInicial;
+
+    ParamByName('dataf').DataType := ftDate;
+    ParamByName('dataf').Value := dataFinal;
+
+    open;
+  end;
+
+  with queryClientes do
+  begin
+    close;
+
+    sql.Clear;
+
+    sql.Add('select count(u.id) as qtd_clientes, u.NOME from agendamentos a');
+    sql.Add('inner join USUARIOS u on a.ID_CLIENTE = u.ID');
+    sql.Add('where a.DATA_AGENDADA between :datai and :dataf');
+    sql.Add('group by u.nome');
+
+    ParamByName('datai').DataType := ftDate;
+    ParamByName('datai').Value := dataInicial;
+
+    ParamByName('dataf').DataType := ftDate;
+    ParamByName('dataf').Value := dataFinal;
+
+    open;
+  end;
+
+  with queryFuncionarios do
+  begin
+    close;
+
+    sql.Clear;
+
+    sql.Add('select count(u.id) as qtd_funcionarios, u.NOME from agendamentos a');
+    sql.Add('inner join USUARIOS u on a.ID_FUNCINARIO = u.ID');
+    sql.Add('where a.DATA_AGENDADA between :datai and :dataf');
+    sql.Add('group by u.nome');
+
+    ParamByName('datai').DataType := ftDate;
+    ParamByName('datai').Value := dataInicial;
+
+    ParamByName('dataf').DataType := ftDate;
+    ParamByName('dataf').Value := dataFinal;
+
+    open;
+  end;
+
+  with queryTipoVeiculo do
+  begin
+    close;
+
+    sql.Clear;
+
+    sql.Add('select count(TIPO_VEICULO) as qtd,');
+    sql.Add('case');
+    sql.Add('  when TIPO_VEICULO = 0 then ''Moto''');
+    sql.Add('  when TIPO_VEICULO = 1 then ''Carro''');
+    sql.Add('  when TIPO_VEICULO = 2 then ''Caminhonete''');
+    sql.Add('  when TIPO_VEICULO = 3 then ''Caminhão''');
+    sql.Add('end as tipo');
+    sql.Add('from agendamentos');
+    sql.Add('where DATA_AGENDADA between :datai and :dataf');
+    sql.Add('group by TIPO_VEICULO;');
+
+    ParamByName('datai').DataType := ftDate;
+    ParamByName('datai').Value := dataInicial;
+
+    ParamByName('dataf').DataType := ftDate;
+    ParamByName('dataf').Value := dataFinal;
+
+    open;
+  end;
+
+end;
+
+procedure TFormDashboard.btnBuscaClick(Sender: TObject);
+begin
+
+  montaCards(dtInicial.Date, dtFinal.Date);
+
+  montaGraficos(dtInicial.Date, dtFinal.Date);
+
+end;
+
+end.

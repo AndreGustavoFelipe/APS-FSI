@@ -28,7 +28,8 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, cxContainer, cxTextEdit,
+  cxCurrencyEdit;
 
 type
   TFormServicos = class(TForm)
@@ -67,6 +68,10 @@ type
     cxGridServicosID: TcxGridDBColumn;
     cxGridServicosDESCRICAO: TcxGridDBColumn;
     cxGridServicosVALOR: TcxGridDBColumn;
+    cxStyleRepository1: TcxStyleRepository;
+    StyleHeader: TcxStyle;
+    cxStyleRepository2: TcxStyleRepository;
+    StyleContent: TcxStyle;
     procedure btnCancelarClick(Sender: TObject);
     procedure btnNovoUsuarioClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
@@ -74,6 +79,9 @@ type
     procedure btnVoltarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
+    procedure cxGridServicosCustomDrawColumnHeader(Sender: TcxGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
+      var ADone: Boolean);
   private
     idServico : integer;
     procedure limpaCampos;
@@ -212,11 +220,22 @@ begin
   Close;
 end;
 
+procedure TFormServicos.cxGridServicosCustomDrawColumnHeader(
+  Sender: TcxGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridColumnHeaderViewInfo; var ADone: Boolean);
+begin
+  ACanvas.Brush.Color := TColor($00E1C7B4);
+  ACanvas.FillRect(AViewInfo.Bounds);
+  ACanvas.Font.Color := clBlack;
+  ACanvas.Font.Style := [fsBold];
+  ACanvas.TextOut(AViewInfo.Bounds.Left + 4, AViewInfo.Bounds.Top + 2, AViewInfo.Text);
+  ADone := True;
+end;
+
 procedure TFormServicos.FormShow(Sender: TObject);
 begin
   operacao := 0;
   pgControl.TabIndex := 0;
   queryServicos.Open;
 end;
-
 end.

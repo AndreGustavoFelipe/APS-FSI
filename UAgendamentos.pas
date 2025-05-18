@@ -238,6 +238,9 @@ end;
 
 procedure TFormAgendamento.FormShow(Sender: TObject);
 begin
+  dtDiaAgendamento.Date := Date;
+  timePicker.Time := Time;
+
   if FormLogin.funcionario then
   begin
     with queryFuncionarios do
@@ -248,7 +251,7 @@ begin
       open;
     end;
   end
-  
+
   else
     queryFuncionarios.Open;
   queryServicos.Open;

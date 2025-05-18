@@ -140,6 +140,9 @@ type
     procedure cxGridAgendamentosTIPO_VEICULOGetDisplayText(
       Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
       var AText: string);
+    procedure cxGridAgendamentosCustomDrawCell(Sender: TcxCustomGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
+      var ADone: Boolean);
   private
 //    function ExtrairCodigo(Texto: string): string;
     { Private declarations }
@@ -175,6 +178,37 @@ procedure TFormPrincipal.cbStatusChange(Sender: TObject);
 begin
   if cbStatus.ItemIndex = 5 then
     cbStatus.ItemIndex := -1;
+end;
+
+procedure TFormPrincipal.cxGridAgendamentosCustomDrawCell(
+  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+var
+  statusValue: Integer;
+  corFundo: TColor;
+begin
+  if AViewInfo.Item = cxGridAgendamentosSTATUS then
+  begin
+    statusValue := AViewInfo.GridRecord.Values[cxGridAgendamentosSTATUS.Index];
+
+    case statusValue of
+      0: corFundo := RGB(173, 216, 230);  // Agendado
+      1: corFundo := RGB(255, 255, 204);  // Em andamento
+      2: corFundo := RGB(204, 255, 204);  // Concluído
+      3: corFundo := RGB(255, 140, 0);    // Cancelado
+      4: corFundo := RGB(255, 0, 0);      // Atrasado
+    else
+      corFundo := clWhite;
+    end;
+
+    ACanvas.Brush.Color := corFundo;
+    ACanvas.Font.Color := clBlack;
+
+    ACanvas.FillRect(AViewInfo.Bounds);
+    ACanvas.DrawText(AViewInfo.Text, AViewInfo.Bounds, cxAlignLeft);
+    ADone := True;
+  end;
+
 end;
 
 procedure TFormPrincipal.cxGridAgendamentosCustomDrawColumnHeader(
@@ -221,6 +255,9 @@ end;
 
 procedure TFormPrincipal.FormShow(Sender: TObject);
 begin
+  dtDataAgendadaInicio.Date := Date;
+  dtDataAgendadaFim.Date := IncMonth(Date, 1);
+
   if FormLogin.funcionario then
   begin
     with queryAgendamentos do
@@ -481,15 +518,6 @@ end;
 
 procedure TFormPrincipal.btnSairClick(Sender: TObject);
 begin
-//
-//  with TFormLogin.Create(Self) do
-//  begin
-//    try
-//      ShowModal;
-//    finally
-//      Free;
-//    end;
-//  end;
 
   close;
 

@@ -72,6 +72,10 @@ type
     cxGridUsuariosNOME: TcxGridDBColumn;
     cxGridUsuariosSENHA: TcxGridDBColumn;
     cxGridUsuariosTIPO: TcxGridDBColumn;
+    cxStyleRepository1: TcxStyleRepository;
+    StyleHeader: TcxStyle;
+    cxStyleRepository2: TcxStyleRepository;
+    StyleContent: TcxStyle;
     procedure imgCadeadoClick(Sender: TObject);
     procedure btnNovoUsuarioClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
@@ -81,6 +85,11 @@ type
     procedure pgControlChange(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
+    procedure cxGridUsuariosCustomDrawColumnHeader(Sender: TcxGridTableView;
+      ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
+      var ADone: Boolean);
+    procedure cxGridUsuariosTIPOGetDisplayText(Sender: TcxCustomGridTableItem;
+      ARecord: TcxCustomGridRecord; var AText: string);
   private
     operacao, idUsuario : integer;
     procedure limpaCampos; // 0 -> Cadastro // 1 -> Edição // 2 -> Exclusão
@@ -179,6 +188,30 @@ end;
 procedure TFormUsuarios.btnVoltarClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFormUsuarios.cxGridUsuariosCustomDrawColumnHeader(
+  Sender: TcxGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridColumnHeaderViewInfo; var ADone: Boolean);
+begin
+  ACanvas.Brush.Color := TColor($00E1C7B4);
+  ACanvas.FillRect(AViewInfo.Bounds);
+  ACanvas.Font.Color := clBlack;
+  ACanvas.Font.Style := [fsBold];
+  ACanvas.TextOut(AViewInfo.Bounds.Left + 4, AViewInfo.Bounds.Top + 2, AViewInfo.Text);
+  ADone := True;
+end;
+
+procedure TFormUsuarios.cxGridUsuariosTIPOGetDisplayText(
+  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AText: string);
+begin
+  if AText = '0' then
+    AText := 'Cliente'
+  else if AText = '1' then
+    AText := 'Funcionário'
+  else if AText = '2' then
+    AText := 'Administrador'
 end;
 
 procedure TFormUsuarios.FormShow(Sender: TObject);
