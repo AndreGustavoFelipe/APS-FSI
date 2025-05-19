@@ -121,8 +121,6 @@ type
     queryAgendamentosNOME_FUNCIONARIO: TStringField;
     cxGridAgendamentosNOME_CLIENTE: TcxGridDBColumn;
     cxGridAgendamentosNOME_FUNCIONARIO: TcxGridDBColumn;
-    Panel11: TPanel;
-    btnAtualizaAtrasados: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
@@ -147,7 +145,6 @@ type
     procedure cxGridAgendamentosCustomDrawCell(Sender: TcxCustomGridTableView;
       ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
       var ADone: Boolean);
-    procedure btnAtualizaAtrasadosClick(Sender: TObject);
   private
 //    function ExtrairCodigo(Texto: string): string;
     { Private declarations }
@@ -328,11 +325,6 @@ end;
 //begin
 //  Result := Trim(Copy(Texto, 1, Pos('-', Texto) - 1));
 //end;
-
-procedure TFormPrincipal.btnAtualizaAtrasadosClick(Sender: TObject);
-begin
-  FormLogin.verificaAgendamentosAtrasados;
-end;
 
 procedure TFormPrincipal.btnBuscarClick(Sender: TObject);
 var

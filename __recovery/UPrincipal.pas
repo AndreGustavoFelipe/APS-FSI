@@ -30,7 +30,7 @@ uses
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue,
   cxDataControllerConditionalFormattingRulesManagerDialog, UAgendamentos,
-  UServicos, UReagendamento, UMensagem, System.UITypes;
+  UServicos, UReagendamento, UMensagem, System.UITypes, UItensAgendamento, UAlteraStatus;
 
 type
   TFormPrincipal = class(TForm)
@@ -105,8 +105,6 @@ type
     Panel13: TPanel;
     btnItensAgendamento: TSpeedButton;
     cxGridAgendamentosID: TcxGridDBColumn;
-    cxGridAgendamentosID_CLIENTE: TcxGridDBColumn;
-    cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn;
     cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn;
     cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn;
     cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn;
@@ -119,6 +117,12 @@ type
     StyleHeader: TcxStyle;
     cxStyleRepository2: TcxStyleRepository;
     StyleContent: TcxStyle;
+    queryAgendamentosNOME_CLIENTE: TStringField;
+    queryAgendamentosNOME_FUNCIONARIO: TStringField;
+    cxGridAgendamentosNOME_CLIENTE: TcxGridDBColumn;
+    cxGridAgendamentosNOME_FUNCIONARIO: TcxGridDBColumn;
+    Panel11: TPanel;
+    btnAtualizaAtrasados: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
@@ -143,6 +147,7 @@ type
     procedure cxGridAgendamentosCustomDrawCell(Sender: TcxCustomGridTableView;
       ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
       var ADone: Boolean);
+    procedure btnAtualizaAtrasadosClick(Sender: TObject);
   private
 //    function ExtrairCodigo(Texto: string): string;
     { Private declarations }
@@ -158,7 +163,7 @@ implementation
 
 {$R *.dfm}
 
-uses ULogin, UItensAgendamento, UAlteraStatus;
+uses ULogin;
 
 procedure TFormPrincipal.btnUsuariosClick(Sender: TObject);
 begin
@@ -192,22 +197,23 @@ begin
     statusValue := AViewInfo.GridRecord.Values[cxGridAgendamentosSTATUS.Index];
 
     case statusValue of
-      0: corFundo := RGB(173, 216, 230);  // azul claro forte
-      1: corFundo := RGB(255, 255, 204);  // amarelo claro forte
-      2: corFundo := RGB(204, 255, 204);  // verde claro forte
-      3: corFundo := RGB(255, 140, 0);    // laranja forte
-      4: corFundo := RGB(255, 0, 0);      // vermelho forte
+      0: corFundo := RGB(173, 216, 230);  // Agendado
+      1: corFundo := RGB(255, 255, 204);  // Em andamento
+      2: corFundo := RGB(204, 255, 204);  // Conclu√≠do
+      3: corFundo := RGB(255, 140, 0);    // Cancelado
+      4: corFundo := RGB(255, 0, 0);      // Atrasado
     else
       corFundo := clWhite;
     end;
 
     ACanvas.Brush.Color := corFundo;
-    ACanvas.Font.Color := clBlack;  // fixa o texto sempre preto
+    ACanvas.Font.Color := clBlack;
 
     ACanvas.FillRect(AViewInfo.Bounds);
     ACanvas.DrawText(AViewInfo.Text, AViewInfo.Bounds, cxAlignLeft);
     ADone := True;
   end;
+
 end;
 
 procedure TFormPrincipal.cxGridAgendamentosCustomDrawColumnHeader(
@@ -231,7 +237,7 @@ begin
   else if AText = '1' then
     AText := 'Em andamento'
   else if AText = '2' then
-    AText := 'ConcluÌdo'
+    AText := 'Conclu√≠do'
   else if AText = '3' then
     AText := 'Cancelado'
   else if AText = '4' then
@@ -249,7 +255,7 @@ begin
   else if AText = '2' then
     AText := 'Caminhonete'
   else if AText = '3' then
-    AText := 'Caminh„o';
+    AText := 'Caminh√£o';
 end;
 
 procedure TFormPrincipal.FormShow(Sender: TObject);
@@ -270,7 +276,7 @@ begin
 
   btnBuscarClick(self);
 
-  //Se o usu·rio for do tipo '1' esconde os botıes
+  //Se o usu√°rio for do tipo '1' esconde os bot√µes
   if TipoUsuario = '1' then
   begin
     PanelColaborador.Visible := false;
@@ -311,11 +317,11 @@ begin
     btnBuscarClick(Self);
   end
   else if status = 2 then
-    ShowMessage('O status n„o pode ser alterado pois o agendamento foi concluÌdo.')
+    ShowMessage('O status n√£o pode ser alterado pois o agendamento foi conclu√≠do.')
   else if status = 3 then
-    ShowMessage('O status n„o pode ser alterado pois o agendamento foi cancelado.')
+    ShowMessage('O status n√£o pode ser alterado pois o agendamento foi cancelado.')
   else if status = 4 then
-    ShowMessage('O status n„o pode ser alterado pois o agendamento est· atrasado. Se necess·rio, realize um reagendamento."');
+    ShowMessage('O status n√£o pode ser alterado pois o agendamento est√° atrasado. Se necess√°rio, realize um reagendamento."');
 end;
 
 //function TFormPrincipal.ExtrairCodigo(Texto: string): string;
@@ -323,75 +329,72 @@ end;
 //  Result := Trim(Copy(Texto, 1, Pos('-', Texto) - 1));
 //end;
 
+procedure TFormPrincipal.btnAtualizaAtrasadosClick(Sender: TObject);
+begin
+  FormLogin.verificaAgendamentosAtrasados;
+end;
+
 procedure TFormPrincipal.btnBuscarClick(Sender: TObject);
 var
-  codigoFunc : integer;
+  codigoFunc: integer;
 begin
-
   codigoFunc := 0;
 
   if not FormLogin.funcionario then
   begin
     if EditColaborador.Text <> '' then
-  begin
-    with TFDQuery.Create(self) do
-      begin
+    begin
+      with TFDQuery.Create(Self) do
       try
+        Connection := dm.con;
+        SQL.Clear;
+        SQL.Add('select * from usuarios where nome like :nome');
+        ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
+        Open;
 
-        begin
-          Connection := dm.con;
-
-          sql.clear;
-          sql.Add('select * from usuarios where nome like :nome');
-          ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
-          open;
-
-          if RecordCount > 0 then
-            codigoFunc := FieldByName('id').AsInteger;
-
-          close;
-          open;
-
-        end;
+        if RecordCount > 0 then
+          codigoFunc := FieldByName('id').AsInteger;
       finally
-        free;
+        Free;
       end;
     end;
-  end;
   end
-
   else
     codigoFunc := FormLogin.idUsuario.ToInteger;
 
   with queryAgendamentos do
   begin
     Close;
-    
-    sql.Clear;
-    
-    sql.Add('select * from agendamentos');
-    sql.Add('where DATA_AGENDADA between :inicio and :final');
+    SQL.Clear;
+
+    SQL.Add('select a.*,');
+    SQL.Add('cli.NOME as NOME_CLIENTE,');
+    SQL.Add('func.NOME as NOME_FUNCIONARIO');
+    SQL.Add('from agendamentos a');
+    SQL.Add('left join usuarios cli on a.ID_CLIENTE = cli.ID');
+    SQL.Add('left join usuarios func on a.ID_FUNCINARIO = func.ID');
+    SQL.Add('where a.DATA_AGENDADA between :inicio and :final');
+
     ParamByName('inicio').AsDate := dtDataAgendadaInicio.Date;
     ParamByName('final').AsDate := dtDataAgendadaFim.Date;
 
     if codigoFunc <> 0 then
     begin
-      sql.Add('and ID_FUNCINARIO = :id_funcionario');
+      SQL.Add('and a.ID_FUNCINARIO = :id_funcionario');
       ParamByName('id_funcionario').Value := codigoFunc;
     end;
 
     if cbStatus.ItemIndex <> -1 then
     begin
-      sql.Add('and status = :status');
+      SQL.Add('and a.STATUS = :status');
       ParamByName('status').Value := cbStatus.ItemIndex;
     end;
 
-//    ShowMessage(sql.Text);
-
     Open;
   end;
-  
 end;
+
+
 
 procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);
 var
@@ -426,11 +429,11 @@ begin
     end;
   end
   else if status = 2 then
-    ShowMessage('Este agendamento j· foi concluÌdo e n„o pode ser cancelado.')
+    ShowMessage('Este agendamento j√° foi conclu√≠do e n√£o pode ser cancelado.')
   else if status = 3 then
-    ShowMessage('Este agendamento j· est· cancelado.')
+    ShowMessage('Este agendamento j√° est√° cancelado.')
   else if status = 4 then
-    ShowMessage('Este agendamento est· atrasado e n„o pode ser cancelado.');
+    ShowMessage('Este agendamento est√° atrasado e n√£o pode ser cancelado.');
 end;
 
 
@@ -509,23 +512,14 @@ begin
     btnBuscarClick(Self);
   end
   else if status = 2 then
-    ShowMessage('Este agendamento j· foi concluÌdo e n„o pode ser reagendado.')
+    ShowMessage('Este agendamento j√° foi conclu√≠do e n√£o pode ser reagendado.')
   else if status = 3 then
-    ShowMessage('Este agendamento est· cancelado e n„o pode ser reagendado.');
+    ShowMessage('Este agendamento est√° cancelado e n√£o pode ser reagendado.');
 end;
 
 
 procedure TFormPrincipal.btnSairClick(Sender: TObject);
 begin
-//
-//  with TFormLogin.Create(Self) do
-//  begin
-//    try
-//      ShowModal;
-//    finally
-//      Free;
-//    end;
-//  end;
 
   close;
 

@@ -8,7 +8,7 @@ uses
   Vcl.Imaging.pngimage, UPrincipal, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXPickers;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.WinXPickers, dxGDIPlusClasses;
 
 type
   TFormLogin = class(TForm)
@@ -26,6 +26,7 @@ type
     SpeedButton1: TSpeedButton;
     imgCadeado: TImage;
     Image1: TImage;
+    image_background: TImage;
     procedure imgCadeadoClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
@@ -34,7 +35,10 @@ type
     function VerificaLogin(usuario, senha: string): boolean;
     { Private declarations }
   public
-    idUsuario, nomeUsuario, tipoUsuario : string
+    idUsuario, nomeUsuario, tipoUsuario : string;
+    funcionario : boolean;
+    procedure passaAtrasado(codigo: integer);
+    procedure verificaAgendamentosAtrasados;
   end;
 
 var
@@ -55,11 +59,14 @@ end;
 procedure TFormLogin.FormResize(Sender: TObject);
 begin
 
-  pnlLogin.Margins.Left  := Trunc(FormLogin.Width/6);
-  pnlLogin.Margins.Right := Trunc(FormLogin.Width/6);
+  pnlLogin.Margins.Left  := Trunc(FormLogin.Width/4);
+  pnlLogin.Margins.Right := Trunc(FormLogin.Width/4);
 
-  pnlLogin.Margins.top := (Trunc(FormLogin.height/7));
-  pnlLogin.Margins.bottom := Trunc((FormLogin.height/6) * 2.7);
+  image_background.Margins.Left := Trunc(FormLogin.Width/6);
+  image_background.Margins.Right := Trunc(FormLogin.Width/6);
+
+  pnlLogin.Margins.top := (Trunc(FormLogin.height/10));
+  pnlLogin.Margins.bottom := Trunc((FormLogin.height/14) * 2.7);
 
 //  pnlBtnEntrar.Margins.Left  := (Trunc(pnlLogin.Margins.Left/2));
 //  pnlBtnEntrar.Margins.Right := (Trunc(pnlLogin.Margins.Right/2));
@@ -96,7 +103,103 @@ begin
 
 end;
 
-function TFormLogin.VerificaLogin(usuario : string; senha : string) : boolean;
+function TFormLogin.VerificaLogin(usuario: string; senha: string): boolean;
+begin
+  Result := False;
+
+  with TFDQuery.Create(self) do
+  begin
+    try
+      Connection := dm.con;
+
+      SQL.Text := 'SELECT * FROM USUARIOS WHERE NOME = :NOME AND SENHA = :SENHA';
+      ParamByName('NOME').Value := usuario;
+      ParamByName('SENHA').Value := senha;
+
+      Open;
+
+      if FieldByName('tipo').Value = 1 then
+        funcionario := true
+      else
+        funcionario := false;
+
+      if not IsEmpty then
+      begin
+        // Bloqueia se tipo = 0
+        if FieldByName('TIPO').AsString = '0' then
+          Exit;
+
+        // Login válido
+        idUsuario := FieldByName('ID').AsString;
+        nomeUsuario := FieldByName('NOME').AsString;
+        tipoUsuario := FieldByName('TIPO').AsString;
+        Result := True;
+      end;
+    finally
+      Free;
+    end;
+  end;
+end;
+
+
+
+procedure TFormLogin.SpeedButton1Click(Sender: TObject);
+begin
+  if (edtUsuario.Text <> '') and (edtSenha.Text <> '') then
+  begin
+    if VerificaLogin(edtUsuario.Text, edtSenha.Text) then
+    begin
+      edtUsuario.Text := '';
+      edtSenha.Text := '';
+
+      verificaAgendamentosAtrasados;
+
+      with TFormPrincipal.Create(self) do
+      begin
+        try
+          TipoUsuario := Self.tipoUsuario;
+          ShowModal;
+        finally
+          Free;
+        end;
+      end;
+    end
+    else
+      ShowMessage('Usuário ou senha incorreto!');
+  end
+  else
+    ShowMessage('Preencha todos os campos!');
+end;
+
+procedure TFormLogin.verificaAgendamentosAtrasados();
+begin
+  with TFDQuery.Create(self) do
+  begin
+    try
+      Connection := dm.con;
+
+      SQL.Clear;
+      SQL.Add('select * from AGENDAMENTOS where DATA_AGENDADA < :dataAtual');
+      ParamByName('dataAtual').DataType := ftDate;
+      ParamByName('dataAtual').AsDate := Now;
+
+      Open;
+
+      last;
+      first;
+
+      while not eof do
+      begin
+        passaAtrasado(FieldByName('id').AsInteger);
+        next;
+      end;
+    finally
+      free;
+    end;
+  end;
+end;
+
+procedure TFormLogin.passaAtrasado(codigo : integer);
 begin
   with TFDQuery.Create(self) do
   begin
@@ -104,61 +207,19 @@ begin
       connection := dm.con;
 
       sql.Clear;
-      sql.Add('SELECT * FROM USUARIOS');
-      sql.Add('WHERE NOME = :NOME AND SENHA = :SENHA');
+      sql.Add('update agendamentos');
+      sql.Add('set status = :status');
+      sql.Add('where id = :id');
 
-      ParamByName('NOME').Value := usuario;
-      ParamByName('SENHA').Value := senha;
+      ParamByName('status').Value := '4';
+      ParamByName('id').Value := codigo;
 
-      Open;
-
-      if ((FieldByName('NOME').AsString = usuario) and ((FieldByName('SENHA').AsString = senha))) then
-      begin
-
-        idUsuario := FieldByName('ID').AsString;
-        nomeUsuario := FieldByName('NOME').AsString;
-        tipoUsuario := FieldByName('TIPO').AsString;
-
-        result := true;
-
-      end
-      else
-        result := false;
+      ExecSQL;
 
     finally
-
+      free;
     end;
   end;
-end;
-
-procedure TFormLogin.SpeedButton1Click(Sender: TObject);
-begin
-
-  if (edtUsuario.Text <> '') and (edtSenha.Text <> '') then
-  begin
-    if VerificaLogin(edtUsuario.Text, edtSenha.Text) then
-    begin
-
-      edtUsuario.Text := '';
-      edtSenha.Text := '';
-
-      with TFormPrincipal.Create(self) do
-      begin
-        try
-          ShowModal;
-        finally
-          Free;
-        end;
-      end;
-    end
-
-    else
-    showmessage('Usuario ou senha incorreto!');
-  end
-  else
-    showmessage('Preencha todos os campos!');
-
-
 end;
 
 end.

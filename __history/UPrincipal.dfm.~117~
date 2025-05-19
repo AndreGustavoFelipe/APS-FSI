@@ -951,7 +951,6 @@ object FormPrincipal: TFormPrincipal
         Color = 7346457
         ParentBackground = False
         TabOrder = 5
-        Visible = False
         ExplicitLeft = 680
         object btnAtualizaAtrasados: TSpeedButton
           Left = 1

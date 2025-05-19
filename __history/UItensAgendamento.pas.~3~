@@ -27,34 +27,21 @@ uses
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxDataControllerConditionalFormattingRulesManagerDialog,
-  Vcl.StdCtrls, Vcl.ExtCtrls, cxGridCardView, cxGridDBCardView,
-  cxGridCustomLayoutView;
+  Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
   TFormItensAgendamento = class(TForm)
+    cxGridItensAgendamento: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
     queryItens: TFDQuery;
     dsItens: TDataSource;
     queryItensID: TIntegerField;
     queryItensDESCRICAO: TStringField;
+    cxGridItensAgendamentoID: TcxGridDBColumn;
+    cxGridItensAgendamentoDESCRICAO: TcxGridDBColumn;
     Panel1: TPanel;
     lbServicosAgendamento: TLabel;
-    cxGrid1: TcxGrid;
-    cxGridAgendamentos: TcxGridDBTableView;
-    cxGrid1DBCardView1: TcxGridDBCardView;
-    cxGrid1DBCardView1ID: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1ID_CLIENTE: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1ID_FUNCINARIO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1DATA_AGENDAMENTO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1DATA_AGENDADA: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1HORA_AGENDAMENTO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1HORA_ENTREGA: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1PLACA: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1TIPO_VEICULO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1TIPO_LAVACAO: TcxGridDBCardViewRow;
-    cxGrid1DBCardView1STATUS: TcxGridDBCardViewRow;
-    cxGrid1Level1: TcxGridLevel;
-    cxGridAgendamentosID: TcxGridDBColumn;
-    cxGridAgendamentosDESCRICAO: TcxGridDBColumn;
   private
     { Private declarations }
   public

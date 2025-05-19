@@ -16,41 +16,6 @@ object FormItensAgendamento: TFormItensAgendamento
   Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
-  object cxGrid1: TcxGrid
-    AlignWithMargins = True
-    Left = 15
-    Top = 72
-    Width = 561
-    Height = 305
-    Margins.Left = 15
-    Margins.Top = 15
-    Margins.Right = 15
-    Margins.Bottom = 15
-    Align = alClient
-    TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 15
-    ExplicitWidth = 568
-    ExplicitHeight = 378
-    object cxGridItensAgendamento: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      DataController.DataSource = dsItens
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsView.GroupByBox = False
-      object cxGridItensAgendamentoID: TcxGridDBColumn
-        DataBinding.FieldName = 'ID'
-        Visible = False
-      end
-      object cxGridItensAgendamentoDESCRICAO: TcxGridDBColumn
-        DataBinding.FieldName = 'DESCRICAO'
-      end
-    end
-    object cxGrid1Level1: TcxGridLevel
-      GridView = cxGridItensAgendamento
-    end
-  end
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -64,8 +29,7 @@ object FormItensAgendamento: TFormItensAgendamento
     BevelOuter = bvNone
     Color = 7346457
     ParentBackground = False
-    TabOrder = 1
-    ExplicitWidth = 341
+    TabOrder = 0
     object lbServicosAgendamento: TLabel
       Left = 18
       Top = 16
@@ -78,6 +42,91 @@ object FormItensAgendamento: TFormItensAgendamento
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+    end
+  end
+  object cxGrid1: TcxGrid
+    AlignWithMargins = True
+    Left = 15
+    Top = 72
+    Width = 561
+    Height = 305
+    Margins.Left = 15
+    Margins.Top = 15
+    Margins.Right = 15
+    Margins.Bottom = 15
+    Align = alClient
+    TabOrder = 1
+    ExplicitLeft = -540
+    ExplicitTop = -94
+    ExplicitWidth = 1131
+    ExplicitHeight = 486
+    object cxGridAgendamentos: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = dsItens
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      object cxGridAgendamentosID: TcxGridDBColumn
+        DataBinding.FieldName = 'ID'
+        Visible = False
+      end
+      object cxGridAgendamentosDESCRICAO: TcxGridDBColumn
+        DataBinding.FieldName = 'DESCRICAO'
+      end
+    end
+    object cxGrid1DBCardView1: TcxGridDBCardView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsView.CardIndent = 7
+      object cxGrid1DBCardView1ID: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'ID'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1ID_CLIENTE: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'ID_CLIENTE'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1ID_FUNCINARIO: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'ID_FUNCINARIO'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1DATA_AGENDAMENTO: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'DATA_AGENDAMENTO'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1DATA_AGENDADA: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'DATA_AGENDADA'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1HORA_AGENDAMENTO: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'HORA_AGENDAMENTO'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1HORA_ENTREGA: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'HORA_ENTREGA'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1PLACA: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'PLACA'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1TIPO_VEICULO: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'TIPO_VEICULO'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1TIPO_LAVACAO: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'TIPO_LAVACAO'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1STATUS: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'STATUS'
+        Position.BeginsLayer = True
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGridAgendamentos
     end
   end
   object queryItens: TFDQuery
