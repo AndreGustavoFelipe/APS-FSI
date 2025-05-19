@@ -56,10 +56,6 @@ object FormItensAgendamento: TFormItensAgendamento
     Margins.Bottom = 15
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = -540
-    ExplicitTop = -94
-    ExplicitWidth = 1131
-    ExplicitHeight = 486
     object cxGridAgendamentos: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dsItens
@@ -68,7 +64,6 @@ object FormItensAgendamento: TFormItensAgendamento
       DataController.Summary.SummaryGroups = <>
       object cxGridAgendamentosID: TcxGridDBColumn
         DataBinding.FieldName = 'ID'
-        Visible = False
       end
       object cxGridAgendamentosDESCRICAO: TcxGridDBColumn
         DataBinding.FieldName = 'DESCRICAO'

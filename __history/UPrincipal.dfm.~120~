@@ -606,6 +606,8 @@ object FormPrincipal: TFormPrincipal
         Height = 486
         Align = alClient
         TabOrder = 0
+        ExplicitLeft = -2
+        ExplicitTop = 3
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           OnCustomDrawCell = cxGridAgendamentosCustomDrawCell
@@ -619,13 +621,13 @@ object FormPrincipal: TFormPrincipal
           object cxGridAgendamentosID: TcxGridDBColumn
             Caption = 'ID AGENDAMENTO'
             DataBinding.FieldName = 'ID'
-            BestFitMaxWidth = 170
+            BestFitMaxWidth = 200
             FooterAlignmentHorz = taLeftJustify
             GroupSummaryAlignment = taLeftJustify
-            MinWidth = 170
+            MinWidth = 200
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 170
+            Width = 200
           end
           object cxGridAgendamentosSTATUS: TcxGridDBColumn
             AlternateCaption = 'width'
@@ -637,27 +639,23 @@ object FormPrincipal: TFormPrincipal
             Options.HorzSizing = False
             Width = 115
           end
-          object cxGridAgendamentosID_CLIENTE: TcxGridDBColumn
+          object cxGridAgendamentosNOME_CLIENTE: TcxGridDBColumn
             Caption = 'CLIENTE'
-            DataBinding.FieldName = 'ID_CLIENTE'
-            BestFitMaxWidth = 115
-            FooterAlignmentHorz = taLeftJustify
-            GroupSummaryAlignment = taLeftJustify
-            MinWidth = 115
+            DataBinding.FieldName = 'NOME_CLIENTE'
+            BestFitMaxWidth = 300
+            MinWidth = 300
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 115
+            Width = 300
           end
-          object cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn
+          object cxGridAgendamentosNOME_FUNCIONARIO: TcxGridDBColumn
             Caption = 'FUNCION'#193'RIO'
-            DataBinding.FieldName = 'ID_FUNCINARIO'
-            BestFitMaxWidth = 150
-            FooterAlignmentHorz = taLeftJustify
-            GroupSummaryAlignment = taLeftJustify
-            MinWidth = 150
+            DataBinding.FieldName = 'NOME_FUNCIONARIO'
+            BestFitMaxWidth = 300
+            MinWidth = 300
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 150
+            Width = 300
           end
           object cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn
             Caption = 'DATA AGENDAMENTO'
@@ -697,19 +695,19 @@ object FormPrincipal: TFormPrincipal
           end
           object cxGridAgendamentosPLACA: TcxGridDBColumn
             DataBinding.FieldName = 'PLACA'
-            BestFitMaxWidth = 120
-            MinWidth = 150
+            BestFitMaxWidth = 200
+            MinWidth = 200
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 150
+            Width = 200
           end
           object cxGridAgendamentosMODELO: TcxGridDBColumn
             DataBinding.FieldName = 'MODELO'
             BestFitMaxWidth = 200
-            MinWidth = 120
+            MinWidth = 200
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 120
+            Width = 200
           end
           object cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn
             Caption = 'TIPO VE'#205'CULO'
@@ -942,7 +940,38 @@ object FormPrincipal: TFormPrincipal
           ParentFont = False
           OnClick = btnItensAgendamentoClick
           ExplicitTop = -5
-          ExplicitWidth = 186
+        end
+      end
+      object Panel11: TPanel
+        AlignWithMargins = True
+        Left = 716
+        Top = 8
+        Width = 179
+        Height = 48
+        Align = alLeft
+        Color = 7346457
+        ParentBackground = False
+        TabOrder = 5
+        Visible = False
+        ExplicitLeft = 680
+        object btnAtualizaAtrasados: TSpeedButton
+          Left = 1
+          Top = 1
+          Width = 177
+          Height = 46
+          Align = alClient
+          Caption = 'Atualizar Atrasados'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -19
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btnAtualizaAtrasadosClick
+          ExplicitLeft = -1
+          ExplicitTop = -5
+          ExplicitWidth = 141
         end
       end
     end
@@ -1028,6 +1057,22 @@ object FormPrincipal: TFormPrincipal
       FieldName = 'TIPO_VEICULO'
       Origin = 'TIPO_VEICULO'
       Required = True
+    end
+    object queryAgendamentosNOME_CLIENTE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOME_CLIENTE'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 200
+    end
+    object queryAgendamentosNOME_FUNCIONARIO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOME_FUNCIONARIO'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 200
     end
   end
   object dsAgendamentos: TDataSource

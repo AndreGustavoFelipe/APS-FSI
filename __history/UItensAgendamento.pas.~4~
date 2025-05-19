@@ -34,6 +34,8 @@ type
   TFormItensAgendamento = class(TForm)
     queryItens: TFDQuery;
     dsItens: TDataSource;
+    queryItensID: TIntegerField;
+    queryItensDESCRICAO: TStringField;
     Panel1: TPanel;
     lbServicosAgendamento: TLabel;
     cxGrid1: TcxGrid;
@@ -51,8 +53,6 @@ type
     cxGrid1DBCardView1TIPO_LAVACAO: TcxGridDBCardViewRow;
     cxGrid1DBCardView1STATUS: TcxGridDBCardViewRow;
     cxGrid1Level1: TcxGridLevel;
-    queryItensID: TIntegerField;
-    queryItensDESCRICAO: TStringField;
     cxGridAgendamentosID: TcxGridDBColumn;
     cxGridAgendamentosDESCRICAO: TcxGridDBColumn;
   private

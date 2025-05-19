@@ -319,14 +319,14 @@ object FormDashboard: TFormDashboard
           Margins.Right = 0
           Margins.Bottom = 0
           Align = alTop
-          Caption = 'Data Final'
+          Caption = 'Data Inicial'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
           Font.Height = -15
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          ExplicitWidth = 64
+          ExplicitWidth = 71
         end
         object dtFinal: TDateTimePicker
           AlignWithMargins = True

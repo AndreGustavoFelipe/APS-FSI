@@ -270,7 +270,6 @@ begin
       sql.Clear;
       sql.Add('select * from agendamentos where ID_FUNCINARIO = :id');
       ParamByName('id').Value := FormLogin.idUsuario.ToInteger;
-      showmessage(sql.Text);
     end;
   end;
 
@@ -464,9 +463,10 @@ begin
       queryItens.SQL.Add('LEFT JOIN SERVICOS s ON ia.id = s.ID');
       queryItens.SQL.Add('WHERE ia.ID_AGENDAMENTO = :id');
 
-      queryItens.ParamByName('id').Value := cxGridAgendamentos.DataController.DataSet.FieldByName('ID').Value;
-
+      queryItens.ParamByName('id').Value := dsAgendamentos.DataSet.FieldByName('id').Value;
       queryItens.Open;
+
+      ShowMessage('Registros carregados: ' + queryItens.RecordCount.ToString);
 
       ShowModal;
     finally

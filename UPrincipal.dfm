@@ -940,7 +940,6 @@ object FormPrincipal: TFormPrincipal
           ParentFont = False
           OnClick = btnItensAgendamentoClick
           ExplicitTop = -5
-          ExplicitWidth = 186
         end
       end
       object Panel11: TPanel

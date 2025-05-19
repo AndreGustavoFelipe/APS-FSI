@@ -49,7 +49,7 @@ begin
       connection := dm.con;
 
       sql.Add('update agendamentos');
-      sql.Add('set DATA_AGENDADA = :DATA_AGENDADA, HORA_AGENDAMENTO = :HORA_AGENDAMENTO, HORA_ENTREGA = :HORA_ENTREGA, STATUS = 0');
+      sql.Add('set DATA_AGENDADA = :DATA_AGENDADA, HORA_AGENDAMENTO = :HORA_AGENDAMENTO, HORA_ENTREGA = :HORA_ENTREGA');
       sql.Add('where id = :id');
 
       ParamByName('DATA_AGENDADA').DataType :=  ftdate;
