@@ -262,6 +262,10 @@ object FormUsuarios: TFormUsuarios
       object tabCad: TTabSheet
         Caption = 'Usuario'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Panel5: TPanel
           AlignWithMargins = True
           Left = 10

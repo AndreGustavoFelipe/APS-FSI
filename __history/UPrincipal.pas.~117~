@@ -105,8 +105,6 @@ type
     Panel13: TPanel;
     btnItensAgendamento: TSpeedButton;
     cxGridAgendamentosID: TcxGridDBColumn;
-    cxGridAgendamentosID_CLIENTE: TcxGridDBColumn;
-    cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn;
     cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn;
     cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn;
     cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn;
@@ -119,6 +117,10 @@ type
     StyleHeader: TcxStyle;
     cxStyleRepository2: TcxStyleRepository;
     StyleContent: TcxStyle;
+    queryAgendamentosNOME_CLIENTE: TStringField;
+    queryAgendamentosNOME_FUNCIONARIO: TStringField;
+    cxGridAgendamentosNOME_CLIENTE: TcxGridDBColumn;
+    cxGridAgendamentosNOME_FUNCIONARIO: TcxGridDBColumn;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
@@ -185,56 +187,30 @@ procedure TFormPrincipal.cxGridAgendamentosCustomDrawCell(
   AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
   statusValue: Integer;
-  isSelected: Boolean;
+  corFundo: TColor;
 begin
   if AViewInfo.Item = cxGridAgendamentosSTATUS then
   begin
-    statusValue := StrToIntDef(VarToStr(AViewInfo.GridRecord.Values[cxGridAgendamentosSTATUS.Index]), -1);
-
-    isSelected := AViewInfo.Selected;
+    statusValue := AViewInfo.GridRecord.Values[cxGridAgendamentosSTATUS.Index];
 
     case statusValue of
-      0: begin
-           ACanvas.Brush.Color := RGB(173, 216, 230);
-           if isSelected then
-             ACanvas.Font.Color := RGB(0, 50, 80)  // cor do texto ao selecionar
-           else
-             ACanvas.Font.Color := RGB(0, 50, 80);
-         end;
-      1: begin
-           ACanvas.Brush.Color := RGB(255, 255, 204);
-           if isSelected then
-             ACanvas.Font.Color := RGB(80, 80, 80)
-           else
-             ACanvas.Font.Color := RGB(80, 80, 80);
-         end;
-      2: begin
-           ACanvas.Brush.Color := RGB(204, 255, 204);
-           if isSelected then
-             ACanvas.Font.Color := RGB(0, 70, 0)
-           else
-             ACanvas.Font.Color := RGB(0, 70, 0);
-         end;
-      3: begin
-           ACanvas.Brush.Color := RGB(255, 140, 0);
-           if isSelected then
-             ACanvas.Font.Color := RGB(120, 60, 0)
-           else
-             ACanvas.Font.Color := RGB(120, 60, 0);
-         end;
-      4: begin
-           ACanvas.Brush.Color := RGB(255, 100, 100);
-           if isSelected then
-             ACanvas.Font.Color := RGB(100, 0, 0)
-           else
-             ACanvas.Font.Color := RGB(100, 0, 0);
-         end;
+      0: corFundo := RGB(173, 216, 230);  // Agendado
+      1: corFundo := RGB(255, 255, 204);  // Em andamento
+      2: corFundo := RGB(204, 255, 204);  // Concluído
+      3: corFundo := RGB(255, 140, 0);    // Cancelado
+      4: corFundo := RGB(255, 0, 0);      // Atrasado
+    else
+      corFundo := clWhite;
     end;
+
+    ACanvas.Brush.Color := corFundo;
+    ACanvas.Font.Color := clBlack;
 
     ACanvas.FillRect(AViewInfo.Bounds);
     ACanvas.DrawText(AViewInfo.Text, AViewInfo.Bounds, cxAlignLeft);
     ADone := True;
   end;
+
 end;
 
 procedure TFormPrincipal.cxGridAgendamentosCustomDrawColumnHeader(
@@ -352,73 +328,65 @@ end;
 
 procedure TFormPrincipal.btnBuscarClick(Sender: TObject);
 var
-  codigoFunc : integer;
+  codigoFunc: integer;
 begin
-
   codigoFunc := 0;
 
   if not FormLogin.funcionario then
   begin
     if EditColaborador.Text <> '' then
-  begin
-    with TFDQuery.Create(self) do
-      begin
+    begin
+      with TFDQuery.Create(Self) do
       try
+        Connection := dm.con;
+        SQL.Clear;
+        SQL.Add('select * from usuarios where nome like :nome');
+        ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
+        Open;
 
-        begin
-          Connection := dm.con;
-
-          sql.clear;
-          sql.Add('select * from usuarios where nome like :nome');
-          ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
-          open;
-
-          if RecordCount > 0 then
-            codigoFunc := FieldByName('id').AsInteger;
-
-          close;
-          open;
-
-        end;
+        if RecordCount > 0 then
+          codigoFunc := FieldByName('id').AsInteger;
       finally
-        free;
+        Free;
       end;
     end;
-  end;
   end
-
   else
     codigoFunc := FormLogin.idUsuario.ToInteger;
 
   with queryAgendamentos do
   begin
     Close;
-    
-    sql.Clear;
-    
-    sql.Add('select * from agendamentos');
-    sql.Add('where DATA_AGENDADA between :inicio and :final');
+    SQL.Clear;
+
+    SQL.Add('select a.*, ');
+    SQL.Add('u_cliente.nome as nome_cliente, ');
+    SQL.Add('u_funcionario.nome as nome_funcionario ');
+    SQL.Add('from agendamentos a ');
+    SQL.Add('left join usuarios u_cliente on a.id_cliente = u_cliente.id ');
+    SQL.Add('left join usuarios u_funcionario on a.id_funcionario = u_funcionario.id ');
+    SQL.Add('where a.data_agendada between :inicio and :final ');
+
     ParamByName('inicio').AsDate := dtDataAgendadaInicio.Date;
     ParamByName('final').AsDate := dtDataAgendadaFim.Date;
 
     if codigoFunc <> 0 then
     begin
-      sql.Add('and ID_FUNCINARIO = :id_funcionario');
+      SQL.Add('and a.id_funcionario = :id_funcionario ');
       ParamByName('id_funcionario').Value := codigoFunc;
     end;
 
     if cbStatus.ItemIndex <> -1 then
     begin
-      sql.Add('and status = :status');
+      SQL.Add('and a.status = :status ');
       ParamByName('status').Value := cbStatus.ItemIndex;
     end;
 
-//    ShowMessage(sql.Text);
-
     Open;
   end;
-  
 end;
+
+
 
 procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);
 var
@@ -544,15 +512,6 @@ end;
 
 procedure TFormPrincipal.btnSairClick(Sender: TObject);
 begin
-//
-//  with TFormLogin.Create(Self) do
-//  begin
-//    try
-//      ShowModal;
-//    finally
-//      Free;
-//    end;
-//  end;
 
   close;
 

@@ -185,30 +185,30 @@ procedure TFormPrincipal.cxGridAgendamentosCustomDrawCell(
   AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
   statusValue: Integer;
-  corFundo, corTexto: TColor;
+  corFundo: TColor;
 begin
   if AViewInfo.Item = cxGridAgendamentosSTATUS then
   begin
     statusValue := AViewInfo.GridRecord.Values[cxGridAgendamentosSTATUS.Index];
 
     case statusValue of
-      0: begin corFundo := RGB(173, 216, 230); corTexto := RGB(0, 70, 140); end;
-      1: begin corFundo := RGB(255, 255, 204); corTexto := RGB(255, 200, 0); end;
-      2: begin corFundo := RGB(204, 255, 204); corTexto := RGB(0, 100, 0); end;
-      3: begin corFundo := RGB(255, 140, 0);   corTexto := RGB(255, 100, 0); end;
-      4: begin corFundo := RGB(255, 182, 193); corTexto := RGB(180, 0, 0)); end;
+      0: corFundo := RGB(173, 216, 230);  // Agendado
+      1: corFundo := RGB(255, 255, 204);  // Em andamento
+      2: corFundo := RGB(204, 255, 204);  // Concluído
+      3: corFundo := RGB(255, 140, 0);    // Cancelado
+      4: corFundo := RGB(255, 0, 0);      // Atrasado
     else
       corFundo := clWhite;
-      corTexto := clBlack;
     end;
 
     ACanvas.Brush.Color := corFundo;
-    ACanvas.Font.Color := corTexto;
+    ACanvas.Font.Color := clBlack;
 
     ACanvas.FillRect(AViewInfo.Bounds);
     ACanvas.DrawText(AViewInfo.Text, AViewInfo.Bounds, cxAlignLeft);
     ADone := True;
   end;
+
 end;
 
 procedure TFormPrincipal.cxGridAgendamentosCustomDrawColumnHeader(
@@ -518,15 +518,6 @@ end;
 
 procedure TFormPrincipal.btnSairClick(Sender: TObject);
 begin
-//
-//  with TFormLogin.Create(Self) do
-//  begin
-//    try
-//      ShowModal;
-//    finally
-//      Free;
-//    end;
-//  end;
 
   close;
 

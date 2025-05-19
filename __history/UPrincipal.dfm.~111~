@@ -608,6 +608,7 @@ object FormPrincipal: TFormPrincipal
         TabOrder = 0
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
+          OnCustomDrawCell = cxGridAgendamentosCustomDrawCell
           DataController.DataSource = dsAgendamentos
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
@@ -630,14 +631,14 @@ object FormPrincipal: TFormPrincipal
             AlternateCaption = 'width'
             DataBinding.FieldName = 'STATUS'
             OnGetDisplayText = cxGridAgendamentosSTATUSGetDisplayText
-            BestFitMaxWidth = 100
-            MinWidth = 100
+            BestFitMaxWidth = 115
+            MinWidth = 115
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 100
+            Width = 115
           end
           object cxGridAgendamentosID_CLIENTE: TcxGridDBColumn
-            Caption = 'ID CLIENTE'
+            Caption = 'CLIENTE'
             DataBinding.FieldName = 'ID_CLIENTE'
             BestFitMaxWidth = 115
             FooterAlignmentHorz = taLeftJustify
@@ -648,7 +649,7 @@ object FormPrincipal: TFormPrincipal
             Width = 115
           end
           object cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn
-            Caption = 'ID FUNCINARIO'
+            Caption = 'FUNCION'#193'RIO'
             DataBinding.FieldName = 'ID_FUNCINARIO'
             BestFitMaxWidth = 150
             FooterAlignmentHorz = taLeftJustify
@@ -711,7 +712,7 @@ object FormPrincipal: TFormPrincipal
             Width = 120
           end
           object cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn
-            Caption = 'TIPO VEICULO'
+            Caption = 'TIPO VE'#205'CULO'
             DataBinding.FieldName = 'TIPO_VEICULO'
             OnGetDisplayText = cxGridAgendamentosTIPO_VEICULOGetDisplayText
             BestFitMaxWidth = 150
@@ -949,7 +950,24 @@ object FormPrincipal: TFormPrincipal
   object queryAgendamentos: TFDQuery
     Connection = dm.con
     SQL.Strings = (
-      'select * from agendamentos')
+      'SELECT'
+      '  a.ID,'
+      '  a.ID_CLIENTE,'
+      '  u_cliente.NOME AS NOME_CLIENTE,'
+      '  a.ID_FUNCINARIO,'
+      '  u_func.NOME AS NOME_FUNCIONARIO,'
+      '  a.DATA_AGENDAMENTO,'
+      '  a.DATA_AGENDADA,'
+      '  a.HORA_AGENDAMENTO,'
+      '  a.HORA_ENTREGA,'
+      '  a.PLACA,'
+      '  a.STATUS,'
+      '  a.MODELO,'
+      '  a.TIPO_VEICULO'
+      'FROM'
+      '  agendamentos a'
+      'LEFT JOIN usuarios u_cliente ON u_cliente.ID = a.ID_CLIENTE'
+      'LEFT JOIN usuarios u_func ON u_func.ID = a.ID_FUNCINARIO')
     Left = 1302
     Top = 155
     object queryAgendamentosID: TIntegerField

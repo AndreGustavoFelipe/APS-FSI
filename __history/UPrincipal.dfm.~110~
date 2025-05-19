@@ -317,7 +317,6 @@ object FormPrincipal: TFormPrincipal
     Color = 14599344
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 1038
     object Panel4: TPanel
       Left = 0
       Top = 0
@@ -336,7 +335,6 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1038
       object Panel10: TPanel
         AlignWithMargins = True
         Left = 1036
@@ -351,7 +349,6 @@ object FormPrincipal: TFormPrincipal
         Color = 7346457
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = 943
         object btnBuscar: TSpeedButton
           Left = 1
           Top = 1
@@ -481,7 +478,7 @@ object FormPrincipal: TFormPrincipal
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 3
-        object Label4: TLabel
+        object lblColaborador: TLabel
           Left = 0
           Top = 0
           Width = 380
@@ -494,7 +491,7 @@ object FormPrincipal: TFormPrincipal
           Caption = 'Nome do colaborador'
           ExplicitWidth = 102
         end
-        object Panel11: TPanel
+        object pnlColaborador: TPanel
           AlignWithMargins = True
           Left = 0
           Top = 15
@@ -506,7 +503,7 @@ object FormPrincipal: TFormPrincipal
           Margins.Bottom = 0
           Align = alClient
           BevelOuter = bvNone
-          Color = 14599344
+          Color = 14599345
           ParentBackground = False
           TabOrder = 0
           object EditColaborador: TEdit
@@ -602,7 +599,6 @@ object FormPrincipal: TFormPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 1038
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -610,10 +606,9 @@ object FormPrincipal: TFormPrincipal
         Height = 486
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = -2
-        ExplicitTop = 3
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
+          OnCustomDrawCell = cxGridAgendamentosCustomDrawCell
           DataController.DataSource = dsAgendamentos
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
@@ -636,14 +631,14 @@ object FormPrincipal: TFormPrincipal
             AlternateCaption = 'width'
             DataBinding.FieldName = 'STATUS'
             OnGetDisplayText = cxGridAgendamentosSTATUSGetDisplayText
-            BestFitMaxWidth = 150
-            MinWidth = 150
+            BestFitMaxWidth = 115
+            MinWidth = 115
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 150
+            Width = 115
           end
           object cxGridAgendamentosID_CLIENTE: TcxGridDBColumn
-            Caption = 'ID CLIENTE'
+            Caption = 'CLIENTE'
             DataBinding.FieldName = 'ID_CLIENTE'
             BestFitMaxWidth = 115
             FooterAlignmentHorz = taLeftJustify
@@ -654,7 +649,7 @@ object FormPrincipal: TFormPrincipal
             Width = 115
           end
           object cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn
-            Caption = 'ID FUNCINARIO'
+            Caption = 'FUNCION'#193'RIO'
             DataBinding.FieldName = 'ID_FUNCINARIO'
             BestFitMaxWidth = 150
             FooterAlignmentHorz = taLeftJustify
@@ -717,7 +712,7 @@ object FormPrincipal: TFormPrincipal
             Width = 120
           end
           object cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn
-            Caption = 'TIPO VEICULO'
+            Caption = 'TIPO VE'#205'CULO'
             DataBinding.FieldName = 'TIPO_VEICULO'
             OnGetDisplayText = cxGridAgendamentosTIPO_VEICULOGetDisplayText
             BestFitMaxWidth = 150
@@ -805,7 +800,6 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 2
-      ExplicitWidth = 1038
       object Panel1: TPanel
         AlignWithMargins = True
         Left = 8
@@ -932,7 +926,6 @@ object FormPrincipal: TFormPrincipal
         Color = 7346457
         ParentBackground = False
         TabOrder = 4
-        ExplicitLeft = 784
         object btnItensAgendamento: TSpeedButton
           Left = 1
           Top = 1
@@ -957,7 +950,24 @@ object FormPrincipal: TFormPrincipal
   object queryAgendamentos: TFDQuery
     Connection = dm.con
     SQL.Strings = (
-      'select * from agendamentos')
+      'SELECT'
+      '  a.ID,'
+      '  a.ID_CLIENTE,'
+      '  u_cliente.NOME AS NOME_CLIENTE,'
+      '  a.ID_FUNCINARIO,'
+      '  u_func.NOME AS NOME_FUNCIONARIO,'
+      '  a.DATA_AGENDAMENTO,'
+      '  a.DATA_AGENDADA,'
+      '  a.HORA_AGENDAMENTO,'
+      '  a.HORA_ENTREGA,'
+      '  a.PLACA,'
+      '  a.STATUS,'
+      '  a.MODELO,'
+      '  a.TIPO_VEICULO'
+      'FROM'
+      '  agendamentos a'
+      'LEFT JOIN usuarios u_cliente ON u_cliente.ID = a.ID_CLIENTE'
+      'LEFT JOIN usuarios u_func ON u_func.ID = a.ID_FUNCINARIO')
     Left = 1302
     Top = 155
     object queryAgendamentosID: TIntegerField

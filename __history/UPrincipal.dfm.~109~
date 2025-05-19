@@ -415,6 +415,7 @@ object FormPrincipal: TFormPrincipal
           Time = 0.809104016203491500
           Color = 14862775
           TabOrder = 0
+          ExplicitTop = 18
         end
       end
       object PanelDataAgendada: TPanel
@@ -608,6 +609,7 @@ object FormPrincipal: TFormPrincipal
         TabOrder = 0
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
+          OnCustomDrawCell = cxGridAgendamentosCustomDrawCell
           DataController.DataSource = dsAgendamentos
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
@@ -725,7 +727,6 @@ object FormPrincipal: TFormPrincipal
         end
         object cxGrid1DBCardView1: TcxGridDBCardView
           Navigator.Buttons.CustomButtons = <>
-          OnCustomDrawCell = cxGrid1DBCardView1CustomDrawCell
           DataController.DataSource = dsAgendamentos
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>

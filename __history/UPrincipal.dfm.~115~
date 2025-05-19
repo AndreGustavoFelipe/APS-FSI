@@ -606,8 +606,11 @@ object FormPrincipal: TFormPrincipal
         Height = 486
         Align = alClient
         TabOrder = 0
+        ExplicitLeft = -2
+        ExplicitTop = -5
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
+          OnCustomDrawCell = cxGridAgendamentosCustomDrawCell
           DataController.DataSource = dsAgendamentos
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
@@ -618,13 +621,13 @@ object FormPrincipal: TFormPrincipal
           object cxGridAgendamentosID: TcxGridDBColumn
             Caption = 'ID AGENDAMENTO'
             DataBinding.FieldName = 'ID'
-            BestFitMaxWidth = 170
+            BestFitMaxWidth = 200
             FooterAlignmentHorz = taLeftJustify
             GroupSummaryAlignment = taLeftJustify
-            MinWidth = 170
+            MinWidth = 200
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 170
+            Width = 200
           end
           object cxGridAgendamentosSTATUS: TcxGridDBColumn
             AlternateCaption = 'width'
@@ -636,27 +639,17 @@ object FormPrincipal: TFormPrincipal
             Options.HorzSizing = False
             Width = 115
           end
-          object cxGridAgendamentosID_CLIENTE: TcxGridDBColumn
-            Caption = 'ID CLIENTE'
-            DataBinding.FieldName = 'ID_CLIENTE'
-            BestFitMaxWidth = 115
-            FooterAlignmentHorz = taLeftJustify
-            GroupSummaryAlignment = taLeftJustify
-            MinWidth = 115
-            Options.Editing = False
-            Options.HorzSizing = False
-            Width = 115
+          object cxGridAgendamentosNOME_CLIENTE: TcxGridDBColumn
+            DataBinding.FieldName = 'NOME_CLIENTE'
+            BestFitMaxWidth = 300
+            MinWidth = 300
+            Width = 300
           end
-          object cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn
-            Caption = 'ID FUNCINARIO'
-            DataBinding.FieldName = 'ID_FUNCINARIO'
-            BestFitMaxWidth = 150
-            FooterAlignmentHorz = taLeftJustify
-            GroupSummaryAlignment = taLeftJustify
-            MinWidth = 150
-            Options.Editing = False
-            Options.HorzSizing = False
-            Width = 150
+          object cxGridAgendamentosNOME_FUNCIONARIO: TcxGridDBColumn
+            DataBinding.FieldName = 'NOME_FUNCIONARIO'
+            BestFitMaxWidth = 300
+            MinWidth = 300
+            Width = 300
           end
           object cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn
             Caption = 'DATA AGENDAMENTO'
@@ -696,22 +689,22 @@ object FormPrincipal: TFormPrincipal
           end
           object cxGridAgendamentosPLACA: TcxGridDBColumn
             DataBinding.FieldName = 'PLACA'
-            BestFitMaxWidth = 120
-            MinWidth = 150
+            BestFitMaxWidth = 200
+            MinWidth = 200
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 150
+            Width = 200
           end
           object cxGridAgendamentosMODELO: TcxGridDBColumn
             DataBinding.FieldName = 'MODELO'
             BestFitMaxWidth = 200
-            MinWidth = 120
+            MinWidth = 200
             Options.Editing = False
             Options.HorzSizing = False
-            Width = 120
+            Width = 200
           end
           object cxGridAgendamentosTIPO_VEICULO: TcxGridDBColumn
-            Caption = 'TIPO VEICULO'
+            Caption = 'TIPO VE'#205'CULO'
             DataBinding.FieldName = 'TIPO_VEICULO'
             OnGetDisplayText = cxGridAgendamentosTIPO_VEICULOGetDisplayText
             BestFitMaxWidth = 150
@@ -949,7 +942,24 @@ object FormPrincipal: TFormPrincipal
   object queryAgendamentos: TFDQuery
     Connection = dm.con
     SQL.Strings = (
-      'select * from agendamentos')
+      'SELECT'
+      '  a.ID,'
+      '  a.ID_CLIENTE,'
+      '  u_cliente.NOME AS NOME_CLIENTE,'
+      '  a.ID_FUNCINARIO,'
+      '  u_func.NOME AS NOME_FUNCIONARIO,'
+      '  a.DATA_AGENDAMENTO,'
+      '  a.DATA_AGENDADA,'
+      '  a.HORA_AGENDAMENTO,'
+      '  a.HORA_ENTREGA,'
+      '  a.PLACA,'
+      '  a.STATUS,'
+      '  a.MODELO,'
+      '  a.TIPO_VEICULO'
+      'FROM'
+      '  agendamentos a'
+      'LEFT JOIN usuarios u_cliente ON u_cliente.ID = a.ID_CLIENTE'
+      'LEFT JOIN usuarios u_func ON u_func.ID = a.ID_FUNCINARIO')
     Left = 1302
     Top = 155
     object queryAgendamentosID: TIntegerField
@@ -1010,6 +1020,22 @@ object FormPrincipal: TFormPrincipal
       FieldName = 'TIPO_VEICULO'
       Origin = 'TIPO_VEICULO'
       Required = True
+    end
+    object queryAgendamentosNOME_CLIENTE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOME_CLIENTE'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 200
+    end
+    object queryAgendamentosNOME_FUNCIONARIO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOME_FUNCIONARIO'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 200
     end
   end
   object dsAgendamentos: TDataSource

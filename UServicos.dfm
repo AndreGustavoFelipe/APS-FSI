@@ -182,7 +182,7 @@ object FormServicos: TFormServicos
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabCad
+      ActivePage = tabListagem
       Align = alClient
       TabOrder = 0
       object tabListagem: TTabSheet

@@ -105,8 +105,6 @@ type
     Panel13: TPanel;
     btnItensAgendamento: TSpeedButton;
     cxGridAgendamentosID: TcxGridDBColumn;
-    cxGridAgendamentosID_CLIENTE: TcxGridDBColumn;
-    cxGridAgendamentosID_FUNCINARIO: TcxGridDBColumn;
     cxGridAgendamentosDATA_AGENDAMENTO: TcxGridDBColumn;
     cxGridAgendamentosDATA_AGENDADA: TcxGridDBColumn;
     cxGridAgendamentosHORA_AGENDAMENTO: TcxGridDBColumn;
@@ -119,6 +117,10 @@ type
     StyleHeader: TcxStyle;
     cxStyleRepository2: TcxStyleRepository;
     StyleContent: TcxStyle;
+    queryAgendamentosNOME_CLIENTE: TStringField;
+    queryAgendamentosNOME_FUNCIONARIO: TStringField;
+    cxGridAgendamentosNOME_CLIENTE: TcxGridDBColumn;
+    cxGridAgendamentosNOME_FUNCIONARIO: TcxGridDBColumn;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
@@ -326,73 +328,65 @@ end;
 
 procedure TFormPrincipal.btnBuscarClick(Sender: TObject);
 var
-  codigoFunc : integer;
+  codigoFunc: integer;
 begin
-
   codigoFunc := 0;
 
   if not FormLogin.funcionario then
   begin
     if EditColaborador.Text <> '' then
-  begin
-    with TFDQuery.Create(self) do
-      begin
+    begin
+      with TFDQuery.Create(Self) do
       try
+        Connection := dm.con;
+        SQL.Clear;
+        SQL.Add('select * from usuarios where nome like :nome');
+        ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
+        Open;
 
-        begin
-          Connection := dm.con;
-
-          sql.clear;
-          sql.Add('select * from usuarios where nome like :nome');
-          ParamByName('nome').AsString := '%' + EditColaborador.Text + '%';
-          open;
-
-          if RecordCount > 0 then
-            codigoFunc := FieldByName('id').AsInteger;
-
-          close;
-          open;
-
-        end;
+        if RecordCount > 0 then
+          codigoFunc := FieldByName('id').AsInteger;
       finally
-        free;
+        Free;
       end;
     end;
-  end;
   end
-
   else
     codigoFunc := FormLogin.idUsuario.ToInteger;
 
   with queryAgendamentos do
   begin
     Close;
-    
-    sql.Clear;
-    
-    sql.Add('select * from agendamentos');
-    sql.Add('where DATA_AGENDADA between :inicio and :final');
+    SQL.Clear;
+
+    SQL.Add('select a.*,');
+    SQL.Add('cli.NOME as NOME_CLIENTE,');
+    SQL.Add('func.NOME as NOME_FUNCIONARIO');
+    SQL.Add('from agendamentos a');
+    SQL.Add('left join usuarios cli on a.ID_CLIENTE = cli.ID');
+    SQL.Add('left join usuarios func on a.ID_FUNCINARIO = func.ID');
+    SQL.Add('where a.DATA_AGENDADA between :inicio and :final');
+
     ParamByName('inicio').AsDate := dtDataAgendadaInicio.Date;
     ParamByName('final').AsDate := dtDataAgendadaFim.Date;
 
     if codigoFunc <> 0 then
     begin
-      sql.Add('and ID_FUNCINARIO = :id_funcionario');
+      SQL.Add('and a.ID_FUNCINARIO = :id_funcionario');
       ParamByName('id_funcionario').Value := codigoFunc;
     end;
 
     if cbStatus.ItemIndex <> -1 then
     begin
-      sql.Add('and status = :status');
+      SQL.Add('and a.STATUS = :status');
       ParamByName('status').Value := cbStatus.ItemIndex;
     end;
 
-//    ShowMessage(sql.Text);
-
     Open;
   end;
-  
 end;
+
+
 
 procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);
 var
