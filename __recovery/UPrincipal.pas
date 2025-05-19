@@ -453,24 +453,23 @@ end;
 
 procedure TFormPrincipal.btnItensAgendamentoClick(Sender: TObject);
 begin
-  with TFormItensAgendamento.Create(self) do
-  begin
+  with TFormItensAgendamento.Create(Self) do
+    begin
     try
-      
       queryItens.Close;
-      queryItens.sql.Clear;
+      queryItens.SQL.Clear;
 
-      queryItens.sql.Add('select ia.id, s.DESCRICAO from ITENS_AGENDAMENTO ia');
-      queryItens.sql.Add('left join SERVICOS s on ia.ID = s.ID');
-      queryItens.sql.Add('where ia.ID_AGENDAMENTO = :id');
+      queryItens.SQL.Add('SELECT ia.ID, s.DESCRICAO');
+      queryItens.SQL.Add('FROM ITENS_AGENDAMENTO ia');
+      queryItens.SQL.Add('LEFT JOIN SERVICOS s ON ia.id = s.ID');
+      queryItens.SQL.Add('WHERE ia.ID_AGENDAMENTO = :id');
 
-      queryItens.ParamByName('id').Value := cxGridAgendamentos.DataController.DataSet.FieldByName('id').Value;
-
-      queryItens.open;
+      queryItens.ParamByName('id').Value := cxGridAgendamentos.DataController.DataSet.FieldByName('ID').Value;
+      queryItens.Open;
 
       ShowModal;
     finally
-      free;
+      Free;
     end;
   end;
 end;

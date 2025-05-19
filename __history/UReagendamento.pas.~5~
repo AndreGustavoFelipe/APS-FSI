@@ -84,7 +84,14 @@ end;
 procedure TFormReagendamento.FormResize(Sender: TObject);
 begin
 
-  
+  lblReagendamento.Margins.Left  := Trunc(FormReagendamento.Width/6);
+  lblReagendamento.Margins.Right := Trunc(FormReagendamento.Width/6);
+
+  dtDiaReagendamento.Margins.Left  := Trunc(FormReagendamento.Width/6);
+  dtDiaReagendamento.Margins.Right := Trunc(FormReagendamento.Width/6);
+
+  timePickerHoraReagendamento.Margins.top := (Trunc(FormReagendamento.height/7));
+  timePickerHoraReagendamento.Margins.bottom := Trunc((FormReagendamento.height/6) * 2.7);
 
 end;
 

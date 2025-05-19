@@ -66,7 +66,7 @@ begin
   image_background.Margins.Right := Trunc(FormLogin.Width/6);
 
   pnlLogin.Margins.top := (Trunc(FormLogin.height/10));
-  pnlLogin.Margins.bottom := Trunc((FormLogin.height/14) * 2.7);
+  pnlLogin.Margins.bottom := Trunc((FormLogin.height/7) * 2.7);
 
 //  pnlBtnEntrar.Margins.Left  := (Trunc(pnlLogin.Margins.Left/2));
 //  pnlBtnEntrar.Margins.Right := (Trunc(pnlLogin.Margins.Right/2));
@@ -129,7 +129,7 @@ begin
         if FieldByName('TIPO').AsString = '0' then
           Exit;
 
-        // Login v√°lido
+        // Login v·lido
         idUsuario := FieldByName('ID').AsString;
         nomeUsuario := FieldByName('NOME').AsString;
         tipoUsuario := FieldByName('TIPO').AsString;
@@ -165,7 +165,7 @@ begin
       end;
     end
     else
-      ShowMessage('Usu√°rio ou senha incorreto!');
+      ShowMessage('Usu·rio ou senha incorreto!');
   end
   else
     ShowMessage('Preencha todos os campos!');

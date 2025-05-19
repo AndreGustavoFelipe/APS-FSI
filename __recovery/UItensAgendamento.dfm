@@ -1,0 +1,154 @@
+object FormItensAgendamento: TFormItensAgendamento
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Servi'#231'os do Agendamento'
+  ClientHeight = 392
+  ClientWidth = 591
+  Color = 7346457
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 591
+    Height = 57
+    Margins.Left = 0
+    Margins.Top = 0
+    Margins.Right = 0
+    Margins.Bottom = 10
+    Align = alTop
+    BevelOuter = bvNone
+    Color = 7346457
+    ParentBackground = False
+    TabOrder = 0
+    object lbServicosAgendamento: TLabel
+      Left = 18
+      Top = 16
+      Width = 248
+      Height = 23
+      Caption = 'Servi'#231'os do Agendamento'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -19
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+  object cxGrid1: TcxGrid
+    AlignWithMargins = True
+    Left = 15
+    Top = 72
+    Width = 561
+    Height = 305
+    Margins.Left = 15
+    Margins.Top = 15
+    Margins.Right = 15
+    Margins.Bottom = 15
+    Align = alClient
+    TabOrder = 1
+    object cxGridAgendamentos: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.DataSource = dsItens
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      object cxGridAgendamentosID: TcxGridDBColumn
+        DataBinding.FieldName = 'ID'
+      end
+      object cxGridAgendamentosDESCRICAO: TcxGridDBColumn
+        DataBinding.FieldName = 'DESCRICAO'
+      end
+    end
+    object cxGrid1DBCardView1: TcxGridDBCardView
+      Navigator.Buttons.CustomButtons = <>
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsView.CardIndent = 7
+      object cxGrid1DBCardView1ID: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'ID'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1ID_CLIENTE: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'ID_CLIENTE'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1ID_FUNCINARIO: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'ID_FUNCINARIO'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1DATA_AGENDAMENTO: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'DATA_AGENDAMENTO'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1DATA_AGENDADA: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'DATA_AGENDADA'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1HORA_AGENDAMENTO: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'HORA_AGENDAMENTO'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1HORA_ENTREGA: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'HORA_ENTREGA'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1PLACA: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'PLACA'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1TIPO_VEICULO: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'TIPO_VEICULO'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1TIPO_LAVACAO: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'TIPO_LAVACAO'
+        Position.BeginsLayer = True
+      end
+      object cxGrid1DBCardView1STATUS: TcxGridDBCardViewRow
+        DataBinding.FieldName = 'STATUS'
+        Position.BeginsLayer = True
+      end
+    end
+    object cxGrid1Level1: TcxGridLevel
+      GridView = cxGridAgendamentos
+    end
+  end
+  object queryItens: TFDQuery
+    Connection = dm.con
+    SQL.Strings = (
+      'select ia.id, s.DESCRICAO from ITENS_AGENDAMENTO ia'
+      'left join SERVICOS s on ia.ID = s.ID'
+      '')
+    Left = 496
+    Top = 88
+    object queryItensID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      Required = True
+    end
+    object queryItensDESCRICAO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DESCRICAO'
+      Origin = 'DESCRICAO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 200
+    end
+  end
+  object dsItens: TDataSource
+    DataSet = queryItens
+    Left = 496
+    Top = 136
+  end
+end

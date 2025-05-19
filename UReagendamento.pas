@@ -84,14 +84,23 @@ end;
 procedure TFormReagendamento.FormResize(Sender: TObject);
 begin
 
-  lblReagendamento.Margins.Left  := Trunc(FormReagendamento.Width/6);
-  lblReagendamento.Margins.Right := Trunc(FormReagendamento.Width/6);
+  if Assigned(lblReagendamento) then
+  begin
+    lblReagendamento.Margins.Left  := Trunc(Width / 6);
+    lblReagendamento.Margins.Right := Trunc(Width / 6);
+  end;
 
-  dtDiaReagendamento.Margins.Left  := Trunc(FormReagendamento.Width/6);
-  dtDiaReagendamento.Margins.Right := Trunc(FormReagendamento.Width/6);
+  if Assigned(dtDiaReagendamento) then
+  begin
+    dtDiaReagendamento.Margins.Left  := Trunc(Width / 6);
+    dtDiaReagendamento.Margins.Right := Trunc(Width / 6);
+  end;
 
-  timePickerHoraReagendamento.Margins.top := (Trunc(FormReagendamento.height/7));
-  timePickerHoraReagendamento.Margins.bottom := Trunc((FormReagendamento.height/6) * 2.7);
+  if Assigned(timePickerHoraReagendamento) then
+  begin
+    timePickerHoraReagendamento.Margins.Top    := Trunc(Height / 7);
+    timePickerHoraReagendamento.Margins.Bottom := Trunc((Height / 6) * 2.7);
+  end;
 
 end;
 

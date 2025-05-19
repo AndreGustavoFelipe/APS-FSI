@@ -75,14 +75,23 @@ end;
 
 procedure TFormAlteraStatus.FormResize(Sender: TObject);
 begin
-  lblAlteraStatus.Margins.Left  := Trunc(FormAlteraStatus.Width/6);
-  lblAlteraStatus.Margins.Right := Trunc(FormAlteraStatus.Width/6);
+  if Assigned(lblAlteraStatus) then
+  begin
+    lblAlteraStatus.Margins.Left  := Trunc(Width / 6);
+    lblAlteraStatus.Margins.Right := Trunc(Width / 6);
+  end;
 
-  btnEmAndamento.Margins.Left  := Trunc(FormAlteraStatus.Width/6);
-  btnEmAndamento.Margins.Right := Trunc(FormAlteraStatus.Width/6);
+  if Assigned(btnEmAndamento) then
+  begin
+    btnEmAndamento.Margins.Left  := Trunc(Width / 6);
+    btnEmAndamento.Margins.Right := Trunc(Width / 6);
+  end;
 
-  btnConcluido.Margins.top := (Trunc(FormAlteraStatus.height/7));
-  btnConcluido.Margins.bottom := Trunc((FormAlteraStatus.height/6) * 2.7);
+  if Assigned(btnConcluido) then
+  begin
+    btnConcluido.Margins.Top    := Trunc(Height / 7);
+    btnConcluido.Margins.Bottom := Trunc(Height * 2.7);
+  end;
 end;
 
 end.

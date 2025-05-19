@@ -606,6 +606,8 @@ object FormPrincipal: TFormPrincipal
         Height = 486
         Align = alClient
         TabOrder = 0
+        ExplicitLeft = -2
+        ExplicitTop = 3
         object cxGridAgendamentos: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           OnCustomDrawCell = cxGridAgendamentosCustomDrawCell
@@ -938,7 +940,6 @@ object FormPrincipal: TFormPrincipal
           ParentFont = False
           OnClick = btnItensAgendamentoClick
           ExplicitTop = -5
-          ExplicitWidth = 186
         end
       end
       object Panel11: TPanel
