@@ -217,6 +217,7 @@ object FormServicos: TFormServicos
             end
             object cxGridServicosVALOR: TcxGridDBColumn
               DataBinding.FieldName = 'VALOR'
+              OnGetDisplayText = cxGridServicosVALORGetDisplayText
               BestFitMaxWidth = 570
               MinWidth = 570
               Width = 570
@@ -275,6 +276,7 @@ object FormServicos: TFormServicos
             ParentFont = False
             TabOrder = 0
             TextHint = 'Informe o Valor'
+            OnKeyPress = edtValorServicoKeyPress
           end
         end
         object Panel7: TPanel

@@ -67,19 +67,15 @@ object FormItensAgendamento: TFormItensAgendamento
       OnCustomDrawColumnHeader = cxGridAgendamentosCustomDrawColumnHeader
       object cxGridAgendamentosID: TcxGridDBColumn
         DataBinding.FieldName = 'ID'
-        BestFitMaxWidth = 50
-        MinWidth = 50
+        MinWidth = 74
         Options.Editing = False
         Options.HorzSizing = False
-        Width = 50
       end
       object cxGridAgendamentosDESCRICAO: TcxGridDBColumn
         DataBinding.FieldName = 'DESCRICAO'
-        BestFitMaxWidth = 508
-        MinWidth = 508
+        MinWidth = 1404
         Options.Editing = False
         Options.HorzSizing = False
-        Width = 508
       end
     end
     object cxGrid1DBCardView1: TcxGridDBCardView

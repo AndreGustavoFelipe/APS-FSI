@@ -28,7 +28,8 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, cxContainer, cxTextEdit,
+  cxCurrencyEdit,System.UITypes;
 
 type
   TFormServicos = class(TForm)
@@ -81,6 +82,8 @@ type
     procedure cxGridServicosCustomDrawColumnHeader(Sender: TcxGridTableView;
       ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
       var ADone: Boolean);
+    procedure edtValorServicoChange(Sender: TObject);
+    procedure edtValorServicoKeyPress(Sender: TObject; var Key: Char);
   private
     idServico : integer;
     procedure limpaCampos;
@@ -231,19 +234,32 @@ begin
   ADone := True;
 end;
 
+procedure TFormServicos.edtValorServicoChange(Sender: TObject);
+var
+  Valor: Currency;
+begin
+  if TryStrToCurr(edtValorServico.Text, Valor) then
+    edtValorServico.Text := FormatFloat('R$ #,##0.00', Valor)
+  else if TryStrToInt(edtValorServico.Text, Integer(Valor)) then
+    edtValorServico.Text := FormatFloat('R$ #,##0.00', Valor)
+  else
+    edtValorServico.Text := 'R$ 0,00';
+end;
+
+
+procedure TFormServicos.edtValorServicoKeyPress(Sender: TObject; var Key: Char);
+begin
+
+  // Permite apenas números e tecla backspace
+  if not (Key in ['0'..'9', #8]) then
+    Key := #0;
+
+end;
+
 procedure TFormServicos.FormShow(Sender: TObject);
 begin
   operacao := 0;
   pgControl.TabIndex := 0;
   queryServicos.Open;
-
-  queryUsuarios.Open;
-
-  with cxGridUsuariosVALOR.Properties as TcxCurrencyEditProperties do
-  begin
-    DisplayFormat := 'R$ ,0.00';
-    UseThousandSeparator := True;
-  end;
 end;
-
 end.

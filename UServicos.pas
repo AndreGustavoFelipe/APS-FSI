@@ -29,7 +29,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, cxContainer, cxTextEdit,
-  cxCurrencyEdit;
+  cxCurrencyEdit,System.UITypes;
 
 type
   TFormServicos = class(TForm)
@@ -82,6 +82,9 @@ type
     procedure cxGridServicosCustomDrawColumnHeader(Sender: TcxGridTableView;
       ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
       var ADone: Boolean);
+    procedure edtValorServicoKeyPress(Sender: TObject; var Key: Char);
+    procedure cxGridServicosVALORGetDisplayText(Sender: TcxCustomGridTableItem;
+      ARecord: TcxCustomGridRecord; var AText: string);
   private
     idServico : integer;
     procedure limpaCampos;
@@ -119,7 +122,7 @@ begin
   edtDescricaoServico.SetFocus;
   idServico := dsServicos.DataSet.FieldByName('ID').AsInteger;
   edtDescricaoServico.Text := dsServicos.DataSet.FieldByName('DESCRICAO').AsString;
-  edtValorServico.Text := dsServicos.DataSet.FieldByName('VALOR').AsString;
+  edtValorServico.Text := FormatFloat('R$ #,##0.00', dsServicos.DataSet.FieldByName('VALOR').AsFloat);
 end;
 
 procedure TFormServicos.btnExcluirClick(Sender: TObject);
@@ -172,7 +175,7 @@ begin
           SQL.Add('values(:DESCRICAO, :VALOR)');
 
           ParamByName('DESCRICAO').Value := edtDescricaoServico.Text;
-          ParamByName('VALOR').Value := edtValorServico.Text;
+          ParamByName('VALOR').AsFloat := StrToFloat(StringReplace(StringReplace(edtValorServico.Text, 'R$', '', [rfReplaceAll]), '.', '', [rfReplaceAll]));
 
           ExecSQL;
         finally
@@ -195,7 +198,7 @@ begin
           SQL.Add('where id = :id');
 
           ParamByName('DESCRICAO').Value := edtDescricaoServico.Text;
-          ParamByName('VALOR').Value := edtValorServico.Text;
+          ParamByName('VALOR').AsFloat := StrToFloat(StringReplace(StringReplace(edtValorServico.Text, 'R$', '', [rfReplaceAll]), '.', '', [rfReplaceAll]));
           ParamByName('id').Value := idServico;
 
           ExecSQL;
@@ -230,6 +233,22 @@ begin
   ACanvas.Font.Style := [fsBold];
   ACanvas.TextOut(AViewInfo.Bounds.Left + 4, AViewInfo.Bounds.Top + 2, AViewInfo.Text);
   ADone := True;
+end;
+
+procedure TFormServicos.cxGridServicosVALORGetDisplayText(
+  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AText: string);
+var
+  Valor: Double;
+begin
+  Valor := ARecord.Values[cxGridServicosVALOR.Index];
+  AText := FormatFloat('R$ #,##0.00', Valor);
+end;
+
+procedure TFormServicos.edtValorServicoKeyPress(Sender: TObject; var Key: Char);
+begin
+  if not CharInSet(Key, ['0'..'9', ',', #8]) then
+    Key := #0;
 end;
 
 procedure TFormServicos.FormShow(Sender: TObject);

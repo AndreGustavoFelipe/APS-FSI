@@ -56,7 +56,7 @@ object FormLogin: TFormLogin
         AlignWithMargins = True
         Left = 0
         Top = 95
-        Width = 58
+        Width = 1021
         Height = 25
         Margins.Left = 0
         Margins.Top = 10
@@ -72,12 +72,13 @@ object FormLogin: TFormLogin
         Font.Style = []
         ParentColor = False
         ParentFont = False
+        ExplicitWidth = 58
       end
       object lblUsuario: TLabel
         AlignWithMargins = True
         Left = 0
         Top = 10
-        Width = 70
+        Width = 1021
         Height = 25
         Margins.Left = 0
         Margins.Top = 10
@@ -93,6 +94,7 @@ object FormLogin: TFormLogin
         Font.Style = []
         ParentColor = False
         ParentFont = False
+        ExplicitWidth = 70
       end
       object Panel1: TPanel
         Left = 0
@@ -1573,8 +1575,8 @@ object FormLogin: TFormLogin
         AlignWithMargins = True
         Left = 15
         Top = 195
-        Width = 61
-        Height = 25
+        Width = 1001
+        Height = 35
         Margins.Left = 15
         Margins.Top = 15
         Margins.Right = 15
@@ -1590,6 +1592,8 @@ object FormLogin: TFormLogin
         Font.Style = []
         ParentColor = False
         ParentFont = False
+        ExplicitTop = 96
+        ExplicitHeight = 49
       end
       object image_background: TImage
         AlignWithMargins = True

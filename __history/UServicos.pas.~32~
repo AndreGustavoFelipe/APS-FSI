@@ -28,7 +28,8 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, cxCurrencyEdit;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, cxContainer, cxTextEdit,
+  cxCurrencyEdit,System.UITypes;
 
 type
   TFormServicos = class(TForm)
@@ -81,6 +82,7 @@ type
     procedure cxGridServicosCustomDrawColumnHeader(Sender: TcxGridTableView;
       ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
       var ADone: Boolean);
+    procedure edtValorServicoKeyPress(Sender: TObject; var Key: Char);
   private
     idServico : integer;
     procedure limpaCampos;
@@ -118,7 +120,7 @@ begin
   edtDescricaoServico.SetFocus;
   idServico := dsServicos.DataSet.FieldByName('ID').AsInteger;
   edtDescricaoServico.Text := dsServicos.DataSet.FieldByName('DESCRICAO').AsString;
-  edtValorServico.Text := dsServicos.DataSet.FieldByName('VALOR').AsString;
+  edtValorServico.Text := FormatFloat('R$ #,##0.00', dsServicos.DataSet.FieldByName('VALOR').AsFloat);
 end;
 
 procedure TFormServicos.btnExcluirClick(Sender: TObject);
@@ -171,7 +173,7 @@ begin
           SQL.Add('values(:DESCRICAO, :VALOR)');
 
           ParamByName('DESCRICAO').Value := edtDescricaoServico.Text;
-          ParamByName('VALOR').Value := edtValorServico.Text;
+          ParamByName('VALOR').AsFloat := StrToFloat(StringReplace(StringReplace(edtValorServico.Text, 'R$', '', [rfReplaceAll]), '.', '', [rfReplaceAll]));
 
           ExecSQL;
         finally
@@ -194,7 +196,7 @@ begin
           SQL.Add('where id = :id');
 
           ParamByName('DESCRICAO').Value := edtDescricaoServico.Text;
-          ParamByName('VALOR').Value := edtValorServico.Text;
+          ParamByName('VALOR').AsFloat := StrToFloat(StringReplace(StringReplace(edtValorServico.Text, 'R$', '', [rfReplaceAll]), '.', '', [rfReplaceAll]));
           ParamByName('id').Value := idServico;
 
           ExecSQL;
@@ -231,19 +233,16 @@ begin
   ADone := True;
 end;
 
+procedure TFormServicos.edtValorServicoKeyPress(Sender: TObject; var Key: Char);
+begin
+  if not CharInSet(Key, ['0'..'9', ',', #8]) then
+    Key := #0;
+end;
+
 procedure TFormServicos.FormShow(Sender: TObject);
 begin
   operacao := 0;
   pgControl.TabIndex := 0;
   queryServicos.Open;
-
-  queryServicos.Open;
-
-  with cxGridServicosVALOR.Properties as TcxCurrencyEditProperties do
-  begin
-    DisplayFormat := 'R$ ,0.00';
-    UseThousandSeparator := True;
-  end;
 end;
-
 end.

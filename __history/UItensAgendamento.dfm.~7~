@@ -62,24 +62,11 @@ object FormItensAgendamento: TFormItensAgendamento
       DataController.Summary.DefaultGroupSummaryItems = <>
       DataController.Summary.FooterSummaryItems = <>
       DataController.Summary.SummaryGroups = <>
-      Styles.Content = StyleContent
-      Styles.Header = StyleHeader
-      OnCustomDrawColumnHeader = cxGridAgendamentosCustomDrawColumnHeader
       object cxGridAgendamentosID: TcxGridDBColumn
         DataBinding.FieldName = 'ID'
-        BestFitMaxWidth = 50
-        MinWidth = 50
-        Options.Editing = False
-        Options.HorzSizing = False
-        Width = 50
       end
       object cxGridAgendamentosDESCRICAO: TcxGridDBColumn
         DataBinding.FieldName = 'DESCRICAO'
-        BestFitMaxWidth = 508
-        MinWidth = 508
-        Options.Editing = False
-        Options.HorzSizing = False
-        Width = 508
       end
     end
     object cxGrid1DBCardView1: TcxGridDBCardView
@@ -163,33 +150,5 @@ object FormItensAgendamento: TFormItensAgendamento
     DataSet = queryItens
     Left = 496
     Top = 136
-  end
-  object cxStyleRepository1: TcxStyleRepository
-    Left = 520
-    Top = 8
-    PixelsPerInch = 96
-    object StyleHeader: TcxStyle
-      AssignedValues = [svBitmap, svColor, svFont]
-      Color = clWindow
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clDefault
-      Font.Height = -16
-      Font.Name = 'Tahoma'
-      Font.Style = []
-    end
-  end
-  object cxStyleRepository2: TcxStyleRepository
-    Left = 528
-    Top = 16
-    PixelsPerInch = 96
-    object StyleContent: TcxStyle
-      AssignedValues = [svColor, svFont]
-      Color = clWindow
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clDefault
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = []
-    end
   end
 end

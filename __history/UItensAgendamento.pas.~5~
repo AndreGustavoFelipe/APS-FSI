@@ -55,13 +55,6 @@ type
     queryItensDESCRICAO: TStringField;
     cxGridAgendamentosID: TcxGridDBColumn;
     cxGridAgendamentosDESCRICAO: TcxGridDBColumn;
-    cxStyleRepository1: TcxStyleRepository;
-    StyleHeader: TcxStyle;
-    cxStyleRepository2: TcxStyleRepository;
-    StyleContent: TcxStyle;
-    procedure cxGridAgendamentosCustomDrawColumnHeader(Sender: TcxGridTableView;
-      ACanvas: TcxCanvas; AViewInfo: TcxGridColumnHeaderViewInfo;
-      var ADone: Boolean);
   private
     { Private declarations }
   public
@@ -77,16 +70,4 @@ implementation
 
 uses UDataModule;
 
- procedure TFormItensAgendamento.cxGridAgendamentosCustomDrawColumnHeader(
-  Sender: TcxGridTableView; ACanvas: TcxCanvas;
-  AViewInfo: TcxGridColumnHeaderViewInfo; var ADone: Boolean);
-begin
-  ACanvas.Brush.Color := TColor($00E1C7B4);
-  ACanvas.FillRect(AViewInfo.Bounds);
-  ACanvas.Font.Color := clBlack;
-  ACanvas.Font.Style := [fsBold];
-  ACanvas.TextOut(AViewInfo.Bounds.Left + 4, AViewInfo.Bounds.Top + 2, AViewInfo.Text);
-  ADone := True;
-end;
-
-end.
+ end.
