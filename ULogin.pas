@@ -65,8 +65,11 @@ begin
   image_background.Margins.Left := Trunc(FormLogin.Width/6);
   image_background.Margins.Right := Trunc(FormLogin.Width/6);
 
-  pnlLogin.Margins.top := (Trunc(FormLogin.height/10));
-  pnlLogin.Margins.bottom := Trunc((FormLogin.height/14) * 2.7);
+  image_background.Height := 300;
+  Panel4.Height := 350;
+
+  pnlLogin.Margins.top := (Trunc(FormLogin.height/14));
+  pnlLogin.Margins.bottom := Trunc((FormLogin.height/10) * 2.7);
 
 //  pnlBtnEntrar.Margins.Left  := (Trunc(pnlLogin.Margins.Left/2));
 //  pnlBtnEntrar.Margins.Right := (Trunc(pnlLogin.Margins.Right/2));
