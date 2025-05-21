@@ -121,8 +121,6 @@ type
     queryAgendamentosNOME_FUNCIONARIO: TStringField;
     cxGridAgendamentosNOME_CLIENTE: TcxGridDBColumn;
     cxGridAgendamentosNOME_FUNCIONARIO: TcxGridDBColumn;
-    Panel11: TPanel;
-    btnAtualizaAtrasados: TSpeedButton;
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnDashboardClick(Sender: TObject);
@@ -148,6 +146,9 @@ type
       ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
       var ADone: Boolean);
     procedure btnAtualizaAtrasadosClick(Sender: TObject);
+    procedure cxGridAgendamentosCellClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
 //    function ExtrairCodigo(Texto: string): string;
     { Private declarations }
@@ -185,18 +186,46 @@ begin
     cbStatus.ItemIndex := -1;
 end;
 
+procedure TFormPrincipal.cxGridAgendamentosCellClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+var
+  status: Integer;
+begin
+  status := dsAgendamentos.DataSet.FieldByName('STATUS').AsInteger;
+
+  case status of
+  0:
+    begin
+      btnReagendar.Enabled := true;
+      btnAlterarStatus.Enabled := true;
+      btnCancelarAgendamento.Enabled := true;
+    end;
+  1:
+    begin
+     btnAlterarStatus.Enabled := true;
+     btnCancelarAgendamento.Enabled := true;
+    end;
+  else
+    btnReagendar.Enabled := false;
+    btnAlterarStatus.Enabled := false;
+    btnCancelarAgendamento.Enabled := false;
+  end;
+
+end;
+
 procedure TFormPrincipal.cxGridAgendamentosCustomDrawCell(
   Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
   AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
-  statusValue: Integer;
+  status: Integer;
   corFundo: TColor;
 begin
   if AViewInfo.Item = cxGridAgendamentosSTATUS then
   begin
-    statusValue := AViewInfo.GridRecord.Values[cxGridAgendamentosSTATUS.Index];
+    status := AViewInfo.GridRecord.Values[cxGridAgendamentosSTATUS.Index];
 
-    case statusValue of
+    case status of
       0: corFundo := RGB(173, 216, 230);  // Agendado
       1: corFundo := RGB(255, 255, 204);  // Em andamento
       2: corFundo := RGB(204, 255, 204);  // Concluído
@@ -231,32 +260,40 @@ end;
 procedure TFormPrincipal.cxGridAgendamentosSTATUSGetDisplayText(
   Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
   var AText: string);
+var
+  Valor: Integer;
 begin
-  if AText = '0' then
-    AText := 'Agendado'
-  else if AText = '1' then
-    AText := 'Em andamento'
-  else if AText = '2' then
-    AText := 'Concluído'
-  else if AText = '3' then
-    AText := 'Cancelado'
-  else if AText = '4' then
-    AText := 'Atrasado';
+  Valor := StrToIntDef(AText, -1); // Converte string para inteiro, com -1 como padrão se inválido
+
+  case Valor of
+    0: AText := 'Agendado';
+    1: AText := 'Em andamento';
+    2: AText := 'Concluído';
+    3: AText := 'Cancelado';
+    4: AText := 'Atrasado';
+  else
+    AText := 'Desconhecido';
+  end;
 end;
 
+
 procedure TFormPrincipal.cxGridAgendamentosTIPO_VEICULOGetDisplayText(
-  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  Sender: TcxCustomGridTableItem;
+  ARecord: TcxCustomGridRecord;
   var AText: string);
+var
+  Valor: Integer;
 begin
-  if AText = '0' then
-    AText := 'Moto'
-  else if AText = '1' then
-    AText := 'Carro'
-  else if AText = '2' then
-    AText := 'Caminhonete'
-  else if AText = '3' then
-    AText := 'Caminhão';
+  Valor := StrToIntDef(AText, -1); // -1 como valor padrão para inválido
+
+  case Valor of
+    0: AText := 'Moto';
+    1: AText := 'Carro';
+    2: AText := 'Caminhonete';
+    3: AText := 'Caminhão';
+  end;
 end;
+
 
 procedure TFormPrincipal.FormShow(Sender: TObject);
 begin
@@ -296,14 +333,8 @@ end;
 
 
 procedure TFormPrincipal.btnAlterarStatusClick(Sender: TObject);
-var
-  status: Integer;
 begin
-  status := dsAgendamentos.DataSet.FieldByName('STATUS').AsInteger;
-
-  if status in [0, 1] then
-  begin
-    with TFormAlteraStatus.Create(Self) do
+  with TFormAlteraStatus.Create(Self) do
     begin
       try
         codAgendamento := dsAgendamentos.DataSet.FieldByName('id').Value;
@@ -314,19 +345,7 @@ begin
     end;
 
     btnBuscarClick(Self);
-  end
-  else if status = 2 then
-    ShowMessage('O status não pode ser alterado pois o agendamento foi concluído.')
-  else if status = 3 then
-    ShowMessage('O status não pode ser alterado pois o agendamento foi cancelado.')
-  else if status = 4 then
-    ShowMessage('O status não pode ser alterado pois o agendamento está atrasado. Se necessário, realize um reagendamento."');
 end;
-
-//function TFormPrincipal.ExtrairCodigo(Texto: string): string;
-//begin
-//  Result := Trim(Copy(Texto, 1, Pos('-', Texto) - 1));
-//end;
 
 procedure TFormPrincipal.btnAtualizaAtrasadosClick(Sender: TObject);
 begin
@@ -396,13 +415,8 @@ end;
 
 
 procedure TFormPrincipal.btnCancelarAgendamentoClick(Sender: TObject);
-var
-  status: Integer;
 begin
-  status := dsAgendamentos.DataSet.FieldByName('STATUS').AsInteger;
-
-  if status in [0, 1] then
-  begin
+   begin
     if (MessageDlg('Tem certeza que deseja cancelar este agendamento?', mtWarning, [mbNo, mbYes], 0) = mrYes) then
     begin
       with TFDQuery.Create(Self) do
@@ -427,12 +441,6 @@ begin
       btnBuscarClick(Self);
     end;
   end
-  else if status = 2 then
-    ShowMessage('Este agendamento já foi concluído e não pode ser cancelado.')
-  else if status = 3 then
-    ShowMessage('Este agendamento já está cancelado.')
-  else if status = 4 then
-    ShowMessage('Este agendamento está atrasado e não pode ser cancelado.');
 end;
 
 
@@ -492,14 +500,8 @@ begin
 end;
 
 procedure TFormPrincipal.btnReagendarClick(Sender: TObject);
-var
-  status: Integer;
 begin
-  status := dsAgendamentos.DataSet.FieldByName('STATUS').AsInteger;
-
-  if status in [0, 1, 4] then
-  begin
-    with TFormReagendamento.Create(Self) do
+   with TFormReagendamento.Create(Self) do
     begin
       try
         codigoReagendamento := dsAgendamentos.DataSet.FieldByName('ID').AsInteger;
@@ -510,11 +512,6 @@ begin
     end;
 
     btnBuscarClick(Self);
-  end
-  else if status = 2 then
-    ShowMessage('Este agendamento já foi concluído e não pode ser reagendado.')
-  else if status = 3 then
-    ShowMessage('Este agendamento está cancelado e não pode ser reagendado.');
 end;
 
 

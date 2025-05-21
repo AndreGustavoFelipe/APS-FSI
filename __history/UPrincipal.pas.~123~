@@ -199,7 +199,7 @@ begin
     case statusValue of
       0: corFundo := RGB(173, 216, 230);  // Agendado
       1: corFundo := RGB(255, 255, 204);  // Em andamento
-      2: corFundo := RGB(204, 255, 204);  // Conclu√≠do
+      2: corFundo := RGB(204, 255, 204);  // ConcluÌdo
       3: corFundo := RGB(255, 140, 0);    // Cancelado
       4: corFundo := RGB(255, 0, 0);      // Atrasado
     else
@@ -237,7 +237,7 @@ begin
   else if AText = '1' then
     AText := 'Em andamento'
   else if AText = '2' then
-    AText := 'Conclu√≠do'
+    AText := 'ConcluÌdo'
   else if AText = '3' then
     AText := 'Cancelado'
   else if AText = '4' then
@@ -255,7 +255,7 @@ begin
   else if AText = '2' then
     AText := 'Caminhonete'
   else if AText = '3' then
-    AText := 'Caminh√£o';
+    AText := 'Caminh„o';
 end;
 
 procedure TFormPrincipal.FormShow(Sender: TObject);
@@ -275,7 +275,7 @@ begin
 
   btnBuscarClick(self);
 
-  //Se o usu√°rio for do tipo '1' esconde os bot√µes
+  //Se o usu·rio for do tipo '1' esconde os botıes
   if TipoUsuario = '1' then
   begin
     PanelColaborador.Visible := false;
@@ -316,11 +316,11 @@ begin
     btnBuscarClick(Self);
   end
   else if status = 2 then
-    ShowMessage('O status n√£o pode ser alterado pois o agendamento foi conclu√≠do.')
+    ShowMessage('O status n„o pode ser alterado pois o agendamento foi concluÌdo.')
   else if status = 3 then
-    ShowMessage('O status n√£o pode ser alterado pois o agendamento foi cancelado.')
+    ShowMessage('O status n„o pode ser alterado pois o agendamento foi cancelado.')
   else if status = 4 then
-    ShowMessage('O status n√£o pode ser alterado pois o agendamento est√° atrasado. Se necess√°rio, realize um reagendamento."');
+    ShowMessage('O status n„o pode ser alterado pois o agendamento est· atrasado. Se necess·rio, realize um reagendamento."');
 end;
 
 //function TFormPrincipal.ExtrairCodigo(Texto: string): string;
@@ -428,11 +428,11 @@ begin
     end;
   end
   else if status = 2 then
-    ShowMessage('Este agendamento j√° foi conclu√≠do e n√£o pode ser cancelado.')
+    ShowMessage('Este agendamento j· foi concluÌdo e n„o pode ser cancelado.')
   else if status = 3 then
-    ShowMessage('Este agendamento j√° est√° cancelado.')
+    ShowMessage('Este agendamento j· est· cancelado.')
   else if status = 4 then
-    ShowMessage('Este agendamento est√° atrasado e n√£o pode ser cancelado.');
+    ShowMessage('Este agendamento est· atrasado e n„o pode ser cancelado.');
 end;
 
 
@@ -465,6 +465,8 @@ begin
 
       queryItens.ParamByName('id').Value := dsAgendamentos.DataSet.FieldByName('id').Value;
       queryItens.Open;
+
+      ShowMessage('Registros carregados: ' + queryItens.RecordCount.ToString);
 
       ShowModal;
     finally
@@ -510,9 +512,9 @@ begin
     btnBuscarClick(Self);
   end
   else if status = 2 then
-    ShowMessage('Este agendamento j√° foi conclu√≠do e n√£o pode ser reagendado.')
+    ShowMessage('Este agendamento j· foi concluÌdo e n„o pode ser reagendado.')
   else if status = 3 then
-    ShowMessage('Este agendamento est√° cancelado e n√£o pode ser reagendado.');
+    ShowMessage('Este agendamento est· cancelado e n„o pode ser reagendado.');
 end;
 
 
