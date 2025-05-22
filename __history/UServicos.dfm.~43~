@@ -182,7 +182,7 @@ object FormServicos: TFormServicos
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabCad
+      ActivePage = tabListagem
       Align = alClient
       TabOrder = 0
       object tabListagem: TTabSheet
@@ -202,6 +202,7 @@ object FormServicos: TFormServicos
             DataController.Summary.SummaryGroups = <>
             OptionsCustomize.ColumnMoving = False
             OptionsData.Editing = False
+            OptionsView.GroupByBox = False
             Styles.Content = StyleContent
             Styles.Header = StyleHeader
             OnCustomDrawColumnHeader = cxGridServicosCustomDrawColumnHeader
@@ -211,15 +212,16 @@ object FormServicos: TFormServicos
             end
             object cxGridServicosDESCRICAO: TcxGridDBColumn
               DataBinding.FieldName = 'DESCRICAO'
-              BestFitMaxWidth = 1300
-              MinWidth = 1300
-              Width = 1300
+              BestFitMaxWidth = 1310
+              MinWidth = 1310
+              Width = 1310
             end
             object cxGridServicosVALOR: TcxGridDBColumn
               DataBinding.FieldName = 'VALOR'
-              BestFitMaxWidth = 600
-              MinWidth = 600
-              Width = 600
+              OnGetDisplayText = cxGridServicosVALORGetDisplayText
+              BestFitMaxWidth = 570
+              MinWidth = 570
+              Width = 570
             end
           end
           object cxGrid1DBChartView1: TcxGridDBChartView
@@ -236,6 +238,10 @@ object FormServicos: TFormServicos
       object tabCad: TTabSheet
         Caption = 'Servi'#231'o'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Panel6: TPanel
           AlignWithMargins = True
           Left = 10
@@ -275,6 +281,7 @@ object FormServicos: TFormServicos
             ParentFont = False
             TabOrder = 0
             TextHint = 'Informe o Valor'
+            OnKeyPress = edtValorServicoKeyPress
           end
         end
         object Panel7: TPanel

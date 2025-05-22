@@ -614,6 +614,7 @@ object FormPrincipal: TFormPrincipal
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          OptionsView.GroupByBox = False
           Styles.Content = StyleContent
           Styles.Header = StyleHeader
           OnCustomDrawColumnHeader = cxGridAgendamentosCustomDrawColumnHeader

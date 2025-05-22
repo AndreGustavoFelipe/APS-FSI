@@ -220,6 +220,7 @@ object FormUsuarios: TFormUsuarios
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
             OptionsData.Editing = False
+            OptionsView.GroupByBox = False
             Styles.Content = StyleContent
             Styles.Header = StyleHeader
             OnCustomDrawColumnHeader = cxGridUsuariosCustomDrawColumnHeader
@@ -229,14 +230,14 @@ object FormUsuarios: TFormUsuarios
             end
             object cxGridUsuariosNOME: TcxGridDBColumn
               DataBinding.FieldName = 'NOME'
-              BestFitMaxWidth = 1000
-              MinWidth = 1000
-              Width = 1000
+              BestFitMaxWidth = 1080
+              MinWidth = 1080
+              Width = 1080
             end
             object cxGridUsuariosSENHA: TcxGridDBColumn
               DataBinding.FieldName = 'SENHA'
               BestFitMaxWidth = 600
-              MinWidth = 500
+              MinWidth = 600
               Width = 600
             end
             object cxGridUsuariosTIPO: TcxGridDBColumn
@@ -262,6 +263,10 @@ object FormUsuarios: TFormUsuarios
       object tabCad: TTabSheet
         Caption = 'Usuario'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Panel5: TPanel
           AlignWithMargins = True
           Left = 10

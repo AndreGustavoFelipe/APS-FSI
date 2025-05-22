@@ -182,7 +182,7 @@ object FormServicos: TFormServicos
       Margins.Top = 15
       Margins.Right = 15
       Margins.Bottom = 15
-      ActivePage = tabListagem
+      ActivePage = tabCad
       Align = alClient
       TabOrder = 0
       object tabListagem: TTabSheet
@@ -202,6 +202,7 @@ object FormServicos: TFormServicos
             DataController.Summary.SummaryGroups = <>
             OptionsCustomize.ColumnMoving = False
             OptionsData.Editing = False
+            OptionsView.GroupByBox = False
             Styles.Content = StyleContent
             Styles.Header = StyleHeader
             OnCustomDrawColumnHeader = cxGridServicosCustomDrawColumnHeader
